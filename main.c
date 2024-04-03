@@ -8,8 +8,10 @@
 void serveur();
 void client();
 int isCommand(buffer_t buff);
-int command_manager(buffer_t buff);
+void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial);
+void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial);
 
+int command_manager(buffer_t buff);
 
 
 
@@ -46,30 +48,20 @@ void serveur()
             continue;
         }
 
-        if (pid == 0) { 
-
+        if (pid == 0) 
+        { 
+            // Le processus fils n'a pas besoin de cette socket d'écoute
             fermerSocket(&sockEcoute);
 
             // TODO : Gérer la communication avec le client
-            recevoir(&sockEch, buff, NULL);
-
-            if(isCommand(buff))
-            {
-                command_manager(buff);
-            }
-            else
-            {
-                printf("Message reçu : %s\n", buff);
-            }
+            dialogueSrv(&sockEch, buff, NULL);
 
 
+            printf("Fermeture de la socket dialogue\n");
+            exit(0);
+            fermerSocket(&sockEch);
 
 
-            // Fermer la socket client après la communication
-            fermerSocket(&sockEch); 
-
-            // Terminer le processus enfant
-            exit(0); 
         } else {
             // Le processus parent n'a pas besoin de cette socket client
             fermerSocket(&sockEch);
@@ -91,50 +83,22 @@ void client()
 
     // TODO : Ecran d'accueil qui attend /connect
 
-    sockConn = connecterClt2Srv(ADDR, PORT);
 
     // On affiche la socket
+    sockConn = connecterClt2Srv(ADDR, PORT);
     printf("Socket dialogue créée : %d\n", sockConn.fd);
 
-    while(1)
-    {
-        // TODO : Gérer la communication avec le serveur
+   
+    // TODO : Gérer la communication avec le serveur
 
-        // On demande d'écrire quelque chose
+    dialogueClt(&sockConn, buff, NULL);
 
-        printf("Entrez votre message : ");
-        fgets(buff, MAX_BUFFER, stdin);
 
-        // On envoie le message
-        envoyer(&sockConn, buff, NULL);
-
-        // if(isCommand(buff))
-        // {
-        //     printf("Commande détectée\n");
-        // }
-        // else 
-        // {
-        //     printf("On envoie le message\n");
-        //     envoyer(&sockConn, buff, NULL);
-        // }
-    }
-
-    // Envoyer
-    /**
-    strcpy(buff, "Message à envoyer");
-    envoyer(&sockConn, buff, NULL);
-    **/
-
-    // Recevoir
-    /**
-    recevoir(&sockConn, buff, NULL);
-    printf("Message reçu : %s\n", buff);
-    **/
+    
 
     // On ferme la socket de dialogue
     printf("Fermeture de la socket dialogue\n");
     fermerSocket(&sockConn);
-
 }
 
 
@@ -147,24 +111,50 @@ int isCommand(buffer_t buff)
     return 0;
 }
 
-// Gère toutes les commandes, que ce soit connect, disconnect etc..
 int command_manager(buffer_t buff)
 {
-    printf("Commande détectée\n");
-    if(strcmp(buff, "/connect\n") == 0)
+
+}
+
+void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
+{
+    while(1)
     {
-        // TODO : Gérer la connexion
-    }
-    else if(strcmp(buff, "/disconnect\n") == 0)
-    {
-        // TODO : Gérer la déconnexion
-        printf("Déconnexion\n");
-        exit(0);
+        
+        // Recevoir
+        /**
+        recevoir(&sockEch, buff, NULL);
+        printf("Message reçu : %s\n", buff);
+        **/
+
+        // Envoyer
+        /**
+        strcpy(buff, "Message à envoyer");
+        envoyer(&sockEch, buff, NULL);
+        **/
 
     }
-    else
+
+    return;
+}
+
+void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial)
+{
+    while(1)
     {
-        printf("Commande inconnue\n");
+        // Envoyer
+        /**
+        strcpy(buff, "Message à envoyer");
+        envoyer(&sockConn, buff, NULL);
+        **/
+
+        // Recevoir
+        /**
+        recevoir(&sockConn, buff, NULL);
+        printf("Message reçu : %s\n", buff);
+        **/
+
     }
-    return 0;
+
+    return;
 }
