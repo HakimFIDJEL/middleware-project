@@ -90,7 +90,6 @@ void client()
 
    
     // TODO : Gérer la communication avec le serveur
-
     dialogueClt(&sockConn, buff, NULL);
 
 
@@ -113,25 +112,37 @@ int isCommand(buffer_t buff)
 
 int command_manager(buffer_t buff)
 {
-
+    if(strcmp(buff, "/disconnect\n") == 0)
+    {
+        return 1;
+    }
 }
 
 void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
 {
     while(1)
     {
-        
         // Recevoir
-        /**
-        recevoir(&sockEch, buff, NULL);
+        recevoir(sockEch, buff, NULL);
         printf("Message reçu : %s\n", buff);
-        **/
+        
 
-        // Envoyer
-        /**
-        strcpy(buff, "Message à envoyer");
-        envoyer(&sockEch, buff, NULL);
-        **/
+        // Si la commande est /disconnect
+        if(isCommand(buff))
+        {
+            if(command_manager(buff))
+            {
+                printf("Fermeture de la socket dialogue\n");
+                return;
+            }
+        }
+        else 
+        {
+            // Envoyer
+            strcpy(buff, "Message à envoyer");
+            envoyer(sockEch, buff, NULL);
+        }
+        
 
     }
 
@@ -142,17 +153,35 @@ void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial)
 {
     while(1)
     {
-        // Envoyer
-        /**
-        strcpy(buff, "Message à envoyer");
-        envoyer(&sockConn, buff, NULL);
-        **/
+        printf("Entrez votre message : ");
+        fgets(buff, MAX_BUFFER, stdin);
+
+
+        // Si la commande est /disconnect
+        if(isCommand(buff))
+        {
+            if(command_manager(buff))
+            {
+                return;
+            }
+        }
+        else 
+        {
+            // Envoyer
+            strcpy(buff, "Message à envoyer");
+            envoyer(sockConn, buff, NULL);
+        }
+
+
+
 
         // Recevoir
-        /**
-        recevoir(&sockConn, buff, NULL);
+        recevoir(sockConn, buff, NULL);
         printf("Message reçu : %s\n", buff);
-        **/
+
+
+        memset(buff, 0, MAX_BUFFER);
+        
 
     }
 
