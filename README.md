@@ -21,11 +21,14 @@
 # - Rappels des commandes
 
 
+# /home
 # /group create
 # /group invit {group_id} {user}
+# /group kick {group_id} {user}
 # /group join {group_id}
 # /group quit
 # /group destroy {group_id}
+# /group list
 # /connect
 # /disconnect
 
