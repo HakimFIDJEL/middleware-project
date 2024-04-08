@@ -18,6 +18,9 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <string.h>
+#include <sys/wait.h>
+#include <pthread.h>
+
 /*
 *****************************************************************************************
  *	\noop		D E F I N I T I O N   DES   M A C R O S
@@ -116,5 +119,52 @@ socket_t connecterClt2Srv (char *adrIP, short port);
     *   \result		la socket est fermée
 */
 void fermerSocket (socket_t *sock);
+
+/**
+ *	\fn			void initSockets()
+ *	\brief		Initialisation du tableau de sockets
+ *	\note		Cette fonction permet d'initialiser le tableau des sockets connectés
+ *	\result		void
+ */
+void initSockets();
+
+
+/**
+ *	\fn			void addSocket(socket_t sock)
+ *	\brief		Ajout d'une socket au tableau
+ *	\param		sock : la socket à ajouter
+ *	\note		Cette fonction permet d'ajouter une socket au tableau des sockets connectés
+ *	\result		void
+ */
+void addSocket(socket_t sock);
+
+
+/**
+ *	\fn			void removeSocket(int index)
+ *	\brief		Suppression d'une socket du tableau
+ *	\param		index : l'indice de la socket à supprimer
+ *	\note		Cette fonction permet de supprimer une socket du tableau des sockets connectés
+ *	\result		void
+ */
+void removeSocket(int index);
+
+
+/**
+ *	\fn			void displaySockets()
+ *	\brief		Affichage des sockets connectés
+ *	\note		Cette fonction permet d'afficher les sockets connectés
+ *	\result		void
+ */
+void displaySockets();
+
+
+/**
+ *	\fn			void zombieManager()
+ *	\brief		Le gestionnaire de zombies
+ *	\note		Cette fonction permet de gérer les processus zombies
+ *	\result		void
+ */
+void zombieManager();
+
 
 #endif /* SESSION_H */

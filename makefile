@@ -11,11 +11,13 @@ client: archives
 librairies:
 	gcc -c ./sources/data.c -o ./libs/data.o
 	gcc -c ./sources/session.c -o ./libs/session.o
+	gcc -c ./sources/users.c -o ./libs/users.o
+	gcc -c ./sources/channels.c -o ./libs/channels.o
 
 archives: librairies
 	mkdir -p archives
 	mkdir -p libs
-	ar rcs ./archives/libUNIX.a ./libs/data.o ./libs/session.o
+	ar rcs ./archives/libUNIX.a ./libs/data.o ./libs/session.o ./libs/users.o ./libs/channels.o
 
 clean:
 	rm -f mainSrv mainClt ./libs/* ./archives/*

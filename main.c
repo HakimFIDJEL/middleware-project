@@ -1,21 +1,28 @@
 #include "./heads/data.h"
 #include "./heads/session.h"
+#include "./heads/users.h"
+#include "./heads/channels.h"
+
 
 #define ADDR "127.0.0.1"
 #define PORT 5000
 #define MODE SOCK_STREAM
+
 
 void serveur();
 void client();
 int isCommand(buffer_t buff);
 void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial);
 void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial);
+void * EnvoiClt(void * arg);
+void * ReceptionClt(void * arg);
 
 int command_manager(buffer_t buff);
 
 
 
-int main () {
+int main () 
+{
 #ifdef SERVEUR
     serveur();
 #else
@@ -30,16 +37,24 @@ void serveur()
     socket_t sockEch;
     buffer_t buff;
     pid_t pid;
+
+    // init_users();
+    // initSockets();
     
     sockEcoute = creerSocketEcoute(ADDR, PORT);
     printf("Socket écoute créée : %d\n", sockEcoute.fd);
 
+    // Gestion des processus zombies
+    zombieManager();
+
+
     while(1)
     {
+        // Accepter une connexion
         sockEch = accepterClt(sockEcoute);
-
-        // Affiche un message de connexion
-        printf("Connexion de %s:%d\n", inet_ntoa(sockEch.addrLoc.sin_addr), ntohs(sockEch.addrLoc.sin_port));
+        printf("Socket dialogue créée : %d\n", sockEch.fd);
+       
+        // addSocket(sockEch);
 
         pid = fork();
         if (pid == -1) {
@@ -47,16 +62,28 @@ void serveur()
             fermerSocket(&sockEch);
             continue;
         }
-
         if (pid == 0) 
         { 
+            printf("Connexion de %s:%d\n", inet_ntoa(sockEch.addrLoc.sin_addr), ntohs(sockEch.addrLoc.sin_port));
+
             // Le processus fils n'a pas besoin de cette socket d'écoute
             fermerSocket(&sockEcoute);
+
+
+
+
+            // displaySockets();
+
 
             // TODO : Gérer la communication avec le client
             dialogueSrv(&sockEch, buff, NULL);
 
 
+
+            // removeSocket(sockEch.fd);
+
+            
+            printf("Déconnexion de %s:%d\n", inet_ntoa(sockEch.addrLoc.sin_addr), ntohs(sockEch.addrLoc.sin_port));            
             printf("Fermeture de la socket dialogue\n");
             exit(0);
             fermerSocket(&sockEch);
@@ -88,13 +115,22 @@ void client()
     sockConn = connecterClt2Srv(ADDR, PORT);
     printf("Socket dialogue créée : %d\n", sockConn.fd);
 
-   
-    // TODO : Gérer la communication avec le serveur
+
+    // On fait deux threads pour gérer l'envoi et la réception
+    // pthread_t threadEnvoi, threadReception;
+
+    // On lance les threads
+    // pthread_create(&threadEnvoi, NULL, EnvoiClt, &sockConn);
+    // pthread_create(&threadReception, NULL, ReceptionClt, &sockConn);
+
+    // On attend la fin des threads
+    // pthread_join(threadEnvoi, NULL);
+    // pthread_join(threadReception, NULL);
+
+    // On gère la communication
     dialogueClt(&sockConn, buff, NULL);
 
-
     
-
     // On ferme la socket de dialogue
     printf("Fermeture de la socket dialogue\n");
     fermerSocket(&sockConn);
@@ -132,22 +168,80 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
         {
             if(command_manager(buff))
             {
-                printf("Fermeture de la socket dialogue\n");
                 return;
+            }
+        }
+        // Envoyer
+        strcpy(buff, "Message à envoyer");
+        envoyer(sockEch, buff, NULL);
+    }
+
+    return;
+}
+
+
+
+void * EnvoiClt(void * arg)
+{
+    socket_t *sockConn = (socket_t *) arg;
+    buffer_t buff;
+
+    while(1)
+    {
+        printf("Entrez votre message : ");
+        fgets(buff, MAX_BUFFER, stdin);
+
+        // Si la commande est /disconnect
+        if(isCommand(buff))
+        {
+            // Envoyer
+            envoyer(sockConn, buff, NULL);
+
+            if(command_manager(buff))
+            {
+                return NULL;
             }
         }
         else 
         {
             // Envoyer
-            strcpy(buff, "Message à envoyer");
-            envoyer(sockEch, buff, NULL);
+            envoyer(sockConn, buff, NULL);
         }
-        
-
+        // On vide le buffer
+        memset(buff, 0, MAX_BUFFER);
     }
 
-    return;
+    return NULL;
 }
+
+void * ReceptionClt(void * arg)
+{
+    socket_t *sockConn = (socket_t *) arg;
+    buffer_t buff;
+
+    while(1)
+    {
+        // Recevoir
+        recevoir(sockConn, buff, NULL);
+        printf("Message reçu : %s\n", buff);
+    }
+
+    return NULL;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial)
 {
@@ -156,10 +250,12 @@ void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial)
         printf("Entrez votre message : ");
         fgets(buff, MAX_BUFFER, stdin);
 
-
         // Si la commande est /disconnect
         if(isCommand(buff))
         {
+            // Envoyer
+            envoyer(sockConn, buff, NULL);
+
             if(command_manager(buff))
             {
                 return;
@@ -168,21 +264,14 @@ void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial)
         else 
         {
             // Envoyer
-            strcpy(buff, "Message à envoyer");
             envoyer(sockConn, buff, NULL);
         }
-
-
-
-
         // Recevoir
         recevoir(sockConn, buff, NULL);
         printf("Message reçu : %s\n", buff);
 
-
+        // On vide le buffer
         memset(buff, 0, MAX_BUFFER);
-        
-
     }
 
     return;

@@ -1,5 +1,51 @@
 #include "../heads/session.h"
 
+#define MAX_SOCKETS 10
+// Tableau de sockets
+socket_t sockets[MAX_SOCKETS];
+
+
+void initSockets()
+{
+    for (int i = 0; i < MAX_SOCKETS; i++)
+    {
+        sockets[i].fd = -1;
+    }
+    printf("Tableau de sockets initialisé\n");
+}
+
+void addSocket(socket_t sock)
+{
+    for (int i = 0; i < MAX_SOCKETS; i++)
+    {
+        if (sockets[i].fd == -1)
+        {
+            sockets[i] = sock;
+            break;
+        }
+    }
+}
+
+void removeSocket(int index)
+{
+    if (index < MAX_SOCKETS)
+    {
+        sockets[index].fd = -1;
+    }
+}
+
+void displaySockets()
+{
+    for (int i = 0; i < MAX_SOCKETS; i++)
+    {
+        if (sockets[i].fd != -1)
+        {
+            printf("Socket %d : %d\n", i, sockets[i].fd);
+        }
+    }
+}
+
+
 void _adr2struct (struct sockaddr_in *addr, char *adrIP, short port) 
 {
     addr->sin_family = AF_INET;
@@ -56,4 +102,17 @@ socket_t connecterClt2Srv (char *adrIP, short port)
 void fermerSocket (socket_t *sock)
 {
     close(sock->fd);
+}
+
+void zombieManager()
+{
+    // Gestion des processus zombies
+    struct sigaction sa;
+    sa.sa_handler = SIG_IGN; // Ignorer le signal SIGCHLD pour éviter les processus zombies
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = SA_RESTART;
+    if (sigaction(SIGCHLD, &sa, NULL) == -1) {
+        perror("Erreur lors de la configuration de SIGCHLD");
+        exit(EXIT_FAILURE);
+    }
 }
