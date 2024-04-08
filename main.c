@@ -4,9 +4,12 @@
 #include "./heads/channels.h"
 
 
+
 #define ADDR "127.0.0.1"
 #define PORT 5000
 #define MODE SOCK_STREAM
+
+volatile bool sessionActive = false;
 
 
 void serveur();
@@ -115,20 +118,22 @@ void client()
     sockConn = connecterClt2Srv(ADDR, PORT);
     printf("Socket dialogue créée : %d\n", sockConn.fd);
 
+    sessionActive = true;
+
 
     // On fait deux threads pour gérer l'envoi et la réception
-    // pthread_t threadEnvoi, threadReception;
+    pthread_t threadEnvoi, threadReception;
 
     // On lance les threads
-    // pthread_create(&threadEnvoi, NULL, EnvoiClt, &sockConn);
-    // pthread_create(&threadReception, NULL, ReceptionClt, &sockConn);
+    pthread_create(&threadEnvoi, NULL, EnvoiClt, &sockConn);
+    pthread_create(&threadReception, NULL, ReceptionClt, &sockConn);
 
     // On attend la fin des threads
-    // pthread_join(threadEnvoi, NULL);
-    // pthread_join(threadReception, NULL);
+    pthread_join(threadEnvoi, NULL);
+    pthread_join(threadReception, NULL);
 
     // On gère la communication
-    dialogueClt(&sockConn, buff, NULL);
+    // dialogueClt(&sockConn, buff, NULL);
 
     
     // On ferme la socket de dialogue
@@ -172,7 +177,10 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
             }
         }
         // Envoyer
+
+        // Test de l'affichage de deux messages
         strcpy(buff, "Message à envoyer");
+        envoyer(sockEch, buff, NULL);
         envoyer(sockEch, buff, NULL);
     }
 
@@ -199,6 +207,7 @@ void * EnvoiClt(void * arg)
 
             if(command_manager(buff))
             {
+                sessionActive = false;
                 return NULL;
             }
         }
@@ -219,7 +228,7 @@ void * ReceptionClt(void * arg)
     socket_t *sockConn = (socket_t *) arg;
     buffer_t buff;
 
-    while(1)
+    while(sessionActive)
     {
         // Recevoir
         recevoir(sockConn, buff, NULL);

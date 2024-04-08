@@ -20,6 +20,8 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <pthread.h>
+#include <stdbool.h>
+
 
 /*
 *****************************************************************************************
