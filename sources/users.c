@@ -22,8 +22,12 @@ User add_user(socket_t socket, int channel)
         {
             users[i].id = USER_ID;
             users[i].socket = socket;
-            users[i].currentChannel = channel;
+
+            connect_user_to_channel(users[i], channel);
+
+
             USER_ID ++;
+
             return users[i];
         }
     }
@@ -45,7 +49,7 @@ void remove_user(User user)
 
 
 
-void displayUsers()
+void display_users()
 {
     for (int i = 0; i < 10; i++)
     {
@@ -55,3 +59,52 @@ void displayUsers()
         }
     }
 }
+
+void connect_user_to_channel(User user, int channel_id)
+{
+    for (int i = 0; i < 10; i++)
+    {
+        if (users[i].id == user.id)
+        {
+            users[i].currentChannel = channel_id;
+            printf("User %d connected to channel %d\n", user.id, channel_id);
+        }
+    }
+}
+
+
+
+
+User get_user_by_socket(socket_t socket)
+{
+    for (int i = 0; i < 10; i++)
+    {
+        if (users[i].socket.fd == socket.fd)
+        {
+            return users[i];
+        }
+    }
+    return users[0];
+}
+
+
+// get all users
+User *get_users()
+{
+    return users;
+}
+
+bool user_exists(int id)
+{
+    for (int i = 0; i < 10; i++)
+    {
+        if (users[i].id == id)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+

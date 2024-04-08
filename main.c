@@ -15,7 +15,7 @@ volatile bool sessionActive = false;
 void serveur();
 void client();
 int isCommand(buffer_t buff);
-void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial);
+void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user);
 void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial);
 void * EnvoiClt(void * arg);
 void * ReceptionClt(void * arg);
@@ -42,7 +42,15 @@ void serveur()
     pid_t pid;
 
     init_users();
+    init_channels();
     // initSockets();
+
+
+    // On crée le channel par défaut (le lobby)
+    User host = add_user(sockEcoute, 0);
+    Channel lobby = add_channel(0, host, "Lobby");
+    connect_user_to_channel(host, lobby.id);
+
     
     sockEcoute = creerSocketEcoute(ADDR, PORT);
     printf("Socket écoute créée : %d\n", sockEcoute.fd);
@@ -57,9 +65,10 @@ void serveur()
         sockEch = accepterClt(sockEcoute);
         printf("Socket dialogue créée : %d\n", sockEch.fd);
        
-        User user = add_user(sockEch, 0);
+        User user = add_user(sockEch, lobby.id);
 
-        displayUsers();
+
+        // display_users();
 
 
 
@@ -83,7 +92,7 @@ void serveur()
 
 
             // TODO : Gérer la communication avec le client
-            dialogueSrv(&sockEch, buff, NULL);
+            dialogueSrv(&sockEch, buff, NULL, user);
 
 
 
@@ -164,13 +173,15 @@ int command_manager(buffer_t buff)
     }
 }
 
-void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
+void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
 {
     while(1)
     {
         // Recevoir
         recevoir(sockEch, buff, NULL);
-        printf("Message reçu : %s\n", buff);
+        printf("\n /== User[%d] : %s\n",user.id, buff);
+        char message[MAX_BUFFER];
+        strcpy(message, buff);
         
 
         // Si la commande est /disconnect
@@ -183,10 +194,24 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
         }
         // Envoyer
 
-        // Test de l'affichage de deux messages
+        // On répond à celui qui nous a envoyer un message
         strcpy(buff, "Message à envoyer");
         envoyer(sockEch, buff, NULL);
-        envoyer(sockEch, buff, NULL);
+
+
+        // On transfert le message à tous les autres clients qui sont dans le même lobby
+        User *users = get_users(); 
+        for (int i = 0; i < MAX_USERS; i++)
+        {
+            if(user_exists(users[i].id) && is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
+            {
+                envoyer(&(users[i].socket), message, NULL);
+                printf("Message envoyé à %d\n", users[i].id);
+            }
+        }
+
+        // On vide le buffer
+        memset(buff, 0, MAX_BUFFER);
     }
 
     return;

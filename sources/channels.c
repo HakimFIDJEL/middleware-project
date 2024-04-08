@@ -86,7 +86,7 @@ void remove_channel(Channel channel){
  * \note       Cette fonction vérifie si un utilisateur est dans un channel
  * \result     bool
 */
-bool isUserInChannel(User user, Channel channel){
+bool is_user_allowed_in_channel(User user, Channel channel){
 
     for (int i = 0; i < MAX_USERS; i++)
     {
@@ -96,7 +96,15 @@ bool isUserInChannel(User user, Channel channel){
         }
     }
     return false;
+}
 
+bool is_user_in_channel(User user, Channel channel){
+
+    if(user.currentChannel == channel.id)
+    {
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -105,7 +113,7 @@ bool isUserInChannel(User user, Channel channel){
  * \note       Cette fonction affiche les channels
  * \result     void
 */
-void displayChannels(){
+void display_channels(){
 
     printf("\n****************************************************\n");
     for (int i = 0; i < MAX_CHANNELS; i++)
@@ -120,3 +128,14 @@ void displayChannels(){
 }
 
 
+Channel get_channel_by_id(int id){
+
+    for (int i = 0; i < MAX_CHANNELS; i++)
+    {
+        if (channels[i].id == id)
+        {
+            return channels[i];
+        }
+    }
+    return channels[0];
+}

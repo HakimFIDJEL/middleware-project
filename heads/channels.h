@@ -68,14 +68,24 @@ Channel add_channel(int id, User host, char name[50]);
 void remove_channel(Channel channel);
 
 /**
- * \fn         isUserInChannel(User user, Channel channel)
+ * \fn         is_user_allowed_in_channel(User user, Channel channel)
  * \brief      Vérifie si un utilisateur est dans un channel
  * \param      User user      utilisateur à vérifier
  * \param      Channel channel    channel à vérifier
  * \note       Cette fonction vérifie si un utilisateur est dans un channel
  * \result     bool
 */
-bool isUserInChannel(User user, Channel channel);
+bool is_user_allowed_in_channel(User user, Channel channel);
+
+/**
+ * \fn         is_user_in_channel(User user, Channel channel)
+ * \brief      Vérifie si un utilisateur est dans un channel
+ * \param      User user      utilisateur à vérifier
+ * \param      Channel channel    channel à vérifier
+ * \note       Cette fonction vérifie si un utilisateur est dans un channel
+ * \result     bool
+*/
+bool is_user_in_channel(User user, Channel channel);
 
 /**
  * \fn         displayChannels()
@@ -83,6 +93,15 @@ bool isUserInChannel(User user, Channel channel);
  * \note       Cette fonction affiche les channels
  * \result     void
 */
-void displayChannels();
+void display_channels();
+
+
+Channel get_channel_by_id(int id);
+
+
+
+
+
+
 
 #endif /* CHANNELS_H */

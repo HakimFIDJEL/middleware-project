@@ -71,7 +71,18 @@ void remove_user(User user);
 
 
 
-void displayUsers();
+void display_users();
+
+void connect_user_to_channel(User user, int channel_id);
+
+
+User get_user_by_socket(socket_t socket);
+
+User *get_users();
+
+bool user_exists(int id);
+
+
 
 
 
