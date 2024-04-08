@@ -1,2 +1,4 @@
-mainClt
-mainSrv
+./mainClt
+./mainSrv
+./libs/*
+./archives/*

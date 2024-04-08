@@ -19,6 +19,7 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user);
 void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial);
 void * EnvoiClt(void * arg);
 void * ReceptionClt(void * arg);
+void *server_thread(void * arg);
 
 int command_manager(buffer_t buff);
 
@@ -65,58 +66,31 @@ void serveur()
         sockEch = accepterClt(sockEcoute);
         printf("Socket dialogue créée : %d\n", sockEch.fd);
         
-        User user = add_user(sockEch, lobby.id);
-       
-
-
-        // display_users();
-
-
-
-        pid = fork();
-        if (pid == -1) {
-            perror("Erreur lors du fork");
-            fermerSocket(&sockEch);
-            continue;
-        }
-        if (pid == 0) 
-        { 
-            printf("Connexion de %s:%d\n", inet_ntoa(sockEch.addrLoc.sin_addr), ntohs(sockEch.addrLoc.sin_port));
-
-            // Le processus fils n'a pas besoin de cette socket d'écoute
-            fermerSocket(&sockEcoute);
-
-
-
-
-            // displaySockets();
-
-
-            // TODO : Gérer la communication avec le client
-            dialogueSrv(&sockEch, buff, NULL, user);
-
-
-
-            // removeSocket(sockEch.fd);
-
-            remove_user(user);
-            
-            // printf("Déconnexion de %s:%d\n", inet_ntoa(sockEch.addrLoc.sin_addr), ntohs(sockEch.addrLoc.sin_port));            
-            printf("Fermeture de la socket dialogue\n");
-            exit(0);
-            fermerSocket(&sockEch);
-
-
-        } else {
-            // Le processus parent n'a pas besoin de cette socket client
-            fermerSocket(&sockEch);
-        }
-
+        // On crée un thread pour chaque client
+        pthread_t server;
+        pthread_create(&server, NULL, &server_thread, &sockEch);
     }
 
     // Fermer la socket d'écoute
     fermerSocket(&sockEcoute);
     return;
+}
+
+
+void *server_thread(void * arg)
+{
+    socket_t sockEch = *(socket_t *) arg;
+    buffer_t buff;
+    User user = add_user(sockEch, 0);
+
+    printf("Connexion de %s:%d\n", inet_ntoa(sockEch.addrLoc.sin_addr), ntohs(sockEch.addrLoc.sin_port));
+
+    dialogueSrv(&sockEch, buff, NULL, user);
+
+
+    remove_user(user);
+    fermerSocket(&sockEch);
+    return NULL;
 }
 
 
@@ -147,9 +121,6 @@ void client()
     pthread_join(threadEnvoi, NULL);
     pthread_join(threadReception, NULL);
 
-    // On gère la communication
-    // dialogueClt(&sockConn, buff, NULL);
-
     
     // On ferme la socket de dialogue
     printf("Fermeture de la socket dialogue\n");
@@ -176,7 +147,7 @@ int command_manager(buffer_t buff)
 
 void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
 {
-    // User *users = get_users(); 
+    User *users = get_users(); 
 
 
     while(1)
@@ -204,28 +175,25 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
 
 
         // On transfert le message à tous les autres clients qui sont dans le même lobby
-       
 
-        display_users();
-
-        // for (int i = 0; i < MAX_USERS; i++)
-        // {
-        //     printf("User id : %d\n", users[i].id);
+        for (int i = 0; i < MAX_USERS; i++)
+        {
+            // printf("User id : %d\n", users[i].id);
             // if(user_exists(users[i].id))
             // {
 
-            //     printf("-- User in channel : %d\n", is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)));
-            //     printf("-- User id : %d\n", users[i].id);
+                // printf("-- User in channel : %d\n", is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)));
+                // printf("-- User id : %d\n", users[i].id);
 
 
-            //     if(user_exists(users[i].id) && is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
-            //     {
-            //         // envoyer(&(users[i].socket), message, NULL);
-            //         printf("Socket descripteur : %d\n", users[i].socket.fd);
-            //         printf("Message envoyé à %d\n", users[i].id);
-            //     }
+                if(user_exists(users[i].id) && is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
+                {
+                    envoyer(&(users[i].socket), message, NULL);
+                    // printf("Socket descripteur : %d\n", users[i].socket.fd);
+                    // printf("Message envoyé à %d\n", users[i].id);
+                }
             // }
-        // }
+        }
 
 
 
