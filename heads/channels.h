@@ -32,50 +32,57 @@ typedef struct {
     int id;							/**< id du channel			*/
     User users[MAX_USERS];					/**< tableau des utilisateurs du channel	*/
     User host;                        /**< hôte du channel			*/
+    char name[50];                  /**< nom du channel			*/
 } Channel;
-
-
-
 
 /*
 *****************************************************************************************
  *	\noop		P R O T O T Y P E S   DES   F O N C T I O N S
  */
 /**
- *	\fn			void init_users(users *u)
- *	\brief		initialisation du tableau d'utilisateurs
- *	\note	    Cette fonction initialise le tableau d'utilisateurs
+ *	\fn			void init_channels()
+ *	\brief		initialisation des channels
+ *	\note	    Cette fonction initialise le tableau de channels
  *	\result	    void
  */
 void init_channels();
 
 /**
- *	\fn			user_t add_user(users users, int id, int socket_id, int channel)
- *	\brief		Ajout d'un utilisateur
- *	\param		int id			id de l'utilisateur
- *	\param		int socket_id	id de la socket de l'utilisateur
- *	\param		int channel		id du canal courant de l'utilisateur
- *	\note	    Cette fonction ajoute un utilisateur au tableau
- *	\result	    user_t
+*	\fn			 add_channel(int id, User host, char name[50])
+*	\brief		Ajout d'un channel
+*	\param		int id			id du channel
+*	\param		User host		hôte du channel
+*	\param		char name[50]	nom du channel
+*	\note	    Cette fonction ajoute un channel au tableau
+*	\result	    Channel
  */
-Channel add_channel(int id, User host);
+Channel add_channel(int id, User host, char name[50]);
 
 /**
- *	\fn			void remove_user(users *u, int id)
- *	\brief		Suppression d'un utilisateur
- *	\param		user_t user		pointeur sur l'utilisateur à supprimer
- *	\note	    Cette fonction supprime un utilisateur du tableau
- *	\result	    void
+ * \fn		    remove_channel(Channel channel)
+ * \brief		Suppression d'un channel 
+ * \param		Channel channel		pointeur sur le channel à supprimer
+ * \note	    Cette fonction supprime un channel du tableau
+ * \result	    void
  */
 void remove_channel(Channel channel);
 
-
+/**
+ * \fn         isUserInChannel(User user, Channel channel)
+ * \brief      Vérifie si un utilisateur est dans un channel
+ * \param      User user      utilisateur à vérifier
+ * \param      Channel channel    channel à vérifier
+ * \note       Cette fonction vérifie si un utilisateur est dans un channel
+ * \result     bool
+*/
 bool isUserInChannel(User user, Channel channel);
 
-
-
+/**
+ * \fn         displayChannels()
+ * \brief      Affiche les channels
+ * \note       Cette fonction affiche les channels
+ * \result     void
+*/
 void displayChannels();
-
-
 
 #endif /* CHANNELS_H */
