@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "users.h": "c",
-        "session.h": "c"
+        "session.h": "c",
+        "display.h": "c"
     }
 }

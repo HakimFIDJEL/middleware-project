@@ -2,12 +2,13 @@
 #include "./heads/session.h"
 #include "./heads/users.h"
 #include "./heads/channels.h"
-
-
+#include "./heads/display.h"
 
 #define ADDR "127.0.0.1"
-#define PORT 5000
+#define PORT 5005
 #define MODE SOCK_STREAM
+
+int flag_start_client = 1;
 
 volatile bool sessionActive = false;
 
@@ -23,8 +24,6 @@ int command_manager(buffer_t buff, User user);
 int disconnect(buffer_t buff);
 
 
-
-
 int main () 
 {
 #ifdef SERVEUR
@@ -37,6 +36,7 @@ int main ()
 
 void serveur()
 {
+    system("clear");
     socket_t sockEcoute;
     socket_t sockEch;
     buffer_t buff;
@@ -93,9 +93,17 @@ void *server_thread(void * arg)
     return NULL;
 }
 
+Client my_client = { .message_count = 0 };
 
 void client()
 {
+    system("clear");
+    printf("Enter your username: ");
+    fgets(my_client.username, 100, stdin);
+    my_client.username[strlen(my_client.username) - 1] = '\0';
+
+    system("clear");
+
     socket_t sockConn;
     buffer_t buff;
 
@@ -105,8 +113,10 @@ void client()
     // On affiche la socket
     sockConn = connecterClt2Srv(ADDR, PORT);
     printf("Socket dialogue créée : %d\n", sockConn.fd);
+    
 
     sessionActive = true;
+    printf("Enter a new message: ");
 
 
     // On fait deux threads pour gérer l'envoi et la réception
@@ -168,9 +178,9 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
         {
             // Envoyer
 
-            // On répond à celui qui nous a envoyer un message
-            strcpy(buff, "Message à envoyer");
-            envoyer(sockEch, buff, NULL);
+        // On répond à celui qui nous a envoyer un message
+        //strcpy(buff, "Message à envoyer");
+        //envoyer(sockEch, buff, NULL);
 
 
             // On transfert le message à tous les autres clients qui sont dans le même lobby
@@ -199,8 +209,16 @@ void * EnvoiClt(void * arg)
 
     while(1)
     {
-        printf("Entrez votre message : ");
         fgets(buff, MAX_BUFFER, stdin);
+        //ajouter le nom du client au message 
+        char message[MAX_BUFFER];
+        strcpy(message, my_client.username);
+        strcat(message, " : ");
+        strcat(message, buff);
+        strcpy(buff, message);
+        
+        add_message(&my_client, buff);
+        flag_start_client = print_messages(&my_client, flag_start_client);
 
         // Si la commande est /disconnect
         if(isCommand(buff))
@@ -239,6 +257,8 @@ void * ReceptionClt(void * arg)
         recevoir(sockConn, buff, NULL);
         printf("Message reçu : %s\n", buff);
 
+        add_message(&my_client, buff);
+        flag_start_client = print_messages(&my_client, flag_start_client);
     }
 
     return NULL;
