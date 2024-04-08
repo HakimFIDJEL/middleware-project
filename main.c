@@ -16,12 +16,12 @@ void serveur();
 void client();
 int isCommand(buffer_t buff);
 void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user);
-void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial);
 void * EnvoiClt(void * arg);
 void * ReceptionClt(void * arg);
 void *server_thread(void * arg);
+int command_manager(buffer_t buff, User user);
+int disconnect(buffer_t buff);
 
-int command_manager(buffer_t buff);
 
 
 
@@ -102,7 +102,6 @@ void client()
 
     // TODO : Ecran d'accueil qui attend /connect
 
-
     // On affiche la socket
     sockConn = connecterClt2Srv(ADDR, PORT);
     printf("Socket dialogue créée : %d\n", sockConn.fd);
@@ -137,13 +136,7 @@ int isCommand(buffer_t buff)
     return 0;
 }
 
-int command_manager(buffer_t buff)
-{
-    if(strcmp(buff, "/disconnect\n") == 0)
-    {
-        return 1;
-    }
-}
+
 
 void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
 {
@@ -159,53 +152,45 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
         strcpy(message, buff);
         
 
-        // Si la commande est /disconnect
         if(isCommand(buff))
         {
-            if(command_manager(buff))
+            // Si la commande est /disconnect   
+            if(disconnect(buff))
             {
+                sessionActive = false;
                 return;
             }
+            command_manager(buff, user);
+            
+            
         }
-        // Envoyer
-
-        // On répond à celui qui nous a envoyer un message
-        strcpy(buff, "Message à envoyer");
-        envoyer(sockEch, buff, NULL);
-
-
-        // On transfert le message à tous les autres clients qui sont dans le même lobby
-
-        for (int i = 0; i < MAX_USERS; i++)
+        else 
         {
-            // printf("User id : %d\n", users[i].id);
-            // if(user_exists(users[i].id))
-            // {
+            // Envoyer
 
-                // printf("-- User in channel : %d\n", is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)));
-                // printf("-- User id : %d\n", users[i].id);
+            // On répond à celui qui nous a envoyer un message
+            strcpy(buff, "Message à envoyer");
+            envoyer(sockEch, buff, NULL);
 
 
+            // On transfert le message à tous les autres clients qui sont dans le même lobby
+
+            for (int i = 0; i < MAX_USERS; i++)
+            {
                 if(user_exists(users[i].id) && is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
                 {
                     envoyer(&(users[i].socket), message, NULL);
-                    // printf("Socket descripteur : %d\n", users[i].socket.fd);
-                    // printf("Message envoyé à %d\n", users[i].id);
-                }
-            // }
+                }   
+            }
+
+
+            // On vide le buffer
+            memset(buff, 0, MAX_BUFFER);
         }
-
-
-
-
-        // On vide le buffer
-        memset(buff, 0, MAX_BUFFER);
     }
 
     return;
 }
-
-
 
 void * EnvoiClt(void * arg)
 {
@@ -223,11 +208,13 @@ void * EnvoiClt(void * arg)
             // Envoyer
             envoyer(sockConn, buff, NULL);
 
-            if(command_manager(buff))
+            if(disconnect(buff))
             {
                 sessionActive = false;
                 return NULL;
             }
+
+           
         }
         else 
         {
@@ -251,55 +238,110 @@ void * ReceptionClt(void * arg)
         // Recevoir
         recevoir(sockConn, buff, NULL);
         printf("Message reçu : %s\n", buff);
+
     }
 
     return NULL;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-void dialogueClt(socket_t *sockConn, buffer_t buff, pFct deSerial)
+// Fonction qui gère les commandes, elles peuvent avoir plusieurs arguments et commencent par /
+int command_manager(buffer_t buff, User user)
 {
-    while(1)
+    printf("Commande reçue : %s\n", buff);
+
+
+    const int MAX_ARGS = 10;
+    char *args[MAX_ARGS];
+    int argc = 0; // Compteur d'arguments
+
+    // Utiliser strtok pour diviser la chaîne en tokens basés sur l'espace
+    char *token = strtok(buff, " ");
+    while (token != NULL && argc < MAX_ARGS - 1) 
     {
-        printf("Entrez votre message : ");
-        fgets(buff, MAX_BUFFER, stdin);
+        args[argc++] = token;
+        token = strtok(NULL, " ");
+    }
+    args[argc] = NULL; 
 
-        // Si la commande est /disconnect
-        if(isCommand(buff))
-        {
-            // Envoyer
-            envoyer(sockConn, buff, NULL);
-
-            if(command_manager(buff))
-            {
-                return;
-            }
-        }
-        else 
-        {
-            // Envoyer
-            envoyer(sockConn, buff, NULL);
-        }
-        // Recevoir
-        recevoir(sockConn, buff, NULL);
-        printf("Message reçu : %s\n", buff);
-
-        // On vide le buffer
-        memset(buff, 0, MAX_BUFFER);
+    // Exemple de traitement : afficher les arguments
+    for (int i = 0; i < argc; i++) 
+    {
+        printf("Argument %d: %s\n", i, args[i]);
     }
 
-    return;
+    printf("Commande : %c\n", args[0][1]);
+
+    // On vide le buffer
+    memset(buff, 0, MAX_BUFFER);
+
+    // Ici, vous pouvez traiter les arguments comme vous le souhaitez
+    switch(args[0][1])
+    {
+
+
+        // Création d'un channel
+        case 'g':
+            strcpy(buff, "Création d'un channel\n");
+            
+
+
+            // envoyer(&(user.socket), buff, NULL);
+        break;
+
+        // Inviter dans un channel
+        case 'i':
+
+        break;
+
+        // Joindre un channel
+        case 'j':
+
+        break;
+
+        // Kick d'un channel
+        case 'k':
+
+        break;
+
+        // Quitter un channel
+        case 'q':
+
+        break;
+
+        // Détruire un channel
+        case 's':
+
+        break;
+
+        // Liste des channels
+        case 'l':
+
+        break;
+
+        // Liste des utilisateurs
+        case 'u':
+
+        break;
+
+        // Help
+        case 'h':
+            // Affiche la liste des commandes
+        break;
+
+        
+    }
+    
+    return 0;
+
+
+}
+
+int disconnect(buffer_t buff)
+{
+    if(strcmp(buff, "/disconnect\n") == 0)
+    {
+        return 1;
+    }
+    return 0;
 }
