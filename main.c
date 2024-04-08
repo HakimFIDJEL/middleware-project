@@ -41,7 +41,7 @@ void serveur()
     buffer_t buff;
     pid_t pid;
 
-    // init_users();
+    init_users();
     // initSockets();
     
     sockEcoute = creerSocketEcoute(ADDR, PORT);
@@ -57,7 +57,11 @@ void serveur()
         sockEch = accepterClt(sockEcoute);
         printf("Socket dialogue créée : %d\n", sockEch.fd);
        
-        // addSocket(sockEch);
+        User user = add_user(sockEch, 0);
+
+        displayUsers();
+
+
 
         pid = fork();
         if (pid == -1) {
@@ -85,8 +89,9 @@ void serveur()
 
             // removeSocket(sockEch.fd);
 
+            remove_user(user);
             
-            printf("Déconnexion de %s:%d\n", inet_ntoa(sockEch.addrLoc.sin_addr), ntohs(sockEch.addrLoc.sin_port));            
+            // printf("Déconnexion de %s:%d\n", inet_ntoa(sockEch.addrLoc.sin_addr), ntohs(sockEch.addrLoc.sin_port));            
             printf("Fermeture de la socket dialogue\n");
             exit(0);
             fermerSocket(&sockEch);
@@ -125,8 +130,8 @@ void client()
     pthread_t threadEnvoi, threadReception;
 
     // On lance les threads
-    pthread_create(&threadEnvoi, NULL, EnvoiClt, &sockConn);
     pthread_create(&threadReception, NULL, ReceptionClt, &sockConn);
+    pthread_create(&threadEnvoi, NULL, EnvoiClt, &sockConn);
 
     // On attend la fin des threads
     pthread_join(threadEnvoi, NULL);

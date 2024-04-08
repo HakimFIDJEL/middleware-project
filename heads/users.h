@@ -16,11 +16,13 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include "./session.h"
 /*
 *****************************************************************************************
  *	\noop		S T R C T U R E S   DE   D O N N E E S
  */
 #define MAX_USERS 10
+
 
 /**
  *	\typedef	
@@ -28,7 +30,7 @@
  */
 typedef struct {
     int currentChannel;					/**< canal courant de l'utilisateur	*/
-    int socket_id;						/**< id de la socket de l'utilisateur	*/
+    socket_t socket;					/**< socket de l'utilisateur			*/
 	int id;							/**< id de l'utilisateur			*/
 } User;
 
@@ -56,7 +58,7 @@ void init_users();
  *	\note	    Cette fonction ajoute un utilisateur au tableau
  *	\result	    user_t
  */
-User add_user(int id, int socket_id, int channel);
+User add_user(socket_t socket, int channel);
 
 /**
  *	\fn			void remove_user(users *u, int id)
@@ -67,6 +69,9 @@ User add_user(int id, int socket_id, int channel);
  */
 void remove_user(User user);
 
+
+
+void displayUsers();
 
 
 
