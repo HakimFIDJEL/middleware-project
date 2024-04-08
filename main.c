@@ -64,8 +64,9 @@ void serveur()
         // Accepter une connexion
         sockEch = accepterClt(sockEcoute);
         printf("Socket dialogue créée : %d\n", sockEch.fd);
-       
+        
         User user = add_user(sockEch, lobby.id);
+       
 
 
         // display_users();
@@ -175,6 +176,9 @@ int command_manager(buffer_t buff)
 
 void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
 {
+    // User *users = get_users(); 
+
+
     while(1)
     {
         // Recevoir
@@ -200,15 +204,31 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
 
 
         // On transfert le message à tous les autres clients qui sont dans le même lobby
-        User *users = get_users(); 
-        for (int i = 0; i < MAX_USERS; i++)
-        {
-            if(user_exists(users[i].id) && is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
-            {
-                envoyer(&(users[i].socket), message, NULL);
-                printf("Message envoyé à %d\n", users[i].id);
-            }
-        }
+       
+
+        display_users();
+
+        // for (int i = 0; i < MAX_USERS; i++)
+        // {
+        //     printf("User id : %d\n", users[i].id);
+            // if(user_exists(users[i].id))
+            // {
+
+            //     printf("-- User in channel : %d\n", is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)));
+            //     printf("-- User id : %d\n", users[i].id);
+
+
+            //     if(user_exists(users[i].id) && is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
+            //     {
+            //         // envoyer(&(users[i].socket), message, NULL);
+            //         printf("Socket descripteur : %d\n", users[i].socket.fd);
+            //         printf("Message envoyé à %d\n", users[i].id);
+            //     }
+            // }
+        // }
+
+
+
 
         // On vide le buffer
         memset(buff, 0, MAX_BUFFER);

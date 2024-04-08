@@ -98,7 +98,7 @@ bool user_exists(int id)
 {
     for (int i = 0; i < 10; i++)
     {
-        if (users[i].id == id)
+        if (users[i].id == id && users[i].id != -1)
         {
             return true;
         }
