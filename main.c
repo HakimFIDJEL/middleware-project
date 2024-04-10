@@ -50,7 +50,6 @@ void serveur()
     // On crée le channel par défaut (le lobby)
     User host = add_user(sockEcoute, 0);
     Channel lobby = add_channel(0, host, "Lobby");
-    connect_user_to_channel(host, lobby.id);
 
     
     sockEcoute = creerSocketEcoute(ADDR, PORT);
@@ -116,7 +115,7 @@ void client()
     
 
     sessionActive = true;
-    printf("Enter a new message: ");
+    
 
 
     // On fait deux threads pour gérer l'envoi et la réception
@@ -158,8 +157,8 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
         // Recevoir
         recevoir(sockEch, buff, NULL);
         printf("\n /== User[%d] : %s\n",user.id, buff);
-        char message[MAX_BUFFER];
-        strcpy(message, buff);
+        // char message[MAX_BUFFER];
+        // strcpy(message, buff);
         
 
         if(isCommand(buff))
@@ -189,14 +188,15 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
             {
                 if(user_exists(users[i].id) && is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
                 {
-                    envoyer(&(users[i].socket), message, NULL);
+                    // envoyer(&(users[i].socket), message, NULL);
+                    envoyer(&(users[i].socket), buff, NULL);
                 }   
             }
 
 
-            // On vide le buffer
-            memset(buff, 0, MAX_BUFFER);
         }
+        // On vide le buffer
+        memset(buff, 0, MAX_BUFFER);
     }
 
     return;
@@ -209,35 +209,25 @@ void * EnvoiClt(void * arg)
 
     while(1)
     {
-        fgets(buff, MAX_BUFFER, stdin);
-        //ajouter le nom du client au message 
-        char message[MAX_BUFFER];
-        strcpy(message, my_client.username);
-        strcat(message, " : ");
-        strcat(message, buff);
-        strcpy(buff, message);
+        // On attend que l'utilisateur entre un message
         
+        printf("Enter a new message: ");
+        fgets(buff, MAX_BUFFER, stdin);
+
+        // On affiche le message
         add_message(&my_client, buff);
         flag_start_client = print_messages(&my_client, flag_start_client);
 
         // Si la commande est /disconnect
+        envoyer(sockConn, buff, NULL);
+
         if(isCommand(buff))
         {
-            // Envoyer
-            envoyer(sockConn, buff, NULL);
-
             if(disconnect(buff))
             {
                 sessionActive = false;
                 return NULL;
             }
-
-           
-        }
-        else 
-        {
-            // Envoyer
-            envoyer(sockConn, buff, NULL);
         }
         // On vide le buffer
         memset(buff, 0, MAX_BUFFER);
@@ -259,6 +249,9 @@ void * ReceptionClt(void * arg)
 
         add_message(&my_client, buff);
         flag_start_client = print_messages(&my_client, flag_start_client);
+
+        // On vide le buffer
+        memset(buff, 0, MAX_BUFFER);
     }
 
     return NULL;
@@ -268,7 +261,7 @@ void * ReceptionClt(void * arg)
 // Fonction qui gère les commandes, elles peuvent avoir plusieurs arguments et commencent par /
 int command_manager(buffer_t buff, User user)
 {
-    printf("Commande reçue : %s\n", buff);
+    printf("Commande manager : %s\n", buff);
 
 
     const int MAX_ARGS = 10;
