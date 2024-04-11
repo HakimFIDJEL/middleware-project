@@ -50,13 +50,12 @@ void init_channels();
 /**
 *	\fn			 add_channel(int id, User host, char name[50])
 *	\brief		Ajout d'un channel
-*	\param		int id			id du channel
 *	\param		User host		hôte du channel
 *	\param		char name[50]	nom du channel
 *	\note	    Cette fonction ajoute un channel au tableau
 *	\result	    Channel
  */
-Channel add_channel(int id, User host, char name[50]);
+Channel add_channel(User host, char name[50]);
 
 /**
  * \fn		    remove_channel(Channel channel)

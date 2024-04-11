@@ -14,7 +14,8 @@ void init_users()
     printf("Users initialized\n");
 }
 
-User add_user(socket_t socket, int channel)
+
+User add_user(socket_t socket, int channel, char name[50])
 {
     for (int i = 0; i < 10; i++)
     {
@@ -22,12 +23,9 @@ User add_user(socket_t socket, int channel)
         {
             users[i].id = USER_ID;
             users[i].socket = socket;
-
+            strcpy(users[i].name, name);
             connect_user_to_channel(users[i], channel);
-
-
             USER_ID ++;
-
             return users[i];
         }
     }
@@ -55,7 +53,7 @@ void display_users()
     {
         if (users[i].id != -1)
         {
-            printf("\nUser %d is connected on channel %d\n", users[i].id, users[i].currentChannel);
+            printf("\n- %s [ ID : %d ] [ Current Channel : %d ]\n", users[i].name, users[i].id , users[i].currentChannel );
         }
     }
 }

@@ -1,12 +1,11 @@
 all: librairies archives serveur client
-	#  clear
-	#  @echo "Compilation terminée avec succès."
+	# clear
+	# @echo "Compilation terminée avec succès."
 
 serveur: archives
-	gcc -DSERVEUR -o mainSrv main.c -L./archives -lUNIX
-
+	gcc -DSERVEUR -o mainSrv main.c -L./archives -lUNIX 
 client: archives
-	gcc -o mainClt main.c -L./archives -lUNIX
+	gcc -o mainClt main.c -L./archives -lUNIX 
 
 librairies:
 	gcc -c ./sources/data.c -o ./libs/data.o

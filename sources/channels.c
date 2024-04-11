@@ -42,15 +42,17 @@ void init_channels(){
 *	\note	    Cette fonction ajoute un channel au tableau
 *	\result	    Channel
  */
-Channel add_channel(int id, User host, char name[50]){
+Channel add_channel(User host, char name[50])
+{
 
     for (int i = 0; i < MAX_CHANNELS; i++)
     {
         if (channels[i].id == -1)
         {
-            channels[i].id = id;
+            channels[i].id = i;
             channels[i].host = host;
             strcpy(channels[i].name, name);
+            printf("Channel \"%s\" [%d] added\n", name, i);
             return channels[i];
         }
     }
@@ -113,14 +115,14 @@ bool is_user_in_channel(User user, Channel channel){
  * \note       Cette fonction affiche les channels
  * \result     void
 */
-void display_channels(){
+void display_channels(User user){
 
     printf("\n****************************************************\n");
     for (int i = 0; i < MAX_CHANNELS; i++)
     {
-        if (channels[i].id != -1)
+        if (channels[i].id != -1 && is_user_allowed_in_channel(user, channels[i]))
         {
-            printf("- Channel %d : %s\n", channels[i].id, channels[i].name);
+            printf("- %s [ ID : %d ] [ Host : %s ]\n", channels[i].name, channels[i].id, channels[i].host.name );
         }
     }
     printf("****************************************************\n");

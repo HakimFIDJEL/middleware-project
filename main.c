@@ -3,10 +3,12 @@
 #include "./heads/users.h"
 #include "./heads/channels.h"
 #include "./heads/display.h"
+#include <signal.h>
 
 #define ADDR "127.0.0.1"
 #define PORT 5005
 #define MODE SOCK_STREAM
+#define SIG_ARRET SIGINT
 
 int flag_start_client = 1;
 
@@ -15,13 +17,15 @@ volatile bool sessionActive = false;
 
 void serveur();
 void client();
-int isCommand(buffer_t buff);
+int is_command(buffer_t buff);
 void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user);
 void * EnvoiClt(void * arg);
 void * ReceptionClt(void * arg);
 void *server_thread(void * arg);
 int command_manager(buffer_t buff, User user);
 int disconnect(buffer_t buff);
+
+void signal_handler(int sig, siginfo_t *siginfo, void *context);
 
 
 int main () 
@@ -34,10 +38,12 @@ int main ()
     return 0;
 }
 
+socket_t sockEcoute;
+
+
 void serveur()
 {
     system("clear");
-    socket_t sockEcoute;
     socket_t sockEch;
     buffer_t buff;
     pid_t pid;
@@ -47,9 +53,17 @@ void serveur()
     // initSockets();
 
 
+    struct sigaction act;
+    memset(&act, 0, sizeof(act));
+    act.sa_sigaction = &signal_handler;
+    act.sa_flags = SA_SIGINFO;
+
+    sigaction(SIG_ARRET, &act, NULL);
+
+
     // On crée le channel par défaut (le lobby)
-    User host = add_user(sockEcoute, 0);
-    Channel lobby = add_channel(0, host, "Lobby");
+    User host = add_user(sockEcoute, 0, "Server");
+    Channel lobby = add_channel(host, "Lobby");
 
     
     sockEcoute = creerSocketEcoute(ADDR, PORT);
@@ -70,9 +84,6 @@ void serveur()
         pthread_create(&server, NULL, &server_thread, &sockEch);
     }
 
-    // Fermer la socket d'écoute
-    fermerSocket(&sockEcoute);
-    return;
 }
 
 
@@ -80,7 +91,7 @@ void *server_thread(void * arg)
 {
     socket_t sockEch = *(socket_t *) arg;
     buffer_t buff;
-    User user = add_user(sockEch, 0);
+    User user = add_user(sockEch, 0, "Client");
 
     printf("Connexion de %s:%d\n", inet_ntoa(sockEch.addrLoc.sin_addr), ntohs(sockEch.addrLoc.sin_port));
 
@@ -136,7 +147,7 @@ void client()
 }
 
 
-int isCommand(buffer_t buff)
+int is_command(buffer_t buff)
 {
     if(buff[0] == '/')
     {
@@ -161,7 +172,7 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
         // strcpy(message, buff);
         
 
-        if(isCommand(buff))
+        if(is_command(buff))
         {
             // Si la commande est /disconnect   
             if(disconnect(buff))
@@ -177,9 +188,9 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
         {
             // Envoyer
 
-        // On répond à celui qui nous a envoyer un message
-        //strcpy(buff, "Message à envoyer");
-        //envoyer(sockEch, buff, NULL);
+            // On répond à celui qui nous a envoyer un message
+            //strcpy(buff, "Message à envoyer");
+            //envoyer(sockEch, buff, NULL);
 
 
             // On transfert le message à tous les autres clients qui sont dans le même lobby
@@ -196,7 +207,7 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial, User user)
 
         }
         // On vide le buffer
-        memset(buff, 0, MAX_BUFFER);
+        buff[0] = '\0';
     }
 
     return;
@@ -209,19 +220,20 @@ void * EnvoiClt(void * arg)
 
     while(1)
     {
-        // On attend que l'utilisateur entre un message
-        
-        printf("Enter a new message: ");
+
+        // flag_start_client = print_messages(&my_client, flag_start_client);
+        printf("Message à envoyer : ");
         fgets(buff, MAX_BUFFER, stdin);
 
-        // On affiche le message
-        add_message(&my_client, buff);
-        flag_start_client = print_messages(&my_client, flag_start_client);
+        // add_message(&my_client, buff);
+
 
         // Si la commande est /disconnect
         envoyer(sockConn, buff, NULL);
+        
 
-        if(isCommand(buff))
+
+        if(is_command(buff))
         {
             if(disconnect(buff))
             {
@@ -230,7 +242,7 @@ void * EnvoiClt(void * arg)
             }
         }
         // On vide le buffer
-        memset(buff, 0, MAX_BUFFER);
+        buff[0] = '\0';
     }
 
     return NULL;
@@ -247,11 +259,9 @@ void * ReceptionClt(void * arg)
         recevoir(sockConn, buff, NULL);
         printf("Message reçu : %s\n", buff);
 
-        add_message(&my_client, buff);
-        flag_start_client = print_messages(&my_client, flag_start_client);
 
         // On vide le buffer
-        memset(buff, 0, MAX_BUFFER);
+        buff[0] = '\0';
     }
 
     return NULL;
@@ -261,16 +271,15 @@ void * ReceptionClt(void * arg)
 // Fonction qui gère les commandes, elles peuvent avoir plusieurs arguments et commencent par /
 int command_manager(buffer_t buff, User user)
 {
-    printf("Commande manager : %s\n", buff);
-
-
-    const int MAX_ARGS = 10;
-    char *args[MAX_ARGS];
+    char retour[1024];
+    int id;
+    Channel channel;
+    char *args[10];
     int argc = 0; // Compteur d'arguments
 
     // Utiliser strtok pour diviser la chaîne en tokens basés sur l'espace
     char *token = strtok(buff, " ");
-    while (token != NULL && argc < MAX_ARGS - 1) 
+    while (token != NULL && argc < 10 - 1) 
     {
         args[argc++] = token;
         token = strtok(NULL, " ");
@@ -283,10 +292,11 @@ int command_manager(buffer_t buff, User user)
         printf("Argument %d: %s\n", i, args[i]);
     }
 
-    printf("Commande : %c\n", args[0][1]);
+    printf("Nombre d'arguments : %d\n", argc);
 
-    // On vide le buffer
-    memset(buff, 0, MAX_BUFFER);
+    printf("Commande : -%c-\n", args[0][1]);
+   
+   
 
     // Ici, vous pouvez traiter les arguments comme vous le souhaitez
     switch(args[0][1])
@@ -295,11 +305,21 @@ int command_manager(buffer_t buff, User user)
 
         // Création d'un channel
         case 'g':
-            strcpy(buff, "Création d'un channel\n");
+
+            if (argc != 2)
+            {
+                strcpy(retour, "Erreur : /g <nom du channel>\n");
+                break;
+            }
             
 
+            channel = add_channel(user, args[1]);
 
-            // envoyer(&(user.socket), buff, NULL);
+            strcpy(retour, "Création d'un channel : ");
+            strcat(retour, channel.name);
+            printf("Création d'un channel : %s\n", channel.name);
+            
+            envoyer(&(user.socket), retour, NULL);
         break;
 
         // Inviter dans un channel
@@ -324,12 +344,34 @@ int command_manager(buffer_t buff, User user)
 
         // Détruire un channel
         case 's':
+            if(argc != 2)
+            {
+                strcpy(retour, "Erreur : /s <nom du channel>\n");
+                break;
+            }
+            // On récupère le channel
+            id = atoi(args[1]);
+            channel = get_channel_by_id(id);
+            if(channel.id == -1 && channel.host.id != user.id)
+            {
+                strcpy(retour, "Erreur : Channel introuvable\n");
+                break;
+            }
+            remove_channel(channel);
+            strcpy(retour, "Channel supprimé\n");
+            
 
+            envoyer(&(user.socket), retour, NULL);
         break;
 
         // Liste des channels
         case 'l':
-
+            if(argc != 1)
+            {
+                strcpy(retour, "Erreur : /l\n");
+                break;
+            }
+            display_channels();
         break;
 
         // Liste des utilisateurs
@@ -342,8 +384,16 @@ int command_manager(buffer_t buff, User user)
             // Affiche la liste des commandes
         break;
 
+        default :
+            printf("Commande inconnue pour le channel\n");
+        break;
+
         
     }
+
+    // On vide le buffer
+    retour[0] = '\0';   
+   
     
     return 0;
 
@@ -357,4 +407,18 @@ int disconnect(buffer_t buff)
         return 1;
     }
     return 0;
+}
+
+
+void signal_handler(int sig, siginfo_t *siginfo, void *context) 
+{
+    
+    if(siginfo->si_pid == 0)
+    {
+        fermerSocket(&sockEcoute);
+        printf("\n\n/======= Fermeture du serveur =======/\n\n");
+        exit(0);
+    }
+
+    
 }

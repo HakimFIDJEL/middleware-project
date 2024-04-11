@@ -14,6 +14,6 @@ int print_messages(Client* client, int flag_start_client) {
     for (int i = 0; i < client->message_count; i++) {
         printf("%s\n", client->messages[i]);
     }
-    printf("Enter a new message: ");
+    printf("Entrer un message :");
     return flag_start_client;
 }

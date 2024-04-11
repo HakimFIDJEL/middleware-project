@@ -31,6 +31,7 @@
 typedef struct {
     int currentChannel;					/**< canal courant de l'utilisateur	*/
     socket_t socket;					/**< socket de l'utilisateur			*/
+    char name[50];						/**< nom de l'utilisateur			*/
 	int id;							/**< id de l'utilisateur			*/
 } User;
 
@@ -58,7 +59,7 @@ void init_users();
  *	\note	    Cette fonction ajoute un utilisateur au tableau
  *	\result	    user_t
  */
-User add_user(socket_t socket, int channel);
+User add_user(socket_t socket, int channel, char name[50]);
 
 /**
  *	\fn			void remove_user(users *u, int id)
