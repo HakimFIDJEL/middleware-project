@@ -18,19 +18,7 @@
 #include <unistd.h>
 #include "./users.h"
 
-#define MAX_MESSAGES 100
-#define MAX_MESSAGE_LENGTH 100
 
 
-typedef struct {
-    char messages[MAX_MESSAGES][MAX_MESSAGE_LENGTH];
-    int message_count;
-    char username[100];
-} Client;
-
-
-void add_message(Client* client, char* message);
-
-int print_messages(Client* client, int flag_start_client);
 
 #endif /* DISPLAY_H */

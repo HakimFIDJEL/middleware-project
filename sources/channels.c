@@ -29,7 +29,7 @@ void init_channels(){
     {
         channels[i].id = -1;
     }
-    printf("Tableau de channels initialisé\n");
+    printf("[init_channels] Tableau de channels initialisé\n");
 
 }
 
@@ -52,7 +52,8 @@ Channel add_channel(User host, char name[50])
             channels[i].id = i;
             channels[i].host = host;
             strcpy(channels[i].name, name);
-            printf("Channel \"%s\" [%d] added\n", name, i);
+            printf("[add_channel] %s [%d] added\n", name, i);
+            add_user_to_channel(host, channels[i]);
             return channels[i];
         }
     }
@@ -74,7 +75,11 @@ void remove_channel(Channel channel){
         if (channels[i].id == channel.id)
         {
             channels[i].id = -1;
-            printf("Channel \"%s\" [%d] removed\n", channel.name, channel.id);
+            channels[i].name[0] = '\0';
+
+
+
+            printf("[remove_channel] %s [%d] removed\n", channel.name, channel.id);
         }
     }
 
@@ -117,15 +122,16 @@ bool is_user_in_channel(User user, Channel channel){
 */
 void display_channels(User user){
 
-    printf("\n****************************************************\n");
+    printf("*******************************************\n");
+    printf("[display_channels] Name | ID | Host\n");
     for (int i = 0; i < MAX_CHANNELS; i++)
     {
         if (channels[i].id != -1 && is_user_allowed_in_channel(user, channels[i]))
         {
-            printf("- %s [ ID : %d ] [ Host : %s ]\n", channels[i].name, channels[i].id, channels[i].host.name );
+            printf("%s | %d | %s \n", channels[i].name, channels[i].id, channels[i].host.name );
         }
     }
-    printf("****************************************************\n");
+    printf("*******************************************\n");
 
 }
 
@@ -141,3 +147,18 @@ Channel get_channel_by_id(int id){
     }
     return channels[0];
 }
+
+
+void add_user_to_channel(User user, Channel channel)
+{
+    for (int i = 0; i < MAX_USERS; i++)
+    {
+        if (channel.users[i].id == -1)
+        {
+            channel.users[i] = user;
+            printf("[add_user_to_channel] %s added to channel %s\n", user.name, channel.name);
+            return;
+        }
+    }
+}
+

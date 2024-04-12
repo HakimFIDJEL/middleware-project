@@ -101,7 +101,10 @@ socket_t connecterClt2Srv (char *adrIP, short port)
 
 void fermerSocket (socket_t *sock)
 {
-    close(sock->fd);
+    if (close(sock->fd) == -1) {
+        perror("Erreur lors de la fermeture de la socket");
+    }
+    printf("[fermerSocket] Socket %d fermée\n", sock->fd);
 }
 
 void zombieManager()

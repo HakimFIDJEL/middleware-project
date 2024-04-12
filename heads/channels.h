@@ -23,6 +23,10 @@
  */
 #define MAX_CHANNELS 10
 
+typedef struct UserNode {
+    User* user;
+    struct UserNode* next;
+} UserNode;
 
 /**
  *	\typedef	
@@ -30,7 +34,7 @@
  */
 typedef struct {
     int id;							/**< id du channel			*/
-    User users[MAX_USERS];					/**< tableau des utilisateurs du channel	*/
+    UserNode* users;					/**< Liste chaînée des utilisateurs d'un channel	*/
     User host;                        /**< hôte du channel			*/
     char name[50];                  /**< nom du channel			*/
 } Channel;
@@ -97,7 +101,7 @@ void display_channels();
 
 Channel get_channel_by_id(int id);
 
-
+void add_user_to_channel(User user, Channel channel);
 
 
 
