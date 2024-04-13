@@ -23,18 +23,13 @@
  */
 #define MAX_CHANNELS 10
 
-typedef struct UserNode {
-    User* user;
-    struct UserNode* next;
-} UserNode;
-
 /**
  *	\typedef	
  *	\brief		Définition du type de données user_t
  */
 typedef struct {
     int id;							/**< id du channel			*/
-    UserNode* users;					/**< Liste chaînée des utilisateurs d'un channel	*/
+    int users[MAX_USERS];           /**< utilisateurs du channel	*/
     User host;                        /**< hôte du channel			*/
     char name[50];                  /**< nom du channel			*/
 } Channel;
@@ -96,14 +91,16 @@ bool is_user_in_channel(User user, Channel channel);
  * \note       Cette fonction affiche les channels
  * \result     void
 */
-void display_channels();
+void display_channels(User user);
 
 
 Channel get_channel_by_id(int id);
 
-void add_user_to_channel(User user, Channel channel);
+void add_user_to_channel(User user, Channel *channel);
 
+void display_users_in_channel(Channel channel);
 
+void remove_user_from_channel(User user, Channel *channel);
 
 
 

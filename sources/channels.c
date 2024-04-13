@@ -24,13 +24,19 @@ Channel channels[MAX_CHANNELS]; /**< tableau des channels */
  *	\note	    Cette fonction initialise le tableau de channels
  *	\result	    void
  */
-void init_channels(){
+void init_channels()
+{
     for (int i = 0; i < MAX_CHANNELS; i++)
     {
         channels[i].id = -1;
+        for (int j = 0; j < MAX_USERS; j++)
+        {
+            channels[i].users[j] = -1;
+        }
     }
     printf("[init_channels] Tableau de channels initialisé\n");
 
+    return;
 }
 
 /**
@@ -44,7 +50,6 @@ void init_channels(){
  */
 Channel add_channel(User host, char name[50])
 {
-
     for (int i = 0; i < MAX_CHANNELS; i++)
     {
         if (channels[i].id == -1)
@@ -53,12 +58,10 @@ Channel add_channel(User host, char name[50])
             channels[i].host = host;
             strcpy(channels[i].name, name);
             printf("[add_channel] %s [%d] added\n", name, i);
-            add_user_to_channel(host, channels[i]);
+            add_user_to_channel(host, &channels[i]);
             return channels[i];
         }
     }
-    return channels[0];
-
 }
 
 /**
@@ -76,13 +79,16 @@ void remove_channel(Channel channel){
         {
             channels[i].id = -1;
             channels[i].name[0] = '\0';
-
-
-
+            
+            for (int j = 0; j < MAX_USERS; j++)
+            {
+                channels[i].users[j] = -1;
+            }
             printf("[remove_channel] %s [%d] removed\n", channel.name, channel.id);
         }
     }
 
+    return;
 }
 
 /**
@@ -97,11 +103,12 @@ bool is_user_allowed_in_channel(User user, Channel channel){
 
     for (int i = 0; i < MAX_USERS; i++)
     {
-        if (channel.users[i].id == user.id)
+        if (channel.users[i] == user.id)
         {
             return true;
         }
     }
+
     return false;
 }
 
@@ -126,14 +133,45 @@ void display_channels(User user){
     printf("[display_channels] Name | ID | Host\n");
     for (int i = 0; i < MAX_CHANNELS; i++)
     {
+        if(channels[i].id == -1)
+        {
+            continue;
+        }
         if (channels[i].id != -1 && is_user_allowed_in_channel(user, channels[i]))
         {
             printf("%s | %d | %s \n", channels[i].name, channels[i].id, channels[i].host.name );
         }
+        // printf("%s | %d | %s \n", channels[i].name, channels[i].id, channels[i].host.name );
+        // printf("[display_channels] Is user allowed : %d\n", is_user_allowed_in_channel(user, channels[i]));
+
+        display_users_in_channel(channels[i]);
     }
     printf("*******************************************\n");
 
+
+
+   
+
 }
+
+void display_users_in_channel(Channel channel)
+{
+    if(channel.id == -1)
+    {
+        return;
+    }
+    printf("*******************************************\n");
+    printf("[display_users_in_channel] Users in %s\n", channel.name);
+    for (int i = 0; i < MAX_USERS; i++)
+    {
+        // if (channel.users[i] != -1)
+        // {
+            printf("%d | ", channel.users[i]);
+        // }-
+    }
+    printf("\n*******************************************\n");
+}
+
 
 
 Channel get_channel_by_id(int id){
@@ -149,16 +187,40 @@ Channel get_channel_by_id(int id){
 }
 
 
-void add_user_to_channel(User user, Channel channel)
+void add_user_to_channel(User user, Channel *channel)
 {
     for (int i = 0; i < MAX_USERS; i++)
     {
-        if (channel.users[i].id == -1)
+        if (channel->users[i] == -1)
         {
-            channel.users[i] = user;
-            printf("[add_user_to_channel] %s added to channel %s\n", user.name, channel.name);
+            channel->users[i] = user.id;
+            printf("[add_user_to_channel] USER_ID = %d | CHANNEL.USERS[i] = %d\n", user.id, channel->users[i]);
+            display_users_in_channel(*channel);
+            printf("[add_user_to_channel] %s added to channel %s\n", user.name, channel->name);
+
             return;
         }
     }
+
+    printf("[add_user_to_channel] %s not added to channel %s\n", user.name, channel->name);
+
+    return;
 }
 
+void remove_user_from_channel(User user, Channel *channel)
+{
+    for (int i = 0; i < MAX_USERS; i++)
+    {
+        if (channel->users[i] == user.id)
+        {
+            channel->users[i] = -1;
+            printf("[remove_user_from_channel] %s removed from channel %s\n", user.name, channel->name);
+            display_users_in_channel(*channel);
+            return;
+        }
+    }
+
+    printf("[remove_user_from_channel] %s not removed from channel %s\n", user.name, channel->name);
+
+    return;
+}

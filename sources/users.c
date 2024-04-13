@@ -63,19 +63,17 @@ void display_users()
             printf("%s | %d | %d\n", users[i].name, users[i].id , users[i].currentChannel );
         }
     }
-    printf("*******************************************\n");
+    printf("*******************************************\n"); 
+
+    return;
 }
 
 void connect_user_to_channel(User user, int channel_id)
 {
-    for (int i = 0; i < 10; i++)
-    {
-        if (users[i].id == user.id)
-        {
-            users[i].currentChannel = channel_id;
-            printf("[connect_user_to_channel] %s connected to channel %d\n", user.name, channel_id);
-        }
-    }
+    user.currentChannel = channel_id;
+    printf("[connect_user_to_channel] %s connected to channel %d\n", user.name, channel_id);
+    
+    return;
 }
 
 

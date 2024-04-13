@@ -95,6 +95,7 @@ void *server_thread(void * arg)
 
     printf("[Server_thread] Nouvelle connexion depuis l'IP %s\n", inet_ntoa(sockEch.addrLoc.sin_addr));
 
+
     dialogueSrv(&sockEch, buff, NULL);
 
     remove_user(get_user_by_socket(sockEch));
@@ -163,6 +164,9 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
     recevoir(sockEch, buff, NULL);
     User user = add_user(*sockEch, 0, buff);
 
+    Channel lobby = get_channel_by_id(0);
+    add_user_to_channel(user, &lobby);
+    
 
     while(1)
     {
@@ -272,7 +276,7 @@ void * ReceptionClt(void * arg)
         // Recevoir
         recevoir(sockConn, buff, NULL);
         printf("\nMessage reçu : %s\n", buff);
-        printf("Entrez votre message : ");
+        printf("\nMessage à envoyer : ");
 
 
         // On vide le buffer
@@ -322,17 +326,16 @@ int command_manager(buffer_t buff, User user)
         case 'g':
             if (argc != 2)
             {
-                strcpy(retour, "Erreur : /g <nom du channel>\n");
-                break;
+                strcpy(retour, "[command_manager] Erreur : /g <nom du channel>\n");
             }
-            
+            else 
+            {
+                // On crée un channel
+                Channel channel = add_channel(user, args[1]);
+                strcpy(retour, "[command_manager] Channel créé\n");
+            }
 
-            channel = add_channel(user, args[1]);
 
-            strcpy(retour, "Création d'un channel : ");
-            strcat(retour, channel.name);
-            printf("Création d'un channel : %s\n", channel.name);
-            
             envoyer(&(user.socket), retour, NULL);
         break;
 
@@ -363,19 +366,7 @@ int command_manager(buffer_t buff, User user)
                 strcpy(retour, "Erreur : /s <nom du channel>\n");
                 break;
             }
-            // On récupère le channel
-            id = atoi(args[1]);
-            channel = get_channel_by_id(id);
-            if(channel.id == -1 && channel.host.id != user.id)
-            {
-                strcpy(retour, "Erreur : Channel introuvable\n");
-                break;
-            }
-            remove_channel(channel);
-            strcpy(retour, "Channel supprimé\n");
-            
-
-            envoyer(&(user.socket), retour, NULL);
+           
         break;
 
         // Liste des channels
@@ -383,9 +374,13 @@ int command_manager(buffer_t buff, User user)
             if(argc != 1)
             {
                 strcpy(retour, "Erreur : /l\n");
-                break;
             }
-            display_channels();
+            else 
+            {
+                display_channels(user); 
+            }
+
+
         break;
 
         // Liste des utilisateurs
