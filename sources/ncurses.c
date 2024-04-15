@@ -11,9 +11,12 @@
 #include <string.h>
 #include "../heads/ncurses.h"
 
+WINDOW *top_win, *bottom_win, *logs_win;
+int height, width, main_width, side_width;
+
 /*TEST*/
-/**
-int main() {
+
+int main_ncurses() {
 
     init_ncurses();
     create_windows();
@@ -23,7 +26,7 @@ int main() {
 
     return 0;
 }
-*/
+
 
 /**
  *	\fn			void init_ncurses()

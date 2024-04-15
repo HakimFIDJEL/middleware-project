@@ -108,6 +108,7 @@ void display_users_in_channel(Channel channel, buffer_t buff);
 
 void remove_user_from_channel(User user, Channel *channel);
 
+Channel *get_channels();
 
 
 #endif /* CHANNELS_H */

@@ -23,20 +23,9 @@
  *	\noop		S T R C T U R E S   DE   D O N N E E S
  */
 #define MAX_USERS 10
-#define MAX_MESSAGES 500
 
 
-/**
- *	\typedef	
- *	\brief		Définition du type de données messages
- */
-typedef struct {
-    int id;							/**< id du message			*/
-    char content[1024];					/**< contenu du message		*/
-    int channel_id;						/**< id du canal du message	*/
-    int user_id;						/**< id de l'utilisateur		*/
-    time_t timestamp;					/**< timestamp du message	*/
-} Message;
+
 
 /**
  *	\typedef	
@@ -98,8 +87,6 @@ User *get_users();
 
 bool user_exists(int id);
 
-// get messages by user
-Message *get_messages(int user_id, int channel_id);
 
 
 User* get_user_by_id(int id);

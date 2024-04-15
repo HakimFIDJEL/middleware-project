@@ -3,6 +3,8 @@
 #include "./heads/users.h"
 #include "./heads/channels.h"
 #include "./heads/display.h"
+#include "./heads/messages.h"
+#include "./heads/ncurses.h"
 #include <signal.h>
 
 #define ADDR "127.0.0.1"
@@ -43,6 +45,9 @@ socket_t sockEcoute;
 
 void serveur()
 {
+
+
+
     system("clear");
     socket_t sockEch;
     buffer_t buff;
@@ -50,6 +55,7 @@ void serveur()
 
     init_users();
     init_channels();
+    
     // initSockets();
 
 
@@ -76,6 +82,9 @@ void serveur()
 
     // Gestion des processus zombies
     zombieManager();
+
+
+    init_messages(get_channels());
 
 
     while(1)
@@ -178,6 +187,11 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
         // Recevoir
         recevoir(sockEch, buff, NULL);
         printf("[dialogueSrv] %s : %s\n",user->name, buff);
+
+        // On stocke le message dans le fichier
+        store_message(user->currentChannel, user->id, buff);
+
+
         // char message[MAX_BUFFER];
         // strcpy(message, buff);
         
@@ -355,6 +369,7 @@ int command_manager(buffer_t buff, User* user)
                 // On crée un channel
                 Channel channel = add_channel(*user, args[1]);
                 strcpy(retour, "[command_manager] Channel créé\n");
+                init_messages(get_channels());
             }
             envoyer(&(user->socket), retour, NULL);
         break;

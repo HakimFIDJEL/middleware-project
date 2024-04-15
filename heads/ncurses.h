@@ -11,10 +11,10 @@
 *****************************************************************************************
  *	\noop		I N C L U D E S   S P E C I F I Q U E S
  */
-#include "session.h"
 #include <ncursesw/ncurses.h>
 #include <locale.h>
 #include <string.h>
+#include "./session.h"
 /*
 *****************************************************************************************
  *	\noop		D E F I N I T I O N   DES   C O N S T A N T E S
@@ -25,12 +25,14 @@
  */
 #define MAX_MSG 100
 // Déclaration des fenêtres
-WINDOW *top_win, *bottom_win, *logs_win;
-int height, width, main_width, side_width;
+
+
 /*
 *****************************************************************************************
  *	\noop		P R O T O T Y P E S   DES   F O N C T I O N S
  */
+
+int main_ncurses();
 /**
  *	\fn			void init_ncurses()
  *	\brief		Initilisation de ncurses
@@ -69,4 +71,3 @@ void cleanup();
 
 
 #endif /* NCURSES_H */
-

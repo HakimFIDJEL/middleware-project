@@ -251,3 +251,8 @@ void remove_user_from_channel(User user, Channel *channel)
 
     return;
 }
+
+Channel *get_channels()
+{
+    return channels;
+}

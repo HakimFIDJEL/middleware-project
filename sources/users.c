@@ -2,9 +2,7 @@
 
 
 User users[MAX_USERS];
-Message messages[MAX_MESSAGES];
 int USER_ID = 0;
-int MESSAGE_ID = 0;
 
 void init_users()
 {
