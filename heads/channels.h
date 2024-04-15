@@ -34,6 +34,8 @@ typedef struct {
     char name[50];                  /**< nom du channel			*/
 } Channel;
 
+
+
 /*
 *****************************************************************************************
  *	\noop		P R O T O T Y P E S   DES   F O N C T I O N S
@@ -91,7 +93,6 @@ bool is_user_in_channel(User user, Channel channel);
  * \note       Cette fonction affiche les channels
  * \result     void
 */
-void display_channels(User user);
 
 
 
@@ -99,7 +100,11 @@ Channel *get_channel_by_id(int id);
 
 void add_user_to_channel(User user, Channel *channel);
 
-void display_users_in_channel(Channel channel);
+
+void display_channels(User user, buffer_t buff);
+void display_users_in_channel(Channel channel, buffer_t buff);
+
+
 
 void remove_user_from_channel(User user, Channel *channel);
 

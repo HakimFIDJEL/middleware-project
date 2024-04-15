@@ -83,6 +83,8 @@ void remove_channel(Channel* channel)
                 channels[i].users[j] = -1;
             }
             printf("[remove_channel] %s removed\n", channel->name);
+
+            return;
         }
     }
 
@@ -125,10 +127,16 @@ bool is_user_in_channel(User user, Channel channel){
  * \note       Cette fonction affiche les channels
  * \result     void
 */
-void display_channels(User user){
+void display_channels(User user, buffer_t buff)
+{
+    char id[10];
+    buff[0] = '\0';
 
-    printf("*******************************************\n");
-    printf("[display_channels] Name | ID | Host\n");
+    printf("[display_channels] %s", user.name);
+
+    strcpy(buff, "\n*******************************************\n");
+    strcat(buff, "[display_channels] Name | ID | Host\n");
+
     for (int i = 0; i < MAX_CHANNELS; i++)
     {
         if(channels[i].id == -1)
@@ -137,35 +145,62 @@ void display_channels(User user){
         }
         if (channels[i].id != -1 && is_user_allowed_in_channel(user, channels[i]))
         {
-            printf("%s | %d | %s \n", channels[i].name, channels[i].id, channels[i].host.name );
+            
+
+            strcat(buff, " - \t ");
+            strcat(buff, channels[i].name);
+            strcat(buff, " | ");
+            
+            sprintf(id, "%d", channels[i].id);
+            strcat(buff, id);
+            strcat(buff, " | ");
+            strcat(buff, channels[i].host.name);
+            strcat(buff, "\n");
+
 
         }
 
     }
-    printf("*******************************************\n");
+    strcat(buff, "\n*******************************************\n");
 
 
-
+    return ;
    
 
 }
 
-void display_users_in_channel(Channel channel)
+void display_users_in_channel(Channel channel, buffer_t buff)
 {
+    buff[0] = '\0';
+    char id[10];
+
     if(channel.id == -1)
     {
         return;
     }
-    printf("*******************************************\n");
-    printf("[display_users_in_channel] Users in %s\n", channel.name);
+
+    printf("[display_users_in_channel] %s\n", channel.name);
+    
+
+    strcpy(buff, "\n*******************************************\n");
+    strcat(buff, "[display_users_in_channel] Users in ");
+    strcat(buff, channel.name);
+    strcat(buff, "\n");
     for (int i = 0; i < MAX_USERS; i++)
     {
         // if (channel.users[i] != -1)
         // {
-            printf("%d | ", channel.users[i]);
-        // }-
+            sprintf(id, "%d", channel.users[i]);
+            strcat(buff, id);
+            if(i < MAX_USERS - 1)
+            {
+                strcat(buff, " | ");
+            }
+        // }
     }
-    printf("\n*******************************************\n");
+    strcat(buff, "\n*******************************************\n");
+
+    return;
 }
 
 
@@ -189,7 +224,6 @@ void add_user_to_channel(User user, Channel *channel)
         if (channel->users[i] == -1)
         {
             channel->users[i] = user.id;
-            printf("[add_user_to_channel] USER_ID = %d | CHANNEL.USERS[i] = %d\n", user.id, channel->users[i]);
             printf("[add_user_to_channel] %s added to channel %s\n", user.name, channel->name);
 
             return;

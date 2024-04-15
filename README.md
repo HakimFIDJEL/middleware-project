@@ -37,10 +37,11 @@
 # - Fonctionnement / TODO
 
 
-# Mise en place d'un serveur classique repris du cours permettant la connexion de plusieurs clients à un même serveur - TODO
-# Mise en place de fork des serveurs afin de supporter la multicommunication en simultannée sans fil d'attente - TODO
+# Mise en place d'un serveur classique repris du cours permettant la connexion de plusieurs clients à un même serveur - FAIT
+# Mise en place de fork des serveurs afin de supporter la multicommunication en simultannée sans fil d'attente - FAIT - Thread pas fork
 # Découverte de ncurses pour l'affichage graphique
-# Fonction qui récupère une string et en déduit si c'est une commande ou non, si oui, appel la fonction de la commande avec les arguments, sinon, appel une fonction de display
-# Affichage des messages des autres utilisateurs dans l'interface client
-# Création, Invitations, et autres fonctions relatives aux groupes
-# Navigations entre le serveur global et les groupes
+# Fonction qui récupère une string et en déduit si c'est une commande ou non, si oui, appel la fonction de la commande avec les arguments, sinon, appel une fonction de display - Fait
+# Affichage des messages des autres utilisateurs dans l'interface client - Fait
+# Création, Invitations, et autres fonctions relatives aux groupes - Fait
+# Navigations entre le serveur global et les groupes - Fait
+# Récupération des messages par channel et affichage de ces derniers

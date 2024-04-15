@@ -55,7 +55,7 @@ void remove_user(User user)
 
 void display_users()
 {
-    printf("*******************************************\n");
+    printf("\n*******************************************\n");
     printf("[display_users] Name | ID | Current Channel\n");
     for (int i = 0; i < 10; i++)
     {
@@ -64,7 +64,7 @@ void display_users()
             printf("%s | %d | %d\n", users[i].name, users[i].id , users[i].currentChannel );
         }
     }
-    printf("*******************************************\n"); 
+    printf("\n*******************************************\n"); 
 
     return;
 }
@@ -92,16 +92,16 @@ User get_user_by_socket(socket_t socket)
     return users[0];
 }
 
-User get_user_by_id(int id)
+User* get_user_by_id(int id)
 {
     for (int i = 0; i < 10; i++)
     {
         if (users[i].id == id)
         {
-            return users[i];
+            return &users[i];
         }
     }
-    return users[0];
+    return NULL;
 }
 
 

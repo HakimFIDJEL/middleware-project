@@ -17,6 +17,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "./session.h"
+#include "./data.h"
 /*
 *****************************************************************************************
  *	\noop		S T R C T U R E S   DE   D O N N E E S
@@ -101,7 +102,7 @@ bool user_exists(int id);
 Message *get_messages(int user_id, int channel_id);
 
 
-User get_user_by_id(int id);
+User* get_user_by_id(int id);
 
 
 #endif /* USERS_H */
