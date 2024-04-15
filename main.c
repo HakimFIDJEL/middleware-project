@@ -164,8 +164,8 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
     recevoir(sockEch, buff, NULL);
     User user = add_user(*sockEch, 0, buff);
 
-    Channel lobby = get_channel_by_id(0);
-    add_user_to_channel(user, &lobby);
+    Channel *lobby = get_channel_by_id(0);
+    add_user_to_channel(user, lobby);
     
 
     while(1)
@@ -202,7 +202,7 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
 
             for (int i = 0; i < MAX_USERS; i++)
             {
-                if(user_exists(users[i].id) && is_user_in_channel(users[i], get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
+                if(user_exists(users[i].id) && is_user_in_channel(users[i], *get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
                 {
                     // envoyer(&(users[i].socket), message, NULL);
                     envoyer(&(users[i].socket), buff, NULL);
@@ -292,7 +292,11 @@ int command_manager(buffer_t buff, User user)
 {
     char retour[1024];
     int id;
+    
     Channel channel;
+    Channel *channel_pointer;
+
+
     char *args[10];
     int argc = 0; // Compteur d'arguments
 
@@ -308,12 +312,12 @@ int command_manager(buffer_t buff, User user)
     // Exemple de traitement : afficher les arguments
     for (int i = 0; i < argc; i++) 
     {
-        printf("Argument %d: %s\n", i, args[i]);
+        // printf("Argument %d: %s\n", i, args[i]);
     }
 
-    printf("Nombre d'arguments : %d\n", argc);
+    // printf("Nombre d'arguments : %d\n", argc);
 
-    printf("Commande : -%c-\n", args[0][1]);
+    // printf("Commande : -%c-\n", args[0][1]);
    
    
 
@@ -341,6 +345,37 @@ int command_manager(buffer_t buff, User user)
 
         // Inviter dans un channel
         case 'i':
+            if(argc != 3)
+            {
+                strcpy(retour, "Erreur : /i <id du channel> <id de l'utilisateur>\n");
+            }
+            else 
+            {
+                // On récupère le channel
+                channel_pointer = get_channel_by_id(atoi(args[1]));
+
+                // On vérifie si l'utilisateur est host
+                if(channel_pointer->host.id == user.id)
+                {
+
+                    // On récupère l'id de l'utilisateur
+                    id = atoi(args[2]);
+
+                    // On récupère l'utilisateur
+                    User invited = get_user_by_id(id);
+
+                    // On ajoute l'utilisateur au channel
+                    add_user_to_channel(invited, channel_pointer);
+
+                    strcpy(retour, "Utilisateur invité\n");
+                }
+                else 
+                {
+                    strcpy(retour, "Erreur : Vous n'êtes pas l'hôte du channel\n");
+                }
+            }
+
+            envoyer(&(user.socket), retour, NULL);
 
         break;
 
@@ -351,6 +386,37 @@ int command_manager(buffer_t buff, User user)
 
         // Kick d'un channel
         case 'k':
+            if(argc != 3)
+            {
+                strcpy(retour, "Erreur : /k <id du channel> <id de l'utilisateur>\n");
+            }
+            else 
+            {
+                // On récupère le channel
+                channel_pointer = get_channel_by_id(atoi(args[1]));
+
+                // On vérifie si l'utilisateur est host
+                if(channel_pointer->host.id == user.id)
+                {
+
+                    // On récupère l'id de l'utilisateur
+                    id = atoi(args[2]);
+
+                    // On récupère l'utilisateur
+                    User invited = get_user_by_id(id);
+
+                    // On ajoute l'utilisateur au channel
+                    remove_user_from_channel(invited, channel_pointer);
+
+                    strcpy(retour, "Utilisateur kick\n");
+                }
+                else 
+                {
+                    strcpy(retour, "Erreur : Vous n'êtes pas l'hôte du channel\n");
+                }
+            }
+
+            envoyer(&(user.socket), retour, NULL);
 
         break;
 
@@ -379,13 +445,21 @@ int command_manager(buffer_t buff, User user)
             {
                 display_channels(user); 
             }
-
-
         break;
 
         // Liste des utilisateurs
         case 'u':
-
+            if(argc != 1)
+            {
+                strcpy(retour, "Erreur : /l\n");
+            }
+            else 
+            {
+                printf("[command_manager] current Channel ID : %d", user.currentChannel);
+                Channel channel = *get_channel_by_id(user.currentChannel);
+                printf("[command_manager] current Channel : %s", channel.name);
+                display_users_in_channel(channel);
+            }
         break;
 
         // Help

@@ -101,7 +101,7 @@ bool user_exists(int id);
 Message *get_messages(int user_id, int channel_id);
 
 
-
+User get_user_by_id(int id);
 
 
 #endif /* USERS_H */

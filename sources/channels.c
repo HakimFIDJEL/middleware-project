@@ -140,11 +140,9 @@ void display_channels(User user){
         if (channels[i].id != -1 && is_user_allowed_in_channel(user, channels[i]))
         {
             printf("%s | %d | %s \n", channels[i].name, channels[i].id, channels[i].host.name );
-        }
-        // printf("%s | %d | %s \n", channels[i].name, channels[i].id, channels[i].host.name );
-        // printf("[display_channels] Is user allowed : %d\n", is_user_allowed_in_channel(user, channels[i]));
 
-        display_users_in_channel(channels[i]);
+        }
+
     }
     printf("*******************************************\n");
 
@@ -174,17 +172,16 @@ void display_users_in_channel(Channel channel)
 
 
 
-Channel get_channel_by_id(int id){
 
-    for (int i = 0; i < MAX_CHANNELS; i++)
-    {
-        if (channels[i].id == id)
-        {
-            return channels[i];
+Channel *get_channel_by_id(int id) {
+    for (int i = 0; i < MAX_CHANNELS; i++) {
+        if (channels[i].id == id) {
+            return &channels[i]; // Retourner l'adresse du channel trouvé
         }
     }
-    return channels[0];
+    return NULL; // Retourner NULL si aucun channel correspondant n'est trouvé
 }
+
 
 
 void add_user_to_channel(User user, Channel *channel)
@@ -195,7 +192,6 @@ void add_user_to_channel(User user, Channel *channel)
         {
             channel->users[i] = user.id;
             printf("[add_user_to_channel] USER_ID = %d | CHANNEL.USERS[i] = %d\n", user.id, channel->users[i]);
-            display_users_in_channel(*channel);
             printf("[add_user_to_channel] %s added to channel %s\n", user.name, channel->name);
 
             return;
@@ -215,7 +211,6 @@ void remove_user_from_channel(User user, Channel *channel)
         {
             channel->users[i] = -1;
             printf("[remove_user_from_channel] %s removed from channel %s\n", user.name, channel->name);
-            display_users_in_channel(*channel);
             return;
         }
     }

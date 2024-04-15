@@ -91,6 +91,18 @@ User get_user_by_socket(socket_t socket)
     return users[0];
 }
 
+User get_user_by_id(int id)
+{
+    for (int i = 0; i < 10; i++)
+    {
+        if (users[i].id == id)
+        {
+            return users[i];
+        }
+    }
+    return users[0];
+}
+
 
 // get all users
 User *get_users()

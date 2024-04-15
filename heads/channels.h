@@ -94,7 +94,8 @@ bool is_user_in_channel(User user, Channel channel);
 void display_channels(User user);
 
 
-Channel get_channel_by_id(int id);
+
+Channel *get_channel_by_id(int id);
 
 void add_user_to_channel(User user, Channel *channel);
 
