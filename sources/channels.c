@@ -71,20 +71,18 @@ Channel add_channel(User host, char name[50])
  * \note	    Cette fonction supprime un channel du tableau
  * \result	    void
  */
-void remove_channel(Channel channel){
-
+void remove_channel(Channel* channel)
+{
     for (int i = 0; i < MAX_CHANNELS; i++)
     {
-        if (channels[i].id == channel.id)
+        if (channels[i].id == channel->id)
         {
             channels[i].id = -1;
-            channels[i].name[0] = '\0';
-            
             for (int j = 0; j < MAX_USERS; j++)
             {
                 channels[i].users[j] = -1;
             }
-            printf("[remove_channel] %s [%d] removed\n", channel.name, channel.id);
+            printf("[remove_channel] %s removed\n", channel->name);
         }
     }
 

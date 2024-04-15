@@ -22,7 +22,7 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial);
 void * EnvoiClt(void * arg);
 void * ReceptionClt(void * arg);
 void *server_thread(void * arg);
-int command_manager(buffer_t buff, User user);
+int command_manager(buffer_t buff, User* user);
 int disconnect(buffer_t buff);
 
 void signal_handler(int sig, siginfo_t *siginfo, void *context);
@@ -62,9 +62,13 @@ void serveur()
 
 
     // On crée le channel par défaut (le lobby)
-    User host = add_user(sockEcoute, 0, "Server");
-    Channel lobby = add_channel(host, "Lobby");
+    strcpy(buff, "Server");
+    User* host = add_user(sockEcoute, 0, buff);
+    buff[0] = '\0';
 
+    strcpy(buff, "Lobby");
+    Channel lobby = add_channel(*host, buff);
+    buff[0] = '\0';
     
     sockEcoute = creerSocketEcoute(ADDR, PORT);
     printf("Socket écoute créée : %d\n", sockEcoute.fd);
@@ -162,17 +166,17 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
 
     // Recevoir
     recevoir(sockEch, buff, NULL);
-    User user = add_user(*sockEch, 0, buff);
+    User* user = add_user(*sockEch, 0, buff);
 
     Channel *lobby = get_channel_by_id(0);
-    add_user_to_channel(user, lobby);
+    add_user_to_channel(*user, lobby);
     
 
     while(1)
     {
         // Recevoir
         recevoir(sockEch, buff, NULL);
-        printf("[dialogueSrv] %s : %s\n",user.name, buff);
+        printf("[dialogueSrv] %s : %s\n",user->name, buff);
         // char message[MAX_BUFFER];
         // strcpy(message, buff);
         
@@ -202,11 +206,24 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
 
             for (int i = 0; i < MAX_USERS; i++)
             {
-                if(user_exists(users[i].id) && is_user_in_channel(users[i], *get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
+                // if(user_exists(users[i].id))
+                // {
+                //     printf("[dialogueSrv] %d %s : %d\n", users[i].id, users[i].name, users[i].currentChannel);
+                // }
+                // if(user_exists(users[i].id) && is_user_in_channel(users[i], *get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
+                // {
+                //     // envoyer(&(users[i].socket), message, NULL);
+                //     envoyer(&(users[i].socket), buff, NULL);
+                // }   
+
+                if(user_exists(users[i].id) && 
+                    is_user_in_channel(users[i], *get_channel_by_id(user->currentChannel)) &&
+                    users[i].id != user->id &&
+                    users[i].id != 0
+                )
                 {
-                    // envoyer(&(users[i].socket), message, NULL);
                     envoyer(&(users[i].socket), buff, NULL);
-                }   
+                }
             }
 
 
@@ -288,10 +305,11 @@ void * ReceptionClt(void * arg)
 
 
 // Fonction qui gère les commandes, elles peuvent avoir plusieurs arguments et commencent par /
-int command_manager(buffer_t buff, User user)
+int command_manager(buffer_t buff, User* user)
 {
     char retour[1024];
     int id;
+    int count;
     
     Channel channel;
     Channel *channel_pointer;
@@ -319,7 +337,6 @@ int command_manager(buffer_t buff, User user)
 
     // printf("Commande : -%c-\n", args[0][1]);
    
-   
 
     // Ici, vous pouvez traiter les arguments comme vous le souhaitez
     switch(args[0][1])
@@ -335,12 +352,10 @@ int command_manager(buffer_t buff, User user)
             else 
             {
                 // On crée un channel
-                Channel channel = add_channel(user, args[1]);
+                Channel channel = add_channel(*user, args[1]);
                 strcpy(retour, "[command_manager] Channel créé\n");
             }
-
-
-            envoyer(&(user.socket), retour, NULL);
+            envoyer(&(user->socket), retour, NULL);
         break;
 
         // Inviter dans un channel
@@ -355,7 +370,7 @@ int command_manager(buffer_t buff, User user)
                 channel_pointer = get_channel_by_id(atoi(args[1]));
 
                 // On vérifie si l'utilisateur est host
-                if(channel_pointer->host.id == user.id)
+                if(channel_pointer->host.id == user->id)
                 {
 
                     // On récupère l'id de l'utilisateur
@@ -374,17 +389,44 @@ int command_manager(buffer_t buff, User user)
                     strcpy(retour, "Erreur : Vous n'êtes pas l'hôte du channel\n");
                 }
             }
-
-            envoyer(&(user.socket), retour, NULL);
-
+            envoyer(&(user->socket), retour, NULL);
         break;
 
         // Joindre un channel
         case 'j':
+            if(argc != 2)
+            {
+                strcpy(retour, "Erreur : /j <id du channel>\n");
+            }
+            else 
+            {
+                // On récupère le channel
+                channel_pointer = get_channel_by_id(atoi(args[1]));
 
+                // On vérifie si le channel existe
+                if(channel_pointer == NULL)
+                {
+                    strcpy(retour, "Erreur : Ce channel n'existe pas\n");
+                    envoyer(&(user->socket), retour, NULL);
+                    break;
+                }
+
+                // On vérifie si on est autorisé dans le channel
+                if(is_user_allowed_in_channel(*user, *channel_pointer))
+                {
+                    connect_user_to_channel(user, channel_pointer->id);
+                    strcpy(retour, "Utilisateur connecté\n");
+                }
+                else 
+                {
+                    strcpy(retour, "Erreur : Vous n'êtes pas autorisé dans ce channel\n");
+                }
+            }
+            printf("[command_manager] Channel actuel : %d\n", user->currentChannel);
+            envoyer(&(user->socket), retour, NULL);
         break;
 
-        // Kick d'un channel
+        // Kick d'un channel - A faire
         case 'k':
             if(argc != 3)
             {
@@ -395,8 +437,16 @@ int command_manager(buffer_t buff, User user)
                 // On récupère le channel
                 channel_pointer = get_channel_by_id(atoi(args[1]));
 
+                // On vérifie si le channel existe
+                if(channel_pointer == NULL)
+                {
+                    strcpy(retour, "Erreur : Ce channel n'existe pas\n");
+                    envoyer(&(user->socket), retour, NULL);
+                    break;
+                }
+
                 // On vérifie si l'utilisateur est host
-                if(channel_pointer->host.id == user.id)
+                if(channel_pointer->host.id == user->id)
                 {
 
                     // On récupère l'id de l'utilisateur
@@ -405,8 +455,14 @@ int command_manager(buffer_t buff, User user)
                     // On récupère l'utilisateur
                     User invited = get_user_by_id(id);
 
-                    // On ajoute l'utilisateur au channel
+                    // On supprime l'utilisateur du channel
                     remove_user_from_channel(invited, channel_pointer);
+
+                    // Si le current Channel de l'utilisateur est le channel qu'on vient de kick, on le ramène au lobby
+                    if(invited.currentChannel == channel_pointer->id)
+                    {
+                        connect_user_to_channel(&invited, 0);
+                    }
 
                     strcpy(retour, "Utilisateur kick\n");
                 }
@@ -415,24 +471,115 @@ int command_manager(buffer_t buff, User user)
                     strcpy(retour, "Erreur : Vous n'êtes pas l'hôte du channel\n");
                 }
             }
-
-            envoyer(&(user.socket), retour, NULL);
-
+            envoyer(&(user->socket), retour, NULL);
         break;
 
         // Quitter un channel
         case 'q':
+            if(argc != 2)
+            {
+                strcpy(retour, "Erreur : /q <id du channel>\n");
+            }
+            else 
+            {
+                // On récupère le channel
+                channel_pointer = get_channel_by_id(atoi(args[1]));
 
+                // On vérifie si le channel existe
+                if(channel_pointer == NULL)
+                {
+                    strcpy(retour, "Erreur : Ce channel n'existe pas\n");
+                    envoyer(&(user->socket), retour, NULL);
+                    break;
+                }
+
+                // Si l'utilisateur est l'host, il ne peut quitter que si c'est le seul utilisateur dans le channel
+                if(channel_pointer->host.id == user->id)
+                {
+                    count = 0;
+                    for (int i = 0; i < MAX_USERS; i++)
+                    {
+                        if(channel_pointer->users[i] != -1)
+                        {
+                            count++;
+                        }
+                    }
+                    if(count > 1)
+                    {
+                        strcpy(retour, "Erreur : Vous ne pouvez pas quitter le channel, vous êtes l'hôte et il reste des utilisateurs\n");
+                        envoyer(&(user->socket), retour, NULL);
+                        break;
+                    }
+                    else 
+                    {
+                        remove_channel(channel_pointer);
+                        strcpy(retour, "Channel supprimé\n");
+                    }
+                }
+
+                // On supprime l'utilisateur du channel
+                remove_user_from_channel(*user, channel_pointer);
+
+                // Si le current Channel de l'utilisateur est le channel qu'on vient de quitter, on le ramène au lobby
+                if(user->currentChannel == channel_pointer->id)
+                {
+                    connect_user_to_channel(user, 0);
+                }
+
+                strcpy(retour, "Utilisateur retiré\n");
+            }
+            envoyer(&(user->socket), retour, NULL);
         break;
 
-        // Détruire un channel
+        // Détruire un channel - A faire
         case 's':
             if(argc != 2)
             {
                 strcpy(retour, "Erreur : /s <nom du channel>\n");
                 break;
             }
-           
+            else 
+            {
+                // On récupère le channel
+                channel_pointer = get_channel_by_id(atoi(args[1]));
+
+                // On vérifie si le channel existe
+                if(channel_pointer == NULL)
+                {
+                    strcpy(retour, "Erreur : Ce channel n'existe pas\n");
+                    envoyer(&(user->socket), retour, NULL);
+                    break;
+                }
+
+                // On vérifie si l'utilisateur est host
+                if(channel_pointer->host.id == user->id)
+                {
+                    count = 0;
+                    for (int i = 0; i < MAX_USERS; i++)
+                    {
+                        if(channel_pointer->users[i] != -1)
+                        {
+                            count++;
+                        }
+                    }
+                    if(count > 1)
+                    {
+                        strcpy(retour, "Erreur : Vous ne pouvez pas supprimer le channel, il reste des utilisateurs\n");
+                        envoyer(&(user->socket), retour, NULL);
+                        break;
+                    }
+                    else 
+                    {
+                        remove_channel(channel_pointer);
+                        strcpy(retour, "Channel supprimé\n");
+                    }
+                }
+                else 
+                {
+                    strcpy(retour, "Erreur : Vous n'êtes pas l'hôte du channel\n");
+                }
+            }
+            envoyer(&(user->socket), retour, NULL);
         break;
 
         // Liste des channels
@@ -443,7 +590,7 @@ int command_manager(buffer_t buff, User user)
             }
             else 
             {
-                display_channels(user); 
+                display_channels(*user);
             }
         break;
 
@@ -455,16 +602,34 @@ int command_manager(buffer_t buff, User user)
             }
             else 
             {
-                printf("[command_manager] current Channel ID : %d", user.currentChannel);
-                Channel channel = *get_channel_by_id(user.currentChannel);
-                printf("[command_manager] current Channel : %s", channel.name);
+                printf("[command_manager] Channel actuel : %d\n", user->currentChannel);
+                Channel channel = *get_channel_by_id(user->currentChannel);
+                printf("[command_manager] Channel actuel : %d %s\n", channel.id, channel.name);
+
                 display_users_in_channel(channel);
             }
         break;
 
         // Help
         case 'h':
-            // Affiche la liste des commandes
+            if(argc != 1)
+            {
+                strcpy(retour, "Erreur : /h\n");
+            }
+            else 
+            {
+                strcpy(retour, "Commandes disponibles :\n");
+                strcat(retour, "/g <nom du channel> : Créer un channel\n");
+                strcat(retour, "/i <id du channel> <id de l'utilisateur> : Inviter un utilisateur dans un channel\n");
+                strcat(retour, "/j <id du channel> : Joindre un channel\n");
+                strcat(retour, "/k <id du channel> <id de l'utilisateur> : Kick un utilisateur d'un channel\n");
+                strcat(retour, "/q <id du channel> : Quitter un channel\n");
+                strcat(retour, "/s <id du channel> : Supprimer un channel\n");
+                strcat(retour, "/l : Liste des channels\n");
+                strcat(retour, "/u : Liste des utilisateurs\n");
+                strcat(retour, "/h : Aide\n");
+            }
+            envoyer(&(user->socket), retour, NULL);
         break;
 
         default :

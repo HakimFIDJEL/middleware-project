@@ -19,23 +19,24 @@ void init_users()
 }
 
 
-User add_user(socket_t socket, int channel, char name[50])
+User *add_user(socket_t socket, int channel, char name[50])
 {
-    for (int i = 0; i < 10; i++)
-    {
-        if (users[i].id == -1)
-        {
+    for (int i = 0; i < 10; i++) {
+        if (users[i].id == -1) {
             users[i].id = USER_ID;
             users[i].socket = socket;
             strcpy(users[i].name, name);
             printf("[add_user] %s added\n", name);
-            connect_user_to_channel(users[i], channel);
-            USER_ID ++;
-            return users[i];
+
+            connect_user_to_channel(&users[i], channel);
+
+            USER_ID++;
+            return &users[i];  // Retourner l'adresse de l'utilisateur ajouté
         }
     }
-    return users[0];
+    return NULL;  // Retourner NULL si aucun utilisateur n'a été ajouté
 }
+
 
 void remove_user(User user)
 {
@@ -68,10 +69,10 @@ void display_users()
     return;
 }
 
-void connect_user_to_channel(User user, int channel_id)
+void connect_user_to_channel(User *user, int channel_id)
 {
-    user.currentChannel = channel_id;
-    printf("[connect_user_to_channel] %s connected to channel %d\n", user.name, channel_id);
+    user->currentChannel = channel_id;
+    printf("[connect_user_to_channel] %s connected to channel %d\n", user->name, channel_id);
     
     return;
 }

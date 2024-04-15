@@ -73,7 +73,7 @@ void init_users();
  *	\note	    Cette fonction ajoute un utilisateur au tableau
  *	\result	    user_t
  */
-User add_user(socket_t socket, int channel, char name[50]);
+User *add_user(socket_t socket, int channel, char name[50]);
 
 /**
  *	\fn			void remove_user(users *u, int id)
@@ -88,7 +88,7 @@ void remove_user(User user);
 
 void display_users();
 
-void connect_user_to_channel(User user, int channel_id);
+void connect_user_to_channel(User* user, int channel_id);
 
 
 User get_user_by_socket(socket_t socket);

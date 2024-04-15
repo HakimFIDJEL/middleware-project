@@ -63,7 +63,7 @@ Channel add_channel(User host, char name[50]);
  * \note	    Cette fonction supprime un channel du tableau
  * \result	    void
  */
-void remove_channel(Channel channel);
+void remove_channel(Channel* channel);
 
 /**
  * \fn         is_user_allowed_in_channel(User user, Channel channel)
