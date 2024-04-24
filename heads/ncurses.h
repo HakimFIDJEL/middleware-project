@@ -24,6 +24,7 @@
  *	\brief		taille d'un buffer_t d'émission/réception
  */
 #define MAX_MSG 100
+
 // Déclaration des fenêtres
 
 
@@ -54,7 +55,7 @@ void config_colors();
  *	\param		win : fenêtre où afficher le message
  *	\param		msg : message à afficher
  */
-void display_message(WINDOW *win, char *msg);
+void display_message(WINDOW *win, char *msg, char *who, int root);
 /**
  *	\fn			void main_loop_ncurses()
  *	\brief		Boucle principale de ncurses pour le chat (s'inspirer pour le chat principal)

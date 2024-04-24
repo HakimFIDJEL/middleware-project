@@ -5,7 +5,7 @@ all: librairies archives serveur client
 serveur: archives
 	gcc -DSERVEUR -o mainSrv main.c -L./archives -lUNIX -lncurses
 client: archives
-	gcc -o mainClt main.c -L./archives -lUNIX -lncurses
+	gcc -o mainClt main.c -L./archives -lUNIX -lncursesw
 
 librairies:
 	mkdir -p archives

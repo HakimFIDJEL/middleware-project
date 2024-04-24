@@ -11,21 +11,21 @@
 #include <string.h>
 #include "../heads/ncurses.h"
 
-WINDOW *top_win, *bottom_win, *logs_win;
 int height, width, main_width, side_width;
+WINDOW *top_win, *bottom_win, *logs_win;
 
 /*TEST*/
 
-int main_ncurses() {
+// int main() {
 
-    init_ncurses();
-    create_windows();
-    config_colors();
-    main_loop_ncurses();
-    cleanup();
+//     init_ncurses();
+//     create_windows();
+//     config_colors();
+//     main_loop_ncurses();
+//     cleanup();
 
-    return 0;
-}
+//     return 0;
+// }
 
 
 /**
@@ -62,6 +62,7 @@ void config_colors() {
     init_pair(1, COLOR_WHITE, COLOR_BLUE);
     init_pair(2, COLOR_WHITE, COLOR_MAGENTA);
     init_pair(3, COLOR_BLACK, COLOR_WHITE);
+    init_pair(4, COLOR_RED, COLOR_MAGENTA);
 
     wbkgd(top_win, COLOR_PAIR(2));
     wbkgd(bottom_win, COLOR_PAIR(3));
@@ -75,7 +76,13 @@ void config_colors() {
  *	\param		win : fenêtre où afficher le message
  *	\param		msg : message à afficher
  */
-void display_message(WINDOW *win, char *msg) {
+void display_message(WINDOW *win, char *msg, char* who, int root) {
+    //Si root est a 1, alors c'est un message du serveur donc on change la couleur du texte en rouge
+    if(root == 1){
+        wattron(win, COLOR_PAIR(4));
+    } else {
+        wattron(win, COLOR_PAIR(2));
+    }
     int y, x;
     getyx(win, y, x);
     if (y == height - 4) {
@@ -83,9 +90,11 @@ void display_message(WINDOW *win, char *msg) {
     } else {
         wmove(win, y + 1, 1);
     }
-    wprintw(win, "You: %s\n", msg);
+    wprintw(win, "%s : %s\n", who, msg);
     box(win, 0, 0); // Redraw box to ensure borders are intact
     wrefresh(win);
+    wattroff(win, COLOR_PAIR(2)); // On enlève la couleur pour éviter de colorer les logs
+    wattroff(win, COLOR_PAIR(1)); // On enlève la couleur pour éviter de colorer les logs
 }
 
 /**
@@ -112,10 +121,10 @@ void main_loop_ncurses() {
     wrefresh(top_win);
 
     while (1) {
-    wmove(bottom_win, 1, 1);
-    wclrtoeol(bottom_win);
-    box(bottom_win, 0, 0);
-    wrefresh(bottom_win);
+    wmove(bottom_win, 1, 1); // Move cursor to start of input line
+    wclrtoeol(bottom_win); // Clear the input line
+    box(bottom_win, 0, 0); // Redraw box to ensure borders are intact
+    wrefresh(bottom_win); // Refresh the window to reflect changes
 
     i = 0;
     while (1) {
@@ -163,7 +172,7 @@ void main_loop_ncurses() {
     if (strcmp(msg, "exit") == 0) break;
 
     // Display message in top window
-    display_message(top_win, msg);
+    display_message(top_win, msg, "You", 0);
 }
 
 }
