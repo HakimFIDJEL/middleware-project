@@ -7,8 +7,11 @@
 #include "./heads/ncurses.h"
 #include <signal.h>
 
+#include <locale.h>
+
+
 #define ADDR "127.0.0.1"
-#define PORT 5000
+#define PORT 5002
 #define MODE SOCK_STREAM
 #define SIG_ARRET SIGINT
 
@@ -28,6 +31,12 @@ int command_manager(buffer_t buff, User* user);
 int disconnect(buffer_t buff);
 
 void signal_handler(int sig, siginfo_t *siginfo, void *context);
+
+extern WINDOW *top_win;
+extern WINDOW *bottom_win;
+extern WINDOW *logs_win;
+
+extern int height, width, main_width, side_width;
 
 
 int main () 
@@ -120,27 +129,41 @@ void *server_thread(void * arg)
 
 void client()
 {
-    system("clear");
-
     socket_t sockConn;
     buffer_t buff;
 
-
     // TODO : Ecran d'accueil qui attend /connect
-
-    
-
 
     // On affiche la socket
     sockConn = connecterClt2Srv(ADDR, PORT);
-    printf("[Client] Socket dialogue créée : %d\n", sockConn.fd);
+    //printf("[Client] Socket dialogue créée : %d\n", sockConn.fd); //TODO
     sessionActive = true;
 
+    init_ncurses();
+    create_windows();
+    config_colors();
 
+    char msg[MAX_MSG];
+    int ch, i = 0;
+
+    box(top_win, 0, 0);
+    box(bottom_win, 0, 0);
+    box(logs_win, 0, 0);
+    wrefresh(top_win);
+    wrefresh(bottom_win);
+    wrefresh(logs_win);
+
+    wmove(logs_win, 1, 1);
+    wprintw(logs_win, "Logs : ");
+    wrefresh(logs_win);
+
+    wmove(top_win, 1, 1);
+    //ecrire au milieu de la fenetre et en plus grand Discord Style Chat (type 'exit' to quit)
+    int height, width;
+    getmaxyx(top_win, height, width); // Get the dimensions of the window
+    mvwprintw(top_win, 2, (width - strlen("Discord Style Chat (type 'exit' to quit)")) / 2, "Discord Style Chat (type 'exit' to quit)");
+    wrefresh(top_win);
     
-    
-
-
     // On fait deux threads pour gérer l'envoi et la réception
     pthread_t threadEnvoi, threadReception;
 
@@ -152,12 +175,12 @@ void client()
     pthread_join(threadEnvoi, NULL);
     pthread_join(threadReception, NULL);
 
-    
     // On ferme la socket de dialogue
     printf("[Client] Fermeture de la socket dialogue\n");
     fermerSocket(&sockConn);
-}
+    cleanup();
 
+}
 
 int is_command(buffer_t buff)
 {
@@ -249,74 +272,119 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
     return;
 }
 
-void * EnvoiClt(void * arg)
-{
+
+
+void* EnvoiClt(void* arg) {
     socket_t *sockConn = (socket_t *) arg;
-    buffer_t buff;
+    char buff[MAX_BUFFER];
+    int ch, i = 0;
 
+    int flag_pseudo = 1;
 
-    printf("Entrez votre nom : ");
-    fgets(buff, MAX_BUFFER, stdin);
-    // remove the \n at the end of the string
-    buff[strlen(buff) - 1] = '\0';
-    envoyer(sockConn, buff, NULL);
+    //Pseudo
 
-    // On vide le buffer
-    buff[0] = '\0';
+    wmove(bottom_win, 1, 1);
+    wclrtoeol(bottom_win);
+    box(bottom_win, 0, 0);
+    wrefresh(bottom_win);
 
+    display_message(top_win, "Enter your pseudo", "Server", 1);
     
 
-    while(1)
-    {
+    while(sessionActive) {
+        wmove(bottom_win, 1, 1); // Move cursor to start of input line
+        wclrtoeol(bottom_win); // Clear the input line
+        box(bottom_win, 0, 0); // Redraw box to ensure borders are intact
+        wrefresh(bottom_win); // Refresh the window to reflect changes
 
-        // flag_start_client = print_messages(&my_client, flag_start_client);
-        printf("Message à envoyer : ");
-        fgets(buff, MAX_BUFFER, stdin);
-        // remove the \n at the end of the string
-        buff[strlen(buff) - 1] = '\0';
+        while (1) {
+            ch = wgetch(bottom_win);
+            if (ch == '\n') break;
+            if (ch == KEY_RESIZE) {
+                endwin();
+                refresh();
+                clear();
 
-        // add_message(&my_client, buff);
+                getmaxyx(stdscr, height, width);
+                main_width = width * 3 / 4;
+                side_width = width - main_width;
 
+                delwin(top_win);
+                delwin(bottom_win);
+                delwin(logs_win);
 
-        // Si la commande est /disconnect
-        envoyer(sockConn, buff, NULL);
-        
+                create_windows();
+                config_colors();
 
+                box(top_win, 0, 0);
+                box(bottom_win, 0, 0);
+                box(logs_win, 0, 0);
+                wrefresh(top_win);
+                wrefresh(bottom_win);
+                wrefresh(logs_win);
+                continue;
+            }
+            if (ch == KEY_BACKSPACE || ch == 127) {
+                if (i > 0) {
+                    i--;
+                    mvwdelch(bottom_win, 1, i + 1);
+                }
+            } else if (i < MAX_BUFFER - 1) {
+                buff[i++] = ch;
+                waddch(bottom_win, ch);
+            }
+        }
+        buff[i] = '\0';
 
-        if(is_command(buff))
-        {
-            if(disconnect(buff))
-            {
+        if(is_command(buff)) {
+            if(disconnect(buff)) {
                 sessionActive = false;
                 return NULL;
             }
         }
-        // On vide le buffer
-        buff[0] = '\0';
+
+        envoyer(sockConn, buff, NULL);
+
+        if(flag_pseudo)
+        {
+            char start_line[1024] = "Hello ";
+            strcat(start_line, buff);
+            display_message(top_win, start_line, "Server", 1);
+            flag_pseudo = 0;
+        }
+        else 
+        {
+            display_message(top_win, buff, "You", 0);   
+        }
+        
+        i = 0;
     }
 
     return NULL;
 }
 
-void * ReceptionClt(void * arg)
-{
+void* ReceptionClt(void* arg) {
     socket_t *sockConn = (socket_t *) arg;
     buffer_t buff;
 
-    while(sessionActive)
-    {
+    while(sessionActive) {
         // Recevoir
         recevoir(sockConn, buff, NULL);
-        printf("\nMessage reçu : %s\n", buff);
-        printf("\nMessage à envoyer : ");
 
+        display_message(top_win, buff, "Message received", 0);
 
         // On vide le buffer
         buff[0] = '\0';
+        wmove(bottom_win, 1, 1); // Move cursor to start of input line
+        wclrtoeol(bottom_win); // Clear the input line
+        box(bottom_win, 0, 0); // Redraw box to ensure borders are intact
+        wrefresh(bottom_win); // Refresh the window to reflect changes
+
     }
 
     return NULL;
 }
+
 
 
 // Fonction qui gère les commandes, elles peuvent avoir plusieurs arguments et commencent par /
