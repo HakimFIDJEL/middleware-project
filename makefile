@@ -8,6 +8,8 @@ client: archives
 	gcc -o mainClt main.c -L./archives -lUNIX -lncurses
 
 librairies:
+	mkdir -p archives
+	mkdir -p libs
 	gcc -c ./sources/data.c -o ./libs/data.o
 	gcc -c ./sources/session.c -o ./libs/session.o
 	gcc -c ./sources/users.c -o ./libs/users.o
@@ -17,8 +19,6 @@ librairies:
 	gcc -c ./sources/ncurses.c -o ./libs/ncurses.o
 
 archives: librairies
-	mkdir -p archives
-	mkdir -p libs
 	ar rcs ./archives/libUNIX.a ./libs/data.o ./libs/session.o ./libs/users.o ./libs/channels.o ./libs/display.o ./libs/messages.o ./libs/ncurses.o
 
 clean:

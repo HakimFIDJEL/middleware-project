@@ -107,7 +107,7 @@ void *server_thread(void * arg)
     buffer_t buff;
     
 
-    printf("[Server_thread] Nouvelle connexion depuis l'IP %s\n", inet_ntoa(sockEch.addrLoc.sin_addr));
+    printf("\n[Server_thread] Nouvelle connexion depuis l'IP %s\n", inet_ntoa(sockEch.addrLoc.sin_addr));
 
 
     dialogueSrv(&sockEch, buff, NULL);
