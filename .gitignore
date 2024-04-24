@@ -50,6 +50,17 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
 mainSrv
 mainClt
+
+libs/channels.o
 libs/data.o
+libs/display.o
+libs/messages.o
+libs/ncurses.o
+libs/session.o
+libs/user.o
+
+archives/libUNIX.a
+
