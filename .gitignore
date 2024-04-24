@@ -2,3 +2,11 @@
 ./mainSrv
 ./libs/*
 ./archives/*
+libs/channels.o
+libs/display.o
+libs/messages.o
+libs/ncurses.o
+libs/session.o
+libs/users.o
+tmp/0
+libs/data.o
