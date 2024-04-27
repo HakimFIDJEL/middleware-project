@@ -7,8 +7,11 @@
 #include "./heads/ncurses.h"
 #include <signal.h>
 
+#include <locale.h>
+
+
 #define ADDR "127.0.0.1"
-#define PORT 5000
+#define PORT 5002
 #define MODE SOCK_STREAM
 #define SIG_ARRET SIGINT
 
@@ -28,6 +31,12 @@ int command_manager(buffer_t buff, User* user);
 int disconnect(buffer_t buff);
 
 void signal_handler(int sig, siginfo_t *siginfo, void *context);
+
+extern WINDOW *top_win;
+extern WINDOW *bottom_win;
+extern WINDOW *logs_win;
+
+extern int height, width, main_width, side_width;
 
 
 int main () 
@@ -120,27 +129,41 @@ void *server_thread(void * arg)
 
 void client()
 {
-    system("clear");
-
     socket_t sockConn;
     buffer_t buff;
 
-
     // TODO : Ecran d'accueil qui attend /connect
-
-    
-
 
     // On affiche la socket
     sockConn = connecterClt2Srv(ADDR, PORT);
-    printf("[Client] Socket dialogue créée : %d\n", sockConn.fd);
+    //printf("[Client] Socket dialogue créée : %d\n", sockConn.fd); //TODO
     sessionActive = true;
 
+    init_ncurses();
+    create_windows();
+    config_colors();
 
+    char msg[MAX_MSG];
+    int ch, i = 0;
+
+    box(top_win, 0, 0);
+    box(bottom_win, 0, 0);
+    box(logs_win, 0, 0);
+    wrefresh(top_win);
+    wrefresh(bottom_win);
+    wrefresh(logs_win);
+
+    wmove(logs_win, 1, 1);
+    wprintw(logs_win, "Logs : ");
+    wrefresh(logs_win);
+
+    wmove(top_win, 1, 1);
+    //ecrire au milieu de la fenetre et en plus grand Discord Style Chat (type 'exit' to quit)
+    int height, width;
+    getmaxyx(top_win, height, width); // Get the dimensions of the window
+    mvwprintw(top_win, 2, (width - strlen("Discord Style Chat (type '/disconnect' to quit)")) / 2, "Discord Style Chat (type '/disconnect' to quit)");
+    wrefresh(top_win);
     
-    
-
-
     // On fait deux threads pour gérer l'envoi et la réception
     pthread_t threadEnvoi, threadReception;
 
@@ -152,12 +175,12 @@ void client()
     pthread_join(threadEnvoi, NULL);
     pthread_join(threadReception, NULL);
 
-    
     // On ferme la socket de dialogue
     printf("[Client] Fermeture de la socket dialogue\n");
     fermerSocket(&sockConn);
-}
+    cleanup();
 
+}
 
 int is_command(buffer_t buff)
 {
@@ -173,6 +196,7 @@ int is_command(buffer_t buff)
 void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
 {
     User *users = get_users(); 
+    char message[MAX_BUFFER];
 
     // Recevoir
     recevoir(sockEch, buff, NULL);
@@ -189,7 +213,7 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
         printf("[dialogueSrv] %s : %s\n",user->name, buff);
 
         // On stocke le message dans le fichier
-        store_message(user->currentChannel, user->id, buff);
+        
 
 
         // char message[MAX_BUFFER];
@@ -210,34 +234,32 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
         }
         else 
         {
+
+            store_message(user->currentChannel, user->id, buff);
+
+
             // Envoyer
 
-            // On répond à celui qui nous a envoyer un message
-            //strcpy(buff, "Message à envoyer");
-            //envoyer(sockEch, buff, NULL);
 
 
             // On transfert le message à tous les autres clients qui sont dans le même lobby
-
             for (int i = 0; i < MAX_USERS; i++)
             {
-                // if(user_exists(users[i].id))
-                // {
-                //     printf("[dialogueSrv] %d %s : %d\n", users[i].id, users[i].name, users[i].currentChannel);
-                // }
-                // if(user_exists(users[i].id) && is_user_in_channel(users[i], *get_channel_by_id(user.currentChannel)) && users[i].id != user.id && users[i].id != 0)
-                // {
-                //     // envoyer(&(users[i].socket), message, NULL);
-                //     envoyer(&(users[i].socket), buff, NULL);
-                // }   
-
+                
                 if(user_exists(users[i].id) && 
                     is_user_in_channel(users[i], *get_channel_by_id(user->currentChannel)) &&
                     users[i].id != user->id &&
                     users[i].id != 0
                 )
                 {
-                    envoyer(&(users[i].socket), buff, NULL);
+                    // On ajoute à buffer le nom de l'utilisateur qui a envoyé le message
+
+                    strcpy(message, "[");
+                    strcat(message, user->name);
+                    strcat(message, "] ");
+                    strcat(message, buff);
+
+                    envoyer(&(users[i].socket), message, NULL);
                 }
             }
 
@@ -245,78 +267,152 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
         }
         // On vide le buffer
         buff[0] = '\0';
+        // On vide le message
+        message[0] = '\0';
     }
     return;
 }
 
-void * EnvoiClt(void * arg)
-{
+
+
+void* EnvoiClt(void* arg) {
     socket_t *sockConn = (socket_t *) arg;
-    buffer_t buff;
+    char buff[MAX_BUFFER];
+    char message[MAX_BUFFER];
+    int ch, i = 0;
 
+    int flag_pseudo = 1;
 
-    printf("Entrez votre nom : ");
-    fgets(buff, MAX_BUFFER, stdin);
-    // remove the \n at the end of the string
-    buff[strlen(buff) - 1] = '\0';
-    envoyer(sockConn, buff, NULL);
+    //Pseudo
 
-    // On vide le buffer
-    buff[0] = '\0';
+    wmove(bottom_win, 1, 1);
+    wclrtoeol(bottom_win);
+    box(bottom_win, 0, 0);
+    wrefresh(bottom_win);
 
+    display_message(top_win, "Enter your name : ", 1);
     
 
-    while(1)
-    {
+    while(sessionActive) {
+        wmove(bottom_win, 1, 1); // Move cursor to start of input line
+        wclrtoeol(bottom_win); // Clear the input line
+        box(bottom_win, 0, 0); // Redraw box to ensure borders are intact
+        wrefresh(bottom_win); // Refresh the window to reflect changes
 
-        // flag_start_client = print_messages(&my_client, flag_start_client);
-        printf("Message à envoyer : ");
-        fgets(buff, MAX_BUFFER, stdin);
-        // remove the \n at the end of the string
-        buff[strlen(buff) - 1] = '\0';
+        while (1) {
+            ch = wgetch(bottom_win);
+            if (ch == '\n') break;
+            if (ch == KEY_RESIZE) {
+                endwin();
+                refresh();
+                clear();
 
-        // add_message(&my_client, buff);
+                getmaxyx(stdscr, height, width);
+                main_width = width * 3 / 4;
+                side_width = width - main_width;
 
+                delwin(top_win);
+                delwin(bottom_win);
+                delwin(logs_win);
 
-        // Si la commande est /disconnect
-        envoyer(sockConn, buff, NULL);
-        
+                create_windows();
+                config_colors();
 
+                box(top_win, 0, 0);
+                box(bottom_win, 0, 0);
+                box(logs_win, 0, 0);
+                wrefresh(top_win);
+                wrefresh(bottom_win);
+                wrefresh(logs_win);
+                continue;
+            }
+            if (ch == KEY_BACKSPACE || ch == 127) {
+                if (i > 0) {
+                    i--;
+                    mvwdelch(bottom_win, 1, i + 1);
+                }
+            } else if (i < MAX_BUFFER - 1) {
+                buff[i++] = ch;
+                waddch(bottom_win, ch);
+            }
+        }
+        buff[i] = '\0';
 
-        if(is_command(buff))
-        {
-            if(disconnect(buff))
-            {
+        if(is_command(buff)) {
+            if(disconnect(buff)) {
                 sessionActive = false;
                 return NULL;
             }
         }
+
+        envoyer(sockConn, buff, NULL);
+
+        if(flag_pseudo)
+        {
+            char start_line[1024] = "Hello ";
+            strcat(start_line, buff);
+            display_message(top_win, start_line, 1);
+            flag_pseudo = 0;
+        }
+        else 
+        {
+            strcpy(message, "[You] ");
+            strcat(message, buff);
+            display_message(top_win, message, 0);   
+
+
+        }
+
         // On vide le buffer
         buff[0] = '\0';
+        // On vide le message
+        message[0] = '\0';
+
+        
+        i = 0;
     }
+
+    system("clear");
 
     return NULL;
 }
 
-void * ReceptionClt(void * arg)
-{
+void* ReceptionClt(void* arg) {
     socket_t *sockConn = (socket_t *) arg;
     buffer_t buff;
 
-    while(sessionActive)
+
+
+
+
+
+    while(sessionActive) 
     {
         // Recevoir
         recevoir(sockConn, buff, NULL);
-        printf("\nMessage reçu : %s\n", buff);
-        printf("\nMessage à envoyer : ");
+
+        // Si le buff commence par "[Server]"
+        if (strncmp(buff, "[Server]", 8) == 0) {
+
+            display_message(logs_win, buff, 1);
+        } else {
+            display_message(top_win, buff, 0);
+        }
+        
 
 
         // On vide le buffer
         buff[0] = '\0';
+        wmove(bottom_win, 1, 1); // Move cursor to start of input line
+        wclrtoeol(bottom_win); // Clear the input line
+        box(bottom_win, 0, 0); // Redraw box to ensure borders are intact
+        wrefresh(bottom_win); // Refresh the window to reflect changes
+
     }
 
     return NULL;
 }
+
 
 
 // Fonction qui gère les commandes, elles peuvent avoir plusieurs arguments et commencent par /
@@ -362,13 +458,13 @@ int command_manager(buffer_t buff, User* user)
         case 'g':
             if (argc != 2)
             {
-                strcpy(retour, "[command_manager] Erreur : /g <nom du channel>\n");
+                strcpy(retour, "[Server] Erreur : /g <nom du channel>\n");
             }
             else 
             {
                 // On crée un channel
                 Channel channel = add_channel(*user, args[1]);
-                strcpy(retour, "[command_manager] Channel créé\n");
+                strcpy(retour, "[Server] Channel créé\n");
                 init_messages(get_channels());
             }
             envoyer(&(user->socket), retour, NULL);
@@ -378,7 +474,7 @@ int command_manager(buffer_t buff, User* user)
         case 'i':
             if(argc != 3)
             {
-                strcpy(retour, "Erreur : /i <id du channel> <id de l'utilisateur>\n");
+                strcpy(retour, "[Server] Erreur : /i <id du channel> <id de l'utilisateur>\n");
             }
             else 
             {
@@ -398,11 +494,11 @@ int command_manager(buffer_t buff, User* user)
                     // On ajoute l'utilisateur au channel
                     add_user_to_channel(*invited, channel_pointer);
 
-                    strcpy(retour, "Utilisateur invité\n");
+                    strcpy(retour, "[Server] Utilisateur invité\n");
                 }
                 else 
                 {
-                    strcpy(retour, "Erreur : Vous n'êtes pas l'hôte du channel\n");
+                    strcpy(retour, "[Server] Erreur : Vous n'êtes pas l'hôte du channel\n");
                 }
             }
             envoyer(&(user->socket), retour, NULL);
@@ -412,7 +508,7 @@ int command_manager(buffer_t buff, User* user)
         case 'j':
             if(argc != 2)
             {
-                strcpy(retour, "Erreur : /j <id du channel>\n");
+                strcpy(retour, "[Server] Erreur : /j <id du channel>\n");
             }
             else 
             {
@@ -433,11 +529,11 @@ int command_manager(buffer_t buff, User* user)
                 if(is_user_allowed_in_channel(*user, *channel_pointer))
                 {
                     connect_user_to_channel(user, channel_pointer->id);
-                    strcpy(retour, "Utilisateur connecté\n");
+                    strcpy(retour, "[Server] Utilisateur connecté\n");
                 }
                 else 
                 {
-                    strcpy(retour, "Erreur : Vous n'êtes pas autorisé dans ce channel\n");
+                    strcpy(retour, "[Server] Erreur : Vous n'êtes pas autorisé dans ce channel\n");
                 }
             }
             printf("[command_manager] Channel actuel : %d\n", user->currentChannel);
@@ -448,7 +544,7 @@ int command_manager(buffer_t buff, User* user)
         case 'k':
             if(argc != 3)
             {
-                strcpy(retour, "Erreur : /k <id du channel> <id de l'utilisateur>\n");
+                strcpy(retour, "[Server] Erreur : /k <id du channel> <id de l'utilisateur>\n");
             }
             else 
             {
@@ -458,7 +554,7 @@ int command_manager(buffer_t buff, User* user)
                 // On vérifie si le channel existe
                 if(channel_pointer == NULL)
                 {
-                    strcpy(retour, "Erreur : Ce channel n'existe pas\n");
+                    strcpy(retour, "[Server] Erreur : Ce channel n'existe pas\n");
                     envoyer(&(user->socket), retour, NULL);
                     break;
                 }
@@ -482,11 +578,11 @@ int command_manager(buffer_t buff, User* user)
                         connect_user_to_channel(invited, 0);
                     }
 
-                    strcpy(retour, "Utilisateur kick\n");
+                    strcpy(retour, "[Server] Utilisateur kick\n");
                 }
                 else 
                 {
-                    strcpy(retour, "Erreur : Vous n'êtes pas l'hôte du channel\n");
+                    strcpy(retour, "[Server] Erreur : Vous n'êtes pas l'hôte du channel\n");
                 }
             }
             envoyer(&(user->socket), retour, NULL);
@@ -496,7 +592,7 @@ int command_manager(buffer_t buff, User* user)
         case 'q':
             if(argc != 2)
             {
-                strcpy(retour, "Erreur : /q <id du channel>\n");
+                strcpy(retour, "[Server] Erreur : /q <id du channel>\n");
             }
             else 
             {
@@ -506,7 +602,7 @@ int command_manager(buffer_t buff, User* user)
                 // On vérifie si le channel existe
                 if(channel_pointer == NULL)
                 {
-                    strcpy(retour, "Erreur : Ce channel n'existe pas\n");
+                    strcpy(retour, "[Server] Erreur : Ce channel n'existe pas\n");
                     envoyer(&(user->socket), retour, NULL);
                     break;
                 }
@@ -514,7 +610,7 @@ int command_manager(buffer_t buff, User* user)
                 // On vérifie si le channel n'est pas le lobby
                 if(channel_pointer->id == 0)
                 {
-                    strcpy(retour, "Erreur : Vous ne pouvez pas quitter le lobby\n");
+                    strcpy(retour, "[Server] Erreur : Vous ne pouvez pas quitter le lobby\n");
                     envoyer(&(user->socket), retour, NULL);
                     break;
                 }
@@ -532,14 +628,14 @@ int command_manager(buffer_t buff, User* user)
                     }
                     if(count > 1)
                     {
-                        strcpy(retour, "Erreur : Vous ne pouvez pas quitter le channel, vous êtes l'hôte et il reste des utilisateurs\n");
+                        strcpy(retour, "[Server] Erreur : Vous ne pouvez pas quitter le channel, vous êtes l'hôte et il reste des utilisateurs\n");
                         envoyer(&(user->socket), retour, NULL);
                         break;
                     }
                     else 
                     {
                         remove_channel(channel_pointer);
-                        strcpy(retour, "Channel supprimé\n");
+                        strcpy(retour, "[Server] Channel supprimé\n");
                     }
                 }
 
@@ -552,7 +648,7 @@ int command_manager(buffer_t buff, User* user)
                     connect_user_to_channel(user, 0);
                 }
 
-                strcpy(retour, "Utilisateur retiré\n");
+                strcpy(retour, "[Server] Utilisateur retiré\n");
             }
             envoyer(&(user->socket), retour, NULL);
         break;
@@ -561,7 +657,7 @@ int command_manager(buffer_t buff, User* user)
         case 's':
             if(argc != 2)
             {
-                strcpy(retour, "Erreur : /s <nom du channel>\n");
+                strcpy(retour, "[Server] Erreur : /s <nom du channel>\n");
                 break;
             }
             else 
@@ -572,7 +668,7 @@ int command_manager(buffer_t buff, User* user)
                 // On vérifie si le channel existe
                 if(channel_pointer == NULL)
                 {
-                    strcpy(retour, "Erreur : Ce channel n'existe pas\n");
+                    strcpy(retour, "[Server] Erreur : Ce channel n'existe pas\n");
                     envoyer(&(user->socket), retour, NULL);
                     break;
                 }
@@ -590,21 +686,21 @@ int command_manager(buffer_t buff, User* user)
                     }
                     if(count > 1)
                     {
-                        strcpy(retour, "Erreur : Vous ne pouvez pas supprimer le channel, il reste des utilisateurs\n");
+                        strcpy(retour, "[Server] Erreur : Vous ne pouvez pas supprimer le channel, il reste des utilisateurs\n");
                     }
                     else if (user->currentChannel == channel_pointer->id)
                     {
-                        strcpy(retour, "Erreur : Vous ne pouvez pas supprimer le channel, vous êtes dedans\n");
+                        strcpy(retour, "[Server] Erreur : Vous ne pouvez pas supprimer le channel, vous êtes dedans\n");
                     }
                     else 
                     {
                         remove_channel(channel_pointer);
-                        strcpy(retour, "Channel supprimé\n");
+                        strcpy(retour, "[Server] Channel supprimé\n");
                     }
                 }
                 else 
                 {
-                    strcpy(retour, "Erreur : Vous n'êtes pas l'hôte du channel\n");
+                    strcpy(retour, "[Server] Erreur : Vous n'êtes pas l'hôte du channel\n");
                 }
             }
             envoyer(&(user->socket), retour, NULL);
@@ -614,10 +710,12 @@ int command_manager(buffer_t buff, User* user)
         case 'l':
             if(argc != 1)
             {
-                strcpy(retour, "Erreur : /l\n");
+                strcpy(retour, "[Server] Erreur : /l\n");
             }
             else 
             {
+                strcpy(retour, "[Server] Liste des channels :\n");
+                
                 display_channels(*user, retour);
             }
             envoyer(&(user->socket), retour, NULL);
@@ -627,7 +725,7 @@ int command_manager(buffer_t buff, User* user)
         case 'u':
             if(argc != 1)
             {
-                strcpy(retour, "Erreur : /l\n");
+                strcpy(retour, "[Server] Erreur : /l\n");
             }
             else 
             {
@@ -635,6 +733,7 @@ int command_manager(buffer_t buff, User* user)
                 Channel channel = *get_channel_by_id(user->currentChannel);
                 printf("[command_manager] Channel actuel : %d %s\n", channel.id, channel.name);
 
+                strcpy(retour, "[Server] Liste des utilisateurs :\n");
                 display_users_in_channel(channel, retour);
             }
             envoyer(&(user->socket), retour, NULL);
@@ -644,11 +743,11 @@ int command_manager(buffer_t buff, User* user)
         case 'h':
             if(argc != 1)
             {
-                strcpy(retour, "Erreur : /h\n");
+                strcpy(retour, "[Server] Erreur : /h\n");
             }
             else 
             {
-                strcpy(retour, "Commandes disponibles :\n");
+                strcpy(retour, "[Server] Commandes disponibles :\n");
                 strcat(retour, "/g <nom du channel> : Créer un channel\n");
                 strcat(retour, "/i <id du channel> <id de l'utilisateur> : Inviter un utilisateur dans un channel\n");
                 strcat(retour, "/j <id du channel> : Joindre un channel\n");
@@ -663,7 +762,7 @@ int command_manager(buffer_t buff, User* user)
         break;
 
         default :
-            printf("Commande inconnue pour le channel\n");
+            printf("[command_manager] Commande inconnue pour le channel\n");
         break;
 
         
