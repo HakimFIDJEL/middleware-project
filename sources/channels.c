@@ -134,7 +134,7 @@ void display_channels(User user, buffer_t buff)
 
     printf("[display_channels] %s", user.name);
 
-    strcpy(buff, "\n*******************************************\n");
+    strcat(buff, "\n*******************************************\n");
     strcat(buff, "[display_channels] Name | ID | Host\n");
 
     for (int i = 0; i < MAX_CHANNELS; i++)
@@ -182,7 +182,7 @@ void display_users_in_channel(Channel channel, buffer_t buff)
     printf("[display_users_in_channel] %s\n", channel.name);
     
 
-    strcpy(buff, "\n*******************************************\n");
+    strcat(buff, "\n*******************************************\n");
     strcat(buff, "[display_users_in_channel] Users in ");
     strcat(buff, channel.name);
     strcat(buff, "\n");

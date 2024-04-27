@@ -391,9 +391,13 @@ void* ReceptionClt(void* arg) {
         // Recevoir
         recevoir(sockConn, buff, NULL);
 
-    
-        // On affiche le message    
-        display_message(top_win, buff, 0);
+        // Si le buff commence par "[Server]"
+        if (strncmp(buff, "[Server]", 8) == 0) {
+
+            display_message(logs_win, buff, 1);
+        } else {
+            display_message(top_win, buff, 0);
+        }
         
 
 
@@ -710,6 +714,8 @@ int command_manager(buffer_t buff, User* user)
             }
             else 
             {
+                strcpy(retour, "[Server] Liste des channels :\n");
+                
                 display_channels(*user, retour);
             }
             envoyer(&(user->socket), retour, NULL);
@@ -727,6 +733,7 @@ int command_manager(buffer_t buff, User* user)
                 Channel channel = *get_channel_by_id(user->currentChannel);
                 printf("[command_manager] Channel actuel : %d %s\n", channel.id, channel.name);
 
+                strcpy(retour, "[Server] Liste des utilisateurs :\n");
                 display_users_in_channel(channel, retour);
             }
             envoyer(&(user->socket), retour, NULL);
