@@ -188,15 +188,15 @@ void display_users_in_channel(Channel channel, buffer_t buff)
     strcat(buff, "\n");
     for (int i = 0; i < MAX_USERS; i++)
     {
-        // if (channel.users[i] != -1)
-        // {
-            sprintf(id, "%d", channel.users[i]);
+        if (channel.users[i] != -1)
+        {
+            sprintf(id, "[ID : %d]",channel.users[i]);
             strcat(buff, id);
             if(i < MAX_USERS - 1)
             {
                 strcat(buff, " | ");
             }
-        // }
+        }
     }
     strcat(buff, "\n*******************************************\n");
 

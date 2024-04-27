@@ -76,7 +76,7 @@ void config_colors() {
  *	\param		win : fenêtre où afficher le message
  *	\param		msg : message à afficher
  */
-void display_message(WINDOW *win, char *msg, char* who, int root) {
+void display_message(WINDOW *win, char *msg, int root) {
     //Si root est a 1, alors c'est un message du serveur donc on change la couleur du texte en rouge
     if(root == 1){
         wattron(win, COLOR_PAIR(4));
@@ -90,7 +90,7 @@ void display_message(WINDOW *win, char *msg, char* who, int root) {
     } else {
         wmove(win, y + 1, 1);
     }
-    wprintw(win, "%s : %s\n", who, msg);
+    wprintw(win, "%s\n", msg);
     box(win, 0, 0); // Redraw box to ensure borders are intact
     wrefresh(win);
     wattroff(win, COLOR_PAIR(2)); // On enlève la couleur pour éviter de colorer les logs
@@ -117,7 +117,7 @@ void main_loop_ncurses() {
     wrefresh(logs_win);
 
     wmove(top_win, 1, 1);
-    wprintw(top_win, "Discord Style Chat (type 'exit' to quit)");
+    wprintw(top_win, "Discord Style Chat (type '/disconnect' to quit)");
     wrefresh(top_win);
 
     while (1) {
@@ -169,10 +169,10 @@ void main_loop_ncurses() {
     }
     msg[i] = '\0';
 
-    if (strcmp(msg, "exit") == 0) break;
+    if (strcmp(msg, "/disconnect") == 0) break;
 
     // Display message in top window
-    display_message(top_win, msg, "You", 0);
+    display_message(top_win, msg, 0);
 }
 
 }
