@@ -54,9 +54,6 @@ socket_t sockEcoute;
 
 void serveur()
 {
-
-
-
     system("clear");
     socket_t sockEch;
     buffer_t buff;
@@ -66,7 +63,6 @@ void serveur()
     init_channels();
     
     // initSockets();
-
 
     struct sigaction act;
     memset(&act, 0, sizeof(act));
@@ -93,8 +89,7 @@ void serveur()
     zombieManager();
 
 
-    init_messages(get_channels());
-
+    // init_messages(get_channels());
 
     while(1)
     {
@@ -715,7 +710,7 @@ int command_manager(buffer_t buff, User* user)
             else 
             {
                 strcpy(retour, "[Server] Liste des channels :\n");
-                
+
                 display_channels(*user, retour);
             }
             envoyer(&(user->socket), retour, NULL);
