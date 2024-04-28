@@ -77,24 +77,25 @@ void config_colors() {
  *	\param		msg : message à afficher
  */
 void display_message(WINDOW *win, char *msg, int root) {
-    //Si root est a 1, alors c'est un message du serveur donc on change la couleur du texte en rouge
-    if(root == 1){
+    int y, x, max_y, max_x;
+    getyx(win, y, x);  // Récupère la position courante du curseur
+    getmaxyx(win, max_y, max_x);  // Récupère les dimensions de la fenêtre
+
+    if(y >= max_y - 1) {  // Vérifie si le curseur est à la fin de la fenêtre
+        wscrl(win, 1);  // Fait défiler la fenêtre d'une ligne vers le haut
+    }
+
+    // Affichage du message
+    if(root == 1) {
         wattron(win, COLOR_PAIR(4));
     } else {
         wattron(win, COLOR_PAIR(2));
     }
-    int y, x;
-    getyx(win, y, x);
-    if (y == height - 4) {
-        scroll(win);
-    } else {
-        wmove(win, y + 1, 1);
-    }
-    wprintw(win, "%s\n", msg);
-    box(win, 0, 0); // Redraw box to ensure borders are intact
-    wrefresh(win);
-    wattroff(win, COLOR_PAIR(2)); // On enlève la couleur pour éviter de colorer les logs
-    wattroff(win, COLOR_PAIR(1)); // On enlève la couleur pour éviter de colorer les logs
+    mvwprintw(win, y, 1, "%s\n", msg);
+    wattroff(win, COLOR_PAIR(root == 1 ? 4 : 2));
+
+    box(win, 0, 0); // Redessine les bordures
+    wrefresh(win); // Rafraîchit la fenêtre
 }
 
 /**
