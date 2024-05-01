@@ -1,0 +1,337 @@
+\hypertarget{data_8c}{}\doxysection{Référence du fichier sources/data.c}
+\label{data_8c}\index{sources/data.c@{sources/data.c}}
+
+
+Spécification de la couche Data Representation.  
+
+
+{\ttfamily \#include \char`\"{}../heads/data.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de data.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{data_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$sock\+Ech, \mbox{\hyperlink{data_8h_a20a07aa5a0a4656891f77115d03fd436}{generic}} quoi, \mbox{\hyperlink{data_8h_aff0a816c1aa078dc74b95c5074a14b6c}{p\+Fct}} serial,...)
+\begin{DoxyCompactList}\small\item\em Envoi d\textquotesingle{}une requête/réponse sur une socket. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{data_8c_ad62cf336e585a61123084d2fc4ba4791}{recevoir}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$sock\+Ech, \mbox{\hyperlink{data_8h_a20a07aa5a0a4656891f77115d03fd436}{generic}} quoi, \mbox{\hyperlink{data_8h_aff0a816c1aa078dc74b95c5074a14b6c}{p\+Fct}} de\+Serial)
+\begin{DoxyCompactList}\small\item\em Réception d\textquotesingle{}une requête/réponse sur une socket. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{data_8c_ab3446a0ed2d34b67b3649e91738b83ba}{\+\_\+envoyer\+Mess\+Stream}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$sock\+Ech, \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff)
+\begin{DoxyCompactList}\small\item\em Envoi d\textquotesingle{}un message sur une socket de type STREAM. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{data_8c_a78bf89caa67dbe621bc764ce1c4ef48b}{\+\_\+envoyer\+Mess\+DGRAM}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$sock\+Ech, \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff, char $\ast$adr\+IP, int port)
+\begin{DoxyCompactList}\small\item\em Envoi d\textquotesingle{}un message sur une socket de type DGRAM. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{data_8c_a7623e451f4106f37d40026db15421db8}{\+\_\+recevoir\+Mess\+Stream}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$sock\+Ech, \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff)
+\begin{DoxyCompactList}\small\item\em Réception d\textquotesingle{}un message sur une socket de type STREAM. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{data_8c_a0adb772767612cdbfb0cb43148e980eb}{\+\_\+recevoir\+Mess\+DGRAM}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$sock\+Ech, \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff)
+\item 
+void \mbox{\hyperlink{data_8c_a982b93dcd0a620cb9ec82a60ae88c755}{\+\_\+serial\+Mess}} (\mbox{\hyperlink{data_8h_a20a07aa5a0a4656891f77115d03fd436}{generic}} quoi, \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff)
+\begin{DoxyCompactList}\small\item\em Serialisation d\textquotesingle{}une requête/réponse. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{data_8c_a8a599960a3b2d4e0db9a34c714f14c95}{\+\_\+de\+Serial\+Mess}} (\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff, \mbox{\hyperlink{data_8h_a20a07aa5a0a4656891f77115d03fd436}{generic}} quoi)
+\begin{DoxyCompactList}\small\item\em Dé-\/sérialisation d\textquotesingle{}une requête/réponse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Spécification de la couche Data Representation. 
+
+\begin{DoxyAuthor}{Auteur}
+Hakim FIDJEL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+25 mars 2024 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{data_8c_a8a599960a3b2d4e0db9a34c714f14c95}\label{data_8c_a8a599960a3b2d4e0db9a34c714f14c95}} 
+\index{data.c@{data.c}!\_deSerialMess@{\_deSerialMess}}
+\index{\_deSerialMess@{\_deSerialMess}!data.c@{data.c}}
+\doxysubsubsection{\texorpdfstring{\_deSerialMess()}{\_deSerialMess()}}
+{\footnotesize\ttfamily void \+\_\+de\+Serial\+Mess (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff,  }\item[{\mbox{\hyperlink{data_8h_a20a07aa5a0a4656891f77115d03fd436}{generic}}}]{quoi }\end{DoxyParamCaption})}
+
+
+
+Dé-\/sérialisation d\textquotesingle{}une requête/réponse. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em buff} & \+: buffer de dé-\/sérialisation \\
+\hline
+{\em quoi} & \+: requête/réponse à remplir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+paramètre quoi modifié 
+\end{DoxyReturn}
+
+
+Définition à la ligne 159 du fichier data.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{160 \{}
+\DoxyCodeLine{161     strcpy((\textcolor{keywordtype}{char} *)quoi, buff);}
+\DoxyCodeLine{162 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{data_8c_a78bf89caa67dbe621bc764ce1c4ef48b}\label{data_8c_a78bf89caa67dbe621bc764ce1c4ef48b}} 
+\index{data.c@{data.c}!\_envoyerMessDGRAM@{\_envoyerMessDGRAM}}
+\index{\_envoyerMessDGRAM@{\_envoyerMessDGRAM}!data.c@{data.c}}
+\doxysubsubsection{\texorpdfstring{\_envoyerMessDGRAM()}{\_envoyerMessDGRAM()}}
+{\footnotesize\ttfamily void \+\_\+envoyer\+Mess\+DGRAM (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$}]{sock\+Ech,  }\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff,  }\item[{char $\ast$}]{adr\+IP,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Envoi d\textquotesingle{}un message sur une socket de type DGRAM. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sock\+Ech} & \+: socket d\textquotesingle{}échange à utiliser pour l\textquotesingle{}envoi \\
+\hline
+{\em buff} & \+: message à envoyer \\
+\hline
+{\em adr\+IP} & \+: adresse IP de destination \\
+\hline
+{\em port} & \+: port de destination \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+paramètre sock\+Ech modifié 
+\end{DoxyReturn}
+
+
+Définition à la ligne 106 du fichier data.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{107 \{}
+\DoxyCodeLine{108     \textcolor{keyword}{struct }sockaddr\_in addr;}
+\DoxyCodeLine{109     \mbox{\hyperlink{session_8c_a27a803d7ebb36e8aa345c07d6bba7156}{\_adr2struct}}(\&addr, adrIP, port);}
+\DoxyCodeLine{110     \mbox{\hyperlink{session_8h_ad3fe337408f16c132c895f2b59326410}{CHECK}}(sendto(sockEch-\/>\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}}, buff, \mbox{\hyperlink{data_8h_a1d5dab30b404fab91608086105afc78c}{MAX\_BUFFER}}, 0, (\textcolor{keyword}{struct} sockaddr *)\&addr, \textcolor{keyword}{sizeof}(addr)), \textcolor{stringliteral}{"{}Can't send"{}});}
+\DoxyCodeLine{111 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{data_8c_ab3446a0ed2d34b67b3649e91738b83ba}\label{data_8c_ab3446a0ed2d34b67b3649e91738b83ba}} 
+\index{data.c@{data.c}!\_envoyerMessStream@{\_envoyerMessStream}}
+\index{\_envoyerMessStream@{\_envoyerMessStream}!data.c@{data.c}}
+\doxysubsubsection{\texorpdfstring{\_envoyerMessStream()}{\_envoyerMessStream()}}
+{\footnotesize\ttfamily void \+\_\+envoyer\+Mess\+Stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$}]{sock\+Ech,  }\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff }\end{DoxyParamCaption})}
+
+
+
+Envoi d\textquotesingle{}un message sur une socket de type STREAM. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sock\+Ech} & \+: socket d\textquotesingle{}échange à utiliser pour l\textquotesingle{}envoi \\
+\hline
+{\em buff} & \+: message à envoyer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+paramètre sock\+Ech modifié 
+\end{DoxyReturn}
+
+
+Définition à la ligne 92 du fichier data.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{93 \{}
+\DoxyCodeLine{94     \mbox{\hyperlink{session_8h_ad3fe337408f16c132c895f2b59326410}{CHECK}}(send(sockEch-\/>\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}}, buff, \mbox{\hyperlink{data_8h_a1d5dab30b404fab91608086105afc78c}{MAX\_BUFFER}}, 0), \textcolor{stringliteral}{"{}Can't send"{}});}
+\DoxyCodeLine{95 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{data_8c_a0adb772767612cdbfb0cb43148e980eb}\label{data_8c_a0adb772767612cdbfb0cb43148e980eb}} 
+\index{data.c@{data.c}!\_recevoirMessDGRAM@{\_recevoirMessDGRAM}}
+\index{\_recevoirMessDGRAM@{\_recevoirMessDGRAM}!data.c@{data.c}}
+\doxysubsubsection{\texorpdfstring{\_recevoirMessDGRAM()}{\_recevoirMessDGRAM()}}
+{\footnotesize\ttfamily void \+\_\+recevoir\+Mess\+DGRAM (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$}]{sock\+Ech,  }\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff }\end{DoxyParamCaption})}
+
+
+
+Définition à la ligne 134 du fichier data.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{135 \{}
+\DoxyCodeLine{136     \textcolor{keyword}{struct }sockaddr\_in addrSrc;}
+\DoxyCodeLine{137     socklen\_t len = \textcolor{keyword}{sizeof}(addrSrc);}
+\DoxyCodeLine{138     recvfrom(sockEch-\/>\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}}, buff, \mbox{\hyperlink{data_8h_a1d5dab30b404fab91608086105afc78c}{MAX\_BUFFER}}, 0, (\textcolor{keyword}{struct} sockaddr *)\&addrSrc, \&len);}
+\DoxyCodeLine{139 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{data_8c_a7623e451f4106f37d40026db15421db8}\label{data_8c_a7623e451f4106f37d40026db15421db8}} 
+\index{data.c@{data.c}!\_recevoirMessStream@{\_recevoirMessStream}}
+\index{\_recevoirMessStream@{\_recevoirMessStream}!data.c@{data.c}}
+\doxysubsubsection{\texorpdfstring{\_recevoirMessStream()}{\_recevoirMessStream()}}
+{\footnotesize\ttfamily void \+\_\+recevoir\+Mess\+Stream (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$}]{sock\+Ech,  }\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff }\end{DoxyParamCaption})}
+
+
+
+Réception d\textquotesingle{}un message sur une socket de type STREAM. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sock\+Ech} & \+: socket d\textquotesingle{}échange à utiliser pour la réception \\
+\hline
+{\em buff} & \+: message reçu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+paramètre sock\+Ech modifié 
+\end{DoxyReturn}
+
+
+Définition à la ligne 120 du fichier data.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{121 \{}
+\DoxyCodeLine{122     \mbox{\hyperlink{session_8h_ad3fe337408f16c132c895f2b59326410}{CHECK}}(recv(sockEch-\/>\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}}, buff, \mbox{\hyperlink{data_8h_a1d5dab30b404fab91608086105afc78c}{MAX\_BUFFER}}, 0), \textcolor{stringliteral}{"{}Can't receive"{}});}
+\DoxyCodeLine{123 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{data_8c_a982b93dcd0a620cb9ec82a60ae88c755}\label{data_8c_a982b93dcd0a620cb9ec82a60ae88c755}} 
+\index{data.c@{data.c}!\_serialMess@{\_serialMess}}
+\index{\_serialMess@{\_serialMess}!data.c@{data.c}}
+\doxysubsubsection{\texorpdfstring{\_serialMess()}{\_serialMess()}}
+{\footnotesize\ttfamily void \+\_\+serial\+Mess (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_a20a07aa5a0a4656891f77115d03fd436}{generic}}}]{quoi,  }\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff }\end{DoxyParamCaption})}
+
+
+
+Serialisation d\textquotesingle{}une requête/réponse. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em quoi} & \+: requête/réponse à sérialiser \\
+\hline
+{\em buff} & \+: buffer de sérialisation \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 147 du fichier data.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{148 \{}
+\DoxyCodeLine{149     strcpy(buff, (\textcolor{keywordtype}{char} *)quoi);}
+\DoxyCodeLine{150 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}\label{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}} 
+\index{data.c@{data.c}!envoyer@{envoyer}}
+\index{envoyer@{envoyer}!data.c@{data.c}}
+\doxysubsubsection{\texorpdfstring{envoyer()}{envoyer()}}
+{\footnotesize\ttfamily void envoyer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$}]{sock\+Ech,  }\item[{\mbox{\hyperlink{data_8h_a20a07aa5a0a4656891f77115d03fd436}{generic}}}]{quoi,  }\item[{\mbox{\hyperlink{data_8h_aff0a816c1aa078dc74b95c5074a14b6c}{p\+Fct}}}]{serial,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+Envoi d\textquotesingle{}une requête/réponse sur une socket. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sock\+Ech} & \+: socket d\textquotesingle{}échange à utiliser pour l\textquotesingle{}envoi \\
+\hline
+{\em quoi} & \+: requête/réponse à serialiser avant l\textquotesingle{}envoi \\
+\hline
+{\em serial} & \+: pointeur sur la fonction de serialisation d\textquotesingle{}une requête/réponse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+si le paramètre serial vaut NULL alors quoi est une chaîne de caractères 
+
+Si le mode est DGRAM, l\textquotesingle{}appel nécessite en plus l\textquotesingle{}adresse IP et le port. 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+paramètre sock\+Ech modifié pour le mode DGRAM 
+\end{DoxyReturn}
+
+
+Définition à la ligne 25 du fichier data.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{26 \{}
+\DoxyCodeLine{27     \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\_t}} content;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{comment}{// Serializing}}
+\DoxyCodeLine{30     \textcolor{keywordflow}{if} (serial != NULL)}
+\DoxyCodeLine{31         serial(quoi, content);}
+\DoxyCodeLine{32     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{33         strcpy(content, (\textcolor{keywordtype}{char} *)quoi);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \textcolor{comment}{// Sending}}
+\DoxyCodeLine{36     \textcolor{keywordflow}{if} (sockEch-\/>\mbox{\hyperlink{structsocket_a91c13966eecc710ac792e7349172e975}{mode}} == SOCK\_STREAM)}
+\DoxyCodeLine{37     \{}
+\DoxyCodeLine{38         \mbox{\hyperlink{data_8c_ab3446a0ed2d34b67b3649e91738b83ba}{\_envoyerMessStream}}(sockEch, content);}
+\DoxyCodeLine{39     \}}
+\DoxyCodeLine{40     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{41     \{}
+\DoxyCodeLine{42         va\_list pArg;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44         \textcolor{keywordtype}{char} *addrIp = va\_arg(pArg, \textcolor{keywordtype}{char} *);}
+\DoxyCodeLine{45         \textcolor{keywordtype}{int} port = va\_arg(pArg, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47         va\_start(pArg, serial);}
+\DoxyCodeLine{48         \mbox{\hyperlink{data_8c_a78bf89caa67dbe621bc764ce1c4ef48b}{\_envoyerMessDGRAM}}(sockEch, content, addrIp, port);}
+\DoxyCodeLine{49         va\_end(pArg);}
+\DoxyCodeLine{50     \}}
+\DoxyCodeLine{51 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{data_8c_ad62cf336e585a61123084d2fc4ba4791}\label{data_8c_ad62cf336e585a61123084d2fc4ba4791}} 
+\index{data.c@{data.c}!recevoir@{recevoir}}
+\index{recevoir@{recevoir}!data.c@{data.c}}
+\doxysubsubsection{\texorpdfstring{recevoir()}{recevoir()}}
+{\footnotesize\ttfamily void recevoir (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$}]{sock\+Ech,  }\item[{\mbox{\hyperlink{data_8h_a20a07aa5a0a4656891f77115d03fd436}{generic}}}]{quoi,  }\item[{\mbox{\hyperlink{data_8h_aff0a816c1aa078dc74b95c5074a14b6c}{p\+Fct}}}]{de\+Serial }\end{DoxyParamCaption})}
+
+
+
+Réception d\textquotesingle{}une requête/réponse sur une socket. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sock\+Ech} & \+: socket d\textquotesingle{}échange à utiliser pour la réception \\
+\hline
+{\em quoi} & \+: requête/réponse reçue après dé-\/serialisation du buffer de réception \\
+\hline
+{\em de\+Serial} & \+: pointeur sur la fonction de dé-\/serialisation d\textquotesingle{}une requête/réponse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+si le paramètre de\+Serial vaut NULL alors quoi est une chaîne de caractères 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+paramètre quoi modifié avec le requête/réponse reçue paramètre sock\+Ech modifié pour le mode DGRAM 
+\end{DoxyReturn}
+
+
+Définition à la ligne 63 du fichier data.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{64 \{}
+\DoxyCodeLine{65     \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\_t}} content;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67     \textcolor{comment}{// Receiving}}
+\DoxyCodeLine{68     \textcolor{keywordflow}{if} (sockEch-\/>\mbox{\hyperlink{structsocket_a91c13966eecc710ac792e7349172e975}{mode}} == SOCK\_STREAM)}
+\DoxyCodeLine{69         \mbox{\hyperlink{data_8c_a7623e451f4106f37d40026db15421db8}{\_recevoirMessStream}}(sockEch, content);}
+\DoxyCodeLine{70     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{71         \mbox{\hyperlink{data_8c_a0adb772767612cdbfb0cb43148e980eb}{\_recevoirMessDGRAM}}(sockEch, content);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{comment}{// Deserializing}}
+\DoxyCodeLine{74     \textcolor{keywordflow}{if} (deSerial != NULL)}
+\DoxyCodeLine{75         deSerial(content, quoi);}
+\DoxyCodeLine{76     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{77         strcpy(quoi, content);}
+\DoxyCodeLine{78 \}}
+
+\end{DoxyCode}

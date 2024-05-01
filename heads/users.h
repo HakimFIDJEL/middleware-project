@@ -9,8 +9,8 @@
 #define USERS_H
 /*
 *****************************************************************************************
- *	\noop		I N C L U D E S   S P E C I F I Q U E S
- */
+*	\noop		I N C L U D E S   S P E C I F I Q U E S
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,32 +20,30 @@
 #include "./data.h"
 /*
 *****************************************************************************************
- *	\noop		S T R C T U R E S   DE   D O N N E E S
- */
-#define MAX_USERS 10
-
-
-
+*	\noop		S T R C T U R E S   DE   D O N N E E S
+*/
+#define MAX_USERS 10 /**< Nombre maximum d'utilisateurs	*/
 
 /**
- *	\typedef	
- *	\brief		Définition du type de données user_t
+ * @brief Structure User
+ * @struct User
+ * @param currentChannel canal courant de l'utilisateur
+ * @param socket socket de l'utilisateur
+ * @param name nom de l'utilisateur
+ * @param id id de l'utilisateur
  */
-typedef struct {
-    int currentChannel;					/**< canal courant de l'utilisateur	*/
-    socket_t socket;					/**< socket de l'utilisateur			*/
-    char name[50];						/**< nom de l'utilisateur			*/
-	int id;							/**< id de l'utilisateur			*/
+typedef struct
+{
+    int currentChannel; /**< canal courant de l'utilisateur	*/
+    socket_t socket;    /**< socket de l'utilisateur			*/
+    char name[50];      /**< nom de l'utilisateur			*/
+    int id;             /**< id de l'utilisateur			*/
 } User;
-
-
-
-
 
 /*
 *****************************************************************************************
- *	\noop		P R O T O T Y P E S   DES   F O N C T I O N S
- */
+*	\noop		P R O T O T Y P E S   DES   F O N C T I O N S
+*/
 /**
  *	\fn			void init_users(users *u)
  *	\brief		initialisation du tableau d'utilisateurs
@@ -55,41 +53,68 @@ typedef struct {
 void init_users();
 
 /**
- *	\fn			user_t add_user(users users, int id, int socket_id, int channel)
- *	\brief		Ajout d'un utilisateur
- *	\param		int id			id de l'utilisateur
- *	\param		int socket_id	id de la socket de l'utilisateur
- *	\param		int channel		id du canal courant de l'utilisateur
- *	\note	    Cette fonction ajoute un utilisateur au tableau
- *	\result	    user_t
+ * @brief Add a user to the users array
+ * @fn User add_user(socket_t socket, int channel, char name[50])
+ * @param socket The socket of the user
+ * @param channel The channel the user is connected to
+ * @param name The name of the user
+ * @return User* 
  */
 User *add_user(socket_t socket, int channel, char name[50]);
 
 /**
- *	\fn			void remove_user(users *u, int id)
- *	\brief		Suppression d'un utilisateur
- *	\param		user_t user		pointeur sur l'utilisateur à supprimer
- *	\note	    Cette fonction supprime un utilisateur du tableau
- *	\result	    void
+ * @brief Remove a user from the users array
+ * @fn void remove_user(User user)
+ * @param user The user to remove
  */
 void remove_user(User user);
 
-
-
+/**
+ * @brief Display all users
+ * @fn void display_users()
+ * @param void
+ */
 void display_users();
 
-void connect_user_to_channel(User* user, int channel_id);
+/**
+ * @brief Connect a user to a channel
+ * @fn void connect_user_to_channel(User *user, int channel_id)
+ * @param user The user to connect
+ * @param channel_id The channel to connect the user to
+ */
+void connect_user_to_channel(User *user, int channel_id);
 
-
+/**
+ * @brief Get the user by the socket
+ * @fn User get_user_by_socket(socket_t socket)
+ * @param socket The socket of the user
+ * @return User 
+ */
 User get_user_by_socket(socket_t socket);
 
+/**
+ * @brief Get the users 
+ * @fn User *get_users()
+ * @param void
+ * @return User* 
+ */
 User *get_users();
 
+/**
+ * @brief Test if a user exists
+ * @fn bool user_exists(int id)
+ * @param id The id of the user
+ * @return true 
+ * @return false 
+ */
 bool user_exists(int id);
 
-
-
-User* get_user_by_id(int id);
-
+/**
+ * @brief Get the user by id
+ * @fn User *get_user_by_id(int id)
+ * @param id The id of the user
+ * @return User* 
+ */
+User *get_user_by_id(int id);
 
 #endif /* USERS_H */

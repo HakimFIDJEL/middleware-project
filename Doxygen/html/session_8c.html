@@ -1,0 +1,698 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Middleware Project (BetterDiscord): Référence du fichier sources/session.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_centrale.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Middleware Project (BetterDiscord)
+   </div>
+   <div id="projectbrief">Projet réalisé dans le cadre du cours de Middleware Client/Serveur par Hakim FIDJEL et Younes Boughriet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_08d237fc27d4ecd563f71c5d52f2fecc.html">sources</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier session.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Spécification de la couche Session.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="session_8h_source.html">../heads/session.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de session.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="session_8c__incl.png" border="0" usemap="#asources_2session_8c" alt=""/></div>
+<map name="asources_2session_8c" id="asources_2session_8c">
+<area shape="rect" title="Spécification de la couche Session." alt="" coords="457,5,593,32"/>
+<area shape="rect" href="session_8h.html" title="Spécification de la couche Session." alt="" coords="456,80,595,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,80,181"/>
+<area shape="rect" title=" " alt="" coords="105,155,175,181"/>
+<area shape="rect" title=" " alt="" coords="200,155,267,181"/>
+<area shape="rect" title=" " alt="" coords="291,155,394,181"/>
+<area shape="rect" title=" " alt="" coords="419,155,515,181"/>
+<area shape="rect" title=" " alt="" coords="539,155,631,181"/>
+<area shape="rect" title=" " alt="" coords="655,155,726,181"/>
+<area shape="rect" title=" " alt="" coords="751,155,839,181"/>
+<area shape="rect" title=" " alt="" coords="863,155,947,181"/>
+<area shape="rect" title=" " alt="" coords="972,155,1055,181"/>
+</map>
+</div>
+</div>
+<p><a href="session_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ab54cda52ee639aa3c47cfa330904e776"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#ab54cda52ee639aa3c47cfa330904e776">MAX_SOCKETS</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:ab54cda52ee639aa3c47cfa330904e776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a35c19546f90f61038fdddadc44abfb1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a35c19546f90f61038fdddadc44abfb1d">initSockets</a> ()</td></tr>
+<tr class="memdesc:a35c19546f90f61038fdddadc44abfb1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisation du tableau de sockets.  <a href="session_8c.html#a35c19546f90f61038fdddadc44abfb1d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a35c19546f90f61038fdddadc44abfb1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95f454e40a409676d6e7604d5805e634"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a95f454e40a409676d6e7604d5805e634">addSocket</a> (<a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> sock)</td></tr>
+<tr class="memdesc:a95f454e40a409676d6e7604d5805e634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajout d'une socket au tableau.  <a href="session_8c.html#a95f454e40a409676d6e7604d5805e634">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a95f454e40a409676d6e7604d5805e634"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a307ed7977f7e87c29f9e40f5a8d47167"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a307ed7977f7e87c29f9e40f5a8d47167">removeSocket</a> (int index)</td></tr>
+<tr class="memdesc:a307ed7977f7e87c29f9e40f5a8d47167"><td class="mdescLeft">&#160;</td><td class="mdescRight">Suppression d'une socket du tableau.  <a href="session_8c.html#a307ed7977f7e87c29f9e40f5a8d47167">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a307ed7977f7e87c29f9e40f5a8d47167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47cb79c19334afd066b6a765aa759789"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a47cb79c19334afd066b6a765aa759789">displaySockets</a> ()</td></tr>
+<tr class="memdesc:a47cb79c19334afd066b6a765aa759789"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affichage des sockets connectés.  <a href="session_8c.html#a47cb79c19334afd066b6a765aa759789">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a47cb79c19334afd066b6a765aa759789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27a803d7ebb36e8aa345c07d6bba7156"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a27a803d7ebb36e8aa345c07d6bba7156">_adr2struct</a> (struct sockaddr_in *addr, char *adrIP, short port)</td></tr>
+<tr class="memdesc:a27a803d7ebb36e8aa345c07d6bba7156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transformer une adresse au format humain en structure SocketBSD.  <a href="session_8c.html#a27a803d7ebb36e8aa345c07d6bba7156">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a27a803d7ebb36e8aa345c07d6bba7156"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afac73db40b85a0897ae36d9342188ab7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#afac73db40b85a0897ae36d9342188ab7">creerSocket</a> (int mode)</td></tr>
+<tr class="memdesc:afac73db40b85a0897ae36d9342188ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'une socket de type DGRAM/STREAM.  <a href="session_8c.html#afac73db40b85a0897ae36d9342188ab7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afac73db40b85a0897ae36d9342188ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d9908d2192f6364a4f8812cdaa1f7d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a5d9908d2192f6364a4f8812cdaa1f7d1">creerSocketAdr</a> (int mode, char *adrIP, short port)</td></tr>
+<tr class="memdesc:a5d9908d2192f6364a4f8812cdaa1f7d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'une socket de type DGRAM/STREAM.  <a href="session_8c.html#a5d9908d2192f6364a4f8812cdaa1f7d1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5d9908d2192f6364a4f8812cdaa1f7d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf7b35a6e085a114fb06ec3208bf3c90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#adf7b35a6e085a114fb06ec3208bf3c90">creerSocketEcoute</a> (char *adrIP, short port)</td></tr>
+<tr class="memdesc:adf7b35a6e085a114fb06ec3208bf3c90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Création d'une socket d'écoute avec l'adressage fourni en paramètre.  <a href="session_8c.html#adf7b35a6e085a114fb06ec3208bf3c90">Plus de détails...</a><br /></td></tr>
+<tr class="separator:adf7b35a6e085a114fb06ec3208bf3c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bf8e2cd5daab300c5354e8efaf065c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a1bf8e2cd5daab300c5354e8efaf065c9">accepterClt</a> (const <a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> <a class="el" href="main_8c.html#a44c875427681d951feb66c686596fbe4">sockEcoute</a>)</td></tr>
+<tr class="memdesc:a1bf8e2cd5daab300c5354e8efaf065c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acceptation d'une demande de connexion d'un client.  <a href="session_8c.html#a1bf8e2cd5daab300c5354e8efaf065c9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1bf8e2cd5daab300c5354e8efaf065c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f5e8ef98743c3001ba36b42a46f1561"><td class="memItemLeft" align="right" valign="top"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a7f5e8ef98743c3001ba36b42a46f1561">connecterClt2Srv</a> (char *adrIP, short port)</td></tr>
+<tr class="memdesc:a7f5e8ef98743c3001ba36b42a46f1561"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crétaion d'une socket d'appel et connexion au seveur dont l'adressage est fourni en paramètre.  <a href="session_8c.html#a7f5e8ef98743c3001ba36b42a46f1561">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7f5e8ef98743c3001ba36b42a46f1561"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51b2f4b2461a8cb8d265b8da6bd96d9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a51b2f4b2461a8cb8d265b8da6bd96d9d">fermerSocket</a> (<a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *sock)</td></tr>
+<tr class="memdesc:a51b2f4b2461a8cb8d265b8da6bd96d9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fermeture d'une socket.  <a href="session_8c.html#a51b2f4b2461a8cb8d265b8da6bd96d9d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a51b2f4b2461a8cb8d265b8da6bd96d9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bed8600f960c495ba904e51386eff4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a0bed8600f960c495ba904e51386eff4a">zombieManager</a> ()</td></tr>
+<tr class="memdesc:a0bed8600f960c495ba904e51386eff4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le gestionnaire de zombies.  <a href="session_8c.html#a0bed8600f960c495ba904e51386eff4a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0bed8600f960c495ba904e51386eff4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a768280c70c66895027c84c5ad754a92c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="session_8c.html#a768280c70c66895027c84c5ad754a92c">sockets</a> [<a class="el" href="session_8c.html#ab54cda52ee639aa3c47cfa330904e776">MAX_SOCKETS</a>]</td></tr>
+<tr class="separator:a768280c70c66895027c84c5ad754a92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Spécification de la couche Session. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Hakim FIDJEL </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>25 mars 2024 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Définition dans le fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+</div><h2 class="groupheader">Documentation des macros</h2>
+<a id="ab54cda52ee639aa3c47cfa330904e776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab54cda52ee639aa3c47cfa330904e776">&#9670;&nbsp;</a></span>MAX_SOCKETS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_SOCKETS&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00011">11</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a27a803d7ebb36e8aa345c07d6bba7156"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27a803d7ebb36e8aa345c07d6bba7156">&#9670;&nbsp;</a></span>_adr2struct()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _adr2struct </td>
+          <td>(</td>
+          <td class="paramtype">struct sockaddr_in *&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>adrIP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Transformer une adresse au format humain en structure SocketBSD. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>: structure d'adressage BSD d'une socket INET </td></tr>
+    <tr><td class="paramname">adrIP</td><td>: adresse IP de la socket créée </td></tr>
+    <tr><td class="paramname">port</td><td>: port de la socket créée </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Le domaine dépend du mode choisi (TCP/UDP) </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>paramètre *adr modifié </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00090">90</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;{</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    addr-&gt;sin_family = AF_INET;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    addr-&gt;sin_port = htons(port);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    addr-&gt;sin_addr.s_addr = inet_addr(adrIP);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    memset(addr-&gt;sin_zero, 0, 8);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1bf8e2cd5daab300c5354e8efaf065c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bf8e2cd5daab300c5354e8efaf065c9">&#9670;&nbsp;</a></span>accepterClt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> accepterClt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a>&#160;</td>
+          <td class="paramname"><em>sockEcoute</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Acceptation d'une demande de connexion d'un client. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockEcoute</td><td>: socket d'écoute pour réception de la demande </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>socket (dialogue) connectée par le serveur avec un client </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00152">152</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="code" href="structsocket.html">socket_t</a> newSocket;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    socklen_t len = <span class="keyword">sizeof</span>(newSocket.<a class="code" href="structsocket.html#a1296e2dc21d5cb36deef2045f6431edf">addrDst</a>);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(newSocket.<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a> = accept(<a class="code" href="main_8c.html#a44c875427681d951feb66c686596fbe4">sockEcoute</a>.<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, (<span class="keyword">struct</span> sockaddr *)&amp;newSocket.<a class="code" href="structsocket.html#a1296e2dc21d5cb36deef2045f6431edf">addrDst</a>, &amp;len), <span class="stringliteral">&quot;accept()&quot;</span>);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    newSocket.<a class="code" href="structsocket.html#a91c13966eecc710ac792e7349172e975">mode</a> = <a class="code" href="main_8c.html#a44c875427681d951feb66c686596fbe4">sockEcoute</a>.<a class="code" href="structsocket.html#a91c13966eecc710ac792e7349172e975">mode</a>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span> newSocket;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="ttc" id="amain_8c_html_a44c875427681d951feb66c686596fbe4"><div class="ttname"><a href="main_8c.html#a44c875427681d951feb66c686596fbe4">sockEcoute</a></div><div class="ttdeci">socket_t sockEcoute</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00131">main.c:131</a></div></div>
+<div class="ttc" id="asession_8h_html_ad3fe337408f16c132c895f2b59326410"><div class="ttname"><a href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a></div><div class="ttdeci">#define CHECK(sts, msg)</div><div class="ttdoc">Macro-fonction qui vérifie que sts est égal -1 (cas d'erreur : sts==-1) En cas d'erreur,...</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00034">session.h:34</a></div></div>
+<div class="ttc" id="astructsocket_html"><div class="ttname"><a href="structsocket.html">socket</a></div><div class="ttdoc">Définition de la structure de données socket.</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00057">session.h:58</a></div></div>
+<div class="ttc" id="astructsocket_html_a1296e2dc21d5cb36deef2045f6431edf"><div class="ttname"><a href="structsocket.html#a1296e2dc21d5cb36deef2045f6431edf">socket::addrDst</a></div><div class="ttdeci">struct sockaddr_in addrDst</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00060">session.h:62</a></div></div>
+<div class="ttc" id="astructsocket_html_a91c13966eecc710ac792e7349172e975"><div class="ttname"><a href="structsocket.html#a91c13966eecc710ac792e7349172e975">socket::mode</a></div><div class="ttdeci">int mode</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00060">session.h:60</a></div></div>
+<div class="ttc" id="astructsocket_html_adce841ceca3a01158a71421e6b0dbd8a"><div class="ttname"><a href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">socket::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00059">session.h:59</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a95f454e40a409676d6e7604d5805e634"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95f454e40a409676d6e7604d5805e634">&#9670;&nbsp;</a></span>addSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void addSocket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a>&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajout d'une socket au tableau. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>: la socket à ajouter </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction permet d'ajouter une socket au tableau des sockets connectés </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00037">37</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="session_8c.html#ab54cda52ee639aa3c47cfa330904e776">MAX_SOCKETS</a>; i++)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="session_8c.html#a768280c70c66895027c84c5ad754a92c">sockets</a>[i].fd == -1)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <a class="code" href="session_8c.html#a768280c70c66895027c84c5ad754a92c">sockets</a>[i] = sock;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="ttc" id="asession_8c_html_a768280c70c66895027c84c5ad754a92c"><div class="ttname"><a href="session_8c.html#a768280c70c66895027c84c5ad754a92c">sockets</a></div><div class="ttdeci">socket_t sockets[MAX_SOCKETS]</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00013">session.c:13</a></div></div>
+<div class="ttc" id="asession_8c_html_ab54cda52ee639aa3c47cfa330904e776"><div class="ttname"><a href="session_8c.html#ab54cda52ee639aa3c47cfa330904e776">MAX_SOCKETS</a></div><div class="ttdeci">#define MAX_SOCKETS</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00011">session.c:11</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7f5e8ef98743c3001ba36b42a46f1561"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f5e8ef98743c3001ba36b42a46f1561">&#9670;&nbsp;</a></span>connecterClt2Srv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> connecterClt2Srv </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>adrIP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crétaion d'une socket d'appel et connexion au seveur dont l'adressage est fourni en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adrIP</td><td>: adresse IP du serveur à connecter </td></tr>
+    <tr><td class="paramname">port</td><td>: port TCP du serveur à connecter </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>socket connectée au serveur fourni en paramètre </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00170">170</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;{</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <a class="code" href="structsocket.html">socket_t</a> newSocket = <a class="code" href="session_8c.html#afac73db40b85a0897ae36d9342188ab7">creerSocket</a>(SOCK_STREAM);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <a class="code" href="session_8c.html#a27a803d7ebb36e8aa345c07d6bba7156">_adr2struct</a>(&amp;newSocket.<a class="code" href="structsocket.html#a1296e2dc21d5cb36deef2045f6431edf">addrDst</a>, adrIP, port);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(connect(newSocket.<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, (<span class="keyword">struct</span> sockaddr *)&amp;newSocket.<a class="code" href="structsocket.html#a1296e2dc21d5cb36deef2045f6431edf">addrDst</a>, <span class="keyword">sizeof</span>(newSocket.<a class="code" href="structsocket.html#a1296e2dc21d5cb36deef2045f6431edf">addrDst</a>)), <span class="stringliteral">&quot;connect()&quot;</span>);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">return</span> newSocket;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
+<div class="ttc" id="asession_8c_html_a27a803d7ebb36e8aa345c07d6bba7156"><div class="ttname"><a href="session_8c.html#a27a803d7ebb36e8aa345c07d6bba7156">_adr2struct</a></div><div class="ttdeci">void _adr2struct(struct sockaddr_in *addr, char *adrIP, short port)</div><div class="ttdoc">Transformer une adresse au format humain en structure SocketBSD.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00090">session.c:90</a></div></div>
+<div class="ttc" id="asession_8c_html_afac73db40b85a0897ae36d9342188ab7"><div class="ttname"><a href="session_8c.html#afac73db40b85a0897ae36d9342188ab7">creerSocket</a></div><div class="ttdeci">socket_t creerSocket(int mode)</div><div class="ttdoc">Création d'une socket de type DGRAM/STREAM.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00104">session.c:104</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afac73db40b85a0897ae36d9342188ab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afac73db40b85a0897ae36d9342188ab7">&#9670;&nbsp;</a></span>creerSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> creerSocket </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Création d'une socket de type DGRAM/STREAM. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td>: mode connecté (STREAM) ou non (DGRAM) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>socket créée selon le mode choisi </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00104">104</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="structsocket.html">socket_t</a> newSocket;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(newSocket.<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a> = <a class="code" href="structsocket.html">socket</a>(AF_INET, mode, 0), <span class="stringliteral">&quot;socket()&quot;</span>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    newSocket.<a class="code" href="structsocket.html#a91c13966eecc710ac792e7349172e975">mode</a> = mode;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span> newSocket;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5d9908d2192f6364a4f8812cdaa1f7d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d9908d2192f6364a4f8812cdaa1f7d1">&#9670;&nbsp;</a></span>creerSocketAdr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> creerSocketAdr </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>adrIP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Création d'une socket de type DGRAM/STREAM. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td>: adresse IP de la socket créée </td></tr>
+    <tr><td class="paramname">adrIP</td><td>: adresse IP de la socket créée </td></tr>
+    <tr><td class="paramname">port</td><td>: port de la socket créée </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>socket créée dans le domaine choisi avec l'adressage fourni </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00121">121</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;{</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="structsocket.html">socket_t</a> newSocket = <a class="code" href="session_8c.html#afac73db40b85a0897ae36d9342188ab7">creerSocket</a>(mode);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="code" href="session_8c.html#a27a803d7ebb36e8aa345c07d6bba7156">_adr2struct</a>(&amp;newSocket.<a class="code" href="structsocket.html#adf34762a764605679cf1221553d4083a">addrLoc</a>, adrIP, port);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(bind(newSocket.<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, (<span class="keyword">struct</span> sockaddr *)&amp;newSocket.<a class="code" href="structsocket.html#adf34762a764605679cf1221553d4083a">addrLoc</a>, <span class="keyword">sizeof</span>(newSocket.<a class="code" href="structsocket.html#adf34762a764605679cf1221553d4083a">addrLoc</a>)), <span class="stringliteral">&quot;bind()&quot;</span>);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> newSocket;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="ttc" id="astructsocket_html_adf34762a764605679cf1221553d4083a"><div class="ttname"><a href="structsocket.html#adf34762a764605679cf1221553d4083a">socket::addrLoc</a></div><div class="ttdeci">struct sockaddr_in addrLoc</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00060">session.h:61</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adf7b35a6e085a114fb06ec3208bf3c90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf7b35a6e085a114fb06ec3208bf3c90">&#9670;&nbsp;</a></span>creerSocketEcoute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">creerSocketEcoute </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>adrIP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Création d'une socket d'écoute avec l'adressage fourni en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adrIP</td><td>: adresse IP du serveur à mettre en écoute </td></tr>
+    <tr><td class="paramname">port</td><td>: port TCP du serveur à mettre en écoute </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>socket créée avec l'adressage fourni en paramètre et dans un état d'écoute </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Le domaine est nécessairement STREAM </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00138">138</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;{</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="structsocket.html">socket_t</a> newSocket = <a class="code" href="session_8c.html#a5d9908d2192f6364a4f8812cdaa1f7d1">creerSocketAdr</a>(SOCK_STREAM, adrIP, port);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(listen(newSocket.<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, 5), <span class="stringliteral">&quot;listen()&quot;</span>);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">return</span> newSocket;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
+<div class="ttc" id="asession_8c_html_a5d9908d2192f6364a4f8812cdaa1f7d1"><div class="ttname"><a href="session_8c.html#a5d9908d2192f6364a4f8812cdaa1f7d1">creerSocketAdr</a></div><div class="ttdeci">socket_t creerSocketAdr(int mode, char *adrIP, short port)</div><div class="ttdoc">Création d'une socket de type DGRAM/STREAM.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00121">session.c:121</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a47cb79c19334afd066b6a765aa759789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47cb79c19334afd066b6a765aa759789">&#9670;&nbsp;</a></span>displaySockets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void displaySockets </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affichage des sockets connectés. </p>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction permet d'afficher les sockets connectés </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00070">70</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="session_8c.html#ab54cda52ee639aa3c47cfa330904e776">MAX_SOCKETS</a>; i++)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="session_8c.html#a768280c70c66895027c84c5ad754a92c">sockets</a>[i].fd != -1)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            printf(<span class="stringliteral">&quot;Socket %d : %d\n&quot;</span>, i, <a class="code" href="session_8c.html#a768280c70c66895027c84c5ad754a92c">sockets</a>[i].fd);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a51b2f4b2461a8cb8d265b8da6bd96d9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51b2f4b2461a8cb8d265b8da6bd96d9d">&#9670;&nbsp;</a></span>fermerSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void fermerSocket </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *&#160;</td>
+          <td class="paramname"><em>sock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fermeture d'une socket. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sock</td><td>: socket à fermer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>la socket est fermée </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00185">185</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;{</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">if</span> (close(sock-&gt;<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>) == -1)</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        perror(<span class="stringliteral">&quot;Erreur lors de la fermeture de la socket&quot;</span>);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    printf(<span class="stringliteral">&quot;[fermerSocket] Socket %d fermée\n&quot;</span>, sock-&gt;<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a35c19546f90f61038fdddadc44abfb1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35c19546f90f61038fdddadc44abfb1d">&#9670;&nbsp;</a></span>initSockets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void initSockets </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialisation du tableau de sockets. </p>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction permet d'initialiser le tableau des sockets connectés </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00021">21</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="session_8c.html#ab54cda52ee639aa3c47cfa330904e776">MAX_SOCKETS</a>; i++)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="session_8c.html#a768280c70c66895027c84c5ad754a92c">sockets</a>[i].<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a> = -1;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    printf(<span class="stringliteral">&quot;Tableau de sockets initialisé\n&quot;</span>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a307ed7977f7e87c29f9e40f5a8d47167"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a307ed7977f7e87c29f9e40f5a8d47167">&#9670;&nbsp;</a></span>removeSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void removeSocket </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Suppression d'une socket du tableau. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>: l'indice de la socket à supprimer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction permet de supprimer une socket du tableau des sockets connectés </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00056">56</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (index &lt; <a class="code" href="session_8c.html#ab54cda52ee639aa3c47cfa330904e776">MAX_SOCKETS</a>)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="session_8c.html#a768280c70c66895027c84c5ad754a92c">sockets</a>[index].<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a> = -1;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0bed8600f960c495ba904e51386eff4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bed8600f960c495ba904e51386eff4a">&#9670;&nbsp;</a></span>zombieManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void zombieManager </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Le gestionnaire de zombies. </p>
+<dl class="section note"><dt>Note</dt><dd>Cette fonction permet de gérer les processus zombies </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00200">200</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="comment">// Gestion des processus zombies</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keyword">struct </span>sigaction sa;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    sa.sa_handler = SIG_IGN; <span class="comment">// Ignorer le signal SIGCHLD pour éviter les processus zombies</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    sigemptyset(&amp;sa.sa_mask);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    sa.sa_flags = SA_RESTART;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">if</span> (sigaction(SIGCHLD, &amp;sa, NULL) == -1)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        perror(<span class="stringliteral">&quot;Erreur lors de la configuration de SIGCHLD&quot;</span>);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        exit(EXIT_FAILURE);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="a768280c70c66895027c84c5ad754a92c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a768280c70c66895027c84c5ad754a92c">&#9670;&nbsp;</a></span>sockets</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> sockets[<a class="el" href="session_8c.html#ab54cda52ee639aa3c47cfa330904e776">MAX_SOCKETS</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="session_8c_source.html#l00013">13</a> du fichier <a class="el" href="session_8c_source.html">session.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

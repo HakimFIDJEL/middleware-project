@@ -1,0 +1,30 @@
+/* Couleur du fond pour les titres */
+div.header {
+    background-color: #63808c;
+  }
+  
+  /* Couleur du texte pour les titres */
+  div.headerText, div.header a {
+    color: #f59515;
+  }
+  
+  /* Modifier la couleur des liens */
+  a:link, a:visited {
+    color: #63808c;
+  }
+  
+  /* Modifier la couleur des liens au survol */
+  a:hover {
+    color: #f59515;
+  }
+  
+  /* Couleur de fond pour les éléments de navigation */
+  div.navbar {
+    background-color: #63808c;
+  }
+  
+  /* Couleur du texte dans la navigation */
+  div.navbar a {
+    color: #f59515;
+  }
+  

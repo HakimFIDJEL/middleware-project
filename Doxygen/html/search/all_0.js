@@ -1,0 +1,10 @@
+var searchData=
+[
+  ['_5fadr2struct_0',['_adr2struct',['../session_8c.html#a27a803d7ebb36e8aa345c07d6bba7156',1,'_adr2struct(struct sockaddr_in *addr, char *adrIP, short port):&#160;session.c'],['../session_8h.html#a27a803d7ebb36e8aa345c07d6bba7156',1,'_adr2struct(struct sockaddr_in *addr, char *adrIP, short port):&#160;session.c']]],
+  ['_5fdeserialmess_1',['_deSerialMess',['../data_8c.html#a8a599960a3b2d4e0db9a34c714f14c95',1,'_deSerialMess(buffer_t buff, generic quoi):&#160;data.c'],['../data_8h.html#a8a599960a3b2d4e0db9a34c714f14c95',1,'_deSerialMess(buffer_t buff, generic quoi):&#160;data.c']]],
+  ['_5fenvoyermessdgram_2',['_envoyerMessDGRAM',['../data_8c.html#a78bf89caa67dbe621bc764ce1c4ef48b',1,'_envoyerMessDGRAM(socket_t *sockEch, buffer_t buff, char *adrIP, int port):&#160;data.c'],['../data_8h.html#a78bf89caa67dbe621bc764ce1c4ef48b',1,'_envoyerMessDGRAM(socket_t *sockEch, buffer_t buff, char *adrIP, int port):&#160;data.c']]],
+  ['_5fenvoyermessstream_3',['_envoyerMessStream',['../data_8c.html#ab3446a0ed2d34b67b3649e91738b83ba',1,'_envoyerMessStream(socket_t *sockEch, buffer_t buff):&#160;data.c'],['../data_8h.html#ab3446a0ed2d34b67b3649e91738b83ba',1,'_envoyerMessStream(socket_t *sockEch, buffer_t buff):&#160;data.c']]],
+  ['_5frecevoirmessdgram_4',['_recevoirMessDGRAM',['../data_8c.html#a0adb772767612cdbfb0cb43148e980eb',1,'_recevoirMessDGRAM(socket_t *sockEch, buffer_t buff):&#160;data.c'],['../data_8h.html#a0adb772767612cdbfb0cb43148e980eb',1,'_recevoirMessDGRAM(socket_t *sockEch, buffer_t buff):&#160;data.c']]],
+  ['_5frecevoirmessstream_5',['_recevoirMessStream',['../data_8c.html#a7623e451f4106f37d40026db15421db8',1,'_recevoirMessStream(socket_t *sockEch, buffer_t buff):&#160;data.c'],['../data_8h.html#a7623e451f4106f37d40026db15421db8',1,'_recevoirMessStream(socket_t *sockEch, buffer_t buff):&#160;data.c']]],
+  ['_5fserialmess_6',['_serialMess',['../data_8c.html#a982b93dcd0a620cb9ec82a60ae88c755',1,'_serialMess(generic quoi, buffer_t buff):&#160;data.c'],['../data_8h.html#a982b93dcd0a620cb9ec82a60ae88c755',1,'_serialMess(generic quoi, buffer_t buff):&#160;data.c']]]
+];

@@ -1,0 +1,317 @@
+\hypertarget{messages_8h}{}\doxysection{Référence du fichier heads/messages.h}
+\label{messages_8h}\index{heads/messages.h@{heads/messages.h}}
+
+
+Fichier d\textquotesingle{}en-\/tête du module de gestion de l\textquotesingle{}affichage.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}./channels.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de messages.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{messages_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{messages_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMessage}{Message}}
+\begin{DoxyCompactList}\small\item\em Définition de la structure \mbox{\hyperlink{structMessage}{Message}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{messages_8h_a4b3e5374d9bf167a2dc4aec005e2b162}{tmp\+\_\+path}}~\char`\"{}./tmp/\char`\"{}
+\item 
+\#define \mbox{\hyperlink{messages_8h_a1f02f60afb419aa25921dcd8ae49f807}{MAX\+\_\+\+MESSAGES}}~1000
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{messages_8h_a4b730a54135212b79c62bbd9d7d2cffa}{init\+\_\+messages}} (\mbox{\hyperlink{structChannel}{Channel}} $\ast$\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}})
+\begin{DoxyCompactList}\small\item\em Create if not exists one file for each channel in the ./tmp directory to store messages. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{messages_8h_aea15116a63f4129938a31b36eb9a70c5}{store\+\_\+message}} (int channel, int user, \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff)
+\begin{DoxyCompactList}\small\item\em Store a message in the correct file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structMessage}{Message}} $\ast$ \mbox{\hyperlink{messages_8h_afd4a950862024394b4d372c114c01bc9}{get\+\_\+messages}} (int channel)
+\begin{DoxyCompactList}\small\item\em Get the messages object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{messages_8h_aefb236347d5eac6411544a7a937274ea}{display\+\_\+messages}} (\mbox{\hyperlink{structMessage}{Message}} $\ast$\mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}})
+\begin{DoxyCompactList}\small\item\em Display all messages from the file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{messages_8h_a970837226ebb803a4c2bfeb9da82910f}{delete\+\_\+messages}} (int channel)
+\begin{DoxyCompactList}\small\item\em Delete all messages from the file of the given channel and the file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier d\textquotesingle{}en-\/tête du module de gestion de l\textquotesingle{}affichage. 
+
+\begin{DoxyAuthor}{Auteur}
+Hakim FIDJEL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 avril 2024 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des macros}
+\mbox{\Hypertarget{messages_8h_a1f02f60afb419aa25921dcd8ae49f807}\label{messages_8h_a1f02f60afb419aa25921dcd8ae49f807}} 
+\index{messages.h@{messages.h}!MAX\_MESSAGES@{MAX\_MESSAGES}}
+\index{MAX\_MESSAGES@{MAX\_MESSAGES}!messages.h@{messages.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_MESSAGES}{MAX\_MESSAGES}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+MESSAGES~1000}
+
+
+
+Définition à la ligne 22 du fichier messages.\+h.
+
+\mbox{\Hypertarget{messages_8h_a4b3e5374d9bf167a2dc4aec005e2b162}\label{messages_8h_a4b3e5374d9bf167a2dc4aec005e2b162}} 
+\index{messages.h@{messages.h}!tmp\_path@{tmp\_path}}
+\index{tmp\_path@{tmp\_path}!messages.h@{messages.h}}
+\doxysubsubsection{\texorpdfstring{tmp\_path}{tmp\_path}}
+{\footnotesize\ttfamily \#define tmp\+\_\+path~\char`\"{}./tmp/\char`\"{}}
+
+
+
+Définition à la ligne 21 du fichier messages.\+h.
+
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{messages_8h_a970837226ebb803a4c2bfeb9da82910f}\label{messages_8h_a970837226ebb803a4c2bfeb9da82910f}} 
+\index{messages.h@{messages.h}!delete\_messages@{delete\_messages}}
+\index{delete\_messages@{delete\_messages}!messages.h@{messages.h}}
+\doxysubsubsection{\texorpdfstring{delete\_messages()}{delete\_messages()}}
+{\footnotesize\ttfamily void delete\+\_\+messages (\begin{DoxyParamCaption}\item[{int}]{channel }\end{DoxyParamCaption})}
+
+
+
+Delete all messages from the file of the given channel and the file. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em channel} & The channel to delete the messages from \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 141 du fichier messages.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{142 \{}
+\DoxyCodeLine{143     \textcolor{keywordtype}{char} path[100];}
+\DoxyCodeLine{144     sprintf(path, \textcolor{stringliteral}{"{}\%s\%d"{}}, \mbox{\hyperlink{messages_8h_a4b3e5374d9bf167a2dc4aec005e2b162}{tmp\_path}}, channel);}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146     \textcolor{keywordflow}{if} (remove(path) != 0)}
+\DoxyCodeLine{147     \{}
+\DoxyCodeLine{148         fprintf(stderr, \textcolor{stringliteral}{"{}Erreur : Impossible de supprimer le fichier \%s\(\backslash\)n"{}}, path);}
+\DoxyCodeLine{149     \}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{152 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{messages_8h_aefb236347d5eac6411544a7a937274ea}\label{messages_8h_aefb236347d5eac6411544a7a937274ea}} 
+\index{messages.h@{messages.h}!display\_messages@{display\_messages}}
+\index{display\_messages@{display\_messages}!messages.h@{messages.h}}
+\doxysubsubsection{\texorpdfstring{display\_messages()}{display\_messages()}}
+{\footnotesize\ttfamily void display\+\_\+messages (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMessage}{Message}} $\ast$}]{messages }\end{DoxyParamCaption})}
+
+
+
+Display all messages from the file. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em messages} & The messages to display \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 116 du fichier messages.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{117 \{}
+\DoxyCodeLine{118     \textcolor{keywordflow}{if} (\mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}} == NULL)}
+\DoxyCodeLine{119     \{}
+\DoxyCodeLine{120         fprintf(stderr, \textcolor{stringliteral}{"{}Erreur : Le tableau de messages est NULL.\(\backslash\)n"{}});}
+\DoxyCodeLine{121         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{122     \}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{messages_8h_a1f02f60afb419aa25921dcd8ae49f807}{MAX\_MESSAGES}}; i++)}
+\DoxyCodeLine{125     \{}
+\DoxyCodeLine{126         \textcolor{keywordflow}{if} (\mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}}[i].\textcolor{keywordtype}{id} == -\/1)}
+\DoxyCodeLine{127         \{}
+\DoxyCodeLine{128             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{129         \}}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131         printf(\textcolor{stringliteral}{"{}\%d\#\%d\#\%s\#\%ld\(\backslash\)n"{}}, \mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}}[i].\textcolor{keywordtype}{id}, \mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}}[i].user, \mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}}[i].buff, \mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}}[i].timestamp);}
+\DoxyCodeLine{132     \}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{135 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{messages_8h_afd4a950862024394b4d372c114c01bc9}\label{messages_8h_afd4a950862024394b4d372c114c01bc9}} 
+\index{messages.h@{messages.h}!get\_messages@{get\_messages}}
+\index{get\_messages@{get\_messages}!messages.h@{messages.h}}
+\doxysubsubsection{\texorpdfstring{get\_messages()}{get\_messages()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMessage}{Message}}$\ast$ get\+\_\+messages (\begin{DoxyParamCaption}\item[{int}]{channel }\end{DoxyParamCaption})}
+
+
+
+Get the messages object. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em channel} & The channel to get the messages from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Message$\ast$ 
+\end{DoxyReturn}
+
+
+Définition à la ligne 88 du fichier messages.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{89 \{}
+\DoxyCodeLine{90     \textcolor{keywordtype}{char} path[100];}
+\DoxyCodeLine{91     sprintf(path, \textcolor{stringliteral}{"{}\%s\%d"{}}, \mbox{\hyperlink{messages_8h_a4b3e5374d9bf167a2dc4aec005e2b162}{tmp\_path}}, channel);}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     FILE *file = fopen(path, \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{94     \textcolor{keywordflow}{if} (file == NULL)}
+\DoxyCodeLine{95     \{}
+\DoxyCodeLine{96         fprintf(stderr, \textcolor{stringliteral}{"{}Erreur : Impossible d'ouvrir le fichier \%s\(\backslash\)n"{}}, path);}
+\DoxyCodeLine{97         \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{98     \}}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{101     \textcolor{keywordflow}{while} (fscanf(file, \textcolor{stringliteral}{"{}\%d\#\%d\#\%s\#\%ld\(\backslash\)n"{}}, \&\mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}}[i].\textcolor{keywordtype}{id}, \&\mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}}[i].user, \mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}}[i].buff, \&\mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}}[i].timestamp) != EOF)}
+\DoxyCodeLine{102     \{}
+\DoxyCodeLine{103         i++;}
+\DoxyCodeLine{104     \}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106     fclose(file);}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108     \textcolor{keywordflow}{return} \mbox{\hyperlink{messages_8c_ae72d029075bb7ee3de3e4b4bc34f813d}{messages}};}
+\DoxyCodeLine{109 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{messages_8h_a4b730a54135212b79c62bbd9d7d2cffa}\label{messages_8h_a4b730a54135212b79c62bbd9d7d2cffa}} 
+\index{messages.h@{messages.h}!init\_messages@{init\_messages}}
+\index{init\_messages@{init\_messages}!messages.h@{messages.h}}
+\doxysubsubsection{\texorpdfstring{init\_messages()}{init\_messages()}}
+{\footnotesize\ttfamily void init\+\_\+messages (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structChannel}{Channel}} $\ast$}]{channels }\end{DoxyParamCaption})}
+
+
+
+Create if not exists one file for each channel in the ./tmp directory to store messages. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em channels} & tableau de channels \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 19 du fichier messages.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21     \textcolor{keywordtype}{char} path[100];}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordflow}{if} (\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}} == NULL)}
+\DoxyCodeLine{24     \{}
+\DoxyCodeLine{25         fprintf(stderr, \textcolor{stringliteral}{"{}Erreur: Le tableau de channels est NULL.\(\backslash\)n"{}});}
+\DoxyCodeLine{26         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{27     \}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{channels_8h_ac69ee46f4a51ed14f0d68628c2dec71d}{MAX\_CHANNELS}}; i++)}
+\DoxyCodeLine{30     \{}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{keywordflow}{if} (\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\textcolor{keywordtype}{id} == -\/1)}
+\DoxyCodeLine{33         \{}
+\DoxyCodeLine{34             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{35         \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37         sprintf(path, \textcolor{stringliteral}{"{}\%s\%d"{}}, \mbox{\hyperlink{messages_8h_a4b3e5374d9bf167a2dc4aec005e2b162}{tmp\_path}}, \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\textcolor{keywordtype}{id});}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         FILE *file = fopen(path, \textcolor{stringliteral}{"{}a"{}});}
+\DoxyCodeLine{40         \textcolor{keywordflow}{if} (file == NULL)}
+\DoxyCodeLine{41         \{}
+\DoxyCodeLine{42             fprintf(stderr, \textcolor{stringliteral}{"{}Erreur : Impossible de créer ou ouvrir le fichier \%s\(\backslash\)n"{}}, path);}
+\DoxyCodeLine{43         \}}
+\DoxyCodeLine{44         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{45         \{}
+\DoxyCodeLine{46             fclose(file);}
+\DoxyCodeLine{47         \}}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{messages_8h_aea15116a63f4129938a31b36eb9a70c5}\label{messages_8h_aea15116a63f4129938a31b36eb9a70c5}} 
+\index{messages.h@{messages.h}!store\_message@{store\_message}}
+\index{store\_message@{store\_message}!messages.h@{messages.h}}
+\doxysubsubsection{\texorpdfstring{store\_message()}{store\_message()}}
+{\footnotesize\ttfamily void store\+\_\+message (\begin{DoxyParamCaption}\item[{int}]{channel,  }\item[{int}]{user,  }\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff }\end{DoxyParamCaption})}
+
+
+
+Store a message in the correct file. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em channel} & The channel where the message is sent \\
+\hline
+{\em user} & The user who sent the message \\
+\hline
+{\em buff} & The message to store \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 58 du fichier messages.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{59 \{}
+\DoxyCodeLine{60     \textcolor{keywordtype}{char} path[100];}
+\DoxyCodeLine{61     \textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = \mbox{\hyperlink{messages_8c_a492376c77a23ff458baa5683cdfd5353}{MESSAGE\_ID}}++;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     sprintf(path, \textcolor{stringliteral}{"{}\%s\%d"{}}, \mbox{\hyperlink{messages_8h_a4b3e5374d9bf167a2dc4aec005e2b162}{tmp\_path}}, channel);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     FILE *file = fopen(path, \textcolor{stringliteral}{"{}a"{}});}
+\DoxyCodeLine{66     \textcolor{keywordflow}{if} (file == NULL)}
+\DoxyCodeLine{67     \{}
+\DoxyCodeLine{68         fprintf(stderr, \textcolor{stringliteral}{"{}Erreur : Impossible d'ouvrir le fichier \%s\(\backslash\)n"{}}, path);}
+\DoxyCodeLine{69         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{70     \}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     time\_t timestamp;}
+\DoxyCodeLine{73     time(\&timestamp);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75     fprintf(file, \textcolor{stringliteral}{"{}\%d\#\%d\#\%s\#\%ld\(\backslash\)n"{}}, \textcolor{keywordtype}{id}, user, buff, timestamp);}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77     fclose(file);}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{80 \}}
+
+\end{DoxyCode}

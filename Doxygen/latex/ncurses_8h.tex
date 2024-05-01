@@ -1,0 +1,367 @@
+\hypertarget{ncurses_8h}{}\doxysection{Référence du fichier heads/ncurses.h}
+\label{ncurses_8h}\index{heads/ncurses.h@{heads/ncurses.h}}
+
+
+Fichier d\textquotesingle{}en-\/tête du module de gestion de l\textquotesingle{}affichage.  
+
+
+{\ttfamily \#include $<$ncursesw/ncurses.\+h$>$}\newline
+{\ttfamily \#include $<$locale.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}./session.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de ncurses.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ncurses_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{ncurses_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{ncurses_8h_aa24597a54a085c6c2c33b64138f09eff}{MAX\+\_\+\+MSG}}~100
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ncurses_8h_a85769112d75b553ce8125bfda23f32bc}{init\+\_\+ncurses}} ()
+\begin{DoxyCompactList}\small\item\em Initialize ncurses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ncurses_8h_a134cc5f27e42b6d1ca0c65019a518b3d}{create\+\_\+windows}} ()
+\begin{DoxyCompactList}\small\item\em Create windows. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ncurses_8h_a9eeb19d5f83c71ccac6e3634f9e9acff}{config\+\_\+colors}} ()
+\begin{DoxyCompactList}\small\item\em Display the main window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ncurses_8h_ad4fa66ee9ec2c1d62347496692116fb1}{display\+\_\+message}} (WINDOW $\ast$win, char $\ast$msg, int root)
+\begin{DoxyCompactList}\small\item\em Display message in the window specified. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ncurses_8h_a2f5c5e279980697501b0250a932c54c7}{main\+\_\+loop\+\_\+ncurses}} ()
+\begin{DoxyCompactList}\small\item\em The main loop of the ncurses interface. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ncurses_8h_a4b66d5e31b5dc18b314c8a68163263bd}{cleanup}} ()
+\begin{DoxyCompactList}\small\item\em Cleanup ncurses. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier d\textquotesingle{}en-\/tête du module de gestion de l\textquotesingle{}affichage. 
+
+\begin{DoxyAuthor}{Auteur}
+Younes Boughriet 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+15 avril 2024 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des macros}
+\mbox{\Hypertarget{ncurses_8h_aa24597a54a085c6c2c33b64138f09eff}\label{ncurses_8h_aa24597a54a085c6c2c33b64138f09eff}} 
+\index{ncurses.h@{ncurses.h}!MAX\_MSG@{MAX\_MSG}}
+\index{MAX\_MSG@{MAX\_MSG}!ncurses.h@{ncurses.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_MSG}{MAX\_MSG}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+MSG~100}
+
+
+
+Définition à la ligne 26 du fichier ncurses.\+h.
+
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{ncurses_8h_a4b66d5e31b5dc18b314c8a68163263bd}\label{ncurses_8h_a4b66d5e31b5dc18b314c8a68163263bd}} 
+\index{ncurses.h@{ncurses.h}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!ncurses.h@{ncurses.h}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
+{\footnotesize\ttfamily void cleanup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cleanup ncurses. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 197 du fichier ncurses.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{198 \{}
+\DoxyCodeLine{199     delwin(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}});}
+\DoxyCodeLine{200     delwin(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}});}
+\DoxyCodeLine{201     delwin(\mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}});}
+\DoxyCodeLine{202     endwin();}
+\DoxyCodeLine{203 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{ncurses_8h_a9eeb19d5f83c71ccac6e3634f9e9acff}\label{ncurses_8h_a9eeb19d5f83c71ccac6e3634f9e9acff}} 
+\index{ncurses.h@{ncurses.h}!config\_colors@{config\_colors}}
+\index{config\_colors@{config\_colors}!ncurses.h@{ncurses.h}}
+\doxysubsubsection{\texorpdfstring{config\_colors()}{config\_colors()}}
+{\footnotesize\ttfamily void config\+\_\+colors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display the main window. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 55 du fichier ncurses.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{56 \{}
+\DoxyCodeLine{57     init\_pair(1, COLOR\_WHITE, COLOR\_BLUE);}
+\DoxyCodeLine{58     init\_pair(2, COLOR\_WHITE, COLOR\_MAGENTA);}
+\DoxyCodeLine{59     init\_pair(3, COLOR\_BLACK, COLOR\_WHITE);}
+\DoxyCodeLine{60     init\_pair(4, COLOR\_RED, COLOR\_MAGENTA);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     wbkgd(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, COLOR\_PAIR(2));}
+\DoxyCodeLine{63     wbkgd(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}}, COLOR\_PAIR(3));}
+\DoxyCodeLine{64     wbkgd(\mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}}, COLOR\_PAIR(2));}
+\DoxyCodeLine{65     scrollok(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, TRUE);}
+\DoxyCodeLine{66 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{ncurses_8h_a134cc5f27e42b6d1ca0c65019a518b3d}\label{ncurses_8h_a134cc5f27e42b6d1ca0c65019a518b3d}} 
+\index{ncurses.h@{ncurses.h}!create\_windows@{create\_windows}}
+\index{create\_windows@{create\_windows}!ncurses.h@{ncurses.h}}
+\doxysubsubsection{\texorpdfstring{create\_windows()}{create\_windows()}}
+{\footnotesize\ttfamily void create\+\_\+windows (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create windows. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 42 du fichier ncurses.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43 \{}
+\DoxyCodeLine{44     \mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}} = newwin(\mbox{\hyperlink{ncurses_8c_ad12fc34ce789bce6c8a05d8a17138534}{height}} -\/ 3, \mbox{\hyperlink{ncurses_8c_a209ec2bf57de0f29d499648d22024b4a}{main\_width}}, 0, 0);}
+\DoxyCodeLine{45     \mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}} = newwin(3, \mbox{\hyperlink{ncurses_8c_a209ec2bf57de0f29d499648d22024b4a}{main\_width}}, \mbox{\hyperlink{ncurses_8c_ad12fc34ce789bce6c8a05d8a17138534}{height}} -\/ 3, 0);}
+\DoxyCodeLine{46     \mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}} = newwin(\mbox{\hyperlink{ncurses_8c_ad12fc34ce789bce6c8a05d8a17138534}{height}}, \mbox{\hyperlink{ncurses_8c_ac94d8bc2e952aa8151d301a08a6f14e0}{side\_width}}, 0, \mbox{\hyperlink{ncurses_8c_a209ec2bf57de0f29d499648d22024b4a}{main\_width}});}
+\DoxyCodeLine{47 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{ncurses_8h_ad4fa66ee9ec2c1d62347496692116fb1}\label{ncurses_8h_ad4fa66ee9ec2c1d62347496692116fb1}} 
+\index{ncurses.h@{ncurses.h}!display\_message@{display\_message}}
+\index{display\_message@{display\_message}!ncurses.h@{ncurses.h}}
+\doxysubsubsection{\texorpdfstring{display\_message()}{display\_message()}}
+{\footnotesize\ttfamily void display\+\_\+message (\begin{DoxyParamCaption}\item[{WINDOW $\ast$}]{win,  }\item[{char $\ast$}]{msg,  }\item[{int}]{root }\end{DoxyParamCaption})}
+
+
+
+Display message in the window specified. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em win} & the window to display the message \\
+\hline
+{\em msg} & the message to display \\
+\hline
+{\em root} & 1 if the message is from the server, 0 otherwise \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 75 du fichier ncurses.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77     \textcolor{keywordtype}{int} y, x, max\_y, max\_x;}
+\DoxyCodeLine{78     getyx(win, y, x);            \textcolor{comment}{// Récupère la position courante du curseur}}
+\DoxyCodeLine{79     getmaxyx(win, max\_y, max\_x); \textcolor{comment}{// Récupère les dimensions de la fenêtre}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81     \textcolor{keywordflow}{if} (y >= max\_y -\/ 1)}
+\DoxyCodeLine{82     \{                  \textcolor{comment}{// Vérifie si le curseur est à la fin de la fenêtre}}
+\DoxyCodeLine{83         wscrl(win, 1); \textcolor{comment}{// Fait défiler la fenêtre d'une ligne vers le haut}}
+\DoxyCodeLine{84     \}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     \textcolor{comment}{// Affichage du message}}
+\DoxyCodeLine{87     \textcolor{keywordflow}{if} (root == 1)}
+\DoxyCodeLine{88     \{}
+\DoxyCodeLine{89         wattron(win, COLOR\_PAIR(4));}
+\DoxyCodeLine{90     \}}
+\DoxyCodeLine{91     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{92     \{}
+\DoxyCodeLine{93         wattron(win, COLOR\_PAIR(2));}
+\DoxyCodeLine{94     \}}
+\DoxyCodeLine{95     mvwprintw(win, y, 1, \textcolor{stringliteral}{"{}\%s\(\backslash\)n"{}}, msg);}
+\DoxyCodeLine{96     wattroff(win, COLOR\_PAIR(root == 1 ? 4 : 2));}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     box(win, 0, 0); \textcolor{comment}{// Redessine les bordures}}
+\DoxyCodeLine{99     wrefresh(win);  \textcolor{comment}{// Rafraîchit la fenêtre}}
+\DoxyCodeLine{100 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{ncurses_8h_a85769112d75b553ce8125bfda23f32bc}\label{ncurses_8h_a85769112d75b553ce8125bfda23f32bc}} 
+\index{ncurses.h@{ncurses.h}!init\_ncurses@{init\_ncurses}}
+\index{init\_ncurses@{init\_ncurses}!ncurses.h@{ncurses.h}}
+\doxysubsubsection{\texorpdfstring{init\_ncurses()}{init\_ncurses()}}
+{\footnotesize\ttfamily void init\+\_\+ncurses (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize ncurses. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 23 du fichier ncurses.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{24 \{}
+\DoxyCodeLine{25     setlocale(LC\_ALL, \textcolor{stringliteral}{"{}"{}}); \textcolor{comment}{// Pour supporter les caractères UTF-\/8}}
+\DoxyCodeLine{26     initscr();}
+\DoxyCodeLine{27     start\_color();}
+\DoxyCodeLine{28     cbreak();}
+\DoxyCodeLine{29     noecho();}
+\DoxyCodeLine{30     keypad(stdscr, TRUE);}
+\DoxyCodeLine{31     getmaxyx(stdscr, \mbox{\hyperlink{ncurses_8c_ad12fc34ce789bce6c8a05d8a17138534}{height}}, \mbox{\hyperlink{ncurses_8c_a2474a5474cbff19523a51eb1de01cda4}{width}});}
+\DoxyCodeLine{32     \mbox{\hyperlink{ncurses_8c_a209ec2bf57de0f29d499648d22024b4a}{main\_width}} = \mbox{\hyperlink{ncurses_8c_a2474a5474cbff19523a51eb1de01cda4}{width}} * 3 / 4;}
+\DoxyCodeLine{33     \mbox{\hyperlink{ncurses_8c_ac94d8bc2e952aa8151d301a08a6f14e0}{side\_width}} = \mbox{\hyperlink{ncurses_8c_a2474a5474cbff19523a51eb1de01cda4}{width}} -\/ \mbox{\hyperlink{ncurses_8c_a209ec2bf57de0f29d499648d22024b4a}{main\_width}};}
+\DoxyCodeLine{34 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{ncurses_8h_a2f5c5e279980697501b0250a932c54c7}\label{ncurses_8h_a2f5c5e279980697501b0250a932c54c7}} 
+\index{ncurses.h@{ncurses.h}!main\_loop\_ncurses@{main\_loop\_ncurses}}
+\index{main\_loop\_ncurses@{main\_loop\_ncurses}!ncurses.h@{ncurses.h}}
+\doxysubsubsection{\texorpdfstring{main\_loop\_ncurses()}{main\_loop\_ncurses()}}
+{\footnotesize\ttfamily void main\+\_\+loop\+\_\+ncurses (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The main loop of the ncurses interface. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 107 du fichier ncurses.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{108 \{}
+\DoxyCodeLine{109     \textcolor{keywordtype}{char} msg[\mbox{\hyperlink{ncurses_8h_aa24597a54a085c6c2c33b64138f09eff}{MAX\_MSG}}];}
+\DoxyCodeLine{110     \textcolor{keywordtype}{int} ch, i = 0;}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     box(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, 0, 0);}
+\DoxyCodeLine{113     box(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}}, 0, 0);}
+\DoxyCodeLine{114     box(\mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}}, 0, 0);}
+\DoxyCodeLine{115     wrefresh(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}});}
+\DoxyCodeLine{116     wrefresh(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}});}
+\DoxyCodeLine{117     wrefresh(\mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}});}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     wmove(\mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}}, 1, 1);}
+\DoxyCodeLine{120     wprintw(\mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}}, \textcolor{stringliteral}{"{}Logs : "{}});}
+\DoxyCodeLine{121     wrefresh(\mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}});}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123     wmove(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, 1, 1);}
+\DoxyCodeLine{124     wprintw(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, \textcolor{stringliteral}{"{}Discord Style Chat (type '/disconnect' to quit)"{}});}
+\DoxyCodeLine{125     wrefresh(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}});}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{128     \{}
+\DoxyCodeLine{129         wmove(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}}, 1, 1); \textcolor{comment}{// Move cursor to start of input line}}
+\DoxyCodeLine{130         wclrtoeol(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}});   \textcolor{comment}{// Clear the input line}}
+\DoxyCodeLine{131         box(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}}, 0, 0);   \textcolor{comment}{// Redraw box to ensure borders are intact}}
+\DoxyCodeLine{132         wrefresh(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}});    \textcolor{comment}{// Refresh the window to reflect changes}}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134         i = 0;}
+\DoxyCodeLine{135         \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{136         \{}
+\DoxyCodeLine{137             ch = wgetch(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}});}
+\DoxyCodeLine{138             \textcolor{keywordflow}{if} (ch == \textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{139                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{140             \textcolor{keywordflow}{if} (ch == KEY\_RESIZE)}
+\DoxyCodeLine{141             \{}
+\DoxyCodeLine{142                 endwin();  \textcolor{comment}{// Temporarily end ncurses mode to clear buffers}}
+\DoxyCodeLine{143                 refresh(); \textcolor{comment}{// Refresh the standard screen to clear the ncurses formatting}}
+\DoxyCodeLine{144                 clear();   \textcolor{comment}{// Clear the screen from any leftovers}}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146                 getmaxyx(stdscr, \mbox{\hyperlink{ncurses_8c_ad12fc34ce789bce6c8a05d8a17138534}{height}}, \mbox{\hyperlink{ncurses_8c_a2474a5474cbff19523a51eb1de01cda4}{width}}); \textcolor{comment}{// Get new dimensions}}
+\DoxyCodeLine{147                 \mbox{\hyperlink{ncurses_8c_a209ec2bf57de0f29d499648d22024b4a}{main\_width}} = \mbox{\hyperlink{ncurses_8c_a2474a5474cbff19523a51eb1de01cda4}{width}} * 3 / 4;}
+\DoxyCodeLine{148                 \mbox{\hyperlink{ncurses_8c_ac94d8bc2e952aa8151d301a08a6f14e0}{side\_width}} = \mbox{\hyperlink{ncurses_8c_a2474a5474cbff19523a51eb1de01cda4}{width}} -\/ \mbox{\hyperlink{ncurses_8c_a209ec2bf57de0f29d499648d22024b4a}{main\_width}};}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150                 \textcolor{comment}{// Delete old windows}}
+\DoxyCodeLine{151                 delwin(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}});}
+\DoxyCodeLine{152                 delwin(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}});}
+\DoxyCodeLine{153                 delwin(\mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}});}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155                 \textcolor{comment}{// Create new windows with new dimensions}}
+\DoxyCodeLine{156                 \mbox{\hyperlink{ncurses_8c_a134cc5f27e42b6d1ca0c65019a518b3d}{create\_windows}}();}
+\DoxyCodeLine{157                 \mbox{\hyperlink{ncurses_8c_a9eeb19d5f83c71ccac6e3634f9e9acff}{config\_colors}}();}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159                 \textcolor{comment}{// Redraw borders and refresh each window}}
+\DoxyCodeLine{160                 box(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, 0, 0);}
+\DoxyCodeLine{161                 box(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}}, 0, 0);}
+\DoxyCodeLine{162                 box(\mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}}, 0, 0);}
+\DoxyCodeLine{163                 wrefresh(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}});}
+\DoxyCodeLine{164                 wrefresh(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}});}
+\DoxyCodeLine{165                 wrefresh(\mbox{\hyperlink{ncurses_8c_a1a23795cf8e646860c2bcf501e3663cc}{logs\_win}});}
+\DoxyCodeLine{166                 \textcolor{keywordflow}{continue}; \textcolor{comment}{// Skip the rest of the loop to handle resizing properly}}
+\DoxyCodeLine{167             \}}
+\DoxyCodeLine{168             \textcolor{keywordflow}{if} (ch == KEY\_BACKSPACE || ch == 127)}
+\DoxyCodeLine{169             \{}
+\DoxyCodeLine{170                 \textcolor{keywordflow}{if} (i > 0)}
+\DoxyCodeLine{171                 \{}
+\DoxyCodeLine{172                     i-\/-\/;}
+\DoxyCodeLine{173                     mvwdelch(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}}, 1, i + 1);}
+\DoxyCodeLine{174                 \}}
+\DoxyCodeLine{175             \}}
+\DoxyCodeLine{176             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i < \mbox{\hyperlink{ncurses_8h_aa24597a54a085c6c2c33b64138f09eff}{MAX\_MSG}} -\/ 1)}
+\DoxyCodeLine{177             \{}
+\DoxyCodeLine{178                 msg[i++] = ch;}
+\DoxyCodeLine{179                 waddch(\mbox{\hyperlink{ncurses_8c_a4ddf24f0dad385fc7299e42d37212b7f}{bottom\_win}}, ch);}
+\DoxyCodeLine{180             \}}
+\DoxyCodeLine{181         \}}
+\DoxyCodeLine{182         msg[i] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184         \textcolor{keywordflow}{if} (strcmp(msg, \textcolor{stringliteral}{"{}/disconnect"{}}) == 0)}
+\DoxyCodeLine{185             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{186 }
+\DoxyCodeLine{187         \textcolor{comment}{// Display message in top window}}
+\DoxyCodeLine{188         \mbox{\hyperlink{ncurses_8c_ad4fa66ee9ec2c1d62347496692116fb1}{display\_message}}(\mbox{\hyperlink{ncurses_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, msg, 0);}
+\DoxyCodeLine{189     \}}
+\DoxyCodeLine{190 \}}
+
+\end{DoxyCode}

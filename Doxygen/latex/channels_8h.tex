@@ -1,0 +1,535 @@
+\hypertarget{channels_8h}{}\doxysection{Référence du fichier heads/channels.h}
+\label{channels_8h}\index{heads/channels.h@{heads/channels.h}}
+
+
+Fichier d\textquotesingle{}en-\/tête pour la gestion des channels.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}./users.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de channels.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{channels_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{channels_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structChannel}{Channel}}
+\begin{DoxyCompactList}\small\item\em Définition de la structure \mbox{\hyperlink{structChannel}{Channel}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{channels_8h_ac69ee46f4a51ed14f0d68628c2dec71d}{MAX\+\_\+\+CHANNELS}}~10
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{channels_8h_a42827ea89bbd3c04d00346f22735e8a1}{init\+\_\+channels}} ()
+\begin{DoxyCompactList}\small\item\em initialisation des channels \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structChannel}{Channel}} \mbox{\hyperlink{channels_8h_a2ce77f3b2875c281b65ab47b77a179c8}{add\+\_\+channel}} (\mbox{\hyperlink{structUser}{User}} host, char name\mbox{[}50\mbox{]})
+\item 
+void \mbox{\hyperlink{channels_8h_a3f8d5caf8ec194e99fd6b9448e691035}{remove\+\_\+channel}} (\mbox{\hyperlink{structChannel}{Channel}} $\ast$channel)
+\item 
+bool \mbox{\hyperlink{channels_8h_af4c5f90e0c53aac0bde90845528239e6}{is\+\_\+user\+\_\+allowed\+\_\+in\+\_\+channel}} (\mbox{\hyperlink{structUser}{User}} user, \mbox{\hyperlink{structChannel}{Channel}} channel)
+\begin{DoxyCompactList}\small\item\em Vérifie si un utilisateur est dans un channel. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{channels_8h_ab9b8cf695bf540c431ebbaa2e3756026}{is\+\_\+user\+\_\+in\+\_\+channel}} (\mbox{\hyperlink{structUser}{User}} user, \mbox{\hyperlink{structChannel}{Channel}} channel)
+\begin{DoxyCompactList}\small\item\em Vérifie si un utilisateur est dans un channel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structChannel}{Channel}} $\ast$ \mbox{\hyperlink{channels_8h_a6dc7b7a95bc5e7589fad56b2dae92ae5}{get\+\_\+channel\+\_\+by\+\_\+id}} (int id)
+\begin{DoxyCompactList}\small\item\em Get the channel by id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{channels_8h_a32720f2a2312969f7af0053215cced43}{add\+\_\+user\+\_\+to\+\_\+channel}} (\mbox{\hyperlink{structUser}{User}} user, \mbox{\hyperlink{structChannel}{Channel}} $\ast$channel)
+\begin{DoxyCompactList}\small\item\em add user to channel \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{channels_8h_a56a72e13eaabcb1291f0d9816e37bb41}{display\+\_\+channels}} (\mbox{\hyperlink{structUser}{User}} user, \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff)
+\begin{DoxyCompactList}\small\item\em display channels \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{channels_8h_a46fcb7dac5ad40d167f6577241706ff6}{display\+\_\+users\+\_\+in\+\_\+channel}} (\mbox{\hyperlink{structChannel}{Channel}} channel, \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff)
+\begin{DoxyCompactList}\small\item\em display users in channel \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{channels_8h_a9e1f544ff03e9a596eb3f9563660d747}{remove\+\_\+user\+\_\+from\+\_\+channel}} (\mbox{\hyperlink{structUser}{User}} user, \mbox{\hyperlink{structChannel}{Channel}} $\ast$channel)
+\begin{DoxyCompactList}\small\item\em remove user from channel \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structChannel}{Channel}} $\ast$ \mbox{\hyperlink{channels_8h_a8d77c34c91216b69a3b3cf2df8af568f}{get\+\_\+channels}} ()
+\begin{DoxyCompactList}\small\item\em get channels \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fichier d\textquotesingle{}en-\/tête pour la gestion des channels. 
+
+\begin{DoxyAuthor}{Auteur}
+Hakim FIDJEL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 avril 2024 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des macros}
+\mbox{\Hypertarget{channels_8h_ac69ee46f4a51ed14f0d68628c2dec71d}\label{channels_8h_ac69ee46f4a51ed14f0d68628c2dec71d}} 
+\index{channels.h@{channels.h}!MAX\_CHANNELS@{MAX\_CHANNELS}}
+\index{MAX\_CHANNELS@{MAX\_CHANNELS}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_CHANNELS}{MAX\_CHANNELS}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+CHANNELS~10}
+
+
+
+Définition à la ligne 24 du fichier channels.\+h.
+
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{channels_8h_a2ce77f3b2875c281b65ab47b77a179c8}\label{channels_8h_a2ce77f3b2875c281b65ab47b77a179c8}} 
+\index{channels.h@{channels.h}!add\_channel@{add\_channel}}
+\index{add\_channel@{add\_channel}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{add\_channel()}{add\_channel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structChannel}{Channel}} add\+\_\+channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structUser}{User}}}]{host,  }\item[{char}]{name\mbox{[}50\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Définition à la ligne 50 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{51 \{}
+\DoxyCodeLine{52     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{channels_8h_ac69ee46f4a51ed14f0d68628c2dec71d}{MAX\_CHANNELS}}; i++)}
+\DoxyCodeLine{53     \{}
+\DoxyCodeLine{54         \textcolor{keywordflow}{if} (\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\textcolor{keywordtype}{id} == -\/1)}
+\DoxyCodeLine{55         \{}
+\DoxyCodeLine{56             \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}} = i;}
+\DoxyCodeLine{57             \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\mbox{\hyperlink{structChannel_a9bd0f085b3a519a6dbfbfa9c56ffb4c4}{host}} = host;}
+\DoxyCodeLine{58             strcpy(\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].name, name);}
+\DoxyCodeLine{59             printf(\textcolor{stringliteral}{"{}[add\_channel] \%s [\%d] added\(\backslash\)n"{}}, name, i);}
+\DoxyCodeLine{60             \mbox{\hyperlink{channels_8c_a32720f2a2312969f7af0053215cced43}{add\_user\_to\_channel}}(host, \&\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i]);}
+\DoxyCodeLine{61             \textcolor{keywordflow}{return} \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i];}
+\DoxyCodeLine{62         \}}
+\DoxyCodeLine{63     \}}
+\DoxyCodeLine{64 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{channels_8h_a32720f2a2312969f7af0053215cced43}\label{channels_8h_a32720f2a2312969f7af0053215cced43}} 
+\index{channels.h@{channels.h}!add\_user\_to\_channel@{add\_user\_to\_channel}}
+\index{add\_user\_to\_channel@{add\_user\_to\_channel}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{add\_user\_to\_channel()}{add\_user\_to\_channel()}}
+{\footnotesize\ttfamily void add\+\_\+user\+\_\+to\+\_\+channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structUser}{User}}}]{user,  }\item[{\mbox{\hyperlink{structChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})}
+
+
+
+add user to channel 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em user} & The user to add \\
+\hline
+{\em channel} & The channel to add the user to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 239 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{240 \{}
+\DoxyCodeLine{241     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\_USERS}}; i++)}
+\DoxyCodeLine{242     \{}
+\DoxyCodeLine{243         \textcolor{keywordflow}{if} (channel-\/>\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[i] == -\/1)}
+\DoxyCodeLine{244         \{}
+\DoxyCodeLine{245             channel-\/>\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[i] = user.\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}};}
+\DoxyCodeLine{246             printf(\textcolor{stringliteral}{"{}[add\_user\_to\_channel] \%s added to channel \%s\(\backslash\)n"{}}, user.\mbox{\hyperlink{structUser_aa4a4e3cd80081b7dd0f5fd96f9e997b2}{name}}, channel-\/>\mbox{\hyperlink{structChannel_a1b5bcacc9a155f7323c96a98e1559d8e}{name}});}
+\DoxyCodeLine{247 }
+\DoxyCodeLine{248             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{249         \}}
+\DoxyCodeLine{250     \}}
+\DoxyCodeLine{251 }
+\DoxyCodeLine{252     printf(\textcolor{stringliteral}{"{}[add\_user\_to\_channel] \%s not added to channel \%s\(\backslash\)n"{}}, user.\mbox{\hyperlink{structUser_aa4a4e3cd80081b7dd0f5fd96f9e997b2}{name}}, channel-\/>\mbox{\hyperlink{structChannel_a1b5bcacc9a155f7323c96a98e1559d8e}{name}});}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{255 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{channels_8h_a56a72e13eaabcb1291f0d9816e37bb41}\label{channels_8h_a56a72e13eaabcb1291f0d9816e37bb41}} 
+\index{channels.h@{channels.h}!display\_channels@{display\_channels}}
+\index{display\_channels@{display\_channels}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{display\_channels()}{display\_channels()}}
+{\footnotesize\ttfamily void display\+\_\+channels (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structUser}{User}}}]{user,  }\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff }\end{DoxyParamCaption})}
+
+
+
+display channels 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em user} & The user to display the channels to \\
+\hline
+{\em buff} & The buffer to display the channels to \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 139 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{140 \{}
+\DoxyCodeLine{141     \textcolor{keywordtype}{char} \textcolor{keywordtype}{id}[10];}
+\DoxyCodeLine{142     buff[0] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144     printf(\textcolor{stringliteral}{"{}[display\_channels] \%s"{}}, user.\mbox{\hyperlink{structUser_aa4a4e3cd80081b7dd0f5fd96f9e997b2}{name}});}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146     strcat(buff, \textcolor{stringliteral}{"{}\(\backslash\)n*******************************************\(\backslash\)n"{}});}
+\DoxyCodeLine{147     strcat(buff, \textcolor{stringliteral}{"{}[display\_channels] Name | ID | Host\(\backslash\)n"{}});}
+\DoxyCodeLine{148 }
+\DoxyCodeLine{149     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{channels_8h_ac69ee46f4a51ed14f0d68628c2dec71d}{MAX\_CHANNELS}}; i++)}
+\DoxyCodeLine{150     \{}
+\DoxyCodeLine{151         \textcolor{keywordflow}{if} (\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\textcolor{keywordtype}{id} == -\/1)}
+\DoxyCodeLine{152         \{}
+\DoxyCodeLine{153             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{154         \}}
+\DoxyCodeLine{155         \textcolor{keywordflow}{if} (\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\textcolor{keywordtype}{id} != -\/1 \&\& \mbox{\hyperlink{channels_8c_aedd96e632c6b9e39c7601a602faf3b31}{is\_user\_allowed\_in\_channel}}(user, \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i]))}
+\DoxyCodeLine{156         \{}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158             strcat(buff, \textcolor{stringliteral}{"{} -\/ \(\backslash\)t "{}});}
+\DoxyCodeLine{159             strcat(buff, \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].name);}
+\DoxyCodeLine{160             strcat(buff, \textcolor{stringliteral}{"{} | "{}});}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162             sprintf(\textcolor{keywordtype}{id}, \textcolor{stringliteral}{"{}\%d"{}}, \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\textcolor{keywordtype}{id});}
+\DoxyCodeLine{163             strcat(buff, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{164             strcat(buff, \textcolor{stringliteral}{"{} | "{}});}
+\DoxyCodeLine{165             strcat(buff, \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].host.\mbox{\hyperlink{structChannel_a1b5bcacc9a155f7323c96a98e1559d8e}{name}});}
+\DoxyCodeLine{166             strcat(buff, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{167         \}}
+\DoxyCodeLine{168     \}}
+\DoxyCodeLine{169     strcat(buff, \textcolor{stringliteral}{"{}\(\backslash\)n*******************************************\(\backslash\)n"{}});}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{172 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{channels_8h_a46fcb7dac5ad40d167f6577241706ff6}\label{channels_8h_a46fcb7dac5ad40d167f6577241706ff6}} 
+\index{channels.h@{channels.h}!display\_users\_in\_channel@{display\_users\_in\_channel}}
+\index{display\_users\_in\_channel@{display\_users\_in\_channel}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{display\_users\_in\_channel()}{display\_users\_in\_channel()}}
+{\footnotesize\ttfamily void display\+\_\+users\+\_\+in\+\_\+channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structChannel}{Channel}}}]{channel,  }\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff }\end{DoxyParamCaption})}
+
+
+
+display users in channel 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em channel} & The channel to display the users from \\
+\hline
+{\em buff} & The buffer to display the users to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 181 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{182 \{}
+\DoxyCodeLine{183     buff[0] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{184     \textcolor{keywordtype}{char} \textcolor{keywordtype}{id}[10];}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186     \textcolor{keywordflow}{if} (channel.\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}} == -\/1)}
+\DoxyCodeLine{187     \{}
+\DoxyCodeLine{188         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{189     \}}
+\DoxyCodeLine{190 }
+\DoxyCodeLine{191     printf(\textcolor{stringliteral}{"{}[display\_users\_in\_channel] \%s\(\backslash\)n"{}}, channel.\mbox{\hyperlink{structChannel_a1b5bcacc9a155f7323c96a98e1559d8e}{name}});}
+\DoxyCodeLine{192 }
+\DoxyCodeLine{193     strcat(buff, \textcolor{stringliteral}{"{}\(\backslash\)n*******************************************\(\backslash\)n"{}});}
+\DoxyCodeLine{194     strcat(buff, \textcolor{stringliteral}{"{}[display\_users\_in\_channel] Users in "{}});}
+\DoxyCodeLine{195     strcat(buff, channel.\mbox{\hyperlink{structChannel_a1b5bcacc9a155f7323c96a98e1559d8e}{name}});}
+\DoxyCodeLine{196     strcat(buff, \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{197     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\_USERS}}; i++)}
+\DoxyCodeLine{198     \{}
+\DoxyCodeLine{199         \textcolor{keywordflow}{if} (channel.\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[i] != -\/1)}
+\DoxyCodeLine{200         \{}
+\DoxyCodeLine{201             sprintf(\textcolor{keywordtype}{id}, \textcolor{stringliteral}{"{}[ID : \%d]"{}}, channel.\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[i]);}
+\DoxyCodeLine{202             strcat(buff, \textcolor{keywordtype}{id});}
+\DoxyCodeLine{203             \textcolor{keywordflow}{if} (i < \mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\_USERS}} -\/ 1)}
+\DoxyCodeLine{204             \{}
+\DoxyCodeLine{205                 strcat(buff, \textcolor{stringliteral}{"{} | "{}});}
+\DoxyCodeLine{206             \}}
+\DoxyCodeLine{207         \}}
+\DoxyCodeLine{208     \}}
+\DoxyCodeLine{209     strcat(buff, \textcolor{stringliteral}{"{}\(\backslash\)n*******************************************\(\backslash\)n"{}});}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{212 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{channels_8h_a6dc7b7a95bc5e7589fad56b2dae92ae5}\label{channels_8h_a6dc7b7a95bc5e7589fad56b2dae92ae5}} 
+\index{channels.h@{channels.h}!get\_channel\_by\_id@{get\_channel\_by\_id}}
+\index{get\_channel\_by\_id@{get\_channel\_by\_id}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{get\_channel\_by\_id()}{get\_channel\_by\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structChannel}{Channel}}$\ast$ get\+\_\+channel\+\_\+by\+\_\+id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Get the channel by id. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em id} & The id of the channel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Channel$\ast$ 
+\end{DoxyReturn}
+
+
+Définition à la ligne 220 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{221 \{}
+\DoxyCodeLine{222     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{channels_8h_ac69ee46f4a51ed14f0d68628c2dec71d}{MAX\_CHANNELS}}; i++)}
+\DoxyCodeLine{223     \{}
+\DoxyCodeLine{224         \textcolor{keywordflow}{if} (\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\textcolor{keywordtype}{id} == \textcolor{keywordtype}{id})}
+\DoxyCodeLine{225         \{}
+\DoxyCodeLine{226             \textcolor{keywordflow}{return} \&\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i]; \textcolor{comment}{// Retourner l'adresse du channel trouvé}}
+\DoxyCodeLine{227         \}}
+\DoxyCodeLine{228     \}}
+\DoxyCodeLine{229     \textcolor{keywordflow}{return} NULL; \textcolor{comment}{// Retourner NULL si aucun channel correspondant n'est trouvé}}
+\DoxyCodeLine{230 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{channels_8h_a8d77c34c91216b69a3b3cf2df8af568f}\label{channels_8h_a8d77c34c91216b69a3b3cf2df8af568f}} 
+\index{channels.h@{channels.h}!get\_channels@{get\_channels}}
+\index{get\_channels@{get\_channels}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{get\_channels()}{get\_channels()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structChannel}{Channel}}$\ast$ get\+\_\+channels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get channels 
+
+\begin{DoxyReturn}{Renvoie}
+Channel$\ast$ 
+\end{DoxyReturn}
+
+
+Définition à la ligne 286 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{287 \{}
+\DoxyCodeLine{288     \textcolor{keywordflow}{return} \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}};}
+\DoxyCodeLine{289 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{channels_8h_a42827ea89bbd3c04d00346f22735e8a1}\label{channels_8h_a42827ea89bbd3c04d00346f22735e8a1}} 
+\index{channels.h@{channels.h}!init\_channels@{init\_channels}}
+\index{init\_channels@{init\_channels}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{init\_channels()}{init\_channels()}}
+{\footnotesize\ttfamily void init\+\_\+channels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+initialisation des channels 
+
+\begin{DoxyNote}{Note}
+Cette fonction initialise le tableau de channels 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 27 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28 \{}
+\DoxyCodeLine{29     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{channels_8h_ac69ee46f4a51ed14f0d68628c2dec71d}{MAX\_CHANNELS}}; i++)}
+\DoxyCodeLine{30     \{}
+\DoxyCodeLine{31         \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}} = -\/1;}
+\DoxyCodeLine{32         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < \mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\_USERS}}; j++)}
+\DoxyCodeLine{33         \{}
+\DoxyCodeLine{34             \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[j] = -\/1;}
+\DoxyCodeLine{35         \}}
+\DoxyCodeLine{36     \}}
+\DoxyCodeLine{37     printf(\textcolor{stringliteral}{"{}[init\_channels] Tableau de channels initialisé\(\backslash\)n"{}});}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{40 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{channels_8h_af4c5f90e0c53aac0bde90845528239e6}\label{channels_8h_af4c5f90e0c53aac0bde90845528239e6}} 
+\index{channels.h@{channels.h}!is\_user\_allowed\_in\_channel@{is\_user\_allowed\_in\_channel}}
+\index{is\_user\_allowed\_in\_channel@{is\_user\_allowed\_in\_channel}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{is\_user\_allowed\_in\_channel()}{is\_user\_allowed\_in\_channel()}}
+{\footnotesize\ttfamily bool is\+\_\+user\+\_\+allowed\+\_\+in\+\_\+channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structUser}{User}}}]{user,  }\item[{\mbox{\hyperlink{structChannel}{Channel}}}]{channel }\end{DoxyParamCaption})}
+
+
+
+Vérifie si un utilisateur est dans un channel. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em user} & utilisateur à vérifier \\
+\hline
+{\em channel} & channel à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Cette fonction vérifie si un utilisateur est dans un channel 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+bool 
+\end{DoxyReturn}
+
+
+Définition à la ligne 101 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{102 \{}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\_USERS}}; i++)}
+\DoxyCodeLine{105     \{}
+\DoxyCodeLine{106         \textcolor{keywordflow}{if} (channel.\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[i] == user.\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}})}
+\DoxyCodeLine{107         \{}
+\DoxyCodeLine{108             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{109         \}}
+\DoxyCodeLine{110     \}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{113 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{channels_8h_ab9b8cf695bf540c431ebbaa2e3756026}\label{channels_8h_ab9b8cf695bf540c431ebbaa2e3756026}} 
+\index{channels.h@{channels.h}!is\_user\_in\_channel@{is\_user\_in\_channel}}
+\index{is\_user\_in\_channel@{is\_user\_in\_channel}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{is\_user\_in\_channel()}{is\_user\_in\_channel()}}
+{\footnotesize\ttfamily bool is\+\_\+user\+\_\+in\+\_\+channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structUser}{User}}}]{user,  }\item[{\mbox{\hyperlink{structChannel}{Channel}}}]{channel }\end{DoxyParamCaption})}
+
+
+
+Vérifie si un utilisateur est dans un channel. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em user} & utilisateur à vérifier \\
+\hline
+{\em channel} & channel à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Cette fonction vérifie si un utilisateur est dans un channel 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+bool 
+\end{DoxyReturn}
+
+
+Définition à la ligne 123 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{124 \{}
+\DoxyCodeLine{125 }
+\DoxyCodeLine{126     \textcolor{keywordflow}{if} (user.\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}} == channel.\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}})}
+\DoxyCodeLine{127     \{}
+\DoxyCodeLine{128         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{129     \}}
+\DoxyCodeLine{130     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{131 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{channels_8h_a3f8d5caf8ec194e99fd6b9448e691035}\label{channels_8h_a3f8d5caf8ec194e99fd6b9448e691035}} 
+\index{channels.h@{channels.h}!remove\_channel@{remove\_channel}}
+\index{remove\_channel@{remove\_channel}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{remove\_channel()}{remove\_channel()}}
+{\footnotesize\ttfamily void remove\+\_\+channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})}
+
+
+
+Définition à la ligne 73 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{74 \{}
+\DoxyCodeLine{75     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{channels_8h_ac69ee46f4a51ed14f0d68628c2dec71d}{MAX\_CHANNELS}}; i++)}
+\DoxyCodeLine{76     \{}
+\DoxyCodeLine{77         \textcolor{keywordflow}{if} (\mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\textcolor{keywordtype}{id} == channel-\/>\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}})}
+\DoxyCodeLine{78         \{}
+\DoxyCodeLine{79             \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}} = -\/1;}
+\DoxyCodeLine{80             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < \mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\_USERS}}; j++)}
+\DoxyCodeLine{81             \{}
+\DoxyCodeLine{82                 \mbox{\hyperlink{channels_8c_a37c7f24cbf16df4884786a1499cf4a0a}{channels}}[i].\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[j] = -\/1;}
+\DoxyCodeLine{83             \}}
+\DoxyCodeLine{84             printf(\textcolor{stringliteral}{"{}[remove\_channel] \%s removed\(\backslash\)n"{}}, channel-\/>\mbox{\hyperlink{structChannel_a1b5bcacc9a155f7323c96a98e1559d8e}{name}});}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{87         \}}
+\DoxyCodeLine{88     \}}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{91 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{channels_8h_a9e1f544ff03e9a596eb3f9563660d747}\label{channels_8h_a9e1f544ff03e9a596eb3f9563660d747}} 
+\index{channels.h@{channels.h}!remove\_user\_from\_channel@{remove\_user\_from\_channel}}
+\index{remove\_user\_from\_channel@{remove\_user\_from\_channel}!channels.h@{channels.h}}
+\doxysubsubsection{\texorpdfstring{remove\_user\_from\_channel()}{remove\_user\_from\_channel()}}
+{\footnotesize\ttfamily void remove\+\_\+user\+\_\+from\+\_\+channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structUser}{User}}}]{user,  }\item[{\mbox{\hyperlink{structChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})}
+
+
+
+remove user from channel 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em user} & The user to remove \\
+\hline
+{\em channel} & The channel to remove the user from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 264 du fichier channels.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{265 \{}
+\DoxyCodeLine{266     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\_USERS}}; i++)}
+\DoxyCodeLine{267     \{}
+\DoxyCodeLine{268         \textcolor{keywordflow}{if} (channel-\/>\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[i] == user.\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}})}
+\DoxyCodeLine{269         \{}
+\DoxyCodeLine{270             channel-\/>\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[i] = -\/1;}
+\DoxyCodeLine{271             printf(\textcolor{stringliteral}{"{}[remove\_user\_from\_channel] \%s removed from channel \%s\(\backslash\)n"{}}, user.\mbox{\hyperlink{structUser_aa4a4e3cd80081b7dd0f5fd96f9e997b2}{name}}, channel-\/>\mbox{\hyperlink{structChannel_a1b5bcacc9a155f7323c96a98e1559d8e}{name}});}
+\DoxyCodeLine{272             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{273         \}}
+\DoxyCodeLine{274     \}}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276     printf(\textcolor{stringliteral}{"{}[remove\_user\_from\_channel] \%s not removed from channel \%s\(\backslash\)n"{}}, user.\mbox{\hyperlink{structUser_aa4a4e3cd80081b7dd0f5fd96f9e997b2}{name}}, channel-\/>\mbox{\hyperlink{structChannel_a1b5bcacc9a155f7323c96a98e1559d8e}{name}});}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{278     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{279 \}}
+
+\end{DoxyCode}

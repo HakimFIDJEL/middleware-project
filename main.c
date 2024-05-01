@@ -1,41 +1,123 @@
+/**
+ *	\file		main.c
+ *	\brief		Programme principal du chat
+ *	\author		Hakim FIDJEL & Younes BOUGHRIET
+ *	\date		25 mars 2024
+ *	\version	1.0
+ */
+
 #include "./heads/data.h"
 #include "./heads/session.h"
 #include "./heads/users.h"
 #include "./heads/channels.h"
-#include "./heads/display.h"
 #include "./heads/messages.h"
 #include "./heads/ncurses.h"
 #include <signal.h>
 
 #include <locale.h>
 
-#define ADDR "127.0.0.1"
-#define PORT 5000
-#define MODE SOCK_STREAM
-#define SIG_ARRET SIGINT
+#define ADDR "127.0.0.1" // Adresse IP du serveur
+#define PORT 5000       // Port du serveur
+#define MODE SOCK_STREAM // Mode de connexion 
+#define SIG_ARRET SIGINT // Signal d'arrêt
 
 int flag_start_client = 1;
 
 volatile bool sessionActive = false;
 
+/**
+ * @brief Fonction principale du programme pour le serveur
+ * @fn void serveur()
+ * @param void
+ */
 void serveur();
+
+/**
+ * @brief Fonction principale du programme pour le client
+ * @fn void client()
+ * @param void
+ */
 void client();
+
+/**
+ * @brief Fonction qui vérifie si la commande est une commande
+ * @fn int is_command(buffer_t buff)
+ * @param buff : la commande ou le message
+ * @return int
+ */
 int is_command(buffer_t buff);
+
+/**
+ * @brief Fonction qui gère le dialogue entre le serveur et le client
+ * @fn void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
+ * @param sockEch : la socket de dialogue
+ * @param buff : le buffer
+ * @param serial : la fonction de sérialisation
+ */
 void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial);
+
+/**
+ * @brief Fonction qui gère l'envoi des messages du client
+ * @fn void *EnvoiClt(void *arg)
+ * @param arg : la socket de dialogue
+ * @return void *
+ */
 void *EnvoiClt(void *arg);
+
+/**
+ * @brief Fonction qui gère la réception des messages du client
+ * @fn void *ReceptionClt(void *arg)
+ * @param arg : la socket de dialogue
+ * @return void *
+ */
 void *ReceptionClt(void *arg);
+
+/**
+ * @brief Fonction qui gère les threads pour les clients
+ * @fn void *server_thread(void *arg)
+ * @param arg : la socket de dialogue
+ * @return void *
+ */
 void *server_thread(void *arg);
+
+/**
+ * @brief Fonction qui gère les commandes
+ * @fn int command_manager(buffer_t buff, User *user)
+ * @param buff : la commande
+ * @param user : l'utilisateur
+ * @return int
+ */
 int command_manager(buffer_t buff, User *user);
+
+/**
+ * @brief Fonction qui gère la déconnexion
+ * @fn int disconnect(buffer_t buff)
+ * @param buff : la commande
+ * @return int
+ */
 int disconnect(buffer_t buff);
 
+/**
+ * @brief Fonction qui gère les signaux
+ * @fn void signal_handler(int sig, siginfo_t *siginfo, void *context)
+ * @param sig : le signal
+ * @param siginfo : les informations du signal
+ * @param context : le contexte
+ */
 void signal_handler(int sig, siginfo_t *siginfo, void *context);
 
-extern WINDOW *top_win;
-extern WINDOW *bottom_win;
-extern WINDOW *logs_win;
+extern WINDOW *top_win; // Fenêtre du haut
+extern WINDOW *bottom_win; // Fenêtre du bas
+extern WINDOW *logs_win; // Fenêtre des logs
 
 extern int height, width, main_width, side_width;
 
+/**
+ * @brief La fonction principale du programme qui lance le serveur ou le client
+ * @fn int main()
+ * @param void
+ * @return int
+ */
 int main()
 {
 #ifdef SERVEUR
@@ -46,21 +128,26 @@ int main()
     return 0;
 }
 
-socket_t sockEcoute;
+socket_t sockEcoute; // Socket d'écoute
 
+/**
+ * @brief Fonction principale du programme pour le serveur
+ * @fn void serveur()
+ * @param void
+ */
 void serveur()
 {
     system("clear");
-    socket_t sockEch;
-    buffer_t buff;
-    pid_t pid;
+    socket_t sockEch; // Socket de dialogue
+    buffer_t buff;   // Buffer
+    pid_t pid;      // PID du processus
 
     init_users();
     init_channels();
 
     // initSockets();
 
-    struct sigaction act;
+    struct sigaction act; // Structure pour les signaux
     memset(&act, 0, sizeof(act));
     act.sa_sigaction = &signal_handler;
     act.sa_flags = SA_SIGINFO;
@@ -96,10 +183,16 @@ void serveur()
     }
 }
 
+/**
+ * @brief Fonction qui gère les threads pour les clients
+ * @fn void *server_thread(void *arg)
+ * @param arg : la socket de dialogue
+ * @return void *
+ */
 void *server_thread(void *arg)
 {
-    socket_t sockEch = *(socket_t *)arg;
-    buffer_t buff;
+    socket_t sockEch = *(socket_t *)arg; // Socket de dialogue
+    buffer_t buff; // Buffer
 
     printf("[Server_thread] Nouvelle connexion depuis l'IP %s\n", inet_ntoa(sockEch.addrLoc.sin_addr));
 
@@ -110,10 +203,15 @@ void *server_thread(void *arg)
     return NULL;
 }
 
+/**
+ * @brief Fonction principale du programme pour le client
+ * @fn void client()
+ * @param void
+ */
 void client()
 {
-    socket_t sockConn;
-    buffer_t buff;
+    socket_t sockConn; // Socket de dialogue
+    buffer_t buff; // Buffer
 
     // TODO : Ecran d'accueil qui attend /connect
 
@@ -170,6 +268,12 @@ void client()
     cleanup();
 }
 
+/**
+ * @brief Fonction qui vérifie si la commande est une commande
+ * @fn int is_command(buffer_t buff)
+ * @param buff : la commande ou le message
+ * @return int
+ */
 int is_command(buffer_t buff)
 {
     if (buff[0] == '/')
@@ -179,6 +283,13 @@ int is_command(buffer_t buff)
     return 0;
 }
 
+/**
+ * @brief Fonction qui gère le dialogue entre le serveur et le client
+ * @fn void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
+ * @param sockEch : la socket de dialogue
+ * @param buff : le buffer
+ * @param serial : la fonction de sérialisation
+ */
 void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
 {
     User *users = get_users();
@@ -247,6 +358,12 @@ void dialogueSrv(socket_t *sockEch, buffer_t buff, pFct serial)
     return;
 }
 
+/**
+ * @brief Fonction qui gère l'envoi des messages du client
+ * @fn void *EnvoiClt(void *arg)
+ * @param arg : la socket de dialogue
+ * @return void *
+ */
 void *EnvoiClt(void *arg)
 {
     socket_t *sockConn = (socket_t *)arg;
@@ -258,6 +375,16 @@ void *EnvoiClt(void *arg)
 
     while (sessionActive)
     {
+
+        //Ecrire Entrez votre pseudo
+        if (flag_pseudo)
+        {
+            wmove(top_win, 1, 1);
+            wprintw(top_win, "Entrez votre pseudo : ");
+            wrefresh(top_win);
+        }
+
+
         wmove(bottom_win, 1, 1); // Move cursor to start of input line
         wclrtoeol(bottom_win);   // Clear the input line
         box(bottom_win, 0, 0);   // Redraw box to ensure borders are intact
@@ -357,6 +484,12 @@ void *EnvoiClt(void *arg)
     return NULL;
 }
 
+/**
+ * @brief Fonction qui gère la réception des messages du client
+ * @fn void *ReceptionClt(void *arg)
+ * @param arg : la socket de dialogue
+ * @return void *
+ */
 void *ReceptionClt(void *arg)
 {
     socket_t *sockConn = (socket_t *)arg;
@@ -389,7 +522,13 @@ void *ReceptionClt(void *arg)
     return NULL;
 }
 
-// Fonction qui gère les commandes, elles peuvent avoir plusieurs arguments et commencent par /
+/**
+ * @brief Fonction qui gère les commandes
+ * @fn int command_manager(buffer_t buff, User *user)
+ * @param buff : la commande
+ * @param user : l'utilisateur
+ * @return int
+ */
 int command_manager(buffer_t buff, User *user)
 {
     char retour[1024];
@@ -743,6 +882,12 @@ int command_manager(buffer_t buff, User *user)
     return 0;
 }
 
+/**
+ * @brief Fonction qui gère la déconnexion
+ * @fn int disconnect(buffer_t buff)
+ * @param buff : la commande
+ * @return int
+ */
 int disconnect(buffer_t buff)
 {
     if (strcmp(buff, "/disconnect") == 0)
@@ -754,6 +899,13 @@ int disconnect(buffer_t buff)
     return 0;
 }
 
+/**
+ * @brief Fonction qui gère les signaux
+ * @fn void signal_handler(int sig, siginfo_t *siginfo, void *context)
+ * @param sig : le signal
+ * @param siginfo : les informations du signal
+ * @param context : le contexte
+ */
 void signal_handler(int sig, siginfo_t *siginfo, void *context)
 {
 

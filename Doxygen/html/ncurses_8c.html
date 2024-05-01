@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Middleware Project (BetterDiscord): Référence du fichier sources/ncurses.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_centrale.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Middleware Project (BetterDiscord)
+   </div>
+   <div id="projectbrief">Projet réalisé dans le cadre du cours de Middleware Client/Serveur par Hakim FIDJEL et Younes Boughriet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_08d237fc27d4ecd563f71c5d52f2fecc.html">sources</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier ncurses.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Fonctions de l'interface utilisateur du chat.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;ncursesw/ncurses.h&gt;</code><br />
+<code>#include &lt;locale.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="ncurses_8h_source.html">../heads/ncurses.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de ncurses.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="ncurses_8c__incl.png" border="0" usemap="#asources_2ncurses_8c" alt=""/></div>
+<map name="asources_2ncurses_8c" id="asources_2ncurses_8c">
+<area shape="rect" title="Fonctions de l&#39;interface utilisateur du chat." alt="" coords="671,5,809,32"/>
+<area shape="rect" title=" " alt="" coords="417,155,567,181"/>
+<area shape="rect" title=" " alt="" coords="757,155,830,181"/>
+<area shape="rect" title=" " alt="" coords="985,229,1055,256"/>
+<area shape="rect" href="ncurses_8h.html" title="Fichier d&#39;en&#45;tête du module de gestion de l&#39;affichage." alt="" coords="617,80,756,107"/>
+<area shape="rect" href="session_8h.html" title="Spécification de la couche Session." alt="" coords="591,155,681,181"/>
+<area shape="rect" title=" " alt="" coords="5,229,80,256"/>
+<area shape="rect" title=" " alt="" coords="105,229,175,256"/>
+<area shape="rect" title=" " alt="" coords="200,229,267,256"/>
+<area shape="rect" title=" " alt="" coords="291,229,394,256"/>
+<area shape="rect" title=" " alt="" coords="419,229,515,256"/>
+<area shape="rect" title=" " alt="" coords="539,229,631,256"/>
+<area shape="rect" title=" " alt="" coords="656,229,744,256"/>
+<area shape="rect" title=" " alt="" coords="769,229,853,256"/>
+<area shape="rect" title=" " alt="" coords="877,229,960,256"/>
+</map>
+</div>
+</div>
+<p><a href="ncurses_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a85769112d75b553ce8125bfda23f32bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#a85769112d75b553ce8125bfda23f32bc">init_ncurses</a> ()</td></tr>
+<tr class="memdesc:a85769112d75b553ce8125bfda23f32bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize ncurses.  <a href="ncurses_8c.html#a85769112d75b553ce8125bfda23f32bc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a85769112d75b553ce8125bfda23f32bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a134cc5f27e42b6d1ca0c65019a518b3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#a134cc5f27e42b6d1ca0c65019a518b3d">create_windows</a> ()</td></tr>
+<tr class="memdesc:a134cc5f27e42b6d1ca0c65019a518b3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create windows.  <a href="ncurses_8c.html#a134cc5f27e42b6d1ca0c65019a518b3d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a134cc5f27e42b6d1ca0c65019a518b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9eeb19d5f83c71ccac6e3634f9e9acff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#a9eeb19d5f83c71ccac6e3634f9e9acff">config_colors</a> ()</td></tr>
+<tr class="memdesc:a9eeb19d5f83c71ccac6e3634f9e9acff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display the main window.  <a href="ncurses_8c.html#a9eeb19d5f83c71ccac6e3634f9e9acff">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9eeb19d5f83c71ccac6e3634f9e9acff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4fa66ee9ec2c1d62347496692116fb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#ad4fa66ee9ec2c1d62347496692116fb1">display_message</a> (WINDOW *win, char *msg, int root)</td></tr>
+<tr class="memdesc:ad4fa66ee9ec2c1d62347496692116fb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display message in the window specified.  <a href="ncurses_8c.html#ad4fa66ee9ec2c1d62347496692116fb1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad4fa66ee9ec2c1d62347496692116fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f5c5e279980697501b0250a932c54c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#a2f5c5e279980697501b0250a932c54c7">main_loop_ncurses</a> ()</td></tr>
+<tr class="memdesc:a2f5c5e279980697501b0250a932c54c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main loop of the ncurses interface.  <a href="ncurses_8c.html#a2f5c5e279980697501b0250a932c54c7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2f5c5e279980697501b0250a932c54c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b66d5e31b5dc18b314c8a68163263bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#a4b66d5e31b5dc18b314c8a68163263bd">cleanup</a> ()</td></tr>
+<tr class="memdesc:a4b66d5e31b5dc18b314c8a68163263bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleanup ncurses.  <a href="ncurses_8c.html#a4b66d5e31b5dc18b314c8a68163263bd">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4b66d5e31b5dc18b314c8a68163263bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ad12fc34ce789bce6c8a05d8a17138534"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#ad12fc34ce789bce6c8a05d8a17138534">height</a></td></tr>
+<tr class="separator:ad12fc34ce789bce6c8a05d8a17138534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2474a5474cbff19523a51eb1de01cda4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#a2474a5474cbff19523a51eb1de01cda4">width</a></td></tr>
+<tr class="separator:a2474a5474cbff19523a51eb1de01cda4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a209ec2bf57de0f29d499648d22024b4a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#a209ec2bf57de0f29d499648d22024b4a">main_width</a></td></tr>
+<tr class="separator:a209ec2bf57de0f29d499648d22024b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac94d8bc2e952aa8151d301a08a6f14e0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#ac94d8bc2e952aa8151d301a08a6f14e0">side_width</a></td></tr>
+<tr class="separator:ac94d8bc2e952aa8151d301a08a6f14e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c21e33dfdaecc4e6a6db1cab3284be1"><td class="memItemLeft" align="right" valign="top">WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a></td></tr>
+<tr class="separator:a4c21e33dfdaecc4e6a6db1cab3284be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ddf24f0dad385fc7299e42d37212b7f"><td class="memItemLeft" align="right" valign="top">WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a></td></tr>
+<tr class="separator:a4ddf24f0dad385fc7299e42d37212b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a23795cf8e646860c2bcf501e3663cc"><td class="memItemLeft" align="right" valign="top">WINDOW *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a></td></tr>
+<tr class="separator:a1a23795cf8e646860c2bcf501e3663cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Fonctions de l'interface utilisateur du chat. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Younes Boughriet </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>15 avril 2024 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Définition dans le fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a4b66d5e31b5dc18b314c8a68163263bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b66d5e31b5dc18b314c8a68163263bd">&#9670;&nbsp;</a></span>cleanup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cleanup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cleanup ncurses. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00197">197</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;{</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    delwin(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    delwin(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    delwin(<a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a>);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    endwin();</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}</div>
+<div class="ttc" id="ancurses_8c_html_a1a23795cf8e646860c2bcf501e3663cc"><div class="ttname"><a href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a></div><div class="ttdeci">WINDOW * logs_win</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8c_source.html#l00015">ncurses.c:15</a></div></div>
+<div class="ttc" id="ancurses_8c_html_a4c21e33dfdaecc4e6a6db1cab3284be1"><div class="ttname"><a href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a></div><div class="ttdeci">WINDOW * top_win</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8c_source.html#l00015">ncurses.c:15</a></div></div>
+<div class="ttc" id="ancurses_8c_html_a4ddf24f0dad385fc7299e42d37212b7f"><div class="ttname"><a href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a></div><div class="ttdeci">WINDOW * bottom_win</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8c_source.html#l00015">ncurses.c:15</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9eeb19d5f83c71ccac6e3634f9e9acff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eeb19d5f83c71ccac6e3634f9e9acff">&#9670;&nbsp;</a></span>config_colors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void config_colors </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Display the main window. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00055">55</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    init_pair(1, COLOR_WHITE, COLOR_BLUE);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    init_pair(2, COLOR_WHITE, COLOR_MAGENTA);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    init_pair(3, COLOR_BLACK, COLOR_WHITE);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    init_pair(4, COLOR_RED, COLOR_MAGENTA);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    wbkgd(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>, COLOR_PAIR(2));</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    wbkgd(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>, COLOR_PAIR(3));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    wbkgd(<a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a>, COLOR_PAIR(2));</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    scrollok(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>, TRUE);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a134cc5f27e42b6d1ca0c65019a518b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a134cc5f27e42b6d1ca0c65019a518b3d">&#9670;&nbsp;</a></span>create_windows()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void create_windows </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create windows. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00042">42</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a> = newwin(<a class="code" href="ncurses_8c.html#ad12fc34ce789bce6c8a05d8a17138534">height</a> - 3, <a class="code" href="ncurses_8c.html#a209ec2bf57de0f29d499648d22024b4a">main_width</a>, 0, 0);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a> = newwin(3, <a class="code" href="ncurses_8c.html#a209ec2bf57de0f29d499648d22024b4a">main_width</a>, <a class="code" href="ncurses_8c.html#ad12fc34ce789bce6c8a05d8a17138534">height</a> - 3, 0);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a> = newwin(<a class="code" href="ncurses_8c.html#ad12fc34ce789bce6c8a05d8a17138534">height</a>, <a class="code" href="ncurses_8c.html#ac94d8bc2e952aa8151d301a08a6f14e0">side_width</a>, 0, <a class="code" href="ncurses_8c.html#a209ec2bf57de0f29d499648d22024b4a">main_width</a>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="ttc" id="ancurses_8c_html_a209ec2bf57de0f29d499648d22024b4a"><div class="ttname"><a href="ncurses_8c.html#a209ec2bf57de0f29d499648d22024b4a">main_width</a></div><div class="ttdeci">int main_width</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8c_source.html#l00014">ncurses.c:14</a></div></div>
+<div class="ttc" id="ancurses_8c_html_ac94d8bc2e952aa8151d301a08a6f14e0"><div class="ttname"><a href="ncurses_8c.html#ac94d8bc2e952aa8151d301a08a6f14e0">side_width</a></div><div class="ttdeci">int side_width</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8c_source.html#l00014">ncurses.c:14</a></div></div>
+<div class="ttc" id="ancurses_8c_html_ad12fc34ce789bce6c8a05d8a17138534"><div class="ttname"><a href="ncurses_8c.html#ad12fc34ce789bce6c8a05d8a17138534">height</a></div><div class="ttdeci">int height</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8c_source.html#l00014">ncurses.c:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad4fa66ee9ec2c1d62347496692116fb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4fa66ee9ec2c1d62347496692116fb1">&#9670;&nbsp;</a></span>display_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_message </td>
+          <td>(</td>
+          <td class="paramtype">WINDOW *&#160;</td>
+          <td class="paramname"><em>win</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>root</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Display message in the window specified. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">win</td><td>the window to display the message </td></tr>
+    <tr><td class="paramname">msg</td><td>the message to display </td></tr>
+    <tr><td class="paramname">root</td><td>1 if the message is from the server, 0 otherwise </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00075">75</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">int</span> y, x, max_y, max_x;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    getyx(win, y, x);            <span class="comment">// Récupère la position courante du curseur</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    getmaxyx(win, max_y, max_x); <span class="comment">// Récupère les dimensions de la fenêtre</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (y &gt;= max_y - 1)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {                  <span class="comment">// Vérifie si le curseur est à la fin de la fenêtre</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        wscrl(win, 1); <span class="comment">// Fait défiler la fenêtre d&#39;une ligne vers le haut</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// Affichage du message</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">if</span> (root == 1)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        wattron(win, COLOR_PAIR(4));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        wattron(win, COLOR_PAIR(2));</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    mvwprintw(win, y, 1, <span class="stringliteral">&quot;%s\n&quot;</span>, msg);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    wattroff(win, COLOR_PAIR(root == 1 ? 4 : 2));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    box(win, 0, 0); <span class="comment">// Redessine les bordures</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    wrefresh(win);  <span class="comment">// Rafraîchit la fenêtre</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a85769112d75b553ce8125bfda23f32bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85769112d75b553ce8125bfda23f32bc">&#9670;&nbsp;</a></span>init_ncurses()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_ncurses </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize ncurses. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00023">23</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    setlocale(LC_ALL, <span class="stringliteral">&quot;&quot;</span>); <span class="comment">// Pour supporter les caractères UTF-8</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    initscr();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    start_color();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    cbreak();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    noecho();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    keypad(stdscr, TRUE);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    getmaxyx(stdscr, <a class="code" href="ncurses_8c.html#ad12fc34ce789bce6c8a05d8a17138534">height</a>, <a class="code" href="ncurses_8c.html#a2474a5474cbff19523a51eb1de01cda4">width</a>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="ncurses_8c.html#a209ec2bf57de0f29d499648d22024b4a">main_width</a> = <a class="code" href="ncurses_8c.html#a2474a5474cbff19523a51eb1de01cda4">width</a> * 3 / 4;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="ncurses_8c.html#ac94d8bc2e952aa8151d301a08a6f14e0">side_width</a> = <a class="code" href="ncurses_8c.html#a2474a5474cbff19523a51eb1de01cda4">width</a> - <a class="code" href="ncurses_8c.html#a209ec2bf57de0f29d499648d22024b4a">main_width</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="ttc" id="ancurses_8c_html_a2474a5474cbff19523a51eb1de01cda4"><div class="ttname"><a href="ncurses_8c.html#a2474a5474cbff19523a51eb1de01cda4">width</a></div><div class="ttdeci">int width</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8c_source.html#l00014">ncurses.c:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2f5c5e279980697501b0250a932c54c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f5c5e279980697501b0250a932c54c7">&#9670;&nbsp;</a></span>main_loop_ncurses()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void main_loop_ncurses </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The main loop of the ncurses interface. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00107">107</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">char</span> msg[<a class="code" href="ncurses_8h.html#aa24597a54a085c6c2c33b64138f09eff">MAX_MSG</a>];</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">int</span> ch, i = 0;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    box(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>, 0, 0);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    box(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>, 0, 0);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    box(<a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a>, 0, 0);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    wrefresh(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    wrefresh(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    wrefresh(<a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    wmove(<a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a>, 1, 1);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    wprintw(<a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a>, <span class="stringliteral">&quot;Logs : &quot;</span>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    wrefresh(<a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    wmove(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>, 1, 1);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    wprintw(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>, <span class="stringliteral">&quot;Discord Style Chat (type &#39;/disconnect&#39; to quit)&quot;</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    wrefresh(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">while</span> (1)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        wmove(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>, 1, 1); <span class="comment">// Move cursor to start of input line</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        wclrtoeol(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>);   <span class="comment">// Clear the input line</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        box(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>, 0, 0);   <span class="comment">// Redraw box to ensure borders are intact</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        wrefresh(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>);    <span class="comment">// Refresh the window to reflect changes</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        i = 0;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">while</span> (1)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            ch = wgetch(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">if</span> (ch == <span class="charliteral">&#39;\n&#39;</span>)</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">if</span> (ch == KEY_RESIZE)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                endwin();  <span class="comment">// Temporarily end ncurses mode to clear buffers</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                refresh(); <span class="comment">// Refresh the standard screen to clear the ncurses formatting</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                clear();   <span class="comment">// Clear the screen from any leftovers</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                getmaxyx(stdscr, <a class="code" href="ncurses_8c.html#ad12fc34ce789bce6c8a05d8a17138534">height</a>, <a class="code" href="ncurses_8c.html#a2474a5474cbff19523a51eb1de01cda4">width</a>); <span class="comment">// Get new dimensions</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <a class="code" href="ncurses_8c.html#a209ec2bf57de0f29d499648d22024b4a">main_width</a> = <a class="code" href="ncurses_8c.html#a2474a5474cbff19523a51eb1de01cda4">width</a> * 3 / 4;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <a class="code" href="ncurses_8c.html#ac94d8bc2e952aa8151d301a08a6f14e0">side_width</a> = <a class="code" href="ncurses_8c.html#a2474a5474cbff19523a51eb1de01cda4">width</a> - <a class="code" href="ncurses_8c.html#a209ec2bf57de0f29d499648d22024b4a">main_width</a>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="comment">// Delete old windows</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                delwin(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                delwin(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                delwin(<a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a>);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="comment">// Create new windows with new dimensions</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <a class="code" href="ncurses_8c.html#a134cc5f27e42b6d1ca0c65019a518b3d">create_windows</a>();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <a class="code" href="ncurses_8c.html#a9eeb19d5f83c71ccac6e3634f9e9acff">config_colors</a>();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="comment">// Redraw borders and refresh each window</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                box(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>, 0, 0);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                box(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>, 0, 0);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                box(<a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a>, 0, 0);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                wrefresh(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                wrefresh(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                wrefresh(<a class="code" href="ncurses_8c.html#a1a23795cf8e646860c2bcf501e3663cc">logs_win</a>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="keywordflow">continue</span>; <span class="comment">// Skip the rest of the loop to handle resizing properly</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">if</span> (ch == KEY_BACKSPACE || ch == 127)</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <span class="keywordflow">if</span> (i &gt; 0)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                    i--;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                    mvwdelch(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>, 1, i + 1);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (i &lt; <a class="code" href="ncurses_8h.html#aa24597a54a085c6c2c33b64138f09eff">MAX_MSG</a> - 1)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                msg[i++] = ch;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                waddch(<a class="code" href="ncurses_8c.html#a4ddf24f0dad385fc7299e42d37212b7f">bottom_win</a>, ch);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        msg[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">if</span> (strcmp(msg, <span class="stringliteral">&quot;/disconnect&quot;</span>) == 0)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="comment">// Display message in top window</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <a class="code" href="ncurses_8c.html#ad4fa66ee9ec2c1d62347496692116fb1">display_message</a>(<a class="code" href="ncurses_8c.html#a4c21e33dfdaecc4e6a6db1cab3284be1">top_win</a>, msg, 0);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
+<div class="ttc" id="ancurses_8c_html_a134cc5f27e42b6d1ca0c65019a518b3d"><div class="ttname"><a href="ncurses_8c.html#a134cc5f27e42b6d1ca0c65019a518b3d">create_windows</a></div><div class="ttdeci">void create_windows()</div><div class="ttdoc">Create windows.</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8c_source.html#l00042">ncurses.c:42</a></div></div>
+<div class="ttc" id="ancurses_8c_html_a9eeb19d5f83c71ccac6e3634f9e9acff"><div class="ttname"><a href="ncurses_8c.html#a9eeb19d5f83c71ccac6e3634f9e9acff">config_colors</a></div><div class="ttdeci">void config_colors()</div><div class="ttdoc">Display the main window.</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8c_source.html#l00055">ncurses.c:55</a></div></div>
+<div class="ttc" id="ancurses_8c_html_ad4fa66ee9ec2c1d62347496692116fb1"><div class="ttname"><a href="ncurses_8c.html#ad4fa66ee9ec2c1d62347496692116fb1">display_message</a></div><div class="ttdeci">void display_message(WINDOW *win, char *msg, int root)</div><div class="ttdoc">Display message in the window specified.</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8c_source.html#l00075">ncurses.c:75</a></div></div>
+<div class="ttc" id="ancurses_8h_html_aa24597a54a085c6c2c33b64138f09eff"><div class="ttname"><a href="ncurses_8h.html#aa24597a54a085c6c2c33b64138f09eff">MAX_MSG</a></div><div class="ttdeci">#define MAX_MSG</div><div class="ttdef"><b>Definition:</b> <a href="ncurses_8h_source.html#l00026">ncurses.h:26</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="a4ddf24f0dad385fc7299e42d37212b7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ddf24f0dad385fc7299e42d37212b7f">&#9670;&nbsp;</a></span>bottom_win</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WINDOW * bottom_win</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00015">15</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+
+</div>
+</div>
+<a id="ad12fc34ce789bce6c8a05d8a17138534"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad12fc34ce789bce6c8a05d8a17138534">&#9670;&nbsp;</a></span>height</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int height</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00014">14</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+
+</div>
+</div>
+<a id="a1a23795cf8e646860c2bcf501e3663cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a23795cf8e646860c2bcf501e3663cc">&#9670;&nbsp;</a></span>logs_win</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WINDOW * logs_win</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00015">15</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+
+</div>
+</div>
+<a id="a209ec2bf57de0f29d499648d22024b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a209ec2bf57de0f29d499648d22024b4a">&#9670;&nbsp;</a></span>main_width</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main_width</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00014">14</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+
+</div>
+</div>
+<a id="ac94d8bc2e952aa8151d301a08a6f14e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac94d8bc2e952aa8151d301a08a6f14e0">&#9670;&nbsp;</a></span>side_width</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int side_width</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00014">14</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+
+</div>
+</div>
+<a id="a4c21e33dfdaecc4e6a6db1cab3284be1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c21e33dfdaecc4e6a6db1cab3284be1">&#9670;&nbsp;</a></span>top_win</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">WINDOW* top_win</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00015">15</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+
+</div>
+</div>
+<a id="a2474a5474cbff19523a51eb1de01cda4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2474a5474cbff19523a51eb1de01cda4">&#9670;&nbsp;</a></span>width</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int width</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="ncurses_8c_source.html#l00014">14</a> du fichier <a class="el" href="ncurses_8c_source.html">ncurses.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

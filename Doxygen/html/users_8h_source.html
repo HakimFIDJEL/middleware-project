@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Middleware Project (BetterDiscord):  Fichier source de heads/users.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_centrale.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Middleware Project (BetterDiscord)
+   </div>
+   <div id="projectbrief">Projet réalisé dans le cadre du cours de Middleware Client/Serveur par Hakim FIDJEL et Younes Boughriet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_f2cb48fa25ab3f859daf4d8a01e92e11.html">heads</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">users.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="users_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef USERS_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define USERS_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*   \noop       I N C L U D E S   S P E C I F I Q U E S</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="session_8h.html">./session.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="data_8h.html">./data.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*   \noop       S T R C T U R E S   DE   D O N N E E S</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="users_8h.html#a2c2a303621f66761529e598758d7ef34">   25</a></span>&#160;<span class="preprocessor">#define MAX_USERS 10 </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structUser.html">   35</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structUser.html#a7be70aeb7bd8b561f665b3ece05b15ce">   37</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structUser.html#a7be70aeb7bd8b561f665b3ece05b15ce">currentChannel</a>; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structUser.html#acadff57598f6ae6416966f8f5a2227dd">   38</a></span>&#160;    <a class="code" href="structsocket.html">socket_t</a> <a class="code" href="structUser.html#acadff57598f6ae6416966f8f5a2227dd">socket</a>;    </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structUser.html#aa4a4e3cd80081b7dd0f5fd96f9e997b2">   39</a></span>&#160;    <span class="keywordtype">char</span> name[50];      </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">   40</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">id</a>;             </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;} <a class="code" href="structUser.html">User</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">*   \noop       P R O T O T Y P E S   DES   F O N C T I O N S</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="users_8h.html#afbcbc0e1e01097a07d5dce2493be9385">init_users</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<a class="code" href="structUser.html">User</a> *<a class="code" href="users_8h.html#a42ecc5fc1cf25f9cb40516c6d7336e9d">add_user</a>(<a class="code" href="structsocket.html">socket_t</a> <a class="code" href="structsocket.html">socket</a>, <span class="keywordtype">int</span> channel, <span class="keywordtype">char</span> name[50]);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> <a class="code" href="users_8h.html#ad3dce5cc061a0c1cdf3959c348440568">remove_user</a>(<a class="code" href="structUser.html">User</a> user);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="users_8h.html#ad47cb0106d6f756714576cffabbf5b5b">display_users</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> <a class="code" href="users_8h.html#a80bf5a07030d7b2ee8fdecb5732737d3">connect_user_to_channel</a>(<a class="code" href="structUser.html">User</a> *user, <span class="keywordtype">int</span> channel_id);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<a class="code" href="structUser.html">User</a> <a class="code" href="users_8h.html#a5eeb39c9ec83abf262896f0744a0d6b7">get_user_by_socket</a>(<a class="code" href="structsocket.html">socket_t</a> <a class="code" href="structsocket.html">socket</a>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<a class="code" href="structUser.html">User</a> *<a class="code" href="users_8h.html#a1f78dc4cbd7bbe098de1c91c6f535a77">get_users</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="users_8h.html#a294c2b4c6ef4f2468cfed604bcaabe5f">user_exists</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<a class="code" href="structUser.html">User</a> *<a class="code" href="users_8h.html#a11fc954093bead12681de93b00ede2ca">get_user_by_id</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* USERS_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="adata_8h_html"><div class="ttname"><a href="data_8h.html">data.h</a></div><div class="ttdoc">Spécification de la couche Data Representation.</div></div>
+<div class="ttc" id="asession_8h_html"><div class="ttname"><a href="session_8h.html">session.h</a></div><div class="ttdoc">Spécification de la couche Session.</div></div>
+<div class="ttc" id="astructUser_html"><div class="ttname"><a href="structUser.html">User</a></div><div class="ttdoc">Structure User.</div><div class="ttdef"><b>Definition:</b> <a href="users_8h_source.html#l00035">users.h:36</a></div></div>
+<div class="ttc" id="astructUser_html_a7be70aeb7bd8b561f665b3ece05b15ce"><div class="ttname"><a href="structUser.html#a7be70aeb7bd8b561f665b3ece05b15ce">User::currentChannel</a></div><div class="ttdeci">int currentChannel</div><div class="ttdef"><b>Definition:</b> <a href="users_8h_source.html#l00037">users.h:37</a></div></div>
+<div class="ttc" id="astructUser_html_aa7e6e39b43020bbe9c3a196b3689b0f7"><div class="ttname"><a href="structUser.html#aa7e6e39b43020bbe9c3a196b3689b0f7">User::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="users_8h_source.html#l00040">users.h:40</a></div></div>
+<div class="ttc" id="astructUser_html_acadff57598f6ae6416966f8f5a2227dd"><div class="ttname"><a href="structUser.html#acadff57598f6ae6416966f8f5a2227dd">User::socket</a></div><div class="ttdeci">socket_t socket</div><div class="ttdef"><b>Definition:</b> <a href="users_8h_source.html#l00038">users.h:38</a></div></div>
+<div class="ttc" id="astructsocket_html"><div class="ttname"><a href="structsocket.html">socket</a></div><div class="ttdoc">Définition de la structure de données socket.</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00057">session.h:58</a></div></div>
+<div class="ttc" id="ausers_8h_html_a11fc954093bead12681de93b00ede2ca"><div class="ttname"><a href="users_8h.html#a11fc954093bead12681de93b00ede2ca">get_user_by_id</a></div><div class="ttdeci">User * get_user_by_id(int id)</div><div class="ttdoc">Get the user by id.</div><div class="ttdef"><b>Definition:</b> <a href="users_8c_source.html#l00131">users.c:131</a></div></div>
+<div class="ttc" id="ausers_8h_html_a1f78dc4cbd7bbe098de1c91c6f535a77"><div class="ttname"><a href="users_8h.html#a1f78dc4cbd7bbe098de1c91c6f535a77">get_users</a></div><div class="ttdeci">User * get_users()</div><div class="ttdoc">Get the users.</div><div class="ttdef"><b>Definition:</b> <a href="users_8c_source.html#l00149">users.c:149</a></div></div>
+<div class="ttc" id="ausers_8h_html_a294c2b4c6ef4f2468cfed604bcaabe5f"><div class="ttname"><a href="users_8h.html#a294c2b4c6ef4f2468cfed604bcaabe5f">user_exists</a></div><div class="ttdeci">bool user_exists(int id)</div><div class="ttdoc">Test if a user exists.</div><div class="ttdef"><b>Definition:</b> <a href="users_8c_source.html#l00161">users.c:161</a></div></div>
+<div class="ttc" id="ausers_8h_html_a42ecc5fc1cf25f9cb40516c6d7336e9d"><div class="ttname"><a href="users_8h.html#a42ecc5fc1cf25f9cb40516c6d7336e9d">add_user</a></div><div class="ttdeci">User * add_user(socket_t socket, int channel, char name[50])</div><div class="ttdoc">Add a user to the users array.</div><div class="ttdef"><b>Definition:</b> <a href="users_8c_source.html#l00034">users.c:34</a></div></div>
+<div class="ttc" id="ausers_8h_html_a5eeb39c9ec83abf262896f0744a0d6b7"><div class="ttname"><a href="users_8h.html#a5eeb39c9ec83abf262896f0744a0d6b7">get_user_by_socket</a></div><div class="ttdeci">User get_user_by_socket(socket_t socket)</div><div class="ttdoc">Get the user by the socket.</div><div class="ttdef"><b>Definition:</b> <a href="users_8c_source.html#l00113">users.c:113</a></div></div>
+<div class="ttc" id="ausers_8h_html_a80bf5a07030d7b2ee8fdecb5732737d3"><div class="ttname"><a href="users_8h.html#a80bf5a07030d7b2ee8fdecb5732737d3">connect_user_to_channel</a></div><div class="ttdeci">void connect_user_to_channel(User *user, int channel_id)</div><div class="ttdoc">Connect a user to a channel.</div><div class="ttdef"><b>Definition:</b> <a href="users_8c_source.html#l00099">users.c:99</a></div></div>
+<div class="ttc" id="ausers_8h_html_ad3dce5cc061a0c1cdf3959c348440568"><div class="ttname"><a href="users_8h.html#ad3dce5cc061a0c1cdf3959c348440568">remove_user</a></div><div class="ttdeci">void remove_user(User user)</div><div class="ttdoc">Remove a user from the users array.</div><div class="ttdef"><b>Definition:</b> <a href="users_8c_source.html#l00059">users.c:59</a></div></div>
+<div class="ttc" id="ausers_8h_html_ad47cb0106d6f756714576cffabbf5b5b"><div class="ttname"><a href="users_8h.html#ad47cb0106d6f756714576cffabbf5b5b">display_users</a></div><div class="ttdeci">void display_users()</div><div class="ttdoc">Display all users.</div><div class="ttdef"><b>Definition:</b> <a href="users_8c_source.html#l00077">users.c:77</a></div></div>
+<div class="ttc" id="ausers_8h_html_afbcbc0e1e01097a07d5dce2493be9385"><div class="ttname"><a href="users_8h.html#afbcbc0e1e01097a07d5dce2493be9385">init_users</a></div><div class="ttdeci">void init_users()</div><div class="ttdef"><b>Definition:</b> <a href="users_8c_source.html#l00014">users.c:14</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

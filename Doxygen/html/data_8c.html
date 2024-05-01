@@ -1,0 +1,565 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Middleware Project (BetterDiscord): Référence du fichier sources/data.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_centrale.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Middleware Project (BetterDiscord)
+   </div>
+   <div id="projectbrief">Projet réalisé dans le cadre du cours de Middleware Client/Serveur par Hakim FIDJEL et Younes Boughriet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_08d237fc27d4ecd563f71c5d52f2fecc.html">sources</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier data.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Spécification de la couche Data Representation.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="data_8h_source.html">../heads/data.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de data.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="data_8c__incl.png" border="0" usemap="#asources_2data_8c" alt=""/></div>
+<map name="asources_2data_8c" id="asources_2data_8c">
+<area shape="rect" title="Spécification de la couche Data Representation." alt="" coords="518,5,634,32"/>
+<area shape="rect" href="data_8h.html" title="Spécification de la couche Data Representation." alt="" coords="517,80,635,107"/>
+<area shape="rect" href="session_8h.html" title="Spécification de la couche Session." alt="" coords="484,155,567,181"/>
+<area shape="rect" title=" " alt="" coords="591,155,665,181"/>
+<area shape="rect" title=" " alt="" coords="5,229,80,256"/>
+<area shape="rect" title=" " alt="" coords="105,229,175,256"/>
+<area shape="rect" title=" " alt="" coords="200,229,267,256"/>
+<area shape="rect" title=" " alt="" coords="291,229,394,256"/>
+<area shape="rect" title=" " alt="" coords="419,229,515,256"/>
+<area shape="rect" title=" " alt="" coords="539,229,631,256"/>
+<area shape="rect" title=" " alt="" coords="655,229,726,256"/>
+<area shape="rect" title=" " alt="" coords="751,229,839,256"/>
+<area shape="rect" title=" " alt="" coords="863,229,947,256"/>
+<area shape="rect" title=" " alt="" coords="972,229,1055,256"/>
+</map>
+</div>
+</div>
+<p><a href="data_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aa56b8d84de67f5ea7ea393a8884d3bbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8c.html#aa56b8d84de67f5ea7ea393a8884d3bbf">envoyer</a> (<a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *sockEch, <a class="el" href="data_8h.html#a20a07aa5a0a4656891f77115d03fd436">generic</a> quoi, <a class="el" href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a> serial,...)</td></tr>
+<tr class="memdesc:aa56b8d84de67f5ea7ea393a8884d3bbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoi d'une requête/réponse sur une socket.  <a href="data_8c.html#aa56b8d84de67f5ea7ea393a8884d3bbf">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa56b8d84de67f5ea7ea393a8884d3bbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad62cf336e585a61123084d2fc4ba4791"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8c.html#ad62cf336e585a61123084d2fc4ba4791">recevoir</a> (<a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *sockEch, <a class="el" href="data_8h.html#a20a07aa5a0a4656891f77115d03fd436">generic</a> quoi, <a class="el" href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a> deSerial)</td></tr>
+<tr class="memdesc:ad62cf336e585a61123084d2fc4ba4791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réception d'une requête/réponse sur une socket.  <a href="data_8c.html#ad62cf336e585a61123084d2fc4ba4791">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad62cf336e585a61123084d2fc4ba4791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3446a0ed2d34b67b3649e91738b83ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8c.html#ab3446a0ed2d34b67b3649e91738b83ba">_envoyerMessStream</a> (<a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *sockEch, <a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff)</td></tr>
+<tr class="memdesc:ab3446a0ed2d34b67b3649e91738b83ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoi d'un message sur une socket de type STREAM.  <a href="data_8c.html#ab3446a0ed2d34b67b3649e91738b83ba">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab3446a0ed2d34b67b3649e91738b83ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78bf89caa67dbe621bc764ce1c4ef48b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8c.html#a78bf89caa67dbe621bc764ce1c4ef48b">_envoyerMessDGRAM</a> (<a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *sockEch, <a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff, char *adrIP, int port)</td></tr>
+<tr class="memdesc:a78bf89caa67dbe621bc764ce1c4ef48b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoi d'un message sur une socket de type DGRAM.  <a href="data_8c.html#a78bf89caa67dbe621bc764ce1c4ef48b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a78bf89caa67dbe621bc764ce1c4ef48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7623e451f4106f37d40026db15421db8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8c.html#a7623e451f4106f37d40026db15421db8">_recevoirMessStream</a> (<a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *sockEch, <a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff)</td></tr>
+<tr class="memdesc:a7623e451f4106f37d40026db15421db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réception d'un message sur une socket de type STREAM.  <a href="data_8c.html#a7623e451f4106f37d40026db15421db8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a7623e451f4106f37d40026db15421db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0adb772767612cdbfb0cb43148e980eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8c.html#a0adb772767612cdbfb0cb43148e980eb">_recevoirMessDGRAM</a> (<a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *sockEch, <a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff)</td></tr>
+<tr class="separator:a0adb772767612cdbfb0cb43148e980eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a982b93dcd0a620cb9ec82a60ae88c755"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8c.html#a982b93dcd0a620cb9ec82a60ae88c755">_serialMess</a> (<a class="el" href="data_8h.html#a20a07aa5a0a4656891f77115d03fd436">generic</a> quoi, <a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff)</td></tr>
+<tr class="memdesc:a982b93dcd0a620cb9ec82a60ae88c755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialisation d'une requête/réponse.  <a href="data_8c.html#a982b93dcd0a620cb9ec82a60ae88c755">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a982b93dcd0a620cb9ec82a60ae88c755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a599960a3b2d4e0db9a34c714f14c95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="data_8c.html#a8a599960a3b2d4e0db9a34c714f14c95">_deSerialMess</a> (<a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff, <a class="el" href="data_8h.html#a20a07aa5a0a4656891f77115d03fd436">generic</a> quoi)</td></tr>
+<tr class="memdesc:a8a599960a3b2d4e0db9a34c714f14c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dé-sérialisation d'une requête/réponse.  <a href="data_8c.html#a8a599960a3b2d4e0db9a34c714f14c95">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8a599960a3b2d4e0db9a34c714f14c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Spécification de la couche Data Representation. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Hakim FIDJEL </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>25 mars 2024 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Définition dans le fichier <a class="el" href="data_8c_source.html">data.c</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a8a599960a3b2d4e0db9a34c714f14c95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a599960a3b2d4e0db9a34c714f14c95">&#9670;&nbsp;</a></span>_deSerialMess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _deSerialMess </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a>&#160;</td>
+          <td class="paramname"><em>buff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a20a07aa5a0a4656891f77115d03fd436">generic</a>&#160;</td>
+          <td class="paramname"><em>quoi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dé-sérialisation d'une requête/réponse. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buff</td><td>: buffer de dé-sérialisation </td></tr>
+    <tr><td class="paramname">quoi</td><td>: requête/réponse à remplir </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>paramètre quoi modifié </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="data_8c_source.html#l00159">159</a> du fichier <a class="el" href="data_8c_source.html">data.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    strcpy((<span class="keywordtype">char</span> *)quoi, buff);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a78bf89caa67dbe621bc764ce1c4ef48b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78bf89caa67dbe621bc764ce1c4ef48b">&#9670;&nbsp;</a></span>_envoyerMessDGRAM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _envoyerMessDGRAM </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *&#160;</td>
+          <td class="paramname"><em>sockEch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a>&#160;</td>
+          <td class="paramname"><em>buff</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>adrIP</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envoi d'un message sur une socket de type DGRAM. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockEch</td><td>: socket d'échange à utiliser pour l'envoi </td></tr>
+    <tr><td class="paramname">buff</td><td>: message à envoyer </td></tr>
+    <tr><td class="paramname">adrIP</td><td>: adresse IP de destination </td></tr>
+    <tr><td class="paramname">port</td><td>: port de destination </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>paramètre sockEch modifié </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="data_8c_source.html#l00106">106</a> du fichier <a class="el" href="data_8c_source.html">data.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">struct </span>sockaddr_in addr;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="session_8c.html#a27a803d7ebb36e8aa345c07d6bba7156">_adr2struct</a>(&amp;addr, adrIP, port);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(sendto(sockEch-&gt;<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, buff, <a class="code" href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a>, 0, (<span class="keyword">struct</span> sockaddr *)&amp;addr, <span class="keyword">sizeof</span>(addr)), <span class="stringliteral">&quot;Can&#39;t send&quot;</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="ttc" id="adata_8h_html_a1d5dab30b404fab91608086105afc78c"><div class="ttname"><a href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a></div><div class="ttdeci">#define MAX_BUFFER</div><div class="ttdoc">taille d'un buffer_t d'émission/réception</div></div>
+<div class="ttc" id="asession_8c_html_a27a803d7ebb36e8aa345c07d6bba7156"><div class="ttname"><a href="session_8c.html#a27a803d7ebb36e8aa345c07d6bba7156">_adr2struct</a></div><div class="ttdeci">void _adr2struct(struct sockaddr_in *addr, char *adrIP, short port)</div><div class="ttdoc">Transformer une adresse au format humain en structure SocketBSD.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00090">session.c:90</a></div></div>
+<div class="ttc" id="asession_8h_html_ad3fe337408f16c132c895f2b59326410"><div class="ttname"><a href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a></div><div class="ttdeci">#define CHECK(sts, msg)</div><div class="ttdoc">Macro-fonction qui vérifie que sts est égal -1 (cas d'erreur : sts==-1) En cas d'erreur,...</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00034">session.h:34</a></div></div>
+<div class="ttc" id="astructsocket_html_adce841ceca3a01158a71421e6b0dbd8a"><div class="ttname"><a href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">socket::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00059">session.h:59</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab3446a0ed2d34b67b3649e91738b83ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3446a0ed2d34b67b3649e91738b83ba">&#9670;&nbsp;</a></span>_envoyerMessStream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _envoyerMessStream </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *&#160;</td>
+          <td class="paramname"><em>sockEch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a>&#160;</td>
+          <td class="paramname"><em>buff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envoi d'un message sur une socket de type STREAM. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockEch</td><td>: socket d'échange à utiliser pour l'envoi </td></tr>
+    <tr><td class="paramname">buff</td><td>: message à envoyer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>paramètre sockEch modifié </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="data_8c_source.html#l00092">92</a> du fichier <a class="el" href="data_8c_source.html">data.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(send(sockEch-&gt;<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, buff, <a class="code" href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a>, 0), <span class="stringliteral">&quot;Can&#39;t send&quot;</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0adb772767612cdbfb0cb43148e980eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0adb772767612cdbfb0cb43148e980eb">&#9670;&nbsp;</a></span>_recevoirMessDGRAM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _recevoirMessDGRAM </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *&#160;</td>
+          <td class="paramname"><em>sockEch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a>&#160;</td>
+          <td class="paramname"><em>buff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="data_8c_source.html#l00134">134</a> du fichier <a class="el" href="data_8c_source.html">data.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">struct </span>sockaddr_in addrSrc;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    socklen_t len = <span class="keyword">sizeof</span>(addrSrc);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    recvfrom(sockEch-&gt;<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, buff, <a class="code" href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a>, 0, (<span class="keyword">struct</span> sockaddr *)&amp;addrSrc, &amp;len);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7623e451f4106f37d40026db15421db8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7623e451f4106f37d40026db15421db8">&#9670;&nbsp;</a></span>_recevoirMessStream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _recevoirMessStream </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *&#160;</td>
+          <td class="paramname"><em>sockEch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a>&#160;</td>
+          <td class="paramname"><em>buff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réception d'un message sur une socket de type STREAM. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockEch</td><td>: socket d'échange à utiliser pour la réception </td></tr>
+    <tr><td class="paramname">buff</td><td>: message reçu </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>paramètre sockEch modifié </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="data_8c_source.html#l00120">120</a> du fichier <a class="el" href="data_8c_source.html">data.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(recv(sockEch-&gt;<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, buff, <a class="code" href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a>, 0), <span class="stringliteral">&quot;Can&#39;t receive&quot;</span>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a982b93dcd0a620cb9ec82a60ae88c755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a982b93dcd0a620cb9ec82a60ae88c755">&#9670;&nbsp;</a></span>_serialMess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _serialMess </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a20a07aa5a0a4656891f77115d03fd436">generic</a>&#160;</td>
+          <td class="paramname"><em>quoi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a>&#160;</td>
+          <td class="paramname"><em>buff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Serialisation d'une requête/réponse. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">quoi</td><td>: requête/réponse à sérialiser </td></tr>
+    <tr><td class="paramname">buff</td><td>: buffer de sérialisation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="data_8c_source.html#l00147">147</a> du fichier <a class="el" href="data_8c_source.html">data.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    strcpy(buff, (<span class="keywordtype">char</span> *)quoi);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa56b8d84de67f5ea7ea393a8884d3bbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa56b8d84de67f5ea7ea393a8884d3bbf">&#9670;&nbsp;</a></span>envoyer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void envoyer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *&#160;</td>
+          <td class="paramname"><em>sockEch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a20a07aa5a0a4656891f77115d03fd436">generic</a>&#160;</td>
+          <td class="paramname"><em>quoi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a>&#160;</td>
+          <td class="paramname"><em>serial</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envoi d'une requête/réponse sur une socket. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockEch</td><td>: socket d'échange à utiliser pour l'envoi </td></tr>
+    <tr><td class="paramname">quoi</td><td>: requête/réponse à serialiser avant l'envoi </td></tr>
+    <tr><td class="paramname">serial</td><td>: pointeur sur la fonction de serialisation d'une requête/réponse </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>si le paramètre serial vaut NULL alors quoi est une chaîne de caractères </dd>
+<dd>
+Si le mode est DGRAM, l'appel nécessite en plus l'adresse IP et le port. </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>paramètre sockEch modifié pour le mode DGRAM </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="data_8c_source.html#l00025">25</a> du fichier <a class="el" href="data_8c_source.html">data.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> content;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// Serializing</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">if</span> (serial != NULL)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        serial(quoi, content);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        strcpy(content, (<span class="keywordtype">char</span> *)quoi);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Sending</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (sockEch-&gt;<a class="code" href="structsocket.html#a91c13966eecc710ac792e7349172e975">mode</a> == SOCK_STREAM)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="data_8c.html#ab3446a0ed2d34b67b3649e91738b83ba">_envoyerMessStream</a>(sockEch, content);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        va_list pArg;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">char</span> *addrIp = va_arg(pArg, <span class="keywordtype">char</span> *);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">int</span> port = va_arg(pArg, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        va_start(pArg, serial);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="data_8c.html#a78bf89caa67dbe621bc764ce1c4ef48b">_envoyerMessDGRAM</a>(sockEch, content, addrIp, port);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        va_end(pArg);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="ttc" id="adata_8c_html_a78bf89caa67dbe621bc764ce1c4ef48b"><div class="ttname"><a href="data_8c.html#a78bf89caa67dbe621bc764ce1c4ef48b">_envoyerMessDGRAM</a></div><div class="ttdeci">void _envoyerMessDGRAM(socket_t *sockEch, buffer_t buff, char *adrIP, int port)</div><div class="ttdoc">Envoi d'un message sur une socket de type DGRAM.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00106">data.c:106</a></div></div>
+<div class="ttc" id="adata_8c_html_ab3446a0ed2d34b67b3649e91738b83ba"><div class="ttname"><a href="data_8c.html#ab3446a0ed2d34b67b3649e91738b83ba">_envoyerMessStream</a></div><div class="ttdeci">void _envoyerMessStream(socket_t *sockEch, buffer_t buff)</div><div class="ttdoc">Envoi d'un message sur une socket de type STREAM.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00092">data.c:92</a></div></div>
+<div class="ttc" id="adata_8h_html_a2c2240d1cf1f52381c9fe541ceec05bd"><div class="ttname"><a href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a></div><div class="ttdeci">char buffer_t[MAX_BUFFER]</div><div class="ttdoc">chaîne de caractères à émettre/recevoir</div><div class="ttdef"><b>Definition:</b> <a href="data_8h_source.html#l00033">data.h:33</a></div></div>
+<div class="ttc" id="astructsocket_html_a91c13966eecc710ac792e7349172e975"><div class="ttname"><a href="structsocket.html#a91c13966eecc710ac792e7349172e975">socket::mode</a></div><div class="ttdeci">int mode</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00060">session.h:60</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad62cf336e585a61123084d2fc4ba4791"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad62cf336e585a61123084d2fc4ba4791">&#9670;&nbsp;</a></span>recevoir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void recevoir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">socket_t</a> *&#160;</td>
+          <td class="paramname"><em>sockEch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a20a07aa5a0a4656891f77115d03fd436">generic</a>&#160;</td>
+          <td class="paramname"><em>quoi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a>&#160;</td>
+          <td class="paramname"><em>deSerial</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Réception d'une requête/réponse sur une socket. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockEch</td><td>: socket d'échange à utiliser pour la réception </td></tr>
+    <tr><td class="paramname">quoi</td><td>: requête/réponse reçue après dé-serialisation du buffer de réception </td></tr>
+    <tr><td class="paramname">deSerial</td><td>: pointeur sur la fonction de dé-serialisation d'une requête/réponse </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>si le paramètre deSerial vaut NULL alors quoi est une chaîne de caractères </dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>paramètre quoi modifié avec le requête/réponse reçue paramètre sockEch modifié pour le mode DGRAM </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="data_8c_source.html#l00063">63</a> du fichier <a class="el" href="data_8c_source.html">data.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> content;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Receiving</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (sockEch-&gt;<a class="code" href="structsocket.html#a91c13966eecc710ac792e7349172e975">mode</a> == SOCK_STREAM)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="data_8c.html#a7623e451f4106f37d40026db15421db8">_recevoirMessStream</a>(sockEch, content);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="data_8c.html#a0adb772767612cdbfb0cb43148e980eb">_recevoirMessDGRAM</a>(sockEch, content);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// Deserializing</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (deSerial != NULL)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        deSerial(content, quoi);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        strcpy(quoi, content);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="ttc" id="adata_8c_html_a0adb772767612cdbfb0cb43148e980eb"><div class="ttname"><a href="data_8c.html#a0adb772767612cdbfb0cb43148e980eb">_recevoirMessDGRAM</a></div><div class="ttdeci">void _recevoirMessDGRAM(socket_t *sockEch, buffer_t buff)</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00134">data.c:134</a></div></div>
+<div class="ttc" id="adata_8c_html_a7623e451f4106f37d40026db15421db8"><div class="ttname"><a href="data_8c.html#a7623e451f4106f37d40026db15421db8">_recevoirMessStream</a></div><div class="ttdeci">void _recevoirMessStream(socket_t *sockEch, buffer_t buff)</div><div class="ttdoc">Réception d'un message sur une socket de type STREAM.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00120">data.c:120</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

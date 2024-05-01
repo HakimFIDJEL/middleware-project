@@ -1,0 +1,396 @@
+\hypertarget{users_8c}{}\doxysection{Référence du fichier sources/users.c}
+\label{users_8c}\index{sources/users.c@{sources/users.c}}
+
+
+Spécification de la couche Users.  
+
+
+{\ttfamily \#include \char`\"{}../heads/users.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de users.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{users_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{users_8c_afbcbc0e1e01097a07d5dce2493be9385}{init\+\_\+users}} ()
+\item 
+\mbox{\hyperlink{structUser}{User}} $\ast$ \mbox{\hyperlink{users_8c_af8d62e9355007a4e77bc7ecc47ad0450}{add\+\_\+user}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} \mbox{\hyperlink{structsocket}{socket}}, int channel, char name\mbox{[}50\mbox{]})
+\begin{DoxyCompactList}\small\item\em Add a user to the users array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{users_8c_ad3dce5cc061a0c1cdf3959c348440568}{remove\+\_\+user}} (\mbox{\hyperlink{structUser}{User}} user)
+\begin{DoxyCompactList}\small\item\em Remove a user from the users array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{users_8c_ad47cb0106d6f756714576cffabbf5b5b}{display\+\_\+users}} ()
+\begin{DoxyCompactList}\small\item\em Display all users. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{users_8c_a80bf5a07030d7b2ee8fdecb5732737d3}{connect\+\_\+user\+\_\+to\+\_\+channel}} (\mbox{\hyperlink{structUser}{User}} $\ast$user, int channel\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Connect a user to a channel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structUser}{User}} \mbox{\hyperlink{users_8c_a5eeb39c9ec83abf262896f0744a0d6b7}{get\+\_\+user\+\_\+by\+\_\+socket}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} \mbox{\hyperlink{structsocket}{socket}})
+\begin{DoxyCompactList}\small\item\em Get the user by the socket. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structUser}{User}} $\ast$ \mbox{\hyperlink{users_8c_ae229ed9fcec5dccce1aaebba2f69ef34}{get\+\_\+user\+\_\+by\+\_\+id}} (int id)
+\begin{DoxyCompactList}\small\item\em Get the user by id. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structUser}{User}} $\ast$ \mbox{\hyperlink{users_8c_a2ac0883dc9051edca1650af4f24b6ba7}{get\+\_\+users}} ()
+\begin{DoxyCompactList}\small\item\em Get the users. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{users_8c_a294c2b4c6ef4f2468cfed604bcaabe5f}{user\+\_\+exists}} (int id)
+\begin{DoxyCompactList}\small\item\em Test if a user exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structUser}{User}} \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}} \mbox{[}\mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\+\_\+\+USERS}}\mbox{]}
+\item 
+int \mbox{\hyperlink{users_8c_a84b2704478934c7e0278761a15f3c5a8}{USER\+\_\+\+ID}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Spécification de la couche Users. 
+
+\begin{DoxyAuthor}{Auteur}
+Hakim FIDJEL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+25 mars 2024 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{users_8c_af8d62e9355007a4e77bc7ecc47ad0450}\label{users_8c_af8d62e9355007a4e77bc7ecc47ad0450}} 
+\index{users.c@{users.c}!add\_user@{add\_user}}
+\index{add\_user@{add\_user}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{add\_user()}{add\_user()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structUser}{User}} add\+\_\+user (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}}}]{socket,  }\item[{int}]{channel,  }\item[{char}]{name\mbox{[}50\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Add a user to the users array. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em socket} & The socket of the user \\
+\hline
+{\em channel} & The channel the user is connected to \\
+\hline
+{\em name} & The name of the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+User$\ast$ 
+\end{DoxyReturn}
+
+
+Définition à la ligne 34 du fichier users.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35 \{}
+\DoxyCodeLine{36     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 10; i++)}
+\DoxyCodeLine{37     \{}
+\DoxyCodeLine{38         \textcolor{keywordflow}{if} (\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\textcolor{keywordtype}{id} == -\/1)}
+\DoxyCodeLine{39         \{}
+\DoxyCodeLine{40             \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}} = \mbox{\hyperlink{users_8c_a84b2704478934c7e0278761a15f3c5a8}{USER\_ID}};}
+\DoxyCodeLine{41             \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}} = \mbox{\hyperlink{structsocket}{socket}};}
+\DoxyCodeLine{42             strcpy(\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].name, name);}
+\DoxyCodeLine{43             printf(\textcolor{stringliteral}{"{}[add\_user] \%s added\(\backslash\)n"{}}, name);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45             \mbox{\hyperlink{users_8c_a80bf5a07030d7b2ee8fdecb5732737d3}{connect\_user\_to\_channel}}(\&\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i], channel);}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47             \mbox{\hyperlink{users_8c_a84b2704478934c7e0278761a15f3c5a8}{USER\_ID}}++;}
+\DoxyCodeLine{48             \textcolor{keywordflow}{return} \&\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i]; \textcolor{comment}{// Retourner l'adresse de l'utilisateur ajouté}}
+\DoxyCodeLine{49         \}}
+\DoxyCodeLine{50     \}}
+\DoxyCodeLine{51     \textcolor{keywordflow}{return} NULL; \textcolor{comment}{// Retourner NULL si aucun utilisateur n'a été ajouté}}
+\DoxyCodeLine{52 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{users_8c_a80bf5a07030d7b2ee8fdecb5732737d3}\label{users_8c_a80bf5a07030d7b2ee8fdecb5732737d3}} 
+\index{users.c@{users.c}!connect\_user\_to\_channel@{connect\_user\_to\_channel}}
+\index{connect\_user\_to\_channel@{connect\_user\_to\_channel}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{connect\_user\_to\_channel()}{connect\_user\_to\_channel()}}
+{\footnotesize\ttfamily void connect\+\_\+user\+\_\+to\+\_\+channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structUser}{User}} $\ast$}]{user,  }\item[{int}]{channel\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Connect a user to a channel. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em user} & The user to connect \\
+\hline
+{\em channel\+\_\+id} & The channel to connect the user to \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 99 du fichier users.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{100 \{}
+\DoxyCodeLine{101     user-\/>\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}} = channel\_id;}
+\DoxyCodeLine{102     printf(\textcolor{stringliteral}{"{}[connect\_user\_to\_channel] \%s connected to channel \%d\(\backslash\)n"{}}, user-\/>\mbox{\hyperlink{structUser_aa4a4e3cd80081b7dd0f5fd96f9e997b2}{name}}, channel\_id);}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{105 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{users_8c_ad47cb0106d6f756714576cffabbf5b5b}\label{users_8c_ad47cb0106d6f756714576cffabbf5b5b}} 
+\index{users.c@{users.c}!display\_users@{display\_users}}
+\index{display\_users@{display\_users}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{display\_users()}{display\_users()}}
+{\footnotesize\ttfamily void display\+\_\+users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Display all users. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 77 du fichier users.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{78 \{}
+\DoxyCodeLine{79     printf(\textcolor{stringliteral}{"{}\(\backslash\)n*******************************************\(\backslash\)n"{}});}
+\DoxyCodeLine{80     printf(\textcolor{stringliteral}{"{}[display\_users] Name | ID | Current Channel\(\backslash\)n"{}});}
+\DoxyCodeLine{81     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 10; i++)}
+\DoxyCodeLine{82     \{}
+\DoxyCodeLine{83         \textcolor{keywordflow}{if} (\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\textcolor{keywordtype}{id} != -\/1)}
+\DoxyCodeLine{84         \{}
+\DoxyCodeLine{85             printf(\textcolor{stringliteral}{"{}\%s | \%d | \%d\(\backslash\)n"{}}, \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].name, \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\textcolor{keywordtype}{id}, \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].currentChannel);}
+\DoxyCodeLine{86         \}}
+\DoxyCodeLine{87     \}}
+\DoxyCodeLine{88     printf(\textcolor{stringliteral}{"{}\(\backslash\)n*******************************************\(\backslash\)n"{}});}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{91 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{users_8c_ae229ed9fcec5dccce1aaebba2f69ef34}\label{users_8c_ae229ed9fcec5dccce1aaebba2f69ef34}} 
+\index{users.c@{users.c}!get\_user\_by\_id@{get\_user\_by\_id}}
+\index{get\_user\_by\_id@{get\_user\_by\_id}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{get\_user\_by\_id()}{get\_user\_by\_id()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structUser}{User}} $\ast$ get\+\_\+user\+\_\+by\+\_\+id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Get the user by id. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em id} & The id of the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+User$\ast$ 
+\end{DoxyReturn}
+
+
+Définition à la ligne 131 du fichier users.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{132 \{}
+\DoxyCodeLine{133     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 10; i++)}
+\DoxyCodeLine{134     \{}
+\DoxyCodeLine{135         \textcolor{keywordflow}{if} (\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\textcolor{keywordtype}{id} == \textcolor{keywordtype}{id})}
+\DoxyCodeLine{136         \{}
+\DoxyCodeLine{137             \textcolor{keywordflow}{return} \&\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i];}
+\DoxyCodeLine{138         \}}
+\DoxyCodeLine{139     \}}
+\DoxyCodeLine{140     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{141 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{users_8c_a5eeb39c9ec83abf262896f0744a0d6b7}\label{users_8c_a5eeb39c9ec83abf262896f0744a0d6b7}} 
+\index{users.c@{users.c}!get\_user\_by\_socket@{get\_user\_by\_socket}}
+\index{get\_user\_by\_socket@{get\_user\_by\_socket}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{get\_user\_by\_socket()}{get\_user\_by\_socket()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structUser}{User}} get\+\_\+user\+\_\+by\+\_\+socket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}}}]{socket }\end{DoxyParamCaption})}
+
+
+
+Get the user by the socket. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em socket} & The socket of the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\mbox{\hyperlink{structUser}{User}} 
+\end{DoxyReturn}
+
+
+Définition à la ligne 113 du fichier users.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{114 \{}
+\DoxyCodeLine{115     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 10; i++)}
+\DoxyCodeLine{116     \{}
+\DoxyCodeLine{117         \textcolor{keywordflow}{if} (\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structsocket}{socket}}.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}} == \mbox{\hyperlink{structsocket}{socket}}.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}})}
+\DoxyCodeLine{118         \{}
+\DoxyCodeLine{119             \textcolor{keywordflow}{return} \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i];}
+\DoxyCodeLine{120         \}}
+\DoxyCodeLine{121     \}}
+\DoxyCodeLine{122     \textcolor{keywordflow}{return} \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[0];}
+\DoxyCodeLine{123 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{users_8c_a2ac0883dc9051edca1650af4f24b6ba7}\label{users_8c_a2ac0883dc9051edca1650af4f24b6ba7}} 
+\index{users.c@{users.c}!get\_users@{get\_users}}
+\index{get\_users@{get\_users}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{get\_users()}{get\_users()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structUser}{User}} $\ast$ get\+\_\+users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the users. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+User$\ast$ 
+\end{DoxyReturn}
+
+
+Définition à la ligne 149 du fichier users.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{150 \{}
+\DoxyCodeLine{151     \textcolor{keywordflow}{return} \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}};}
+\DoxyCodeLine{152 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{users_8c_afbcbc0e1e01097a07d5dce2493be9385}\label{users_8c_afbcbc0e1e01097a07d5dce2493be9385}} 
+\index{users.c@{users.c}!init\_users@{init\_users}}
+\index{init\_users@{init\_users}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{init\_users()}{init\_users()}}
+{\footnotesize\ttfamily void init\+\_\+users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Définition à la ligne 14 du fichier users.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 10; i++)}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18         \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}} = -\/1;}
+\DoxyCodeLine{19         \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}} = -\/1;}
+\DoxyCodeLine{20         \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structUser_aa4a4e3cd80081b7dd0f5fd96f9e997b2}{name}}[0] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{21         \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}} = -\/1;}
+\DoxyCodeLine{22     \}}
+\DoxyCodeLine{23     printf(\textcolor{stringliteral}{"{}[init\_users] Users initialized\(\backslash\)n"{}});}
+\DoxyCodeLine{24 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{users_8c_ad3dce5cc061a0c1cdf3959c348440568}\label{users_8c_ad3dce5cc061a0c1cdf3959c348440568}} 
+\index{users.c@{users.c}!remove\_user@{remove\_user}}
+\index{remove\_user@{remove\_user}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{remove\_user()}{remove\_user()}}
+{\footnotesize\ttfamily void remove\+\_\+user (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structUser}{User}}}]{user }\end{DoxyParamCaption})}
+
+
+
+Remove a user from the users array. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em user} & The user to remove \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 59 du fichier users.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{60 \{}
+\DoxyCodeLine{61     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 10; i++)}
+\DoxyCodeLine{62     \{}
+\DoxyCodeLine{63         \textcolor{keywordflow}{if} (\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\textcolor{keywordtype}{id} == user.\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}})}
+\DoxyCodeLine{64         \{}
+\DoxyCodeLine{65             \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}} = -\/1;}
+\DoxyCodeLine{66             \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}} = -\/1;}
+\DoxyCodeLine{67             printf(\textcolor{stringliteral}{"{}[remove\_user] \%s removed\(\backslash\)n"{}}, user.\mbox{\hyperlink{structUser_aa4a4e3cd80081b7dd0f5fd96f9e997b2}{name}});}
+\DoxyCodeLine{68         \}}
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{users_8c_a294c2b4c6ef4f2468cfed604bcaabe5f}\label{users_8c_a294c2b4c6ef4f2468cfed604bcaabe5f}} 
+\index{users.c@{users.c}!user\_exists@{user\_exists}}
+\index{user\_exists@{user\_exists}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{user\_exists()}{user\_exists()}}
+{\footnotesize\ttfamily bool user\+\_\+exists (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Test if a user exists. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em id} & The id of the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Définition à la ligne 161 du fichier users.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{162 \{}
+\DoxyCodeLine{163     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 10; i++)}
+\DoxyCodeLine{164     \{}
+\DoxyCodeLine{165         \textcolor{keywordflow}{if} (\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\textcolor{keywordtype}{id} == \textcolor{keywordtype}{id} \&\& \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\textcolor{keywordtype}{id} != -\/1)}
+\DoxyCodeLine{166         \{}
+\DoxyCodeLine{167             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{168         \}}
+\DoxyCodeLine{169     \}}
+\DoxyCodeLine{170     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{171 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{users_8c_a84b2704478934c7e0278761a15f3c5a8}\label{users_8c_a84b2704478934c7e0278761a15f3c5a8}} 
+\index{users.c@{users.c}!USER\_ID@{USER\_ID}}
+\index{USER\_ID@{USER\_ID}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{USER\_ID}{USER\_ID}}
+{\footnotesize\ttfamily int USER\+\_\+\+ID = 0}
+
+
+
+Définition à la ligne 12 du fichier users.\+c.
+
+\mbox{\Hypertarget{users_8c_a59a329403662e6924d95a5005689b0cf}\label{users_8c_a59a329403662e6924d95a5005689b0cf}} 
+\index{users.c@{users.c}!users@{users}}
+\index{users@{users}!users.c@{users.c}}
+\doxysubsubsection{\texorpdfstring{users}{users}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structUser}{User}} users\mbox{[}\mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\+\_\+\+USERS}}\mbox{]}}
+
+
+
+Définition à la ligne 11 du fichier users.\+c.
+

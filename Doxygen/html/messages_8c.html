@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Middleware Project (BetterDiscord): Référence du fichier sources/messages.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_centrale.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Middleware Project (BetterDiscord)
+   </div>
+   <div id="projectbrief">Projet réalisé dans le cadre du cours de Middleware Client/Serveur par Hakim FIDJEL et Younes Boughriet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_08d237fc27d4ecd563f71c5d52f2fecc.html">sources</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier messages.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Spécification de la couche Messages.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="messages_8h_source.html">../heads/messages.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de messages.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="messages_8c__incl.png" border="0" usemap="#asources_2messages_8c" alt=""/></div>
+<map name="asources_2messages_8c" id="asources_2messages_8c">
+<area shape="rect" title="Spécification de la couche Messages." alt="" coords="211,5,364,32"/>
+<area shape="rect" href="messages_8h.html" title="Fichier d&#39;en&#45;tête du module de gestion de l&#39;affichage." alt="" coords="210,80,365,107"/>
+<area shape="rect" title=" " alt="" coords="101,453,167,480"/>
+<area shape="rect" title=" " alt="" coords="5,453,76,480"/>
+<area shape="rect" title=" " alt="" coords="984,453,1055,480"/>
+<area shape="rect" title=" " alt="" coords="227,304,291,331"/>
+<area shape="rect" title=" " alt="" coords="885,453,959,480"/>
+<area shape="rect" href="channels_8h.html" title="Fichier d&#39;en&#45;tête pour la gestion des channels." alt="" coords="288,155,388,181"/>
+<area shape="rect" href="users_8h.html" title="Fichier d&#39;en&#45;tête du module des utilisateurs." alt="" coords="427,229,505,256"/>
+<area shape="rect" href="session_8h.html" title="Spécification de la couche Session." alt="" coords="539,379,630,405"/>
+<area shape="rect" href="data_8h.html" title="Spécification de la couche Data Representation." alt="" coords="468,304,539,331"/>
+<area shape="rect" title=" " alt="" coords="408,453,511,480"/>
+<area shape="rect" title=" " alt="" coords="535,453,631,480"/>
+<area shape="rect" title=" " alt="" coords="656,453,748,480"/>
+<area shape="rect" title=" " alt="" coords="773,453,861,480"/>
+<area shape="rect" title=" " alt="" coords="192,453,276,480"/>
+<area shape="rect" title=" " alt="" coords="301,453,383,480"/>
+<area shape="rect" title=" " alt="" coords="441,379,515,405"/>
+</map>
+</div>
+</div>
+<p><a href="messages_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a4b730a54135212b79c62bbd9d7d2cffa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="messages_8c.html#a4b730a54135212b79c62bbd9d7d2cffa">init_messages</a> (<a class="el" href="structChannel.html">Channel</a> *<a class="el" href="channels_8c.html#a37c7f24cbf16df4884786a1499cf4a0a">channels</a>)</td></tr>
+<tr class="memdesc:a4b730a54135212b79c62bbd9d7d2cffa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create if not exists one file for each channel in the ./tmp directory to store messages.  <a href="messages_8c.html#a4b730a54135212b79c62bbd9d7d2cffa">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4b730a54135212b79c62bbd9d7d2cffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea15116a63f4129938a31b36eb9a70c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="messages_8c.html#aea15116a63f4129938a31b36eb9a70c5">store_message</a> (int channel, int user, <a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff)</td></tr>
+<tr class="memdesc:aea15116a63f4129938a31b36eb9a70c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store a message in the correct file.  <a href="messages_8c.html#aea15116a63f4129938a31b36eb9a70c5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aea15116a63f4129938a31b36eb9a70c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca43e77ebc821b813857d1b46cf8093a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMessage.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="messages_8c.html#aca43e77ebc821b813857d1b46cf8093a">get_messages</a> (int channel)</td></tr>
+<tr class="memdesc:aca43e77ebc821b813857d1b46cf8093a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the messages object.  <a href="messages_8c.html#aca43e77ebc821b813857d1b46cf8093a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aca43e77ebc821b813857d1b46cf8093a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefb236347d5eac6411544a7a937274ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="messages_8c.html#aefb236347d5eac6411544a7a937274ea">display_messages</a> (<a class="el" href="structMessage.html">Message</a> *<a class="el" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>)</td></tr>
+<tr class="memdesc:aefb236347d5eac6411544a7a937274ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display all messages from the file.  <a href="messages_8c.html#aefb236347d5eac6411544a7a937274ea">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aefb236347d5eac6411544a7a937274ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a970837226ebb803a4c2bfeb9da82910f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="messages_8c.html#a970837226ebb803a4c2bfeb9da82910f">delete_messages</a> (int channel)</td></tr>
+<tr class="memdesc:a970837226ebb803a4c2bfeb9da82910f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete all messages from the file of the given channel and the file.  <a href="messages_8c.html#a970837226ebb803a4c2bfeb9da82910f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a970837226ebb803a4c2bfeb9da82910f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a492376c77a23ff458baa5683cdfd5353"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="messages_8c.html#a492376c77a23ff458baa5683cdfd5353">MESSAGE_ID</a> = 0</td></tr>
+<tr class="separator:a492376c77a23ff458baa5683cdfd5353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae72d029075bb7ee3de3e4b4bc34f813d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMessage.html">Message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a> [<a class="el" href="messages_8h.html#a1f02f60afb419aa25921dcd8ae49f807">MAX_MESSAGES</a>]</td></tr>
+<tr class="separator:ae72d029075bb7ee3de3e4b4bc34f813d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Spécification de la couche Messages. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Hakim FIDJEL </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>25 mars 2024 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+
+<p class="definition">Définition dans le fichier <a class="el" href="messages_8c_source.html">messages.c</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a970837226ebb803a4c2bfeb9da82910f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a970837226ebb803a4c2bfeb9da82910f">&#9670;&nbsp;</a></span>delete_messages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_messages </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delete all messages from the file of the given channel and the file. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>The channel to delete the messages from </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="messages_8c_source.html#l00141">141</a> du fichier <a class="el" href="messages_8c_source.html">messages.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;{</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordtype">char</span> path[100];</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    sprintf(path, <span class="stringliteral">&quot;%s%d&quot;</span>, <a class="code" href="messages_8h.html#a4b3e5374d9bf167a2dc4aec005e2b162">tmp_path</a>, channel);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">if</span> (remove(path) != 0)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Erreur : Impossible de supprimer le fichier %s\n&quot;</span>, path);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
+<div class="ttc" id="amessages_8h_html_a4b3e5374d9bf167a2dc4aec005e2b162"><div class="ttname"><a href="messages_8h.html#a4b3e5374d9bf167a2dc4aec005e2b162">tmp_path</a></div><div class="ttdeci">#define tmp_path</div><div class="ttdef"><b>Definition:</b> <a href="messages_8h_source.html#l00021">messages.h:21</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aefb236347d5eac6411544a7a937274ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefb236347d5eac6411544a7a937274ea">&#9670;&nbsp;</a></span>display_messages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display_messages </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMessage.html">Message</a> *&#160;</td>
+          <td class="paramname"><em>messages</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Display all messages from the file. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">messages</td><td>The messages to display </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="messages_8c_source.html#l00116">116</a> du fichier <a class="el" href="messages_8c_source.html">messages.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a> == NULL)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Erreur : Le tableau de messages est NULL.\n&quot;</span>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="messages_8h.html#a1f02f60afb419aa25921dcd8ae49f807">MAX_MESSAGES</a>; i++)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>[i].<span class="keywordtype">id</span> == -1)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        printf(<span class="stringliteral">&quot;%d#%d#%s#%ld\n&quot;</span>, <a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>[i].<span class="keywordtype">id</span>, <a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>[i].user, <a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>[i].buff, <a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>[i].timestamp);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
+<div class="ttc" id="amessages_8c_html_ae72d029075bb7ee3de3e4b4bc34f813d"><div class="ttname"><a href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a></div><div class="ttdeci">Message messages[MAX_MESSAGES]</div><div class="ttdef"><b>Definition:</b> <a href="messages_8c_source.html#l00012">messages.c:12</a></div></div>
+<div class="ttc" id="amessages_8h_html_a1f02f60afb419aa25921dcd8ae49f807"><div class="ttname"><a href="messages_8h.html#a1f02f60afb419aa25921dcd8ae49f807">MAX_MESSAGES</a></div><div class="ttdeci">#define MAX_MESSAGES</div><div class="ttdef"><b>Definition:</b> <a href="messages_8h_source.html#l00022">messages.h:22</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aca43e77ebc821b813857d1b46cf8093a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca43e77ebc821b813857d1b46cf8093a">&#9670;&nbsp;</a></span>get_messages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMessage.html">Message</a> * get_messages </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the messages object. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>The channel to get the messages from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Message* </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="messages_8c_source.html#l00088">88</a> du fichier <a class="el" href="messages_8c_source.html">messages.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">char</span> path[100];</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    sprintf(path, <span class="stringliteral">&quot;%s%d&quot;</span>, <a class="code" href="messages_8h.html#a4b3e5374d9bf167a2dc4aec005e2b162">tmp_path</a>, channel);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    FILE *file = fopen(path, <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (file == NULL)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Erreur : Impossible d&#39;ouvrir le fichier %s\n&quot;</span>, path);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">while</span> (fscanf(file, <span class="stringliteral">&quot;%d#%d#%s#%ld\n&quot;</span>, &amp;<a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>[i].<span class="keywordtype">id</span>, &amp;<a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>[i].user, <a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>[i].buff, &amp;<a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>[i].timestamp) != EOF)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        i++;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    fclose(file);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d">messages</a>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4b730a54135212b79c62bbd9d7d2cffa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b730a54135212b79c62bbd9d7d2cffa">&#9670;&nbsp;</a></span>init_messages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_messages </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structChannel.html">Channel</a> *&#160;</td>
+          <td class="paramname"><em>channels</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create if not exists one file for each channel in the ./tmp directory to store messages. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channels</td><td>tableau de channels </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="messages_8c_source.html#l00019">19</a> du fichier <a class="el" href="messages_8c_source.html">messages.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">char</span> path[100];</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="channels_8c.html#a37c7f24cbf16df4884786a1499cf4a0a">channels</a> == NULL)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Erreur: Le tableau de channels est NULL.\n&quot;</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="channels_8h.html#ac69ee46f4a51ed14f0d68628c2dec71d">MAX_CHANNELS</a>; i++)</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="channels_8c.html#a37c7f24cbf16df4884786a1499cf4a0a">channels</a>[i].<span class="keywordtype">id</span> == -1)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        sprintf(path, <span class="stringliteral">&quot;%s%d&quot;</span>, <a class="code" href="messages_8h.html#a4b3e5374d9bf167a2dc4aec005e2b162">tmp_path</a>, <a class="code" href="channels_8c.html#a37c7f24cbf16df4884786a1499cf4a0a">channels</a>[i].<span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        FILE *file = fopen(path, <span class="stringliteral">&quot;a&quot;</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span> (file == NULL)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            fprintf(stderr, <span class="stringliteral">&quot;Erreur : Impossible de créer ou ouvrir le fichier %s\n&quot;</span>, path);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            fclose(file);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="ttc" id="achannels_8c_html_a37c7f24cbf16df4884786a1499cf4a0a"><div class="ttname"><a href="channels_8c.html#a37c7f24cbf16df4884786a1499cf4a0a">channels</a></div><div class="ttdeci">Channel channels[MAX_CHANNELS]</div><div class="ttdef"><b>Definition:</b> <a href="channels_8c_source.html#l00014">channels.c:14</a></div></div>
+<div class="ttc" id="achannels_8h_html_ac69ee46f4a51ed14f0d68628c2dec71d"><div class="ttname"><a href="channels_8h.html#ac69ee46f4a51ed14f0d68628c2dec71d">MAX_CHANNELS</a></div><div class="ttdeci">#define MAX_CHANNELS</div><div class="ttdef"><b>Definition:</b> <a href="channels_8h_source.html#l00024">channels.h:24</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aea15116a63f4129938a31b36eb9a70c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea15116a63f4129938a31b36eb9a70c5">&#9670;&nbsp;</a></span>store_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void store_message </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a>&#160;</td>
+          <td class="paramname"><em>buff</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Store a message in the correct file. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>The channel where the message is sent </td></tr>
+    <tr><td class="paramname">user</td><td>The user who sent the message </td></tr>
+    <tr><td class="paramname">buff</td><td>The message to store </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="messages_8c_source.html#l00058">58</a> du fichier <a class="el" href="messages_8c_source.html">messages.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">char</span> path[100];</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">int</span> <span class="keywordtype">id</span> = <a class="code" href="messages_8c.html#a492376c77a23ff458baa5683cdfd5353">MESSAGE_ID</a>++;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    sprintf(path, <span class="stringliteral">&quot;%s%d&quot;</span>, <a class="code" href="messages_8h.html#a4b3e5374d9bf167a2dc4aec005e2b162">tmp_path</a>, channel);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    FILE *file = fopen(path, <span class="stringliteral">&quot;a&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (file == NULL)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Erreur : Impossible d&#39;ouvrir le fichier %s\n&quot;</span>, path);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    time_t timestamp;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    time(&amp;timestamp);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    fprintf(file, <span class="stringliteral">&quot;%d#%d#%s#%ld\n&quot;</span>, <span class="keywordtype">id</span>, user, buff, timestamp);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    fclose(file);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="ttc" id="amessages_8c_html_a492376c77a23ff458baa5683cdfd5353"><div class="ttname"><a href="messages_8c.html#a492376c77a23ff458baa5683cdfd5353">MESSAGE_ID</a></div><div class="ttdeci">int MESSAGE_ID</div><div class="ttdef"><b>Definition:</b> <a href="messages_8c_source.html#l00011">messages.c:11</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="a492376c77a23ff458baa5683cdfd5353"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a492376c77a23ff458baa5683cdfd5353">&#9670;&nbsp;</a></span>MESSAGE_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MESSAGE_ID = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="messages_8c_source.html#l00011">11</a> du fichier <a class="el" href="messages_8c_source.html">messages.c</a>.</p>
+
+</div>
+</div>
+<a id="ae72d029075bb7ee3de3e4b4bc34f813d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae72d029075bb7ee3de3e4b4bc34f813d">&#9670;&nbsp;</a></span>messages</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMessage.html">Message</a> messages[<a class="el" href="messages_8h.html#a1f02f60afb419aa25921dcd8ae49f807">MAX_MESSAGES</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="messages_8c_source.html#l00012">12</a> du fichier <a class="el" href="messages_8c_source.html">messages.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

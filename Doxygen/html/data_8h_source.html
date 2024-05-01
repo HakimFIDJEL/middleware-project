@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Middleware Project (BetterDiscord):  Fichier source de heads/data.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_centrale.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Middleware Project (BetterDiscord)
+   </div>
+   <div id="projectbrief">Projet réalisé dans le cadre du cours de Middleware Client/Serveur par Hakim FIDJEL et Younes Boughriet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_f2cb48fa25ab3f859daf4d8a01e92e11.html">heads</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">data.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="data_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef DATA_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define DATA_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *  \noop       I N C L U D E S   S P E C I F I Q U E S</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="session_8h.html">session.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stdarg.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *  \noop       D E F I N I T I O N   DES   C O N S T A N T E S</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define MAX_BUFFER  1024</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> *  \noop       S T R C T U R E S   DE   D O N N E E S</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">   33</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span> <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a>[<a class="code" href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a>];</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="data_8h.html#a20a07aa5a0a4656891f77115d03fd436">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">void</span> * <span class="keyword">generic</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">   43</a></span>&#160;<span class="keyword">typedef</span> void (*<a class="code" href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a>) (<span class="keyword">generic</span>, <span class="keyword">generic</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> *  \noop       P R O T O T Y P E S   DES   F O N C T I O N S</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#aa56b8d84de67f5ea7ea393a8884d3bbf">envoyer</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <span class="keyword">generic</span> quoi, <a class="code" href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a> serial, ...);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#ad62cf336e585a61123084d2fc4ba4791">recevoir</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <span class="keyword">generic</span> quoi, <a class="code" href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a> deSerial);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">// Fonctions locales</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#ab3446a0ed2d34b67b3649e91738b83ba">_envoyerMessStream</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#a78bf89caa67dbe621bc764ce1c4ef48b">_envoyerMessDGRAM</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff, <span class="keywordtype">char</span> *adrIP, <span class="keywordtype">int</span> port);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#a7623e451f4106f37d40026db15421db8">_recevoirMessStream</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#a0adb772767612cdbfb0cb43148e980eb">_recevoirMessDGRAM</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#a982b93dcd0a620cb9ec82a60ae88c755">_serialMess</a>(<span class="keyword">generic</span> quoi, <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8h.html#a8a599960a3b2d4e0db9a34c714f14c95">_deSerialMess</a>(<a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff, <span class="keyword">generic</span> quoi);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* DATA_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="adata_8h_html_a0adb772767612cdbfb0cb43148e980eb"><div class="ttname"><a href="data_8h.html#a0adb772767612cdbfb0cb43148e980eb">_recevoirMessDGRAM</a></div><div class="ttdeci">void _recevoirMessDGRAM(socket_t *sockEch, buffer_t buff)</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00134">data.c:134</a></div></div>
+<div class="ttc" id="adata_8h_html_a1d5dab30b404fab91608086105afc78c"><div class="ttname"><a href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a></div><div class="ttdeci">#define MAX_BUFFER</div><div class="ttdoc">taille d'un buffer_t d'émission/réception</div></div>
+<div class="ttc" id="adata_8h_html_a2c2240d1cf1f52381c9fe541ceec05bd"><div class="ttname"><a href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a></div><div class="ttdeci">char buffer_t[MAX_BUFFER]</div><div class="ttdoc">chaîne de caractères à émettre/recevoir</div><div class="ttdef"><b>Definition:</b> <a href="data_8h_source.html#l00033">data.h:33</a></div></div>
+<div class="ttc" id="adata_8h_html_a7623e451f4106f37d40026db15421db8"><div class="ttname"><a href="data_8h.html#a7623e451f4106f37d40026db15421db8">_recevoirMessStream</a></div><div class="ttdeci">void _recevoirMessStream(socket_t *sockEch, buffer_t buff)</div><div class="ttdoc">Réception d'un message sur une socket de type STREAM.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00120">data.c:120</a></div></div>
+<div class="ttc" id="adata_8h_html_a78bf89caa67dbe621bc764ce1c4ef48b"><div class="ttname"><a href="data_8h.html#a78bf89caa67dbe621bc764ce1c4ef48b">_envoyerMessDGRAM</a></div><div class="ttdeci">void _envoyerMessDGRAM(socket_t *sockEch, buffer_t buff, char *adrIP, int port)</div><div class="ttdoc">Envoi d'un message sur une socket de type DGRAM.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00106">data.c:106</a></div></div>
+<div class="ttc" id="adata_8h_html_a8a599960a3b2d4e0db9a34c714f14c95"><div class="ttname"><a href="data_8h.html#a8a599960a3b2d4e0db9a34c714f14c95">_deSerialMess</a></div><div class="ttdeci">void _deSerialMess(buffer_t buff, generic quoi)</div><div class="ttdoc">Dé-sérialisation d'une requête/réponse.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00159">data.c:159</a></div></div>
+<div class="ttc" id="adata_8h_html_a982b93dcd0a620cb9ec82a60ae88c755"><div class="ttname"><a href="data_8h.html#a982b93dcd0a620cb9ec82a60ae88c755">_serialMess</a></div><div class="ttdeci">void _serialMess(generic quoi, buffer_t buff)</div><div class="ttdoc">Serialisation d'une requête/réponse.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00147">data.c:147</a></div></div>
+<div class="ttc" id="adata_8h_html_aa56b8d84de67f5ea7ea393a8884d3bbf"><div class="ttname"><a href="data_8h.html#aa56b8d84de67f5ea7ea393a8884d3bbf">envoyer</a></div><div class="ttdeci">void envoyer(socket_t *sockEch, generic quoi, pFct serial,...)</div><div class="ttdoc">Envoi d'une requête/réponse sur une socket.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00025">data.c:25</a></div></div>
+<div class="ttc" id="adata_8h_html_ab3446a0ed2d34b67b3649e91738b83ba"><div class="ttname"><a href="data_8h.html#ab3446a0ed2d34b67b3649e91738b83ba">_envoyerMessStream</a></div><div class="ttdeci">void _envoyerMessStream(socket_t *sockEch, buffer_t buff)</div><div class="ttdoc">Envoi d'un message sur une socket de type STREAM.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00092">data.c:92</a></div></div>
+<div class="ttc" id="adata_8h_html_ad62cf336e585a61123084d2fc4ba4791"><div class="ttname"><a href="data_8h.html#ad62cf336e585a61123084d2fc4ba4791">recevoir</a></div><div class="ttdeci">void recevoir(socket_t *sockEch, generic quoi, pFct deSerial)</div><div class="ttdoc">Réception d'une requête/réponse sur une socket.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00063">data.c:63</a></div></div>
+<div class="ttc" id="adata_8h_html_aff0a816c1aa078dc74b95c5074a14b6c"><div class="ttname"><a href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a></div><div class="ttdeci">void(* pFct)(generic, generic)</div><div class="ttdoc">pointer sur fonction générique à 2 parametres génériques</div><div class="ttdef"><b>Definition:</b> <a href="data_8h_source.html#l00043">data.h:43</a></div></div>
+<div class="ttc" id="asession_8h_html"><div class="ttname"><a href="session_8h.html">session.h</a></div><div class="ttdoc">Spécification de la couche Session.</div></div>
+<div class="ttc" id="astructsocket_html"><div class="ttname"><a href="structsocket.html">socket</a></div><div class="ttdoc">Définition de la structure de données socket.</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00057">session.h:58</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['main_70',['main',['../main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.c']]],
+  ['main_2ec_71',['main.c',['../main_8c.html',1,'']]],
+  ['main_5floop_5fncurses_72',['main_loop_ncurses',['../ncurses_8c.html#a2f5c5e279980697501b0250a932c54c7',1,'main_loop_ncurses():&#160;ncurses.c'],['../ncurses_8h.html#a2f5c5e279980697501b0250a932c54c7',1,'main_loop_ncurses():&#160;ncurses.c']]],
+  ['main_5fwidth_73',['main_width',['../main_8c.html#a209ec2bf57de0f29d499648d22024b4a',1,'main_width():&#160;main.c'],['../ncurses_8c.html#a209ec2bf57de0f29d499648d22024b4a',1,'main_width():&#160;ncurses.c']]],
+  ['max_5fbuffer_74',['MAX_BUFFER',['../data_8h.html#a1d5dab30b404fab91608086105afc78c',1,'ncurses.h']]],
+  ['max_5fchannels_75',['MAX_CHANNELS',['../channels_8h.html#ac69ee46f4a51ed14f0d68628c2dec71d',1,'channels.h']]],
+  ['max_5fmessages_76',['MAX_MESSAGES',['../messages_8h.html#a1f02f60afb419aa25921dcd8ae49f807',1,'messages.h']]],
+  ['max_5fmsg_77',['MAX_MSG',['../ncurses_8h.html#aa24597a54a085c6c2c33b64138f09eff',1,'ncurses.h']]],
+  ['max_5fsockets_78',['MAX_SOCKETS',['../session_8c.html#ab54cda52ee639aa3c47cfa330904e776',1,'session.c']]],
+  ['max_5fusers_79',['MAX_USERS',['../users_8h.html#a2c2a303621f66761529e598758d7ef34',1,'users.h']]],
+  ['message_80',['Message',['../structMessage.html',1,'']]],
+  ['message_5fid_81',['MESSAGE_ID',['../messages_8c.html#a492376c77a23ff458baa5683cdfd5353',1,'messages.c']]],
+  ['messages_82',['messages',['../messages_8c.html#ae72d029075bb7ee3de3e4b4bc34f813d',1,'messages.c']]],
+  ['messages_2ec_83',['messages.c',['../messages_8c.html',1,'']]],
+  ['messages_2eh_84',['messages.h',['../messages_8h.html',1,'']]],
+  ['mode_85',['mode',['../structsocket.html#a91c13966eecc710ac792e7349172e975',1,'socket']]],
+  ['mode_86',['MODE',['../main_8c.html#ab8c52c1b4c021ed3e6b6b677bd2ac019',1,'main.c']]]
+];

@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Middleware Project (BetterDiscord):  Fichier source de sources/data.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_centrale.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Middleware Project (BetterDiscord)
+   </div>
+   <div id="projectbrief">Projet réalisé dans le cadre du cours de Middleware Client/Serveur par Hakim FIDJEL et Younes Boughriet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_08d237fc27d4ecd563f71c5d52f2fecc.html">sources</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">data.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="data_8c.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../heads/data.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">***************************************************************************************************</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*   \noop      F O N C T I O N S   D E   L A   C O U C H E   R E P R E S E N T A T I O N</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="data_8c.html#aa56b8d84de67f5ea7ea393a8884d3bbf">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8c.html#aa56b8d84de67f5ea7ea393a8884d3bbf">envoyer</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <span class="keyword">generic</span> quoi, <a class="code" href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a> serial, ...)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> content;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// Serializing</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">if</span> (serial != NULL)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        serial(quoi, content);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        strcpy(content, (<span class="keywordtype">char</span> *)quoi);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Sending</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (sockEch-&gt;<a class="code" href="structsocket.html#a91c13966eecc710ac792e7349172e975">mode</a> == SOCK_STREAM)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="data_8c.html#ab3446a0ed2d34b67b3649e91738b83ba">_envoyerMessStream</a>(sockEch, content);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        va_list pArg;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">char</span> *addrIp = va_arg(pArg, <span class="keywordtype">char</span> *);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordtype">int</span> port = va_arg(pArg, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        va_start(pArg, serial);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="data_8c.html#a78bf89caa67dbe621bc764ce1c4ef48b">_envoyerMessDGRAM</a>(sockEch, content, addrIp, port);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        va_end(pArg);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="data_8c.html#ad62cf336e585a61123084d2fc4ba4791">   63</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8c.html#ad62cf336e585a61123084d2fc4ba4791">recevoir</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <span class="keyword">generic</span> quoi, <a class="code" href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a> deSerial)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> content;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Receiving</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (sockEch-&gt;<a class="code" href="structsocket.html#a91c13966eecc710ac792e7349172e975">mode</a> == SOCK_STREAM)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="data_8c.html#a7623e451f4106f37d40026db15421db8">_recevoirMessStream</a>(sockEch, content);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="data_8c.html#a0adb772767612cdbfb0cb43148e980eb">_recevoirMessDGRAM</a>(sockEch, content);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// Deserializing</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span> (deSerial != NULL)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        deSerial(content, quoi);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        strcpy(quoi, content);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">*************************************************************</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">*   \noop      F O N C T I O N S   L O C A L E S</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="data_8c.html#ab3446a0ed2d34b67b3649e91738b83ba">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8c.html#ab3446a0ed2d34b67b3649e91738b83ba">_envoyerMessStream</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(send(sockEch-&gt;<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, buff, <a class="code" href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a>, 0), <span class="stringliteral">&quot;Can&#39;t send&quot;</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="data_8c.html#a78bf89caa67dbe621bc764ce1c4ef48b">  106</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8c.html#a78bf89caa67dbe621bc764ce1c4ef48b">_envoyerMessDGRAM</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff, <span class="keywordtype">char</span> *adrIP, <span class="keywordtype">int</span> port)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">struct </span>sockaddr_in addr;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="session_8c.html#a27a803d7ebb36e8aa345c07d6bba7156">_adr2struct</a>(&amp;addr, adrIP, port);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(sendto(sockEch-&gt;<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, buff, <a class="code" href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a>, 0, (<span class="keyword">struct</span> sockaddr *)&amp;addr, <span class="keyword">sizeof</span>(addr)), <span class="stringliteral">&quot;Can&#39;t send&quot;</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="data_8c.html#a7623e451f4106f37d40026db15421db8">  120</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8c.html#a7623e451f4106f37d40026db15421db8">_recevoirMessStream</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a>(recv(sockEch-&gt;<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, buff, <a class="code" href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a>, 0), <span class="stringliteral">&quot;Can&#39;t receive&quot;</span>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="data_8c.html#a0adb772767612cdbfb0cb43148e980eb">  134</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8c.html#a0adb772767612cdbfb0cb43148e980eb">_recevoirMessDGRAM</a>(<a class="code" href="structsocket.html">socket_t</a> *sockEch, <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">struct </span>sockaddr_in addrSrc;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    socklen_t len = <span class="keyword">sizeof</span>(addrSrc);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    recvfrom(sockEch-&gt;<a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>, buff, <a class="code" href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a>, 0, (<span class="keyword">struct</span> sockaddr *)&amp;addrSrc, &amp;len);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="data_8c.html#a982b93dcd0a620cb9ec82a60ae88c755">  147</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8c.html#a982b93dcd0a620cb9ec82a60ae88c755">_serialMess</a>(<span class="keyword">generic</span> quoi, <a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    strcpy(buff, (<span class="keywordtype">char</span> *)quoi);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="data_8c.html#a8a599960a3b2d4e0db9a34c714f14c95">  159</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="data_8c.html#a8a599960a3b2d4e0db9a34c714f14c95">_deSerialMess</a>(<a class="code" href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a> buff, <span class="keyword">generic</span> quoi)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    strcpy((<span class="keywordtype">char</span> *)quoi, buff);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+<div class="ttc" id="adata_8c_html_a0adb772767612cdbfb0cb43148e980eb"><div class="ttname"><a href="data_8c.html#a0adb772767612cdbfb0cb43148e980eb">_recevoirMessDGRAM</a></div><div class="ttdeci">void _recevoirMessDGRAM(socket_t *sockEch, buffer_t buff)</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00134">data.c:134</a></div></div>
+<div class="ttc" id="adata_8c_html_a7623e451f4106f37d40026db15421db8"><div class="ttname"><a href="data_8c.html#a7623e451f4106f37d40026db15421db8">_recevoirMessStream</a></div><div class="ttdeci">void _recevoirMessStream(socket_t *sockEch, buffer_t buff)</div><div class="ttdoc">Réception d'un message sur une socket de type STREAM.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00120">data.c:120</a></div></div>
+<div class="ttc" id="adata_8c_html_a78bf89caa67dbe621bc764ce1c4ef48b"><div class="ttname"><a href="data_8c.html#a78bf89caa67dbe621bc764ce1c4ef48b">_envoyerMessDGRAM</a></div><div class="ttdeci">void _envoyerMessDGRAM(socket_t *sockEch, buffer_t buff, char *adrIP, int port)</div><div class="ttdoc">Envoi d'un message sur une socket de type DGRAM.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00106">data.c:106</a></div></div>
+<div class="ttc" id="adata_8c_html_a8a599960a3b2d4e0db9a34c714f14c95"><div class="ttname"><a href="data_8c.html#a8a599960a3b2d4e0db9a34c714f14c95">_deSerialMess</a></div><div class="ttdeci">void _deSerialMess(buffer_t buff, generic quoi)</div><div class="ttdoc">Dé-sérialisation d'une requête/réponse.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00159">data.c:159</a></div></div>
+<div class="ttc" id="adata_8c_html_a982b93dcd0a620cb9ec82a60ae88c755"><div class="ttname"><a href="data_8c.html#a982b93dcd0a620cb9ec82a60ae88c755">_serialMess</a></div><div class="ttdeci">void _serialMess(generic quoi, buffer_t buff)</div><div class="ttdoc">Serialisation d'une requête/réponse.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00147">data.c:147</a></div></div>
+<div class="ttc" id="adata_8c_html_aa56b8d84de67f5ea7ea393a8884d3bbf"><div class="ttname"><a href="data_8c.html#aa56b8d84de67f5ea7ea393a8884d3bbf">envoyer</a></div><div class="ttdeci">void envoyer(socket_t *sockEch, generic quoi, pFct serial,...)</div><div class="ttdoc">Envoi d'une requête/réponse sur une socket.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00025">data.c:25</a></div></div>
+<div class="ttc" id="adata_8c_html_ab3446a0ed2d34b67b3649e91738b83ba"><div class="ttname"><a href="data_8c.html#ab3446a0ed2d34b67b3649e91738b83ba">_envoyerMessStream</a></div><div class="ttdeci">void _envoyerMessStream(socket_t *sockEch, buffer_t buff)</div><div class="ttdoc">Envoi d'un message sur une socket de type STREAM.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00092">data.c:92</a></div></div>
+<div class="ttc" id="adata_8c_html_ad62cf336e585a61123084d2fc4ba4791"><div class="ttname"><a href="data_8c.html#ad62cf336e585a61123084d2fc4ba4791">recevoir</a></div><div class="ttdeci">void recevoir(socket_t *sockEch, generic quoi, pFct deSerial)</div><div class="ttdoc">Réception d'une requête/réponse sur une socket.</div><div class="ttdef"><b>Definition:</b> <a href="data_8c_source.html#l00063">data.c:63</a></div></div>
+<div class="ttc" id="adata_8h_html_a1d5dab30b404fab91608086105afc78c"><div class="ttname"><a href="data_8h.html#a1d5dab30b404fab91608086105afc78c">MAX_BUFFER</a></div><div class="ttdeci">#define MAX_BUFFER</div><div class="ttdoc">taille d'un buffer_t d'émission/réception</div></div>
+<div class="ttc" id="adata_8h_html_a2c2240d1cf1f52381c9fe541ceec05bd"><div class="ttname"><a href="data_8h.html#a2c2240d1cf1f52381c9fe541ceec05bd">buffer_t</a></div><div class="ttdeci">char buffer_t[MAX_BUFFER]</div><div class="ttdoc">chaîne de caractères à émettre/recevoir</div><div class="ttdef"><b>Definition:</b> <a href="data_8h_source.html#l00033">data.h:33</a></div></div>
+<div class="ttc" id="adata_8h_html_aff0a816c1aa078dc74b95c5074a14b6c"><div class="ttname"><a href="data_8h.html#aff0a816c1aa078dc74b95c5074a14b6c">pFct</a></div><div class="ttdeci">void(* pFct)(generic, generic)</div><div class="ttdoc">pointer sur fonction générique à 2 parametres génériques</div><div class="ttdef"><b>Definition:</b> <a href="data_8h_source.html#l00043">data.h:43</a></div></div>
+<div class="ttc" id="asession_8c_html_a27a803d7ebb36e8aa345c07d6bba7156"><div class="ttname"><a href="session_8c.html#a27a803d7ebb36e8aa345c07d6bba7156">_adr2struct</a></div><div class="ttdeci">void _adr2struct(struct sockaddr_in *addr, char *adrIP, short port)</div><div class="ttdoc">Transformer une adresse au format humain en structure SocketBSD.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00090">session.c:90</a></div></div>
+<div class="ttc" id="asession_8h_html_ad3fe337408f16c132c895f2b59326410"><div class="ttname"><a href="session_8h.html#ad3fe337408f16c132c895f2b59326410">CHECK</a></div><div class="ttdeci">#define CHECK(sts, msg)</div><div class="ttdoc">Macro-fonction qui vérifie que sts est égal -1 (cas d'erreur : sts==-1) En cas d'erreur,...</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00034">session.h:34</a></div></div>
+<div class="ttc" id="astructsocket_html"><div class="ttname"><a href="structsocket.html">socket</a></div><div class="ttdoc">Définition de la structure de données socket.</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00057">session.h:58</a></div></div>
+<div class="ttc" id="astructsocket_html_a91c13966eecc710ac792e7349172e975"><div class="ttname"><a href="structsocket.html#a91c13966eecc710ac792e7349172e975">socket::mode</a></div><div class="ttdeci">int mode</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00060">session.h:60</a></div></div>
+<div class="ttc" id="astructsocket_html_adce841ceca3a01158a71421e6b0dbd8a"><div class="ttname"><a href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">socket::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00059">session.h:59</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,1232 @@
+\hypertarget{main_8c}{}\doxysection{Référence du fichier main.\+c}
+\label{main_8c}\index{main.c@{main.c}}
+
+
+Programme principal du chat.  
+
+
+{\ttfamily \#include \char`\"{}./heads/data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./heads/session.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./heads/users.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./heads/channels.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./heads/messages.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}./heads/ncurses.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+{\ttfamily \#include $<$locale.\+h$>$}\newline
+Graphe des dépendances par inclusion de main.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_ac9f31f726d2933782e2efda7136a25fd}{ADDR}}~\char`\"{}127.\+0.\+0.\+1\char`\"{}
+\item 
+\#define \mbox{\hyperlink{main_8c_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}}~5000
+\item 
+\#define \mbox{\hyperlink{main_8c_ab8c52c1b4c021ed3e6b6b677bd2ac019}{MODE}}~SOCK\+\_\+\+STREAM
+\item 
+\#define \mbox{\hyperlink{main_8c_aa8d0634d21fc2dc0956ab534ac81c926}{SIG\+\_\+\+ARRET}}~SIGINT
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_adb723d4c0b7a57a31a2de35be952a566}{serveur}} ()
+\begin{DoxyCompactList}\small\item\em Fonction principale du programme pour le serveur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a7d0f00f54686b7ecfb1c73edca3ee4f4}{client}} ()
+\begin{DoxyCompactList}\small\item\em Fonction principale du programme pour le client. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a63d65c2d1798ef7e1acbbbab1c6cc043}{is\+\_\+command}} (\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff)
+\begin{DoxyCompactList}\small\item\em Fonction qui vérifie si la commande est une commande. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a3f974b02468165977d4e6f8e169d78eb}{dialogue\+Srv}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$sock\+Ech, \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff, \mbox{\hyperlink{data_8h_aff0a816c1aa078dc74b95c5074a14b6c}{p\+Fct}} serial)
+\begin{DoxyCompactList}\small\item\em Fonction qui gère le dialogue entre le serveur et le client. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{main_8c_a4ac82fc3541a5d297a38caa34b8dfaff}{Envoi\+Clt}} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em Fonction qui gère l\textquotesingle{}envoi des messages du client. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{main_8c_a9a4d8da7adc6a4f7d90402eb26d40f50}{Reception\+Clt}} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em Fonction qui gère la réception des messages du client. \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{main_8c_a5025b066f93febe70ff06a183b614cee}{server\+\_\+thread}} (void $\ast$arg)
+\begin{DoxyCompactList}\small\item\em Fonction qui gère les threads pour les clients. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_aa94ada609e59e434cd91ca4cf1700f01}{command\+\_\+manager}} (\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff, \mbox{\hyperlink{structUser}{User}} $\ast$user)
+\begin{DoxyCompactList}\small\item\em Fonction qui gère les commandes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_af22ddf2e07052d83de689b3b3dbf0a11}{disconnect}} (\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}} buff)
+\begin{DoxyCompactList}\small\item\em Fonction qui gère la déconnexion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a97bb8833f38dbdeb06d3bf6599358e83}{signal\+\_\+handler}} (int sig, siginfo\+\_\+t $\ast$siginfo, void $\ast$context)
+\begin{DoxyCompactList}\small\item\em Fonction qui gère les signaux. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em La fonction principale du programme qui lance le serveur ou le client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8c_a8eae9c4b1978e9d80bc640007c67fb5a}{flag\+\_\+start\+\_\+client}} = 1
+\item 
+volatile bool \mbox{\hyperlink{main_8c_a35f745f521ac49df3dab18076271489f}{session\+Active}} = false
+\item 
+WINDOW $\ast$ \mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\+\_\+win}}
+\item 
+WINDOW $\ast$ \mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\+\_\+win}}
+\item 
+WINDOW $\ast$ \mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\+\_\+win}}
+\item 
+int \mbox{\hyperlink{main_8c_ad12fc34ce789bce6c8a05d8a17138534}{height}}
+\item 
+int \mbox{\hyperlink{main_8c_a2474a5474cbff19523a51eb1de01cda4}{width}}
+\item 
+int \mbox{\hyperlink{main_8c_a209ec2bf57de0f29d499648d22024b4a}{main\+\_\+width}}
+\item 
+int \mbox{\hyperlink{main_8c_ac94d8bc2e952aa8151d301a08a6f14e0}{side\+\_\+width}}
+\item 
+\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} \mbox{\hyperlink{main_8c_a44c875427681d951feb66c686596fbe4}{sock\+Ecoute}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Programme principal du chat. 
+
+\begin{DoxyAuthor}{Auteur}
+Hakim FIDJEL \& Younes BOUGHRIET 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+25 mars 2024 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des macros}
+\mbox{\Hypertarget{main_8c_ac9f31f726d2933782e2efda7136a25fd}\label{main_8c_ac9f31f726d2933782e2efda7136a25fd}} 
+\index{main.c@{main.c}!ADDR@{ADDR}}
+\index{ADDR@{ADDR}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ADDR}{ADDR}}
+{\footnotesize\ttfamily \#define ADDR~\char`\"{}127.\+0.\+0.\+1\char`\"{}}
+
+
+
+Définition à la ligne 19 du fichier main.\+c.
+
+\mbox{\Hypertarget{main_8c_ab8c52c1b4c021ed3e6b6b677bd2ac019}\label{main_8c_ab8c52c1b4c021ed3e6b6b677bd2ac019}} 
+\index{main.c@{main.c}!MODE@{MODE}}
+\index{MODE@{MODE}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{MODE}{MODE}}
+{\footnotesize\ttfamily \#define MODE~SOCK\+\_\+\+STREAM}
+
+
+
+Définition à la ligne 21 du fichier main.\+c.
+
+\mbox{\Hypertarget{main_8c_a614217d263be1fb1a5f76e2ff7be19a2}\label{main_8c_a614217d263be1fb1a5f76e2ff7be19a2}} 
+\index{main.c@{main.c}!PORT@{PORT}}
+\index{PORT@{PORT}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{PORT}{PORT}}
+{\footnotesize\ttfamily \#define PORT~5000}
+
+
+
+Définition à la ligne 20 du fichier main.\+c.
+
+\mbox{\Hypertarget{main_8c_aa8d0634d21fc2dc0956ab534ac81c926}\label{main_8c_aa8d0634d21fc2dc0956ab534ac81c926}} 
+\index{main.c@{main.c}!SIG\_ARRET@{SIG\_ARRET}}
+\index{SIG\_ARRET@{SIG\_ARRET}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SIG\_ARRET}{SIG\_ARRET}}
+{\footnotesize\ttfamily \#define SIG\+\_\+\+ARRET~SIGINT}
+
+
+
+Définition à la ligne 22 du fichier main.\+c.
+
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{main_8c_a7d0f00f54686b7ecfb1c73edca3ee4f4}\label{main_8c_a7d0f00f54686b7ecfb1c73edca3ee4f4}} 
+\index{main.c@{main.c}!client@{client}}
+\index{client@{client}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{client()}{client()}}
+{\footnotesize\ttfamily void client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fonction principale du programme pour le client. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 211 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{212 \{}
+\DoxyCodeLine{213     \mbox{\hyperlink{structsocket}{socket\_t}} sockConn; \textcolor{comment}{// Socket de dialogue}}
+\DoxyCodeLine{214     \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\_t}} buff; \textcolor{comment}{// Buffer}}
+\DoxyCodeLine{215 }
+\DoxyCodeLine{216     \textcolor{comment}{// TODO : Ecran d'accueil qui attend /connect}}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218     \textcolor{comment}{// On affiche la socket}}
+\DoxyCodeLine{219     sockConn = \mbox{\hyperlink{session_8c_a7f5e8ef98743c3001ba36b42a46f1561}{connecterClt2Srv}}(\mbox{\hyperlink{main_8c_ac9f31f726d2933782e2efda7136a25fd}{ADDR}}, \mbox{\hyperlink{main_8c_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}});}
+\DoxyCodeLine{220     \textcolor{comment}{// printf("{}[Client] Socket dialogue créée : \%d\(\backslash\)n"{}, sockConn.fd); //TODO}}
+\DoxyCodeLine{221     \mbox{\hyperlink{main_8c_a35f745f521ac49df3dab18076271489f}{sessionActive}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223     \mbox{\hyperlink{ncurses_8c_a85769112d75b553ce8125bfda23f32bc}{init\_ncurses}}();}
+\DoxyCodeLine{224     \mbox{\hyperlink{ncurses_8c_a134cc5f27e42b6d1ca0c65019a518b3d}{create\_windows}}();}
+\DoxyCodeLine{225     \mbox{\hyperlink{ncurses_8c_a9eeb19d5f83c71ccac6e3634f9e9acff}{config\_colors}}();}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227     \textcolor{comment}{// Activer le défilement pour top\_win}}
+\DoxyCodeLine{228     scrollok(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, TRUE);}
+\DoxyCodeLine{229 }
+\DoxyCodeLine{230     \textcolor{comment}{// Activer le défilement pour logs\_win}}
+\DoxyCodeLine{231     scrollok(\mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\_win}}, TRUE);}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233     \textcolor{keywordtype}{char} msg[\mbox{\hyperlink{ncurses_8h_aa24597a54a085c6c2c33b64138f09eff}{MAX\_MSG}}];}
+\DoxyCodeLine{234     \textcolor{keywordtype}{int} ch, i = 0;}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236     box(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, 0, 0);}
+\DoxyCodeLine{237     box(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}}, 0, 0);}
+\DoxyCodeLine{238     box(\mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\_win}}, 0, 0);}
+\DoxyCodeLine{239     wrefresh(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}});}
+\DoxyCodeLine{240     wrefresh(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}});}
+\DoxyCodeLine{241     wrefresh(\mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\_win}});}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243     wmove(\mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\_win}}, 1, 1);}
+\DoxyCodeLine{244     wprintw(\mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\_win}}, \textcolor{stringliteral}{"{}Logs : "{}});}
+\DoxyCodeLine{245     wrefresh(\mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\_win}});}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247     wmove(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, 1, 1);}
+\DoxyCodeLine{248     \textcolor{comment}{// ecrire au milieu de la fenetre et en plus grand Discord Style Chat (type 'exit' to quit)}}
+\DoxyCodeLine{249     \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8c_ad12fc34ce789bce6c8a05d8a17138534}{height}}, \mbox{\hyperlink{main_8c_a2474a5474cbff19523a51eb1de01cda4}{width}};}
+\DoxyCodeLine{250     getmaxyx(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, \mbox{\hyperlink{main_8c_ad12fc34ce789bce6c8a05d8a17138534}{height}}, \mbox{\hyperlink{main_8c_a2474a5474cbff19523a51eb1de01cda4}{width}}); \textcolor{comment}{// Get the dimensions of the window}}
+\DoxyCodeLine{251     mvwprintw(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, 2, (\mbox{\hyperlink{main_8c_a2474a5474cbff19523a51eb1de01cda4}{width}} -\/ strlen(\textcolor{stringliteral}{"{}Discord Style Chat (type '/disconnect' to quit)"{}})) / 2, \textcolor{stringliteral}{"{}Discord Style Chat (type '/disconnect' to quit)"{}});}
+\DoxyCodeLine{252     wrefresh(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}});}
+\DoxyCodeLine{253 }
+\DoxyCodeLine{254     \textcolor{comment}{// On fait deux threads pour gérer l'envoi et la réception}}
+\DoxyCodeLine{255     pthread\_t threadEnvoi, threadReception;}
+\DoxyCodeLine{256 }
+\DoxyCodeLine{257     \textcolor{comment}{// On lance les threads}}
+\DoxyCodeLine{258     pthread\_create(\&threadReception, NULL, \mbox{\hyperlink{main_8c_a9a4d8da7adc6a4f7d90402eb26d40f50}{ReceptionClt}}, \&sockConn);}
+\DoxyCodeLine{259     pthread\_create(\&threadEnvoi, NULL, \mbox{\hyperlink{main_8c_a4ac82fc3541a5d297a38caa34b8dfaff}{EnvoiClt}}, \&sockConn);}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{261     \textcolor{comment}{// On attend la fin des threads}}
+\DoxyCodeLine{262     pthread\_join(threadEnvoi, NULL);}
+\DoxyCodeLine{263     pthread\_join(threadReception, NULL);}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265     \textcolor{comment}{// On ferme la socket de dialogue}}
+\DoxyCodeLine{266     printf(\textcolor{stringliteral}{"{}[Client] Fermeture de la socket dialogue\(\backslash\)n"{}});}
+\DoxyCodeLine{267     \mbox{\hyperlink{session_8c_a51b2f4b2461a8cb8d265b8da6bd96d9d}{fermerSocket}}(\&sockConn);}
+\DoxyCodeLine{268     \mbox{\hyperlink{ncurses_8c_a4b66d5e31b5dc18b314c8a68163263bd}{cleanup}}();}
+\DoxyCodeLine{269 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8c_aa94ada609e59e434cd91ca4cf1700f01}\label{main_8c_aa94ada609e59e434cd91ca4cf1700f01}} 
+\index{main.c@{main.c}!command\_manager@{command\_manager}}
+\index{command\_manager@{command\_manager}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{command\_manager()}{command\_manager()}}
+{\footnotesize\ttfamily int command\+\_\+manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff,  }\item[{\mbox{\hyperlink{structUser}{User}} $\ast$}]{user }\end{DoxyParamCaption})}
+
+
+
+Fonction qui gère les commandes. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em buff} & \+: la commande \\
+\hline
+{\em user} & \+: l\textquotesingle{}utilisateur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+
+
+Définition à la ligne 522 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{523 \{}
+\DoxyCodeLine{524     \textcolor{keywordtype}{char} retour[1024];}
+\DoxyCodeLine{525     \textcolor{keywordtype}{int} id;}
+\DoxyCodeLine{526     \textcolor{keywordtype}{int} count;}
+\DoxyCodeLine{527 }
+\DoxyCodeLine{528     \mbox{\hyperlink{structChannel}{Channel}} channel;}
+\DoxyCodeLine{529     \mbox{\hyperlink{structChannel}{Channel}} *channel\_pointer;}
+\DoxyCodeLine{530 }
+\DoxyCodeLine{531     \textcolor{keywordtype}{char} *args[10];}
+\DoxyCodeLine{532     \textcolor{keywordtype}{int} argc = 0; \textcolor{comment}{// Compteur d'arguments}}
+\DoxyCodeLine{533 }
+\DoxyCodeLine{534     \textcolor{comment}{// Utiliser strtok pour diviser la chaîne en tokens basés sur l'espace}}
+\DoxyCodeLine{535     \textcolor{keywordtype}{char} *token = strtok(buff, \textcolor{stringliteral}{"{} "{}});}
+\DoxyCodeLine{536     \textcolor{keywordflow}{while} (token != NULL \&\& argc < 10 -\/ 1)}
+\DoxyCodeLine{537     \{}
+\DoxyCodeLine{538         args[argc++] = token;}
+\DoxyCodeLine{539         token = strtok(NULL, \textcolor{stringliteral}{"{} "{}});}
+\DoxyCodeLine{540     \}}
+\DoxyCodeLine{541     args[argc] = NULL;}
+\DoxyCodeLine{542 }
+\DoxyCodeLine{543     \textcolor{comment}{// Exemple de traitement : afficher les arguments}}
+\DoxyCodeLine{544     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < argc; i++)}
+\DoxyCodeLine{545     \{}
+\DoxyCodeLine{546         \textcolor{comment}{// printf("{}Argument \%d: \%s\(\backslash\)n"{}, i, args[i]);}}
+\DoxyCodeLine{547     \}}
+\DoxyCodeLine{548 }
+\DoxyCodeLine{549     \textcolor{comment}{// printf("{}Nombre d'arguments : \%d\(\backslash\)n"{}, argc);}}
+\DoxyCodeLine{550 }
+\DoxyCodeLine{551     \textcolor{comment}{// printf("{}Commande : -\/\%c-\/\(\backslash\)n"{}, args[0][1]);}}
+\DoxyCodeLine{552 }
+\DoxyCodeLine{553     \textcolor{comment}{// Ici, vous pouvez traiter les arguments comme vous le souhaitez}}
+\DoxyCodeLine{554     \textcolor{keywordflow}{switch} (args[0][1])}
+\DoxyCodeLine{555     \{}
+\DoxyCodeLine{556 }
+\DoxyCodeLine{557     \textcolor{comment}{// Création d'un channel}}
+\DoxyCodeLine{558     \textcolor{keywordflow}{case} \textcolor{charliteral}{'g'}:}
+\DoxyCodeLine{559         \textcolor{keywordflow}{if} (argc != 2)}
+\DoxyCodeLine{560         \{}
+\DoxyCodeLine{561             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : /g <nom du channel>\(\backslash\)n"{}});}
+\DoxyCodeLine{562         \}}
+\DoxyCodeLine{563         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{564         \{}
+\DoxyCodeLine{565             \textcolor{comment}{// On crée un channel}}
+\DoxyCodeLine{566             \mbox{\hyperlink{structChannel}{Channel}} channel = \mbox{\hyperlink{channels_8c_a2ce77f3b2875c281b65ab47b77a179c8}{add\_channel}}(*user, args[1]);}
+\DoxyCodeLine{567             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Channel créé\(\backslash\)n"{}});}
+\DoxyCodeLine{568             \mbox{\hyperlink{messages_8c_a4b730a54135212b79c62bbd9d7d2cffa}{init\_messages}}(\mbox{\hyperlink{channels_8c_a7de11c5c7d63546b6aeadfe146e0828f}{get\_channels}}());}
+\DoxyCodeLine{569         \}}
+\DoxyCodeLine{570         \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{571         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{572 }
+\DoxyCodeLine{573     \textcolor{comment}{// Inviter dans un channel}}
+\DoxyCodeLine{574     \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:}
+\DoxyCodeLine{575         \textcolor{keywordflow}{if} (argc != 3)}
+\DoxyCodeLine{576         \{}
+\DoxyCodeLine{577             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : /i <id du channel> <id de l'utilisateur>\(\backslash\)n"{}});}
+\DoxyCodeLine{578         \}}
+\DoxyCodeLine{579         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{580         \{}
+\DoxyCodeLine{581             \textcolor{comment}{// On récupère le channel}}
+\DoxyCodeLine{582             channel\_pointer = \mbox{\hyperlink{channels_8c_a7965f601bc6ff1b1cc3a9e92cf8f153d}{get\_channel\_by\_id}}(atoi(args[1]));}
+\DoxyCodeLine{583 }
+\DoxyCodeLine{584             \textcolor{comment}{// On vérifie si l'utilisateur est host}}
+\DoxyCodeLine{585             \textcolor{keywordflow}{if} (channel\_pointer-\/>\mbox{\hyperlink{structChannel_a9bd0f085b3a519a6dbfbfa9c56ffb4c4}{host}}.\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}} == user-\/>\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}})}
+\DoxyCodeLine{586             \{}
+\DoxyCodeLine{587 }
+\DoxyCodeLine{588                 \textcolor{comment}{// On récupère l'id de l'utilisateur}}
+\DoxyCodeLine{589                 \textcolor{keywordtype}{id} = atoi(args[2]);}
+\DoxyCodeLine{590 }
+\DoxyCodeLine{591                 \textcolor{comment}{// On récupère l'utilisateur}}
+\DoxyCodeLine{592                 \mbox{\hyperlink{structUser}{User}} *invited = \mbox{\hyperlink{users_8c_ae229ed9fcec5dccce1aaebba2f69ef34}{get\_user\_by\_id}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{593 }
+\DoxyCodeLine{594                 \textcolor{comment}{// On ajoute l'utilisateur au channel}}
+\DoxyCodeLine{595                 \mbox{\hyperlink{channels_8c_a32720f2a2312969f7af0053215cced43}{add\_user\_to\_channel}}(*invited, channel\_pointer);}
+\DoxyCodeLine{596 }
+\DoxyCodeLine{597                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Utilisateur invité\(\backslash\)n"{}});}
+\DoxyCodeLine{598             \}}
+\DoxyCodeLine{599             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{600             \{}
+\DoxyCodeLine{601                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Vous n'êtes pas l'hôte du channel\(\backslash\)n"{}});}
+\DoxyCodeLine{602             \}}
+\DoxyCodeLine{603         \}}
+\DoxyCodeLine{604         \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{605         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{606 }
+\DoxyCodeLine{607     \textcolor{comment}{// Joindre un channel}}
+\DoxyCodeLine{608     \textcolor{keywordflow}{case} \textcolor{charliteral}{'j'}:}
+\DoxyCodeLine{609         \textcolor{keywordflow}{if} (argc != 2)}
+\DoxyCodeLine{610         \{}
+\DoxyCodeLine{611             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : /j <id du channel>\(\backslash\)n"{}});}
+\DoxyCodeLine{612         \}}
+\DoxyCodeLine{613         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{614         \{}
+\DoxyCodeLine{615             \textcolor{comment}{// On récupère le channel}}
+\DoxyCodeLine{616             channel\_pointer = \mbox{\hyperlink{channels_8c_a7965f601bc6ff1b1cc3a9e92cf8f153d}{get\_channel\_by\_id}}(atoi(args[1]));}
+\DoxyCodeLine{617 }
+\DoxyCodeLine{618             \textcolor{comment}{// On vérifie si le channel existe}}
+\DoxyCodeLine{619             \textcolor{keywordflow}{if} (channel\_pointer == NULL)}
+\DoxyCodeLine{620             \{}
+\DoxyCodeLine{621                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Ce channel n'existe pas\(\backslash\)n"{}});}
+\DoxyCodeLine{622                 \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{623                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{624             \}}
+\DoxyCodeLine{625 }
+\DoxyCodeLine{626             printf(\textcolor{stringliteral}{"{}[command\_manager] Channel id : \%d\(\backslash\)n"{}}, channel\_pointer-\/>\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}});}
+\DoxyCodeLine{627 }
+\DoxyCodeLine{628             \textcolor{comment}{// On vérifie si on est autorisé dans le channel}}
+\DoxyCodeLine{629             \textcolor{keywordflow}{if} (\mbox{\hyperlink{channels_8c_aedd96e632c6b9e39c7601a602faf3b31}{is\_user\_allowed\_in\_channel}}(*user, *channel\_pointer))}
+\DoxyCodeLine{630             \{}
+\DoxyCodeLine{631                 \mbox{\hyperlink{users_8c_a80bf5a07030d7b2ee8fdecb5732737d3}{connect\_user\_to\_channel}}(user, channel\_pointer-\/>\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}});}
+\DoxyCodeLine{632                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Utilisateur connecté\(\backslash\)n"{}});}
+\DoxyCodeLine{633             \}}
+\DoxyCodeLine{634             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{635             \{}
+\DoxyCodeLine{636                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Vous n'êtes pas autorisé dans ce channel\(\backslash\)n"{}});}
+\DoxyCodeLine{637             \}}
+\DoxyCodeLine{638         \}}
+\DoxyCodeLine{639         printf(\textcolor{stringliteral}{"{}[command\_manager] Channel actuel : \%d\(\backslash\)n"{}}, user-\/>\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}});}
+\DoxyCodeLine{640         \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{641         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{642 }
+\DoxyCodeLine{643     \textcolor{comment}{// Kick d'un channel}}
+\DoxyCodeLine{644     \textcolor{keywordflow}{case} \textcolor{charliteral}{'k'}:}
+\DoxyCodeLine{645         \textcolor{keywordflow}{if} (argc != 3)}
+\DoxyCodeLine{646         \{}
+\DoxyCodeLine{647             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : /k <id du channel> <id de l'utilisateur>\(\backslash\)n"{}});}
+\DoxyCodeLine{648         \}}
+\DoxyCodeLine{649         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{650         \{}
+\DoxyCodeLine{651             \textcolor{comment}{// On récupère le channel}}
+\DoxyCodeLine{652             channel\_pointer = \mbox{\hyperlink{channels_8c_a7965f601bc6ff1b1cc3a9e92cf8f153d}{get\_channel\_by\_id}}(atoi(args[1]));}
+\DoxyCodeLine{653 }
+\DoxyCodeLine{654             \textcolor{comment}{// On vérifie si le channel existe}}
+\DoxyCodeLine{655             \textcolor{keywordflow}{if} (channel\_pointer == NULL)}
+\DoxyCodeLine{656             \{}
+\DoxyCodeLine{657                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Ce channel n'existe pas\(\backslash\)n"{}});}
+\DoxyCodeLine{658                 \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{659                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{660             \}}
+\DoxyCodeLine{661 }
+\DoxyCodeLine{662             \textcolor{comment}{// On vérifie si l'utilisateur est host}}
+\DoxyCodeLine{663             \textcolor{keywordflow}{if} (channel\_pointer-\/>\mbox{\hyperlink{structChannel_a9bd0f085b3a519a6dbfbfa9c56ffb4c4}{host}}.\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}} == user-\/>\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}})}
+\DoxyCodeLine{664             \{}
+\DoxyCodeLine{665 }
+\DoxyCodeLine{666                 \textcolor{comment}{// On récupère l'id de l'utilisateur}}
+\DoxyCodeLine{667                 \textcolor{keywordtype}{id} = atoi(args[2]);}
+\DoxyCodeLine{668 }
+\DoxyCodeLine{669                 \textcolor{comment}{// On récupère l'utilisateur}}
+\DoxyCodeLine{670                 \mbox{\hyperlink{structUser}{User}} *invited = \mbox{\hyperlink{users_8c_ae229ed9fcec5dccce1aaebba2f69ef34}{get\_user\_by\_id}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{671 }
+\DoxyCodeLine{672                 \textcolor{comment}{// On supprime l'utilisateur du channel}}
+\DoxyCodeLine{673                 \mbox{\hyperlink{channels_8c_a9e1f544ff03e9a596eb3f9563660d747}{remove\_user\_from\_channel}}(*invited, channel\_pointer);}
+\DoxyCodeLine{674 }
+\DoxyCodeLine{675                 \textcolor{comment}{// Si le current Channel de l'utilisateur est le channel qu'on vient de kick, on le ramène au lobby}}
+\DoxyCodeLine{676                 \textcolor{keywordflow}{if} (invited-\/>\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}} == channel\_pointer-\/>\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}})}
+\DoxyCodeLine{677                 \{}
+\DoxyCodeLine{678                     \mbox{\hyperlink{users_8c_a80bf5a07030d7b2ee8fdecb5732737d3}{connect\_user\_to\_channel}}(invited, 0);}
+\DoxyCodeLine{679                 \}}
+\DoxyCodeLine{680 }
+\DoxyCodeLine{681                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Utilisateur kick\(\backslash\)n"{}});}
+\DoxyCodeLine{682             \}}
+\DoxyCodeLine{683             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{684             \{}
+\DoxyCodeLine{685                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Vous n'êtes pas l'hôte du channel\(\backslash\)n"{}});}
+\DoxyCodeLine{686             \}}
+\DoxyCodeLine{687         \}}
+\DoxyCodeLine{688         \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{689         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{690 }
+\DoxyCodeLine{691     \textcolor{comment}{// Quitter un channel}}
+\DoxyCodeLine{692     \textcolor{keywordflow}{case} \textcolor{charliteral}{'q'}:}
+\DoxyCodeLine{693         \textcolor{keywordflow}{if} (argc != 2)}
+\DoxyCodeLine{694         \{}
+\DoxyCodeLine{695             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : /q <id du channel>\(\backslash\)n"{}});}
+\DoxyCodeLine{696         \}}
+\DoxyCodeLine{697         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{698         \{}
+\DoxyCodeLine{699             \textcolor{comment}{// On récupère le channel}}
+\DoxyCodeLine{700             channel\_pointer = \mbox{\hyperlink{channels_8c_a7965f601bc6ff1b1cc3a9e92cf8f153d}{get\_channel\_by\_id}}(atoi(args[1]));}
+\DoxyCodeLine{701 }
+\DoxyCodeLine{702             \textcolor{comment}{// On vérifie si le channel existe}}
+\DoxyCodeLine{703             \textcolor{keywordflow}{if} (channel\_pointer == NULL)}
+\DoxyCodeLine{704             \{}
+\DoxyCodeLine{705                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Ce channel n'existe pas\(\backslash\)n"{}});}
+\DoxyCodeLine{706                 \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{707                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{708             \}}
+\DoxyCodeLine{709 }
+\DoxyCodeLine{710             \textcolor{comment}{// On vérifie si le channel n'est pas le lobby}}
+\DoxyCodeLine{711             \textcolor{keywordflow}{if} (channel\_pointer-\/>\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}} == 0)}
+\DoxyCodeLine{712             \{}
+\DoxyCodeLine{713                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Vous ne pouvez pas quitter le lobby\(\backslash\)n"{}});}
+\DoxyCodeLine{714                 \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{715                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{716             \}}
+\DoxyCodeLine{717 }
+\DoxyCodeLine{718             \textcolor{comment}{// Si l'utilisateur est l'host, il ne peut quitter que si c'est le seul utilisateur dans le channel}}
+\DoxyCodeLine{719             \textcolor{keywordflow}{if} (channel\_pointer-\/>\mbox{\hyperlink{structChannel_a9bd0f085b3a519a6dbfbfa9c56ffb4c4}{host}}.\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}} == user-\/>\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}})}
+\DoxyCodeLine{720             \{}
+\DoxyCodeLine{721                 count = 0;}
+\DoxyCodeLine{722                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\_USERS}}; i++)}
+\DoxyCodeLine{723                 \{}
+\DoxyCodeLine{724                     \textcolor{keywordflow}{if} (channel\_pointer-\/>\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[i] != -\/1)}
+\DoxyCodeLine{725                     \{}
+\DoxyCodeLine{726                         count++;}
+\DoxyCodeLine{727                     \}}
+\DoxyCodeLine{728                 \}}
+\DoxyCodeLine{729                 \textcolor{keywordflow}{if} (count > 1)}
+\DoxyCodeLine{730                 \{}
+\DoxyCodeLine{731                     strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Vous ne pouvez pas quitter le channel, vous êtes l'hôte et il reste des utilisateurs\(\backslash\)n"{}});}
+\DoxyCodeLine{732                     \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{733                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{734                 \}}
+\DoxyCodeLine{735                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{736                 \{}
+\DoxyCodeLine{737                     \mbox{\hyperlink{channels_8c_a3f8d5caf8ec194e99fd6b9448e691035}{remove\_channel}}(channel\_pointer);}
+\DoxyCodeLine{738                     strcpy(retour, \textcolor{stringliteral}{"{}[Server] Channel supprimé\(\backslash\)n"{}});}
+\DoxyCodeLine{739                 \}}
+\DoxyCodeLine{740             \}}
+\DoxyCodeLine{741 }
+\DoxyCodeLine{742             \textcolor{comment}{// On supprime l'utilisateur du channel}}
+\DoxyCodeLine{743             \mbox{\hyperlink{channels_8c_a9e1f544ff03e9a596eb3f9563660d747}{remove\_user\_from\_channel}}(*user, channel\_pointer);}
+\DoxyCodeLine{744 }
+\DoxyCodeLine{745             \textcolor{comment}{// Si le current Channel de l'utilisateur est le channel qu'on vient de quitter, on le ramène au lobby}}
+\DoxyCodeLine{746             \textcolor{keywordflow}{if} (user-\/>\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}} == channel\_pointer-\/>\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}})}
+\DoxyCodeLine{747             \{}
+\DoxyCodeLine{748                 \mbox{\hyperlink{users_8c_a80bf5a07030d7b2ee8fdecb5732737d3}{connect\_user\_to\_channel}}(user, 0);}
+\DoxyCodeLine{749             \}}
+\DoxyCodeLine{750 }
+\DoxyCodeLine{751             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Utilisateur retiré\(\backslash\)n"{}});}
+\DoxyCodeLine{752         \}}
+\DoxyCodeLine{753         \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{754         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{755 }
+\DoxyCodeLine{756     \textcolor{comment}{// Détruire un channel}}
+\DoxyCodeLine{757     \textcolor{keywordflow}{case} \textcolor{charliteral}{'s'}:}
+\DoxyCodeLine{758         \textcolor{keywordflow}{if} (argc != 2)}
+\DoxyCodeLine{759         \{}
+\DoxyCodeLine{760             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : /s <nom du channel>\(\backslash\)n"{}});}
+\DoxyCodeLine{761             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{762         \}}
+\DoxyCodeLine{763         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{764         \{}
+\DoxyCodeLine{765             \textcolor{comment}{// On récupère le channel}}
+\DoxyCodeLine{766             channel\_pointer = \mbox{\hyperlink{channels_8c_a7965f601bc6ff1b1cc3a9e92cf8f153d}{get\_channel\_by\_id}}(atoi(args[1]));}
+\DoxyCodeLine{767 }
+\DoxyCodeLine{768             \textcolor{comment}{// On vérifie si le channel existe}}
+\DoxyCodeLine{769             \textcolor{keywordflow}{if} (channel\_pointer == NULL)}
+\DoxyCodeLine{770             \{}
+\DoxyCodeLine{771                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Ce channel n'existe pas\(\backslash\)n"{}});}
+\DoxyCodeLine{772                 \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{773                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{774             \}}
+\DoxyCodeLine{775 }
+\DoxyCodeLine{776             \textcolor{comment}{// On vérifie si l'utilisateur est host}}
+\DoxyCodeLine{777             \textcolor{keywordflow}{if} (channel\_pointer-\/>\mbox{\hyperlink{structChannel_a9bd0f085b3a519a6dbfbfa9c56ffb4c4}{host}}.\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}} == user-\/>\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}})}
+\DoxyCodeLine{778             \{}
+\DoxyCodeLine{779                 count = 0;}
+\DoxyCodeLine{780                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\_USERS}}; i++)}
+\DoxyCodeLine{781                 \{}
+\DoxyCodeLine{782                     \textcolor{keywordflow}{if} (channel\_pointer-\/>\mbox{\hyperlink{structChannel_a175119ef9638351b93810fd8b7ab8e02}{users}}[i] != -\/1)}
+\DoxyCodeLine{783                     \{}
+\DoxyCodeLine{784                         count++;}
+\DoxyCodeLine{785                     \}}
+\DoxyCodeLine{786                 \}}
+\DoxyCodeLine{787                 \textcolor{keywordflow}{if} (count > 1)}
+\DoxyCodeLine{788                 \{}
+\DoxyCodeLine{789                     strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Vous ne pouvez pas supprimer le channel, il reste des utilisateurs\(\backslash\)n"{}});}
+\DoxyCodeLine{790                 \}}
+\DoxyCodeLine{791                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (user-\/>\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}} == channel\_pointer-\/>\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}})}
+\DoxyCodeLine{792                 \{}
+\DoxyCodeLine{793                     strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Vous ne pouvez pas supprimer le channel, vous êtes dedans\(\backslash\)n"{}});}
+\DoxyCodeLine{794                 \}}
+\DoxyCodeLine{795                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{796                 \{}
+\DoxyCodeLine{797                     \mbox{\hyperlink{channels_8c_a3f8d5caf8ec194e99fd6b9448e691035}{remove\_channel}}(channel\_pointer);}
+\DoxyCodeLine{798                     strcpy(retour, \textcolor{stringliteral}{"{}[Server] Channel supprimé\(\backslash\)n"{}});}
+\DoxyCodeLine{799                 \}}
+\DoxyCodeLine{800             \}}
+\DoxyCodeLine{801             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{802             \{}
+\DoxyCodeLine{803                 strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : Vous n'êtes pas l'hôte du channel\(\backslash\)n"{}});}
+\DoxyCodeLine{804             \}}
+\DoxyCodeLine{805         \}}
+\DoxyCodeLine{806         \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{807         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{808 }
+\DoxyCodeLine{809     \textcolor{comment}{// Liste des channels}}
+\DoxyCodeLine{810     \textcolor{keywordflow}{case} \textcolor{charliteral}{'l'}:}
+\DoxyCodeLine{811         \textcolor{keywordflow}{if} (argc != 1)}
+\DoxyCodeLine{812         \{}
+\DoxyCodeLine{813             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : /l\(\backslash\)n"{}});}
+\DoxyCodeLine{814         \}}
+\DoxyCodeLine{815         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{816         \{}
+\DoxyCodeLine{817             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Liste des channels :\(\backslash\)n"{}});}
+\DoxyCodeLine{818 }
+\DoxyCodeLine{819             \mbox{\hyperlink{channels_8c_a56a72e13eaabcb1291f0d9816e37bb41}{display\_channels}}(*user, retour);}
+\DoxyCodeLine{820         \}}
+\DoxyCodeLine{821         \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{822         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{823 }
+\DoxyCodeLine{824     \textcolor{comment}{// Liste des utilisateurs}}
+\DoxyCodeLine{825     \textcolor{keywordflow}{case} \textcolor{charliteral}{'u'}:}
+\DoxyCodeLine{826         \textcolor{keywordflow}{if} (argc != 1)}
+\DoxyCodeLine{827         \{}
+\DoxyCodeLine{828             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : /l\(\backslash\)n"{}});}
+\DoxyCodeLine{829         \}}
+\DoxyCodeLine{830         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{831         \{}
+\DoxyCodeLine{832             printf(\textcolor{stringliteral}{"{}[command\_manager] Channel actuel : \%d\(\backslash\)n"{}}, user-\/>\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}});}
+\DoxyCodeLine{833             \mbox{\hyperlink{structChannel}{Channel}} channel = *\mbox{\hyperlink{channels_8c_a7965f601bc6ff1b1cc3a9e92cf8f153d}{get\_channel\_by\_id}}(user-\/>\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}});}
+\DoxyCodeLine{834             printf(\textcolor{stringliteral}{"{}[command\_manager] Channel actuel : \%d \%s\(\backslash\)n"{}}, channel.\mbox{\hyperlink{structChannel_a0f43da90bb49b9c6d4cb1bc01e19f700}{id}}, channel.\mbox{\hyperlink{structChannel_a1b5bcacc9a155f7323c96a98e1559d8e}{name}});}
+\DoxyCodeLine{835 }
+\DoxyCodeLine{836             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Liste des utilisateurs :\(\backslash\)n"{}});}
+\DoxyCodeLine{837             \mbox{\hyperlink{channels_8c_a46fcb7dac5ad40d167f6577241706ff6}{display\_users\_in\_channel}}(channel, retour);}
+\DoxyCodeLine{838         \}}
+\DoxyCodeLine{839         \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{840         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{841 }
+\DoxyCodeLine{842     \textcolor{comment}{// Help}}
+\DoxyCodeLine{843     \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:}
+\DoxyCodeLine{844         \textcolor{keywordflow}{if} (argc != 1)}
+\DoxyCodeLine{845         \{}
+\DoxyCodeLine{846             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Erreur : /h\(\backslash\)n"{}});}
+\DoxyCodeLine{847         \}}
+\DoxyCodeLine{848         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{849         \{}
+\DoxyCodeLine{850             strcpy(retour, \textcolor{stringliteral}{"{}[Server] Commandes disponibles :\(\backslash\)n"{}});}
+\DoxyCodeLine{851             strcat(retour, \textcolor{stringliteral}{"{}/g <nom du channel> : Créer un channel\(\backslash\)n"{}});}
+\DoxyCodeLine{852             strcat(retour, \textcolor{stringliteral}{"{}/i <id du channel> <id de l'utilisateur> : Inviter un utilisateur dans un channel\(\backslash\)n"{}});}
+\DoxyCodeLine{853             strcat(retour, \textcolor{stringliteral}{"{}/j <id du channel> : Joindre un channel\(\backslash\)n"{}});}
+\DoxyCodeLine{854             strcat(retour, \textcolor{stringliteral}{"{}/k <id du channel> <id de l'utilisateur> : Kick un utilisateur d'un channel\(\backslash\)n"{}});}
+\DoxyCodeLine{855             strcat(retour, \textcolor{stringliteral}{"{}/q <id du channel> : Quitter un channel\(\backslash\)n"{}});}
+\DoxyCodeLine{856             strcat(retour, \textcolor{stringliteral}{"{}/s <id du channel> : Supprimer un channel\(\backslash\)n"{}});}
+\DoxyCodeLine{857             strcat(retour, \textcolor{stringliteral}{"{}/l : Liste des channels\(\backslash\)n"{}});}
+\DoxyCodeLine{858             strcat(retour, \textcolor{stringliteral}{"{}/u : Liste des utilisateurs\(\backslash\)n"{}});}
+\DoxyCodeLine{859             strcat(retour, \textcolor{stringliteral}{"{}/h : Aide\(\backslash\)n"{}});}
+\DoxyCodeLine{860         \}}
+\DoxyCodeLine{861         \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(user-\/>\mbox{\hyperlink{structUser_acadff57598f6ae6416966f8f5a2227dd}{socket}}), retour, NULL);}
+\DoxyCodeLine{862         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{863 }
+\DoxyCodeLine{864     \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{865         printf(\textcolor{stringliteral}{"{}[command\_manager] Commande inconnue pour le channel\(\backslash\)n"{}});}
+\DoxyCodeLine{866         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{867     \}}
+\DoxyCodeLine{868 }
+\DoxyCodeLine{869     \textcolor{comment}{// On vide le buffer}}
+\DoxyCodeLine{870     retour[0] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{871 }
+\DoxyCodeLine{872     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{873 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8c_a3f974b02468165977d4e6f8e169d78eb}\label{main_8c_a3f974b02468165977d4e6f8e169d78eb}} 
+\index{main.c@{main.c}!dialogueSrv@{dialogueSrv}}
+\index{dialogueSrv@{dialogueSrv}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{dialogueSrv()}{dialogueSrv()}}
+{\footnotesize\ttfamily void dialogue\+Srv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$}]{sock\+Ech,  }\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff,  }\item[{\mbox{\hyperlink{data_8h_aff0a816c1aa078dc74b95c5074a14b6c}{p\+Fct}}}]{serial }\end{DoxyParamCaption})}
+
+
+
+Fonction qui gère le dialogue entre le serveur et le client. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sock\+Ech} & \+: la socket de dialogue \\
+\hline
+{\em buff} & \+: le buffer \\
+\hline
+{\em serial} & \+: la fonction de sérialisation \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 293 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{294 \{}
+\DoxyCodeLine{295     \mbox{\hyperlink{structUser}{User}} *\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}} = \mbox{\hyperlink{users_8c_a2ac0883dc9051edca1650af4f24b6ba7}{get\_users}}();}
+\DoxyCodeLine{296     \textcolor{keywordtype}{char} message[\mbox{\hyperlink{data_8h_a1d5dab30b404fab91608086105afc78c}{MAX\_BUFFER}}];}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{298     \textcolor{comment}{// Recevoir}}
+\DoxyCodeLine{299     \mbox{\hyperlink{data_8c_ad62cf336e585a61123084d2fc4ba4791}{recevoir}}(sockEch, buff, NULL);}
+\DoxyCodeLine{300     \mbox{\hyperlink{structUser}{User}} *user = \mbox{\hyperlink{users_8c_af8d62e9355007a4e77bc7ecc47ad0450}{add\_user}}(*sockEch, 0, buff);}
+\DoxyCodeLine{301 }
+\DoxyCodeLine{302     \mbox{\hyperlink{structChannel}{Channel}} *lobby = \mbox{\hyperlink{channels_8c_a7965f601bc6ff1b1cc3a9e92cf8f153d}{get\_channel\_by\_id}}(0);}
+\DoxyCodeLine{303     \mbox{\hyperlink{channels_8c_a32720f2a2312969f7af0053215cced43}{add\_user\_to\_channel}}(*user, lobby);}
+\DoxyCodeLine{304 }
+\DoxyCodeLine{305     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{306     \{}
+\DoxyCodeLine{307         \textcolor{comment}{// Recevoir}}
+\DoxyCodeLine{308         \mbox{\hyperlink{data_8c_ad62cf336e585a61123084d2fc4ba4791}{recevoir}}(sockEch, buff, NULL);}
+\DoxyCodeLine{309         printf(\textcolor{stringliteral}{"{}[dialogueSrv] \%s : \%s\(\backslash\)n"{}}, user-\/>\mbox{\hyperlink{structUser_aa4a4e3cd80081b7dd0f5fd96f9e997b2}{name}}, buff);}
+\DoxyCodeLine{310 }
+\DoxyCodeLine{311         \textcolor{comment}{// On stocke le message dans le fichier}}
+\DoxyCodeLine{312 }
+\DoxyCodeLine{313         \textcolor{comment}{// char message[MAX\_BUFFER];}}
+\DoxyCodeLine{314         \textcolor{comment}{// strcpy(message, buff);}}
+\DoxyCodeLine{315 }
+\DoxyCodeLine{316         \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8c_a63d65c2d1798ef7e1acbbbab1c6cc043}{is\_command}}(buff))}
+\DoxyCodeLine{317         \{}
+\DoxyCodeLine{318             \textcolor{comment}{// Si la commande est /disconnect}}
+\DoxyCodeLine{319             \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8c_af22ddf2e07052d83de689b3b3dbf0a11}{disconnect}}(buff))}
+\DoxyCodeLine{320             \{}
+\DoxyCodeLine{321                 \mbox{\hyperlink{main_8c_a35f745f521ac49df3dab18076271489f}{sessionActive}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{322                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{323             \}}
+\DoxyCodeLine{324             \mbox{\hyperlink{main_8c_aa94ada609e59e434cd91ca4cf1700f01}{command\_manager}}(buff, user);}
+\DoxyCodeLine{325         \}}
+\DoxyCodeLine{326         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{327         \{}
+\DoxyCodeLine{328 }
+\DoxyCodeLine{329             \mbox{\hyperlink{messages_8c_aea15116a63f4129938a31b36eb9a70c5}{store\_message}}(user-\/>\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}}, user-\/>\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}}, buff);}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{331             \textcolor{comment}{// Envoyer}}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{333             \textcolor{comment}{// On transfert le message à tous les autres clients qui sont dans le même lobby}}
+\DoxyCodeLine{334             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{users_8h_a2c2a303621f66761529e598758d7ef34}{MAX\_USERS}}; i++)}
+\DoxyCodeLine{335             \{}
+\DoxyCodeLine{336 }
+\DoxyCodeLine{337                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{users_8c_a294c2b4c6ef4f2468cfed604bcaabe5f}{user\_exists}}(\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\textcolor{keywordtype}{id}) \&\&}
+\DoxyCodeLine{338                     \mbox{\hyperlink{channels_8c_aa6c251dc6c32e1a10689b4d1df15c5ce}{is\_user\_in\_channel}}(\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i], *\mbox{\hyperlink{channels_8c_a7965f601bc6ff1b1cc3a9e92cf8f153d}{get\_channel\_by\_id}}(user-\/>\mbox{\hyperlink{structUser_a7be70aeb7bd8b561f665b3ece05b15ce}{currentChannel}})) \&\&}
+\DoxyCodeLine{339                     \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}} != user-\/>\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}} \&\&}
+\DoxyCodeLine{340                     \mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structUser_aa7e6e39b43020bbe9c3a196b3689b0f7}{id}} != 0)}
+\DoxyCodeLine{341                 \{}
+\DoxyCodeLine{342                     \textcolor{comment}{// On ajoute à buffer le nom de l'utilisateur qui a envoyé le message}}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{344                     strcpy(message, \textcolor{stringliteral}{"{}["{}});}
+\DoxyCodeLine{345                     strcat(message, user-\/>\mbox{\hyperlink{structUser_aa4a4e3cd80081b7dd0f5fd96f9e997b2}{name}});}
+\DoxyCodeLine{346                     strcat(message, \textcolor{stringliteral}{"{}] "{}});}
+\DoxyCodeLine{347                     strcat(message, buff);}
+\DoxyCodeLine{348 }
+\DoxyCodeLine{349                     \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(\&(\mbox{\hyperlink{users_8c_a59a329403662e6924d95a5005689b0cf}{users}}[i].\mbox{\hyperlink{structsocket}{socket}}), message, NULL);}
+\DoxyCodeLine{350                 \}}
+\DoxyCodeLine{351             \}}
+\DoxyCodeLine{352         \}}
+\DoxyCodeLine{353         \textcolor{comment}{// On vide le buffer}}
+\DoxyCodeLine{354         buff[0] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{355         \textcolor{comment}{// On vide le message}}
+\DoxyCodeLine{356         message[0] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{357     \}}
+\DoxyCodeLine{358     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{359 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8c_af22ddf2e07052d83de689b3b3dbf0a11}\label{main_8c_af22ddf2e07052d83de689b3b3dbf0a11}} 
+\index{main.c@{main.c}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily int disconnect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff }\end{DoxyParamCaption})}
+
+
+
+Fonction qui gère la déconnexion. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em buff} & \+: la commande \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+
+
+Définition à la ligne 881 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{882 \{}
+\DoxyCodeLine{883     \textcolor{keywordflow}{if} (strcmp(buff, \textcolor{stringliteral}{"{}/disconnect"{}}) == 0)}
+\DoxyCodeLine{884     \{}
+\DoxyCodeLine{885         \textcolor{comment}{// On ferme la session}}
+\DoxyCodeLine{886 }
+\DoxyCodeLine{887         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{888     \}}
+\DoxyCodeLine{889     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{890 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8c_a4ac82fc3541a5d297a38caa34b8dfaff}\label{main_8c_a4ac82fc3541a5d297a38caa34b8dfaff}} 
+\index{main.c@{main.c}!EnvoiClt@{EnvoiClt}}
+\index{EnvoiClt@{EnvoiClt}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{EnvoiClt()}{EnvoiClt()}}
+{\footnotesize\ttfamily void $\ast$ Envoi\+Clt (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+Fonction qui gère l\textquotesingle{}envoi des messages du client. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em arg} & \+: la socket de dialogue \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void $\ast$ 
+\end{DoxyReturn}
+
+
+Définition à la ligne 367 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{368 \{}
+\DoxyCodeLine{369     \mbox{\hyperlink{structsocket}{socket\_t}} *sockConn = (\mbox{\hyperlink{structsocket}{socket\_t}} *)arg;}
+\DoxyCodeLine{370     \textcolor{keywordtype}{char} buff[\mbox{\hyperlink{data_8h_a1d5dab30b404fab91608086105afc78c}{MAX\_BUFFER}}];}
+\DoxyCodeLine{371     \textcolor{keywordtype}{char} message[\mbox{\hyperlink{data_8h_a1d5dab30b404fab91608086105afc78c}{MAX\_BUFFER}}];}
+\DoxyCodeLine{372     \textcolor{keywordtype}{int} ch, i = 0;}
+\DoxyCodeLine{373 }
+\DoxyCodeLine{374     \textcolor{keywordtype}{int} flag\_pseudo = 1;}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{376     \textcolor{keywordflow}{while} (\mbox{\hyperlink{main_8c_a35f745f521ac49df3dab18076271489f}{sessionActive}})}
+\DoxyCodeLine{377     \{}
+\DoxyCodeLine{378         wmove(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}}, 1, 1); \textcolor{comment}{// Move cursor to start of input line}}
+\DoxyCodeLine{379         wclrtoeol(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}});   \textcolor{comment}{// Clear the input line}}
+\DoxyCodeLine{380         box(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}}, 0, 0);   \textcolor{comment}{// Redraw box to ensure borders are intact}}
+\DoxyCodeLine{381         wrefresh(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}});    \textcolor{comment}{// Refresh the window to reflect changes}}
+\DoxyCodeLine{382 }
+\DoxyCodeLine{383         \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{384         \{}
+\DoxyCodeLine{385             ch = wgetch(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}});}
+\DoxyCodeLine{386             \textcolor{keywordflow}{if} (ch == \textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{387             \{}
+\DoxyCodeLine{388                 buff[i] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{389                 i = 0;}
+\DoxyCodeLine{390                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{391             \}}
+\DoxyCodeLine{392             \textcolor{keywordflow}{if} (ch == KEY\_RESIZE)}
+\DoxyCodeLine{393             \{}
+\DoxyCodeLine{394                 endwin();}
+\DoxyCodeLine{395                 refresh();}
+\DoxyCodeLine{396                 clear();}
+\DoxyCodeLine{397 }
+\DoxyCodeLine{398                 getmaxyx(stdscr, \mbox{\hyperlink{main_8c_ad12fc34ce789bce6c8a05d8a17138534}{height}}, \mbox{\hyperlink{main_8c_a2474a5474cbff19523a51eb1de01cda4}{width}});}
+\DoxyCodeLine{399                 \mbox{\hyperlink{main_8c_a209ec2bf57de0f29d499648d22024b4a}{main\_width}} = \mbox{\hyperlink{main_8c_a2474a5474cbff19523a51eb1de01cda4}{width}} * 3 / 4;}
+\DoxyCodeLine{400                 \mbox{\hyperlink{main_8c_ac94d8bc2e952aa8151d301a08a6f14e0}{side\_width}} = \mbox{\hyperlink{main_8c_a2474a5474cbff19523a51eb1de01cda4}{width}} -\/ \mbox{\hyperlink{main_8c_a209ec2bf57de0f29d499648d22024b4a}{main\_width}};}
+\DoxyCodeLine{401 }
+\DoxyCodeLine{402                 delwin(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}});}
+\DoxyCodeLine{403                 delwin(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}});}
+\DoxyCodeLine{404                 delwin(\mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\_win}});}
+\DoxyCodeLine{405 }
+\DoxyCodeLine{406                 \mbox{\hyperlink{ncurses_8c_a134cc5f27e42b6d1ca0c65019a518b3d}{create\_windows}}();}
+\DoxyCodeLine{407                 \mbox{\hyperlink{ncurses_8c_a9eeb19d5f83c71ccac6e3634f9e9acff}{config\_colors}}();}
+\DoxyCodeLine{408 }
+\DoxyCodeLine{409                 box(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, 0, 0);}
+\DoxyCodeLine{410                 box(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}}, 0, 0);}
+\DoxyCodeLine{411                 box(\mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\_win}}, 0, 0);}
+\DoxyCodeLine{412                 wrefresh(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}});}
+\DoxyCodeLine{413                 wrefresh(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}});}
+\DoxyCodeLine{414                 wrefresh(\mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\_win}});}
+\DoxyCodeLine{415                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{416             \}}
+\DoxyCodeLine{417             \textcolor{keywordflow}{if} (ch == KEY\_BACKSPACE || ch == 127)}
+\DoxyCodeLine{418             \{}
+\DoxyCodeLine{419                 \textcolor{keywordflow}{if} (i > 0)}
+\DoxyCodeLine{420                 \{}
+\DoxyCodeLine{421                     i-\/-\/;}
+\DoxyCodeLine{422                     mvwdelch(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}}, 1, i + 1);}
+\DoxyCodeLine{423                 \}}
+\DoxyCodeLine{424             \}}
+\DoxyCodeLine{425             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i < \mbox{\hyperlink{data_8h_a1d5dab30b404fab91608086105afc78c}{MAX\_BUFFER}} -\/ 1)}
+\DoxyCodeLine{426             \{}
+\DoxyCodeLine{427                 buff[i++] = ch;}
+\DoxyCodeLine{428                 waddch(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}}, ch);}
+\DoxyCodeLine{429             \}}
+\DoxyCodeLine{430         \}}
+\DoxyCodeLine{431 }
+\DoxyCodeLine{432         \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8c_a63d65c2d1798ef7e1acbbbab1c6cc043}{is\_command}}(buff))}
+\DoxyCodeLine{433         \{}
+\DoxyCodeLine{434             \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(sockConn, buff, NULL);}
+\DoxyCodeLine{435             \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8c_af22ddf2e07052d83de689b3b3dbf0a11}{disconnect}}(buff))}
+\DoxyCodeLine{436             \{}
+\DoxyCodeLine{437                 \mbox{\hyperlink{main_8c_a35f745f521ac49df3dab18076271489f}{sessionActive}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{438                 \textcolor{comment}{// On ferme la session et on coupe le code}}
+\DoxyCodeLine{439                 system(\textcolor{stringliteral}{"{}clear"{}});}
+\DoxyCodeLine{440                 exit(0);}
+\DoxyCodeLine{441 }
+\DoxyCodeLine{442                 \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{443             \}}
+\DoxyCodeLine{444             \textcolor{comment}{// other command handling}}
+\DoxyCodeLine{445         \}}
+\DoxyCodeLine{446         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{447         \{}
+\DoxyCodeLine{448             \textcolor{keywordflow}{if} (flag\_pseudo)}
+\DoxyCodeLine{449             \{}
+\DoxyCodeLine{450                 \textcolor{keywordtype}{char} start\_line[1024] = \textcolor{stringliteral}{"{}Hello "{}};}
+\DoxyCodeLine{451                 strcat(start\_line, buff);}
+\DoxyCodeLine{452                 \mbox{\hyperlink{ncurses_8c_ad4fa66ee9ec2c1d62347496692116fb1}{display\_message}}(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, start\_line, 1);}
+\DoxyCodeLine{453                 flag\_pseudo = 0;}
+\DoxyCodeLine{454             \}}
+\DoxyCodeLine{455             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{456             \{}
+\DoxyCodeLine{457 }
+\DoxyCodeLine{458                 \textcolor{comment}{// si message vide, on ne l'envoie pas}}
+\DoxyCodeLine{459                 \textcolor{keywordflow}{if} (strlen(buff) == 0)}
+\DoxyCodeLine{460                 \{}
+\DoxyCodeLine{461                     \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{462                 \}}
+\DoxyCodeLine{463 }
+\DoxyCodeLine{464                 strcpy(message, \textcolor{stringliteral}{"{}[You] "{}});}
+\DoxyCodeLine{465                 strcat(message, buff);}
+\DoxyCodeLine{466                 \mbox{\hyperlink{ncurses_8c_ad4fa66ee9ec2c1d62347496692116fb1}{display\_message}}(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, message, 0);}
+\DoxyCodeLine{467             \}}
+\DoxyCodeLine{468             \mbox{\hyperlink{data_8c_aa56b8d84de67f5ea7ea393a8884d3bbf}{envoyer}}(sockConn, buff, NULL);}
+\DoxyCodeLine{469         \}}
+\DoxyCodeLine{470 }
+\DoxyCodeLine{471         buff[0] = \textcolor{charliteral}{'\(\backslash\)0'}; \textcolor{comment}{// Clear buffer after sending}}
+\DoxyCodeLine{472     \}}
+\DoxyCodeLine{473 }
+\DoxyCodeLine{474     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{475 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8c_a63d65c2d1798ef7e1acbbbab1c6cc043}\label{main_8c_a63d65c2d1798ef7e1acbbbab1c6cc043}} 
+\index{main.c@{main.c}!is\_command@{is\_command}}
+\index{is\_command@{is\_command}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{is\_command()}{is\_command()}}
+{\footnotesize\ttfamily int is\+\_\+command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\+\_\+t}}}]{buff }\end{DoxyParamCaption})}
+
+
+
+Fonction qui vérifie si la commande est une commande. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em buff} & \+: la commande ou le message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+
+
+Définition à la ligne 277 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{278 \{}
+\DoxyCodeLine{279     \textcolor{keywordflow}{if} (buff[0] == \textcolor{charliteral}{'/'})}
+\DoxyCodeLine{280     \{}
+\DoxyCodeLine{281         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{282     \}}
+\DoxyCodeLine{283     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{284 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+La fonction principale du programme qui lance le serveur ou le client. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+
+
+Définition à la ligne 121 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{122 \{}
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#ifdef SERVEUR }}
+\DoxyCodeLine{124     \mbox{\hyperlink{main_8c_adb723d4c0b7a57a31a2de35be952a566}{serveur}}();}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#else }}
+\DoxyCodeLine{126     \mbox{\hyperlink{main_8c_a7d0f00f54686b7ecfb1c73edca3ee4f4}{client}}();}
+\DoxyCodeLine{127 \textcolor{preprocessor}{\#endif }}
+\DoxyCodeLine{128     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{129 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8c_a9a4d8da7adc6a4f7d90402eb26d40f50}\label{main_8c_a9a4d8da7adc6a4f7d90402eb26d40f50}} 
+\index{main.c@{main.c}!ReceptionClt@{ReceptionClt}}
+\index{ReceptionClt@{ReceptionClt}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ReceptionClt()}{ReceptionClt()}}
+{\footnotesize\ttfamily void $\ast$ Reception\+Clt (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+Fonction qui gère la réception des messages du client. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em arg} & \+: la socket de dialogue \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void $\ast$ 
+\end{DoxyReturn}
+
+
+Définition à la ligne 483 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{484 \{}
+\DoxyCodeLine{485     \mbox{\hyperlink{structsocket}{socket\_t}} *sockConn = (\mbox{\hyperlink{structsocket}{socket\_t}} *)arg;}
+\DoxyCodeLine{486     \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\_t}} buff;}
+\DoxyCodeLine{487 }
+\DoxyCodeLine{488     \textcolor{keywordflow}{while} (\mbox{\hyperlink{main_8c_a35f745f521ac49df3dab18076271489f}{sessionActive}})}
+\DoxyCodeLine{489     \{}
+\DoxyCodeLine{490         \textcolor{comment}{// Recevoir}}
+\DoxyCodeLine{491         \mbox{\hyperlink{data_8c_ad62cf336e585a61123084d2fc4ba4791}{recevoir}}(sockConn, buff, NULL);}
+\DoxyCodeLine{492 }
+\DoxyCodeLine{493         \textcolor{comment}{// Si le buff commence par "{}[Server]"{}}}
+\DoxyCodeLine{494         \textcolor{keywordflow}{if} (strncmp(buff, \textcolor{stringliteral}{"{}[Server]"{}}, 8) == 0 || strncmp(buff, \textcolor{stringliteral}{"{}[command\_manager]"{}}, 16) == 0)}
+\DoxyCodeLine{495         \{}
+\DoxyCodeLine{496 }
+\DoxyCodeLine{497             \mbox{\hyperlink{ncurses_8c_ad4fa66ee9ec2c1d62347496692116fb1}{display\_message}}(\mbox{\hyperlink{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}{logs\_win}}, buff, 1);}
+\DoxyCodeLine{498             \textcolor{comment}{// Mettre le curseur en bas dans bottom\_win}}
+\DoxyCodeLine{499             wmove(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}}, 1, 1);}
+\DoxyCodeLine{500             wrefresh(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}});}
+\DoxyCodeLine{501         \}}
+\DoxyCodeLine{502         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{503         \{}
+\DoxyCodeLine{504             \mbox{\hyperlink{ncurses_8c_ad4fa66ee9ec2c1d62347496692116fb1}{display\_message}}(\mbox{\hyperlink{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}{top\_win}}, buff, 0);}
+\DoxyCodeLine{505             wmove(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}}, 1, 1);}
+\DoxyCodeLine{506             wrefresh(\mbox{\hyperlink{main_8c_ad7242e277123d68ee6ae716a764a9ef0}{bottom\_win}});}
+\DoxyCodeLine{507         \}}
+\DoxyCodeLine{508 }
+\DoxyCodeLine{509         buff[0] = \textcolor{charliteral}{'\(\backslash\)0'}; \textcolor{comment}{// Nettoyage du buffer après traitement}}
+\DoxyCodeLine{510     \}}
+\DoxyCodeLine{511 }
+\DoxyCodeLine{512     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{513 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8c_a5025b066f93febe70ff06a183b614cee}\label{main_8c_a5025b066f93febe70ff06a183b614cee}} 
+\index{main.c@{main.c}!server\_thread@{server\_thread}}
+\index{server\_thread@{server\_thread}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{server\_thread()}{server\_thread()}}
+{\footnotesize\ttfamily void $\ast$ server\+\_\+thread (\begin{DoxyParamCaption}\item[{void $\ast$}]{arg }\end{DoxyParamCaption})}
+
+
+
+Fonction qui gère les threads pour les clients. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em arg} & \+: la socket de dialogue \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void $\ast$ 
+\end{DoxyReturn}
+
+
+Définition à la ligne 192 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{193 \{}
+\DoxyCodeLine{194     \mbox{\hyperlink{structsocket}{socket\_t}} sockEch = *(\mbox{\hyperlink{structsocket}{socket\_t}} *)arg; \textcolor{comment}{// Socket de dialogue}}
+\DoxyCodeLine{195     \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\_t}} buff; \textcolor{comment}{// Buffer}}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197     printf(\textcolor{stringliteral}{"{}[Server\_thread] Nouvelle connexion depuis l'IP \%s\(\backslash\)n"{}}, inet\_ntoa(sockEch.\mbox{\hyperlink{structsocket_adf34762a764605679cf1221553d4083a}{addrLoc}}.sin\_addr));}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199     \mbox{\hyperlink{main_8c_a3f974b02468165977d4e6f8e169d78eb}{dialogueSrv}}(\&sockEch, buff, NULL);}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201     \mbox{\hyperlink{users_8c_ad3dce5cc061a0c1cdf3959c348440568}{remove\_user}}(\mbox{\hyperlink{users_8c_a5eeb39c9ec83abf262896f0744a0d6b7}{get\_user\_by\_socket}}(sockEch));}
+\DoxyCodeLine{202     \mbox{\hyperlink{session_8c_a51b2f4b2461a8cb8d265b8da6bd96d9d}{fermerSocket}}(\&sockEch);}
+\DoxyCodeLine{203     \textcolor{keywordflow}{return} NULL;}
+\DoxyCodeLine{204 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8c_adb723d4c0b7a57a31a2de35be952a566}\label{main_8c_adb723d4c0b7a57a31a2de35be952a566}} 
+\index{main.c@{main.c}!serveur@{serveur}}
+\index{serveur@{serveur}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{serveur()}{serveur()}}
+{\footnotesize\ttfamily void serveur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fonction principale du programme pour le serveur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 138 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{139 \{}
+\DoxyCodeLine{140     system(\textcolor{stringliteral}{"{}clear"{}});}
+\DoxyCodeLine{141     \mbox{\hyperlink{structsocket}{socket\_t}} sockEch; \textcolor{comment}{// Socket de dialogue}}
+\DoxyCodeLine{142     \mbox{\hyperlink{data_8h_a2c2240d1cf1f52381c9fe541ceec05bd}{buffer\_t}} buff;   \textcolor{comment}{// Buffer}}
+\DoxyCodeLine{143     pid\_t pid;      \textcolor{comment}{// PID du processus}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145     \mbox{\hyperlink{users_8c_afbcbc0e1e01097a07d5dce2493be9385}{init\_users}}();}
+\DoxyCodeLine{146     \mbox{\hyperlink{channels_8c_a42827ea89bbd3c04d00346f22735e8a1}{init\_channels}}();}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148     \textcolor{comment}{// initSockets();}}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150     \textcolor{keyword}{struct }sigaction act; \textcolor{comment}{// Structure pour les signaux}}
+\DoxyCodeLine{151     memset(\&act, 0, \textcolor{keyword}{sizeof}(act));}
+\DoxyCodeLine{152     act.sa\_sigaction = \&\mbox{\hyperlink{main_8c_a97bb8833f38dbdeb06d3bf6599358e83}{signal\_handler}};}
+\DoxyCodeLine{153     act.sa\_flags = SA\_SIGINFO;}
+\DoxyCodeLine{154 }
+\DoxyCodeLine{155     sigaction(\mbox{\hyperlink{main_8c_aa8d0634d21fc2dc0956ab534ac81c926}{SIG\_ARRET}}, \&act, NULL);}
+\DoxyCodeLine{156 }
+\DoxyCodeLine{157     \textcolor{comment}{// On crée le channel par défaut (le lobby)}}
+\DoxyCodeLine{158     strcpy(buff, \textcolor{stringliteral}{"{}Server"{}});}
+\DoxyCodeLine{159     \mbox{\hyperlink{structUser}{User}} *host = \mbox{\hyperlink{users_8c_af8d62e9355007a4e77bc7ecc47ad0450}{add\_user}}(\mbox{\hyperlink{main_8c_a44c875427681d951feb66c686596fbe4}{sockEcoute}}, 0, buff);}
+\DoxyCodeLine{160     buff[0] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162     strcpy(buff, \textcolor{stringliteral}{"{}Lobby"{}});}
+\DoxyCodeLine{163     \mbox{\hyperlink{structChannel}{Channel}} lobby = \mbox{\hyperlink{channels_8c_a2ce77f3b2875c281b65ab47b77a179c8}{add\_channel}}(*host, buff);}
+\DoxyCodeLine{164     buff[0] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166     \mbox{\hyperlink{main_8c_a44c875427681d951feb66c686596fbe4}{sockEcoute}} = \mbox{\hyperlink{session_8c_adf7b35a6e085a114fb06ec3208bf3c90}{creerSocketEcoute}}(\mbox{\hyperlink{main_8c_ac9f31f726d2933782e2efda7136a25fd}{ADDR}}, \mbox{\hyperlink{main_8c_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}});}
+\DoxyCodeLine{167     printf(\textcolor{stringliteral}{"{}Socket écoute créée : \%d\(\backslash\)n"{}}, \mbox{\hyperlink{main_8c_a44c875427681d951feb66c686596fbe4}{sockEcoute}}.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}});}
+\DoxyCodeLine{168 }
+\DoxyCodeLine{169     \textcolor{comment}{// Gestion des processus zombies}}
+\DoxyCodeLine{170     \mbox{\hyperlink{session_8c_a0bed8600f960c495ba904e51386eff4a}{zombieManager}}();}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     \mbox{\hyperlink{messages_8c_a4b730a54135212b79c62bbd9d7d2cffa}{init\_messages}}(\mbox{\hyperlink{channels_8c_a7de11c5c7d63546b6aeadfe146e0828f}{get\_channels}}());}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{175     \{}
+\DoxyCodeLine{176         \textcolor{comment}{// Accepter une connexion}}
+\DoxyCodeLine{177         sockEch = \mbox{\hyperlink{session_8c_a1bf8e2cd5daab300c5354e8efaf065c9}{accepterClt}}(\mbox{\hyperlink{main_8c_a44c875427681d951feb66c686596fbe4}{sockEcoute}});}
+\DoxyCodeLine{178         printf(\textcolor{stringliteral}{"{}Socket dialogue créée : \%d\(\backslash\)n"{}}, sockEch.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}});}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180         \textcolor{comment}{// On crée un thread pour chaque client}}
+\DoxyCodeLine{181         pthread\_t server;}
+\DoxyCodeLine{182         pthread\_create(\&server, NULL, \&\mbox{\hyperlink{main_8c_a5025b066f93febe70ff06a183b614cee}{server\_thread}}, \&sockEch);}
+\DoxyCodeLine{183     \}}
+\DoxyCodeLine{184 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8c_a97bb8833f38dbdeb06d3bf6599358e83}\label{main_8c_a97bb8833f38dbdeb06d3bf6599358e83}} 
+\index{main.c@{main.c}!signal\_handler@{signal\_handler}}
+\index{signal\_handler@{signal\_handler}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{signal\_handler()}{signal\_handler()}}
+{\footnotesize\ttfamily void signal\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{sig,  }\item[{siginfo\+\_\+t $\ast$}]{siginfo,  }\item[{void $\ast$}]{context }\end{DoxyParamCaption})}
+
+
+
+Fonction qui gère les signaux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sig} & \+: le signal \\
+\hline
+{\em siginfo} & \+: les informations du signal \\
+\hline
+{\em context} & \+: le contexte \\
+\hline
+\end{DoxyParams}
+
+
+Définition à la ligne 899 du fichier main.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{900 \{}
+\DoxyCodeLine{901 }
+\DoxyCodeLine{902     \textcolor{keywordflow}{if} (siginfo-\/>si\_pid == 0)}
+\DoxyCodeLine{903     \{}
+\DoxyCodeLine{904         \mbox{\hyperlink{session_8c_a51b2f4b2461a8cb8d265b8da6bd96d9d}{fermerSocket}}(\&\mbox{\hyperlink{main_8c_a44c875427681d951feb66c686596fbe4}{sockEcoute}});}
+\DoxyCodeLine{905         printf(\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)n/======= Fermeture du serveur =======/\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{906         exit(0);}
+\DoxyCodeLine{907     \}}
+\DoxyCodeLine{908 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{main_8c_ad7242e277123d68ee6ae716a764a9ef0}\label{main_8c_ad7242e277123d68ee6ae716a764a9ef0}} 
+\index{main.c@{main.c}!bottom\_win@{bottom\_win}}
+\index{bottom\_win@{bottom\_win}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{bottom\_win}{bottom\_win}}
+{\footnotesize\ttfamily WINDOW$\ast$ bottom\+\_\+win\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Définition à la ligne 15 du fichier ncurses.\+c.
+
+\mbox{\Hypertarget{main_8c_a8eae9c4b1978e9d80bc640007c67fb5a}\label{main_8c_a8eae9c4b1978e9d80bc640007c67fb5a}} 
+\index{main.c@{main.c}!flag\_start\_client@{flag\_start\_client}}
+\index{flag\_start\_client@{flag\_start\_client}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{flag\_start\_client}{flag\_start\_client}}
+{\footnotesize\ttfamily int flag\+\_\+start\+\_\+client = 1}
+
+
+
+Définition à la ligne 24 du fichier main.\+c.
+
+\mbox{\Hypertarget{main_8c_ad12fc34ce789bce6c8a05d8a17138534}\label{main_8c_ad12fc34ce789bce6c8a05d8a17138534}} 
+\index{main.c@{main.c}!height@{height}}
+\index{height@{height}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily int height\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Définition à la ligne 14 du fichier ncurses.\+c.
+
+\mbox{\Hypertarget{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}\label{main_8c_ae5ccbef9c54917ce58ab8df1884738c5}} 
+\index{main.c@{main.c}!logs\_win@{logs\_win}}
+\index{logs\_win@{logs\_win}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{logs\_win}{logs\_win}}
+{\footnotesize\ttfamily WINDOW$\ast$ logs\+\_\+win\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Définition à la ligne 15 du fichier ncurses.\+c.
+
+\mbox{\Hypertarget{main_8c_a209ec2bf57de0f29d499648d22024b4a}\label{main_8c_a209ec2bf57de0f29d499648d22024b4a}} 
+\index{main.c@{main.c}!main\_width@{main\_width}}
+\index{main\_width@{main\_width}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main\_width}{main\_width}}
+{\footnotesize\ttfamily int main\+\_\+width}
+
+
+
+Définition à la ligne 113 du fichier main.\+c.
+
+\mbox{\Hypertarget{main_8c_a35f745f521ac49df3dab18076271489f}\label{main_8c_a35f745f521ac49df3dab18076271489f}} 
+\index{main.c@{main.c}!sessionActive@{sessionActive}}
+\index{sessionActive@{sessionActive}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{sessionActive}{sessionActive}}
+{\footnotesize\ttfamily volatile bool session\+Active = false}
+
+
+
+Définition à la ligne 26 du fichier main.\+c.
+
+\mbox{\Hypertarget{main_8c_ac94d8bc2e952aa8151d301a08a6f14e0}\label{main_8c_ac94d8bc2e952aa8151d301a08a6f14e0}} 
+\index{main.c@{main.c}!side\_width@{side\_width}}
+\index{side\_width@{side\_width}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{side\_width}{side\_width}}
+{\footnotesize\ttfamily int side\+\_\+width}
+
+
+
+Définition à la ligne 113 du fichier main.\+c.
+
+\mbox{\Hypertarget{main_8c_a44c875427681d951feb66c686596fbe4}\label{main_8c_a44c875427681d951feb66c686596fbe4}} 
+\index{main.c@{main.c}!sockEcoute@{sockEcoute}}
+\index{sockEcoute@{sockEcoute}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{sockEcoute}{sockEcoute}}
+{\footnotesize\ttfamily \mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} sock\+Ecoute}
+
+
+
+Définition à la ligne 131 du fichier main.\+c.
+
+\mbox{\Hypertarget{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}\label{main_8c_a4c21e33dfdaecc4e6a6db1cab3284be1}} 
+\index{main.c@{main.c}!top\_win@{top\_win}}
+\index{top\_win@{top\_win}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{top\_win}{top\_win}}
+{\footnotesize\ttfamily WINDOW$\ast$ top\+\_\+win\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Définition à la ligne 15 du fichier ncurses.\+c.
+
+\mbox{\Hypertarget{main_8c_a2474a5474cbff19523a51eb1de01cda4}\label{main_8c_a2474a5474cbff19523a51eb1de01cda4}} 
+\index{main.c@{main.c}!width@{width}}
+\index{width@{width}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily int width}
+
+
+
+Définition à la ligne 113 du fichier main.\+c.
+

@@ -1,6 +1,6 @@
 /**
  *	\file		ncurses.h
- *	\brief		UI du chat
+ *	\brief		Fichier d'en-tête du module de gestion de l'affichage
  *	\author		Younes Boughriet
  *	\date		15 avril 2024
  *	\version	1.0
@@ -9,66 +9,74 @@
 #define NCURSES_H
 /*
 *****************************************************************************************
- *	\noop		I N C L U D E S   S P E C I F I Q U E S
- */
+*	\noop		I N C L U D E S   S P E C I F I Q U E S
+*/
 #include <ncursesw/ncurses.h>
 #include <locale.h>
 #include <string.h>
 #include "./session.h"
 /*
 *****************************************************************************************
- *	\noop		D E F I N I T I O N   DES   C O N S T A N T E S
- */
+*	\noop		D E F I N I T I O N   DES   C O N S T A N T E S
+*/
 /**
  *	\def		MAX_BUFFER
  *	\brief		taille d'un buffer_t d'émission/réception
  */
-#define MAX_MSG 100
+#define MAX_MSG 100 // Taille maximale d'un message
 
 // Déclaration des fenêtres
 
-
 /*
 *****************************************************************************************
- *	\noop		P R O T O T Y P E S   DES   F O N C T I O N S
- */
+*	\noop		P R O T O T Y P E S   DES   F O N C T I O N S
+*/
 
-int main_ncurses();
 /**
- *	\fn			void init_ncurses()
- *	\brief		Initilisation de ncurses
+ * @brief Initialize ncurses
+ * @fn void init_ncurses()
+ * @param void
+ * @return void
  */
 void init_ncurses();
+
 /**
- *	\fn			void create_windows()
- *	\brief		 Création des fenêtres pour le client, messages, input et logs
+ * @brief Create windows
+ * @fn void create_windows()
+ * @param void
+ * @return void
  */
 void create_windows();
+
 /**
- *	\fn			void config_colors()
- *	\brief		Configuration des couleurs pour les fenêtres
+ * @brief Display the main window
+ * @fn void config_colors()
+ * @param void
+ * @return void
  */
 void config_colors();
+
 /**
- *	\fn			void display_message(WINDOW *win, char *msg)
- *	\brief		Affichage d'un message dans une fenêtre
- *	\param		win : fenêtre où afficher le message
- *	\param		msg : message à afficher
+ * @brief Display message in the window specified
+ * @fn void display_message(WINDOW *win, char *msg, int root)
+ * @param win the window to display the message
+ * @param msg the message to display
+ * @param root 1 if the message is from the server, 0 otherwise
  */
 void display_message(WINDOW *win, char *msg, int root);
+
 /**
- *	\fn			void main_loop_ncurses()
- *	\brief		Boucle principale de ncurses pour le chat (s'inspirer pour le chat principal)
+ * @brief The main loop of the ncurses interface
+ * @fn void main_loop_ncurses()
+ * @param void
  */
 void main_loop_ncurses();
+
 /**
- *	\fn			void cleanup()
- *	\brief		Nettoyage des fenêtres et fin de ncurses
+ * @brief Cleanup ncurses
+ * @fn void cleanup()
+ * @param void
  */
 void cleanup();
-
-
-
-
 
 #endif /* NCURSES_H */

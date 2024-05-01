@@ -7,12 +7,10 @@
  */
 #include "../heads/data.h"
 
-
 /*
 ***************************************************************************************************
- *	\noop	   F O N C T I O N S   D E   L A   C O U C H E   R E P R E S E N T A T I O N
- */
-
+*	\noop	   F O N C T I O N S   D E   L A   C O U C H E   R E P R E S E N T A T I O N
+*/
 
 /**
  *	\fn			void envoyer(socket_t *sockEch, generic quoi, pFct serial, ...)
@@ -24,7 +22,7 @@
  *	\note		Si le mode est DGRAM, l'appel nécessite en plus l'adresse IP et le port.
  *	\result		paramètre sockEch modifié pour le mode DGRAM
  */
-void envoyer(socket_t *sockEch, generic quoi, pFct serial, ...) 
+void envoyer(socket_t *sockEch, generic quoi, pFct serial, ...)
 {
     buffer_t content;
 
@@ -32,21 +30,22 @@ void envoyer(socket_t *sockEch, generic quoi, pFct serial, ...)
     if (serial != NULL)
         serial(quoi, content);
     else
-        strcpy(content, (char *) quoi);
+        strcpy(content, (char *)quoi);
 
     // Sending
     if (sockEch->mode == SOCK_STREAM)
     {
         _envoyerMessStream(sockEch, content);
     }
-    else {
+    else
+    {
         va_list pArg;
 
-        char * addrIp = va_arg(pArg, char *);
+        char *addrIp = va_arg(pArg, char *);
         int port = va_arg(pArg, int);
 
         va_start(pArg, serial);
-            _envoyerMessDGRAM(sockEch, content, addrIp, port);
+        _envoyerMessDGRAM(sockEch, content, addrIp, port);
         va_end(pArg);
     }
 }
@@ -61,7 +60,8 @@ void envoyer(socket_t *sockEch, generic quoi, pFct serial, ...)
  *	\result		paramètre quoi modifié avec le requête/réponse reçue
  *				paramètre sockEch modifié pour le mode DGRAM
  */
-void recevoir(socket_t *sockEch, generic quoi, pFct deSerial) {
+void recevoir(socket_t *sockEch, generic quoi, pFct deSerial)
+{
     buffer_t content;
 
     // Receiving
@@ -70,19 +70,17 @@ void recevoir(socket_t *sockEch, generic quoi, pFct deSerial) {
     else
         _recevoirMessDGRAM(sockEch, content);
 
-
     // Deserializing
     if (deSerial != NULL)
         deSerial(content, quoi);
     else
-        strcpy(quoi,content);
+        strcpy(quoi, content);
 }
-
 
 /*
 *************************************************************
- *	\noop	   F O N C T I O N S   L O C A L E S
- */
+*	\noop	   F O N C T I O N S   L O C A L E S
+*/
 
 /**
  *	\fn			void _envoyerMessStream(socket_t *sockEch, buffer_t buff)
@@ -95,7 +93,6 @@ void _envoyerMessStream(socket_t *sockEch, buffer_t buff)
 {
     CHECK(send(sockEch->fd, buff, MAX_BUFFER, 0), "Can't send");
 }
-
 
 /**
  *	\fn			void _envoyerMessDGRAM(socket_t *sockEch, buffer_t buff, char *adrIP, int port)
@@ -113,7 +110,6 @@ void _envoyerMessDGRAM(socket_t *sockEch, buffer_t buff, char *adrIP, int port)
     CHECK(sendto(sockEch->fd, buff, MAX_BUFFER, 0, (struct sockaddr *)&addr, sizeof(addr)), "Can't send");
 }
 
-
 /**
  *	\fn			void _recevoirMessStream(socket_t *sockEch, buffer_t buff)
  *	\brief		Réception d'un message sur une socket de type STREAM
@@ -125,7 +121,6 @@ void _recevoirMessStream(socket_t *sockEch, buffer_t buff)
 {
     CHECK(recv(sockEch->fd, buff, MAX_BUFFER, 0), "Can't receive");
 }
-
 
 /**
  *	\fn			void _recevoirMessDGRAM(socket_t *sockEch, buffer_t buff, char *adrIP, int *port)
@@ -143,29 +138,25 @@ void _recevoirMessDGRAM(socket_t *sockEch, buffer_t buff)
     recvfrom(sockEch->fd, buff, MAX_BUFFER, 0, (struct sockaddr *)&addrSrc, &len);
 }
 
-
 /**
- *	\fn			void _serial(generic quoi, buffer_t buff)
- *	\brief		Sérialisation d'une requête/réponse
- *	\param 		quoi : requête/réponse à sérialiser
- *	\param 		buff : buffer de sérialisation
- *	\result		paramètre buff modifié
+ * @brief Serialisation d'une requête/réponse
+ * @fn void _serialMess(generic quoi, buffer_t buff)
+ * @param quoi : requête/réponse à sérialiser
+ * @param buff : buffer de sérialisation
  */
 void _serialMess(generic quoi, buffer_t buff)
 {
-    strcpy(buff, (char *) quoi);
+    strcpy(buff, (char *)quoi);
 }
 
-
 /**
-    *	\fn			void _deSerial(buffer_t buff, generic quoi)
-    *	\brief		Dé-sérialisation d'une requête/réponse
-    *	\param 		buff : buffer de dé-sérialisation
-    *	\param 		quoi : requête/réponse à remplir
-    *	\result		paramètre quoi modifié
-*/
+ *	\fn			void _deSerialMess(buffer_t buff, generic quoi)
+ *	\brief		Dé-sérialisation d'une requête/réponse
+ *	\param 		buff : buffer de dé-sérialisation
+ *	\param 		quoi : requête/réponse à remplir
+ *	\result		paramètre quoi modifié
+ */
 void _deSerialMess(buffer_t buff, generic quoi)
 {
     strcpy((char *)quoi, buff);
 }
-

@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Middleware Project (BetterDiscord):  Fichier source de heads/session.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo_centrale.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Middleware Project (BetterDiscord)
+   </div>
+   <div id="projectbrief">Projet réalisé dans le cadre du cours de Middleware Client/Serveur par Hakim FIDJEL et Younes Boughriet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_f2cb48fa25ab3f859daf4d8a01e92e11.html">heads</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">session.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="session_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="session_8h.html#a5ef0f2ca252f36a0c8d046d2eb67b416">    1</a></span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef SESSION_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define SESSION_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">*   \noop       I N C L U D E S   S P E C I F I Q U E S</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;sys/socket.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;netinet/in.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;arpa/inet.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;sys/wait.h&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*   \noop       D E F I N I T I O N   DES   M A C R O S</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="session_8h.html#ad3fe337408f16c132c895f2b59326410">   34</a></span>&#160;<span class="preprocessor">#define CHECK(sts, msg) \</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">    if ((sts) == -1)    \</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">    {                   \</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">        perror(msg);    \</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">        exit(-1);       \</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">    }</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="session_8h.html#a04c10e619b22ff247ade9e18e9082fa0">   44</a></span>&#160;<span class="preprocessor">#define PAUSE(msg)                                         \</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">    printf(&quot;%s [Appuyez sur entrée pour continuer]&quot;</span>, msg); \</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    getchar();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">*   \noop       S T R C T U R E S   DE   D O N N E E S</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structsocket.html">   57</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structsocket.html">socket</a></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">   59</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">fd</a>;                     </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structsocket.html#a1296e2dc21d5cb36deef2045f6431edf">   60</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structsocket.html#a91c13966eecc710ac792e7349172e975">mode</a>;                   </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">struct </span>sockaddr_in <a class="code" href="structsocket.html#adf34762a764605679cf1221553d4083a">addrLoc</a>; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">struct </span>sockaddr_in <a class="code" href="structsocket.html#a1296e2dc21d5cb36deef2045f6431edf">addrDst</a>; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structsocket.html">socket</a> <a class="code" href="structsocket.html">socket_t</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">*****************************************************************************************</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">*   \noop       P R O T O T Y P E S   DES   F O N C T I O N S</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="session_8h.html#a27a803d7ebb36e8aa345c07d6bba7156">_adr2struct</a>(<span class="keyword">struct</span> sockaddr_in *addr, <span class="keywordtype">char</span> *adrIP, <span class="keywordtype">short</span> port);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<a class="code" href="structsocket.html">socket_t</a> <a class="code" href="session_8h.html#afac73db40b85a0897ae36d9342188ab7">creerSocket</a>(<span class="keywordtype">int</span> <a class="code" href="structsocket.html#a91c13966eecc710ac792e7349172e975">mode</a>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<a class="code" href="structsocket.html">socket_t</a> <a class="code" href="session_8h.html#a5d9908d2192f6364a4f8812cdaa1f7d1">creerSocketAdr</a>(<span class="keywordtype">int</span> <a class="code" href="structsocket.html#a91c13966eecc710ac792e7349172e975">mode</a>, <span class="keywordtype">char</span> *adrIP, <span class="keywordtype">short</span> port);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<a class="code" href="structsocket.html">socket_t</a> <a class="code" href="session_8h.html#a03d4dd64d2b50bfe1e93055e6ee10976">creerSocketEcoute</a>(<span class="keywordtype">char</span> *adrIP, <span class="keywordtype">short</span> port);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<a class="code" href="structsocket.html">socket_t</a> <a class="code" href="session_8h.html#a1bf8e2cd5daab300c5354e8efaf065c9">accepterClt</a>(<span class="keyword">const</span> <a class="code" href="structsocket.html">socket_t</a> <a class="code" href="main_8c.html#a44c875427681d951feb66c686596fbe4">sockEcoute</a>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<a class="code" href="structsocket.html">socket_t</a> <a class="code" href="session_8h.html#a7f5e8ef98743c3001ba36b42a46f1561">connecterClt2Srv</a>(<span class="keywordtype">char</span> *adrIP, <span class="keywordtype">short</span> port);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span> <a class="code" href="session_8h.html#a51b2f4b2461a8cb8d265b8da6bd96d9d">fermerSocket</a>(<a class="code" href="structsocket.html">socket_t</a> *sock);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keywordtype">void</span> <a class="code" href="session_8h.html#a35c19546f90f61038fdddadc44abfb1d">initSockets</a>();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keywordtype">void</span> <a class="code" href="session_8h.html#a95f454e40a409676d6e7604d5805e634">addSocket</a>(<a class="code" href="structsocket.html">socket_t</a> sock);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keywordtype">void</span> <a class="code" href="session_8h.html#a307ed7977f7e87c29f9e40f5a8d47167">removeSocket</a>(<span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span> <a class="code" href="session_8h.html#a47cb79c19334afd066b6a765aa759789">displaySockets</a>();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keywordtype">void</span> <a class="code" href="session_8h.html#a0bed8600f960c495ba904e51386eff4a">zombieManager</a>();</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* SESSION_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="amain_8c_html_a44c875427681d951feb66c686596fbe4"><div class="ttname"><a href="main_8c.html#a44c875427681d951feb66c686596fbe4">sockEcoute</a></div><div class="ttdeci">socket_t sockEcoute</div><div class="ttdef"><b>Definition:</b> <a href="main_8c_source.html#l00131">main.c:131</a></div></div>
+<div class="ttc" id="asession_8h_html_a03d4dd64d2b50bfe1e93055e6ee10976"><div class="ttname"><a href="session_8h.html#a03d4dd64d2b50bfe1e93055e6ee10976">creerSocketEcoute</a></div><div class="ttdeci">socket_t creerSocketEcoute(char *adrIP, short port)</div><div class="ttdoc">Création d'une socket d'écoute avec l'adressage fourni en paramètre.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00138">session.c:138</a></div></div>
+<div class="ttc" id="asession_8h_html_a0bed8600f960c495ba904e51386eff4a"><div class="ttname"><a href="session_8h.html#a0bed8600f960c495ba904e51386eff4a">zombieManager</a></div><div class="ttdeci">void zombieManager()</div><div class="ttdoc">Le gestionnaire de zombies.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00200">session.c:200</a></div></div>
+<div class="ttc" id="asession_8h_html_a1bf8e2cd5daab300c5354e8efaf065c9"><div class="ttname"><a href="session_8h.html#a1bf8e2cd5daab300c5354e8efaf065c9">accepterClt</a></div><div class="ttdeci">socket_t accepterClt(const socket_t sockEcoute)</div><div class="ttdoc">Acceptation d'une demande de connexion d'un client.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00152">session.c:152</a></div></div>
+<div class="ttc" id="asession_8h_html_a27a803d7ebb36e8aa345c07d6bba7156"><div class="ttname"><a href="session_8h.html#a27a803d7ebb36e8aa345c07d6bba7156">_adr2struct</a></div><div class="ttdeci">void _adr2struct(struct sockaddr_in *addr, char *adrIP, short port)</div><div class="ttdoc">Transformer une adresse au format humain en structure SocketBSD.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00090">session.c:90</a></div></div>
+<div class="ttc" id="asession_8h_html_a307ed7977f7e87c29f9e40f5a8d47167"><div class="ttname"><a href="session_8h.html#a307ed7977f7e87c29f9e40f5a8d47167">removeSocket</a></div><div class="ttdeci">void removeSocket(int index)</div><div class="ttdoc">Suppression d'une socket du tableau.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00056">session.c:56</a></div></div>
+<div class="ttc" id="asession_8h_html_a35c19546f90f61038fdddadc44abfb1d"><div class="ttname"><a href="session_8h.html#a35c19546f90f61038fdddadc44abfb1d">initSockets</a></div><div class="ttdeci">void initSockets()</div><div class="ttdoc">Initialisation du tableau de sockets.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00021">session.c:21</a></div></div>
+<div class="ttc" id="asession_8h_html_a47cb79c19334afd066b6a765aa759789"><div class="ttname"><a href="session_8h.html#a47cb79c19334afd066b6a765aa759789">displaySockets</a></div><div class="ttdeci">void displaySockets()</div><div class="ttdoc">Affichage des sockets connectés.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00070">session.c:70</a></div></div>
+<div class="ttc" id="asession_8h_html_a51b2f4b2461a8cb8d265b8da6bd96d9d"><div class="ttname"><a href="session_8h.html#a51b2f4b2461a8cb8d265b8da6bd96d9d">fermerSocket</a></div><div class="ttdeci">void fermerSocket(socket_t *sock)</div><div class="ttdoc">Fermeture d'une socket.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00185">session.c:185</a></div></div>
+<div class="ttc" id="asession_8h_html_a5d9908d2192f6364a4f8812cdaa1f7d1"><div class="ttname"><a href="session_8h.html#a5d9908d2192f6364a4f8812cdaa1f7d1">creerSocketAdr</a></div><div class="ttdeci">socket_t creerSocketAdr(int mode, char *adrIP, short port)</div><div class="ttdoc">Création d'une socket de type DGRAM/STREAM.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00121">session.c:121</a></div></div>
+<div class="ttc" id="asession_8h_html_a7f5e8ef98743c3001ba36b42a46f1561"><div class="ttname"><a href="session_8h.html#a7f5e8ef98743c3001ba36b42a46f1561">connecterClt2Srv</a></div><div class="ttdeci">socket_t connecterClt2Srv(char *adrIP, short port)</div><div class="ttdoc">Crétaion d'une socket d'appel et connexion au seveur dont l'adressage est fourni en paramètre.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00170">session.c:170</a></div></div>
+<div class="ttc" id="asession_8h_html_a95f454e40a409676d6e7604d5805e634"><div class="ttname"><a href="session_8h.html#a95f454e40a409676d6e7604d5805e634">addSocket</a></div><div class="ttdeci">void addSocket(socket_t sock)</div><div class="ttdoc">Ajout d'une socket au tableau.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00037">session.c:37</a></div></div>
+<div class="ttc" id="asession_8h_html_afac73db40b85a0897ae36d9342188ab7"><div class="ttname"><a href="session_8h.html#afac73db40b85a0897ae36d9342188ab7">creerSocket</a></div><div class="ttdeci">socket_t creerSocket(int mode)</div><div class="ttdoc">Création d'une socket de type DGRAM/STREAM.</div><div class="ttdef"><b>Definition:</b> <a href="session_8c_source.html#l00104">session.c:104</a></div></div>
+<div class="ttc" id="astructsocket_html"><div class="ttname"><a href="structsocket.html">socket</a></div><div class="ttdoc">Définition de la structure de données socket.</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00057">session.h:58</a></div></div>
+<div class="ttc" id="astructsocket_html_a1296e2dc21d5cb36deef2045f6431edf"><div class="ttname"><a href="structsocket.html#a1296e2dc21d5cb36deef2045f6431edf">socket::addrDst</a></div><div class="ttdeci">struct sockaddr_in addrDst</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00060">session.h:62</a></div></div>
+<div class="ttc" id="astructsocket_html_a91c13966eecc710ac792e7349172e975"><div class="ttname"><a href="structsocket.html#a91c13966eecc710ac792e7349172e975">socket::mode</a></div><div class="ttdeci">int mode</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00060">session.h:60</a></div></div>
+<div class="ttc" id="astructsocket_html_adce841ceca3a01158a71421e6b0dbd8a"><div class="ttname"><a href="structsocket.html#adce841ceca3a01158a71421e6b0dbd8a">socket::fd</a></div><div class="ttdeci">int fd</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00059">session.h:59</a></div></div>
+<div class="ttc" id="astructsocket_html_adf34762a764605679cf1221553d4083a"><div class="ttname"><a href="structsocket.html#adf34762a764605679cf1221553d4083a">socket::addrLoc</a></div><div class="ttdeci">struct sockaddr_in addrLoc</div><div class="ttdef"><b>Definition:</b> <a href="session_8h_source.html#l00060">session.h:61</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

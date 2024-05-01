@@ -1,0 +1,577 @@
+\hypertarget{session_8h}{}\doxysection{Référence du fichier heads/session.h}
+\label{session_8h}\index{heads/session.h@{heads/session.h}}
+
+
+Spécification de la couche Session.  
+
+
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+{\ttfamily \#include $<$pthread.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Graphe des dépendances par inclusion de session.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{session_8h__incl}
+\end{center}
+\end{figure}
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{session_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structsocket}{socket}}
+\begin{DoxyCompactList}\small\item\em Définition de la structure de données socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{session_8h_ad3fe337408f16c132c895f2b59326410}{CHECK}}(sts,  msg)
+\begin{DoxyCompactList}\small\item\em Macro-\/fonction qui vérifie que sts est égal -\/1 (cas d\textquotesingle{}erreur \+: sts==-\/1) En cas d\textquotesingle{}erreur, il y a affichage du message adéquat et fin d\textquotesingle{}exécution. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{session_8h_a04c10e619b22ff247ade9e18e9082fa0}{PAUSE}}(msg)
+\begin{DoxyCompactList}\small\item\em Macro-\/fonction qui affiche msg et attend une entrée clavier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structsocket}{socket}} \mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Définition du type de données socket\+\_\+t. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{session_8h_a27a803d7ebb36e8aa345c07d6bba7156}{\+\_\+adr2struct}} (struct sockaddr\+\_\+in $\ast$addr, char $\ast$adr\+IP, short port)
+\begin{DoxyCompactList}\small\item\em Transformer une adresse au format humain en structure Socket\+BSD. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} \mbox{\hyperlink{session_8h_afac73db40b85a0897ae36d9342188ab7}{creer\+Socket}} (int mode)
+\begin{DoxyCompactList}\small\item\em Création d\textquotesingle{}une socket de type DGRAM/\+STREAM. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} \mbox{\hyperlink{session_8h_a5d9908d2192f6364a4f8812cdaa1f7d1}{creer\+Socket\+Adr}} (int mode, char $\ast$adr\+IP, short port)
+\begin{DoxyCompactList}\small\item\em Création d\textquotesingle{}une socket de type DGRAM/\+STREAM. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} \mbox{\hyperlink{session_8h_a03d4dd64d2b50bfe1e93055e6ee10976}{creer\+Socket\+Ecoute}} (char $\ast$adr\+IP, short port)
+\begin{DoxyCompactList}\small\item\em Création d\textquotesingle{}une socket d\textquotesingle{}écoute avec l\textquotesingle{}adressage fourni en paramètre. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} \mbox{\hyperlink{session_8h_a1bf8e2cd5daab300c5354e8efaf065c9}{accepter\+Clt}} (const \mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} \mbox{\hyperlink{main_8c_a44c875427681d951feb66c686596fbe4}{sock\+Ecoute}})
+\begin{DoxyCompactList}\small\item\em Acceptation d\textquotesingle{}une demande de connexion d\textquotesingle{}un client. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} \mbox{\hyperlink{session_8h_a7f5e8ef98743c3001ba36b42a46f1561}{connecter\+Clt2\+Srv}} (char $\ast$adr\+IP, short port)
+\begin{DoxyCompactList}\small\item\em Crétaion d\textquotesingle{}une socket d\textquotesingle{}appel et connexion au seveur dont l\textquotesingle{}adressage est fourni en paramètre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{session_8h_a51b2f4b2461a8cb8d265b8da6bd96d9d}{fermer\+Socket}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$sock)
+\begin{DoxyCompactList}\small\item\em Fermeture d\textquotesingle{}une socket. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{session_8h_a35c19546f90f61038fdddadc44abfb1d}{init\+Sockets}} ()
+\begin{DoxyCompactList}\small\item\em Initialisation du tableau de sockets. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{session_8h_a95f454e40a409676d6e7604d5805e634}{add\+Socket}} (\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} sock)
+\begin{DoxyCompactList}\small\item\em Ajout d\textquotesingle{}une socket au tableau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{session_8h_a307ed7977f7e87c29f9e40f5a8d47167}{remove\+Socket}} (int index)
+\begin{DoxyCompactList}\small\item\em Suppression d\textquotesingle{}une socket du tableau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{session_8h_a47cb79c19334afd066b6a765aa759789}{display\+Sockets}} ()
+\begin{DoxyCompactList}\small\item\em Affichage des sockets connectés. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{session_8h_a0bed8600f960c495ba904e51386eff4a}{zombie\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Le gestionnaire de zombies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Spécification de la couche Session. 
+
+\begin{DoxyAuthor}{Auteur}
+Hakim FIDJEL 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+25 mars 2024 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Documentation des macros}
+\mbox{\Hypertarget{session_8h_ad3fe337408f16c132c895f2b59326410}\label{session_8h_ad3fe337408f16c132c895f2b59326410}} 
+\index{session.h@{session.h}!CHECK@{CHECK}}
+\index{CHECK@{CHECK}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{CHECK}{CHECK}}
+{\footnotesize\ttfamily \#define CHECK(\begin{DoxyParamCaption}\item[{}]{sts,  }\item[{}]{msg }\end{DoxyParamCaption})}
+
+{\bfseries Valeur \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} ((sts) == -\/1)    \(\backslash\)}
+\DoxyCodeLine{    \{                   \(\backslash\)}
+\DoxyCodeLine{        perror(msg);    \(\backslash\)}
+\DoxyCodeLine{        exit(-\/1);       \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+
+
+Macro-\/fonction qui vérifie que sts est égal -\/1 (cas d\textquotesingle{}erreur \+: sts==-\/1) En cas d\textquotesingle{}erreur, il y a affichage du message adéquat et fin d\textquotesingle{}exécution. 
+
+
+
+Définition à la ligne 34 du fichier session.\+h.
+
+\mbox{\Hypertarget{session_8h_a04c10e619b22ff247ade9e18e9082fa0}\label{session_8h_a04c10e619b22ff247ade9e18e9082fa0}} 
+\index{session.h@{session.h}!PAUSE@{PAUSE}}
+\index{PAUSE@{PAUSE}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{PAUSE}{PAUSE}}
+{\footnotesize\ttfamily \#define PAUSE(\begin{DoxyParamCaption}\item[{}]{msg }\end{DoxyParamCaption})}
+
+{\bfseries Valeur \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"{}\%s [Appuyez sur entrée pour continuer]"{}}, msg); \(\backslash\)}
+\DoxyCodeLine{    getchar();}
+
+\end{DoxyCode}
+
+
+Macro-\/fonction qui affiche msg et attend une entrée clavier. 
+
+
+
+Définition à la ligne 44 du fichier session.\+h.
+
+
+
+\doxysubsection{Documentation des définitions de type}
+\mbox{\Hypertarget{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}\label{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}} 
+\index{session.h@{session.h}!socket\_t@{socket\_t}}
+\index{socket\_t@{socket\_t}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{socket\_t}{socket\_t}}
+{\footnotesize\ttfamily \mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}}}
+
+
+
+Définition du type de données socket\+\_\+t. 
+
+
+
+Définition à la ligne 1 du fichier session.\+h.
+
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{session_8h_a27a803d7ebb36e8aa345c07d6bba7156}\label{session_8h_a27a803d7ebb36e8aa345c07d6bba7156}} 
+\index{session.h@{session.h}!\_adr2struct@{\_adr2struct}}
+\index{\_adr2struct@{\_adr2struct}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{\_adr2struct()}{\_adr2struct()}}
+{\footnotesize\ttfamily void \+\_\+adr2struct (\begin{DoxyParamCaption}\item[{struct sockaddr\+\_\+in $\ast$}]{addr,  }\item[{char $\ast$}]{adr\+IP,  }\item[{short}]{port }\end{DoxyParamCaption})}
+
+
+
+Transformer une adresse au format humain en structure Socket\+BSD. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em addr} & \+: structure d\textquotesingle{}adressage BSD d\textquotesingle{}une socket INET \\
+\hline
+{\em adr\+IP} & \+: adresse IP de la socket créée \\
+\hline
+{\em port} & \+: port de la socket créée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Le domaine dépend du mode choisi (TCP/\+UDP) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+paramètre $\ast$adr modifié 
+\end{DoxyReturn}
+
+
+Définition à la ligne 90 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{91 \{}
+\DoxyCodeLine{92     addr-\/>sin\_family = AF\_INET;}
+\DoxyCodeLine{93     addr-\/>sin\_port = htons(port);}
+\DoxyCodeLine{94     addr-\/>sin\_addr.s\_addr = inet\_addr(adrIP);}
+\DoxyCodeLine{95     memset(addr-\/>sin\_zero, 0, 8);}
+\DoxyCodeLine{96 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_a1bf8e2cd5daab300c5354e8efaf065c9}\label{session_8h_a1bf8e2cd5daab300c5354e8efaf065c9}} 
+\index{session.h@{session.h}!accepterClt@{accepterClt}}
+\index{accepterClt@{accepterClt}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{accepterClt()}{accepterClt()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} accepter\+Clt (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}}}]{sock\+Ecoute }\end{DoxyParamCaption})}
+
+
+
+Acceptation d\textquotesingle{}une demande de connexion d\textquotesingle{}un client. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sock\+Ecoute} & \+: socket d\textquotesingle{}écoute pour réception de la demande \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+socket (dialogue) connectée par le serveur avec un client 
+\end{DoxyReturn}
+
+
+Définition à la ligne 152 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{153 \{}
+\DoxyCodeLine{154     \mbox{\hyperlink{structsocket}{socket\_t}} newSocket;}
+\DoxyCodeLine{155     socklen\_t len = \textcolor{keyword}{sizeof}(newSocket.\mbox{\hyperlink{structsocket_a1296e2dc21d5cb36deef2045f6431edf}{addrDst}});}
+\DoxyCodeLine{156     \mbox{\hyperlink{session_8h_ad3fe337408f16c132c895f2b59326410}{CHECK}}(newSocket.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}} = accept(\mbox{\hyperlink{main_8c_a44c875427681d951feb66c686596fbe4}{sockEcoute}}.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}}, (\textcolor{keyword}{struct} sockaddr *)\&newSocket.\mbox{\hyperlink{structsocket_a1296e2dc21d5cb36deef2045f6431edf}{addrDst}}, \&len), \textcolor{stringliteral}{"{}accept()"{}});}
+\DoxyCodeLine{157     newSocket.\mbox{\hyperlink{structsocket_a91c13966eecc710ac792e7349172e975}{mode}} = \mbox{\hyperlink{main_8c_a44c875427681d951feb66c686596fbe4}{sockEcoute}}.\mbox{\hyperlink{structsocket_a91c13966eecc710ac792e7349172e975}{mode}};}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{159     \textcolor{keywordflow}{return} newSocket;}
+\DoxyCodeLine{160 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_a95f454e40a409676d6e7604d5805e634}\label{session_8h_a95f454e40a409676d6e7604d5805e634}} 
+\index{session.h@{session.h}!addSocket@{addSocket}}
+\index{addSocket@{addSocket}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{addSocket()}{addSocket()}}
+{\footnotesize\ttfamily void add\+Socket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}}}]{sock }\end{DoxyParamCaption})}
+
+
+
+Ajout d\textquotesingle{}une socket au tableau. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sock} & \+: la socket à ajouter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Cette fonction permet d\textquotesingle{}ajouter une socket au tableau des sockets connectés 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 37 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38 \{}
+\DoxyCodeLine{39     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{session_8c_ab54cda52ee639aa3c47cfa330904e776}{MAX\_SOCKETS}}; i++)}
+\DoxyCodeLine{40     \{}
+\DoxyCodeLine{41         \textcolor{keywordflow}{if} (\mbox{\hyperlink{session_8c_a768280c70c66895027c84c5ad754a92c}{sockets}}[i].fd == -\/1)}
+\DoxyCodeLine{42         \{}
+\DoxyCodeLine{43             \mbox{\hyperlink{session_8c_a768280c70c66895027c84c5ad754a92c}{sockets}}[i] = sock;}
+\DoxyCodeLine{44             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{45         \}}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{47 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_a7f5e8ef98743c3001ba36b42a46f1561}\label{session_8h_a7f5e8ef98743c3001ba36b42a46f1561}} 
+\index{session.h@{session.h}!connecterClt2Srv@{connecterClt2Srv}}
+\index{connecterClt2Srv@{connecterClt2Srv}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{connecterClt2Srv()}{connecterClt2Srv()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} connecter\+Clt2\+Srv (\begin{DoxyParamCaption}\item[{char $\ast$}]{adr\+IP,  }\item[{short}]{port }\end{DoxyParamCaption})}
+
+
+
+Crétaion d\textquotesingle{}une socket d\textquotesingle{}appel et connexion au seveur dont l\textquotesingle{}adressage est fourni en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em adr\+IP} & \+: adresse IP du serveur à connecter \\
+\hline
+{\em port} & \+: port TCP du serveur à connecter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+socket connectée au serveur fourni en paramètre 
+\end{DoxyReturn}
+
+
+Définition à la ligne 170 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{171 \{}
+\DoxyCodeLine{172     \mbox{\hyperlink{structsocket}{socket\_t}} newSocket = \mbox{\hyperlink{session_8c_afac73db40b85a0897ae36d9342188ab7}{creerSocket}}(SOCK\_STREAM);}
+\DoxyCodeLine{173     \mbox{\hyperlink{session_8c_a27a803d7ebb36e8aa345c07d6bba7156}{\_adr2struct}}(\&newSocket.\mbox{\hyperlink{structsocket_a1296e2dc21d5cb36deef2045f6431edf}{addrDst}}, adrIP, port);}
+\DoxyCodeLine{174     \mbox{\hyperlink{session_8h_ad3fe337408f16c132c895f2b59326410}{CHECK}}(connect(newSocket.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}}, (\textcolor{keyword}{struct} sockaddr *)\&newSocket.\mbox{\hyperlink{structsocket_a1296e2dc21d5cb36deef2045f6431edf}{addrDst}}, \textcolor{keyword}{sizeof}(newSocket.\mbox{\hyperlink{structsocket_a1296e2dc21d5cb36deef2045f6431edf}{addrDst}})), \textcolor{stringliteral}{"{}connect()"{}});}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176     \textcolor{keywordflow}{return} newSocket;}
+\DoxyCodeLine{177 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_afac73db40b85a0897ae36d9342188ab7}\label{session_8h_afac73db40b85a0897ae36d9342188ab7}} 
+\index{session.h@{session.h}!creerSocket@{creerSocket}}
+\index{creerSocket@{creerSocket}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{creerSocket()}{creerSocket()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} creer\+Socket (\begin{DoxyParamCaption}\item[{int}]{mode }\end{DoxyParamCaption})}
+
+
+
+Création d\textquotesingle{}une socket de type DGRAM/\+STREAM. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mode} & \+: mode connecté (STREAM) ou non (DGRAM) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+socket créée selon le mode choisi 
+\end{DoxyReturn}
+
+
+Définition à la ligne 104 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{105 \{}
+\DoxyCodeLine{106     \mbox{\hyperlink{structsocket}{socket\_t}} newSocket;}
+\DoxyCodeLine{107     \mbox{\hyperlink{session_8h_ad3fe337408f16c132c895f2b59326410}{CHECK}}(newSocket.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}} = \mbox{\hyperlink{structsocket}{socket}}(AF\_INET, mode, 0), \textcolor{stringliteral}{"{}socket()"{}});}
+\DoxyCodeLine{108     newSocket.\mbox{\hyperlink{structsocket_a91c13966eecc710ac792e7349172e975}{mode}} = mode;}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110     \textcolor{keywordflow}{return} newSocket;}
+\DoxyCodeLine{111 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_a5d9908d2192f6364a4f8812cdaa1f7d1}\label{session_8h_a5d9908d2192f6364a4f8812cdaa1f7d1}} 
+\index{session.h@{session.h}!creerSocketAdr@{creerSocketAdr}}
+\index{creerSocketAdr@{creerSocketAdr}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{creerSocketAdr()}{creerSocketAdr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} creer\+Socket\+Adr (\begin{DoxyParamCaption}\item[{int}]{mode,  }\item[{char $\ast$}]{adr\+IP,  }\item[{short}]{port }\end{DoxyParamCaption})}
+
+
+
+Création d\textquotesingle{}une socket de type DGRAM/\+STREAM. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mode} & \+: adresse IP de la socket créée \\
+\hline
+{\em adr\+IP} & \+: adresse IP de la socket créée \\
+\hline
+{\em port} & \+: port de la socket créée \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+socket créée dans le domaine choisi avec l\textquotesingle{}adressage fourni 
+\end{DoxyReturn}
+
+
+Définition à la ligne 121 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{122 \{}
+\DoxyCodeLine{123     \mbox{\hyperlink{structsocket}{socket\_t}} newSocket = \mbox{\hyperlink{session_8c_afac73db40b85a0897ae36d9342188ab7}{creerSocket}}(mode);}
+\DoxyCodeLine{124     \mbox{\hyperlink{session_8c_a27a803d7ebb36e8aa345c07d6bba7156}{\_adr2struct}}(\&newSocket.\mbox{\hyperlink{structsocket_adf34762a764605679cf1221553d4083a}{addrLoc}}, adrIP, port);}
+\DoxyCodeLine{125     \mbox{\hyperlink{session_8h_ad3fe337408f16c132c895f2b59326410}{CHECK}}(bind(newSocket.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}}, (\textcolor{keyword}{struct} sockaddr *)\&newSocket.\mbox{\hyperlink{structsocket_adf34762a764605679cf1221553d4083a}{addrLoc}}, \textcolor{keyword}{sizeof}(newSocket.\mbox{\hyperlink{structsocket_adf34762a764605679cf1221553d4083a}{addrLoc}})), \textcolor{stringliteral}{"{}bind()"{}});}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127     \textcolor{keywordflow}{return} newSocket;}
+\DoxyCodeLine{128 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_a03d4dd64d2b50bfe1e93055e6ee10976}\label{session_8h_a03d4dd64d2b50bfe1e93055e6ee10976}} 
+\index{session.h@{session.h}!creerSocketEcoute@{creerSocketEcoute}}
+\index{creerSocketEcoute@{creerSocketEcoute}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{creerSocketEcoute()}{creerSocketEcoute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} creer\+Socket\+Ecoute (\begin{DoxyParamCaption}\item[{char $\ast$}]{adr\+IP,  }\item[{short}]{port }\end{DoxyParamCaption})}
+
+
+
+Création d\textquotesingle{}une socket d\textquotesingle{}écoute avec l\textquotesingle{}adressage fourni en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em adr\+IP} & \+: adresse IP du serveur à mettre en écoute \\
+\hline
+{\em port} & \+: port TCP du serveur à mettre en écoute \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+socket créée avec l\textquotesingle{}adressage fourni en paramètre et dans un état d\textquotesingle{}écoute 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Le domaine est nécessairement STREAM 
+\end{DoxyNote}
+
+
+Définition à la ligne 138 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{139 \{}
+\DoxyCodeLine{140     \mbox{\hyperlink{structsocket}{socket\_t}} newSocket = \mbox{\hyperlink{session_8c_a5d9908d2192f6364a4f8812cdaa1f7d1}{creerSocketAdr}}(SOCK\_STREAM, adrIP, port);}
+\DoxyCodeLine{141     \mbox{\hyperlink{session_8h_ad3fe337408f16c132c895f2b59326410}{CHECK}}(listen(newSocket.\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}}, 5), \textcolor{stringliteral}{"{}listen()"{}});}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143     \textcolor{keywordflow}{return} newSocket;}
+\DoxyCodeLine{144 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_a47cb79c19334afd066b6a765aa759789}\label{session_8h_a47cb79c19334afd066b6a765aa759789}} 
+\index{session.h@{session.h}!displaySockets@{displaySockets}}
+\index{displaySockets@{displaySockets}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{displaySockets()}{displaySockets()}}
+{\footnotesize\ttfamily void display\+Sockets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Affichage des sockets connectés. 
+
+\begin{DoxyNote}{Note}
+Cette fonction permet d\textquotesingle{}afficher les sockets connectés 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 70 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{71 \{}
+\DoxyCodeLine{72     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{session_8c_ab54cda52ee639aa3c47cfa330904e776}{MAX\_SOCKETS}}; i++)}
+\DoxyCodeLine{73     \{}
+\DoxyCodeLine{74         \textcolor{keywordflow}{if} (\mbox{\hyperlink{session_8c_a768280c70c66895027c84c5ad754a92c}{sockets}}[i].fd != -\/1)}
+\DoxyCodeLine{75         \{}
+\DoxyCodeLine{76             printf(\textcolor{stringliteral}{"{}Socket \%d : \%d\(\backslash\)n"{}}, i, \mbox{\hyperlink{session_8c_a768280c70c66895027c84c5ad754a92c}{sockets}}[i].fd);}
+\DoxyCodeLine{77         \}}
+\DoxyCodeLine{78     \}}
+\DoxyCodeLine{79 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_a51b2f4b2461a8cb8d265b8da6bd96d9d}\label{session_8h_a51b2f4b2461a8cb8d265b8da6bd96d9d}} 
+\index{session.h@{session.h}!fermerSocket@{fermerSocket}}
+\index{fermerSocket@{fermerSocket}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{fermerSocket()}{fermerSocket()}}
+{\footnotesize\ttfamily void fermer\+Socket (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{session_8h_a5ef0f2ca252f36a0c8d046d2eb67b416}{socket\+\_\+t}} $\ast$}]{sock }\end{DoxyParamCaption})}
+
+
+
+Fermeture d\textquotesingle{}une socket. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sock} & \+: socket à fermer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+la socket est fermée 
+\end{DoxyReturn}
+
+
+Définition à la ligne 185 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{186 \{}
+\DoxyCodeLine{187     \textcolor{keywordflow}{if} (close(sock-\/>\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}}) == -\/1)}
+\DoxyCodeLine{188     \{}
+\DoxyCodeLine{189         perror(\textcolor{stringliteral}{"{}Erreur lors de la fermeture de la socket"{}});}
+\DoxyCodeLine{190     \}}
+\DoxyCodeLine{191     printf(\textcolor{stringliteral}{"{}[fermerSocket] Socket \%d fermée\(\backslash\)n"{}}, sock-\/>\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}});}
+\DoxyCodeLine{192 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_a35c19546f90f61038fdddadc44abfb1d}\label{session_8h_a35c19546f90f61038fdddadc44abfb1d}} 
+\index{session.h@{session.h}!initSockets@{initSockets}}
+\index{initSockets@{initSockets}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{initSockets()}{initSockets()}}
+{\footnotesize\ttfamily void init\+Sockets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialisation du tableau de sockets. 
+
+\begin{DoxyNote}{Note}
+Cette fonction permet d\textquotesingle{}initialiser le tableau des sockets connectés 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 21 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22 \{}
+\DoxyCodeLine{23     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{session_8c_ab54cda52ee639aa3c47cfa330904e776}{MAX\_SOCKETS}}; i++)}
+\DoxyCodeLine{24     \{}
+\DoxyCodeLine{25         \mbox{\hyperlink{session_8c_a768280c70c66895027c84c5ad754a92c}{sockets}}[i].\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}} = -\/1;}
+\DoxyCodeLine{26     \}}
+\DoxyCodeLine{27     printf(\textcolor{stringliteral}{"{}Tableau de sockets initialisé\(\backslash\)n"{}});}
+\DoxyCodeLine{28 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_a307ed7977f7e87c29f9e40f5a8d47167}\label{session_8h_a307ed7977f7e87c29f9e40f5a8d47167}} 
+\index{session.h@{session.h}!removeSocket@{removeSocket}}
+\index{removeSocket@{removeSocket}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{removeSocket()}{removeSocket()}}
+{\footnotesize\ttfamily void remove\+Socket (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Suppression d\textquotesingle{}une socket du tableau. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em index} & \+: l\textquotesingle{}indice de la socket à supprimer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Cette fonction permet de supprimer une socket du tableau des sockets connectés 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 56 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58     \textcolor{keywordflow}{if} (index < \mbox{\hyperlink{session_8c_ab54cda52ee639aa3c47cfa330904e776}{MAX\_SOCKETS}})}
+\DoxyCodeLine{59     \{}
+\DoxyCodeLine{60         \mbox{\hyperlink{session_8c_a768280c70c66895027c84c5ad754a92c}{sockets}}[index].\mbox{\hyperlink{structsocket_adce841ceca3a01158a71421e6b0dbd8a}{fd}} = -\/1;}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{session_8h_a0bed8600f960c495ba904e51386eff4a}\label{session_8h_a0bed8600f960c495ba904e51386eff4a}} 
+\index{session.h@{session.h}!zombieManager@{zombieManager}}
+\index{zombieManager@{zombieManager}!session.h@{session.h}}
+\doxysubsubsection{\texorpdfstring{zombieManager()}{zombieManager()}}
+{\footnotesize\ttfamily void zombie\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Le gestionnaire de zombies. 
+
+\begin{DoxyNote}{Note}
+Cette fonction permet de gérer les processus zombies 
+\end{DoxyNote}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}
+
+
+Définition à la ligne 200 du fichier session.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{201 \{}
+\DoxyCodeLine{202     \textcolor{comment}{// Gestion des processus zombies}}
+\DoxyCodeLine{203     \textcolor{keyword}{struct }sigaction sa;}
+\DoxyCodeLine{204     sa.sa\_handler = SIG\_IGN; \textcolor{comment}{// Ignorer le signal SIGCHLD pour éviter les processus zombies}}
+\DoxyCodeLine{205     sigemptyset(\&sa.sa\_mask);}
+\DoxyCodeLine{206     sa.sa\_flags = SA\_RESTART;}
+\DoxyCodeLine{207     \textcolor{keywordflow}{if} (sigaction(SIGCHLD, \&sa, NULL) == -\/1)}
+\DoxyCodeLine{208     \{}
+\DoxyCodeLine{209         perror(\textcolor{stringliteral}{"{}Erreur lors de la configuration de SIGCHLD"{}});}
+\DoxyCodeLine{210         exit(EXIT\_FAILURE);}
+\DoxyCodeLine{211     \}}
+\DoxyCodeLine{212 \}}
+
+\end{DoxyCode}
